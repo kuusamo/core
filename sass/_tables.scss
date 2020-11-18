@@ -1,0 +1,30 @@
+@use '_core' as *;
+
+table.table {
+    width: 100%;
+    border-collapse: collapse;
+
+    thead {
+        border-bottom: #DDDDDD 2px solid;
+
+        th {
+            text-align: left;
+        }
+
+        th.text-right {
+            text-align: right;
+        }
+    }
+
+    td, th {
+        padding: ($baseline / 2);
+    }
+}
+
+table.table-striped {
+    tbody {
+        tr:nth-child(odd) {
+            background: #f3f3f3;
+        }
+    }
+}

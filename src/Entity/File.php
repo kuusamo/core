@@ -23,7 +23,7 @@ class File implements JsonSerializable
     private $name;
 
     /**
-     * @Column(type="string", length=128)
+     * @Column(type="string", length=128, unique=true)
      */
     private $filename;
 

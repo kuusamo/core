@@ -2,8 +2,8 @@ import React from 'react';
 
 const DownloadBlock = props => {
     const onChange = event => {
-        const download = { id: event.currentTarget.value };
-        props.callback(props.index, 'download', download);
+        const file = { id: event.currentTarget.value };
+        props.callback(props.index, 'file', file);
     }
 
     return (
@@ -11,7 +11,7 @@ const DownloadBlock = props => {
             <input
                 type="number"
                 className="form-control"
-                value={props.download?.id || ''}
+                value={props.file?.id || ''}
                 onChange={onChange}
             />
         </div>

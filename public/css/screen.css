@@ -175,6 +175,27 @@ main {
   text-align: center;
 }
 
+table.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+table.table thead {
+  border-bottom: #DDDDDD 2px solid;
+}
+table.table thead th {
+  text-align: left;
+}
+table.table thead th.text-right {
+  text-align: right;
+}
+table.table td, table.table th {
+  padding: 12px;
+}
+
+table.table-striped tbody tr:nth-child(odd) {
+  background: #f3f3f3;
+}
+
 .tabs {
   border-bottom: #999 1px solid;
   padding: 0;

@@ -11,20 +11,20 @@ use Psr\Http\Message\ResponseInterface as Response;
 
 class ImageController extends Controller
 {
-    public function original(Request $request, Response $response, $args)
+    public function original(Request $request, Response $response, array $args = [])
     {
         $image = $this->ci->get('storage')->get($args['filename']);
         return $this->prepareResponse($response, $image);
     }
 
-    public function resize(Request $request, Response $response, $args)
+    public function resize(Request $request, Response $response, array $args = [])
     {
         $cropTool = new Crop($this->ci->get('storage'), $request, $response);
         $image = $cropTool->resize($args['filename'], $args['size']);
         return $this->prepareResponse($response, $image);
     }
 
-    public function widescreenFill(Request $request, Response $response, $args)
+    public function widescreenFill(Request $request, Response $response, array $args = [])
     {
         $cropTool = new Crop($this->ci->get('storage'), $request, $response);
         $image = $cropTool->ratio($args['filename'], $args['width']);

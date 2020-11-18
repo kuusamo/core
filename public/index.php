@@ -44,6 +44,8 @@ $app->group('/content/images', function($app) {
     $app->get('/originals/{filename}', '\Kuusamo\Vle\Controller\Content\ImageController:original');
 });
 
+$app->get('/content/files/{filename}', '\Kuusamo\Vle\Controller\Content\FileController:original');
+
 $app->group('', function($app) {
     $app->any('/account', '\Kuusamo\Vle\Controller\AccountController:account');
     $app->get('/dashboard', '\Kuusamo\Vle\Controller\DashboardController:dashboard');
@@ -70,6 +72,8 @@ $app->group('/admin', function($app) {
     $app->post('/courses/lessons', '\Kuusamo\Vle\Controller\Admin\LessonsAjaxController:create');
 $app->put('/courses/lessons/{id:[0-9]+}', '\Kuusamo\Vle\Controller\Admin\LessonsAjaxController:update');
 $app->put('/courses/lessons/{id:[0-9]+}/blocks', '\Kuusamo\Vle\Controller\Admin\LessonsAjaxController:updateBlocks');
+
+    $app->any('/files', '\Kuusamo\Vle\Controller\Admin\FilesController:index');
 
     $app->get('/images', '\Kuusamo\Vle\Controller\Admin\ImagesController:index');
     $app->any('/images/upload', '\Kuusamo\Vle\Controller\Admin\ImagesController:upload');

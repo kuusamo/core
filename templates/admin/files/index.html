@@ -1,0 +1,46 @@
+<ol class="breadcrumbs">
+    <li><a href="/dashboard">Dashboard</a></li>
+    <li><a href="/admin">Admin</a></li>
+    <li><a href="/admin/files">Files</a></li>
+</ol>
+
+<h1>Files</h1>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Filename</th>
+            <th>Options</th>
+    </thead>
+    <tbody>
+    {{#files}}
+        <tr>
+            <td><a href="/vle/downloads/{{getId}}">{{getId}}</a></td>
+            <td>{{getName}}</td>
+            <td>{{getFilename}}</td>
+            <td>
+                <form action="" method="POST">
+                    <input type="hidden" name="action" value="delete">
+                    <input type="hidden" name="id" value="{{getId}}">
+                    <button type="submit">Delete</button>
+                </form>
+            </td>
+        </tr>
+    {{/files}}
+    </tbody>
+</table>
+
+<h2>Upload a file</h2>
+
+<form method="post" enctype="multipart/form-data">
+    <label for="file">File</label>
+    <input type="file" id="file" name="file">
+
+    <label for="name">Name</label>
+    <input type="text" id="name" name="name" placeholder="Name">
+
+    <input type="hidden" name="action" value="upload">
+    <button type="submit">Upload</button>
+</form>
