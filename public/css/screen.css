@@ -65,6 +65,11 @@ img {
   padding: 24px;
 }
 
+.cm-loading {
+  text-align: center;
+  padding: 48px;
+}
+
 .cm-table {
   margin-bottom: 24px;
   width: 100%;

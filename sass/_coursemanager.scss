@@ -37,6 +37,11 @@
     padding: $baseline;
 }
 
+.cm-loading {
+    text-align: center;
+    padding: $baseline * 2;
+}
+
 .cm-table {
     margin-bottom: $baseline;
     width: 100%;

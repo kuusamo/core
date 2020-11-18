@@ -167,7 +167,7 @@ class CourseManager extends Component {
 
         if (this.state.loading) {
             return (
-                <div>
+                <div className="cm-loading">
                     <img src="/images/loading.gif" alt="Loading" />
                 </div>
             );
