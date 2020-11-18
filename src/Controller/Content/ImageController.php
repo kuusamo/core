@@ -4,8 +4,10 @@ namespace Kuusamo\Vle\Controller\Content;
 
 use Kuusamo\Vle\Controller\Controller;
 use Kuusamo\Vle\Helper\Content\Crop;
+use Kuusamo\Vle\Service\Storage\StorageException;
 use Kuusamo\Vle\Service\Storage\StorageObject;
 
+use Slim\Exception\HttpNotFoundException;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 
@@ -13,7 +15,12 @@ class ImageController extends Controller
 {
     public function original(Request $request, Response $response, array $args = [])
     {
-        $image = $this->ci->get('storage')->get($args['filename']);
+        try {
+            $image = $this->ci->get('storage')->get($args['filename']);
+        } catch (StorageException $e) {
+            throw new HttpNotFoundException($request, $response);
+        }
+
         return $this->prepareResponse($response, $image);
     }
 

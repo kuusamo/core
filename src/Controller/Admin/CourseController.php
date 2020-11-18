@@ -15,7 +15,7 @@ class CourseController extends AdminController
         $course = $this->ci->get('db')->find('Kuusamo\Vle\Entity\Course', $args['id']);
 
         if ($course === null) {
-            throw new HttpNotFoundException;
+            throw new HttpNotFoundException($request, $response);
         }
 
         return $this->renderPage($request, $response, 'admin/course/view.html', [
@@ -28,7 +28,7 @@ class CourseController extends AdminController
         $course = $this->ci->get('db')->find('Kuusamo\Vle\Entity\Course', $args['id']);
 
         if ($course === null) {
-            throw new HttpNotFoundException;
+            throw new HttpNotFoundException($request, $response);
         }
 
         return $this->renderPage($request, $response, 'admin/course/lessons.html', [
@@ -41,7 +41,7 @@ class CourseController extends AdminController
         $course = $this->ci->get('db')->find('Kuusamo\Vle\Entity\Course', $args['id']);
 
         if ($course === null) {
-            throw new HttpNotFoundException;
+            throw new HttpNotFoundException($request, $response);
         }
 
         if ($request->isPost()) {
@@ -68,7 +68,7 @@ class CourseController extends AdminController
         $course = $this->ci->get('db')->find('Kuusamo\Vle\Entity\Course', $args['id']);
 
         if ($course === null) {
-            throw new HttpNotFoundException;
+            throw new HttpNotFoundException($request, $response);
         }
 
         if ($request->isPost()) {

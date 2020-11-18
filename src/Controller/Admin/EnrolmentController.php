@@ -16,7 +16,7 @@ class EnrolmentController extends AdminController
         $course = $this->ci->get('db')->find('Kuusamo\Vle\Entity\Course', $args['id']);
 
         if ($course === null) {
-            throw new HttpNotFoundException;
+            throw new HttpNotFoundException($request, $response);
         }
 
         if ($request->isPost()) {

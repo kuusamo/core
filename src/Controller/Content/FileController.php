@@ -19,13 +19,13 @@ class FileController extends Controller
         ]);
 
         if (!$fileObj) {
-            throw new HttpNotFoundException;
+            throw new HttpNotFoundException($request, $response);
         }
 
         $fileData = $this->ci->get('storage')->get(sprintf('files/%s', $args['filename']));
 
         if (!$fileData) {
-            throw new HttpNotFoundException;
+            throw new HttpNotFoundException($request, $response);
         }
 
         $response = $response->withHeader('Content-type', $fileData->getContentType());
