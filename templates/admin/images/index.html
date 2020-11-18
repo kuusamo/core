@@ -1,0 +1,19 @@
+<ol class="breadcrumbs">
+    <li><a href="/dashboard">Dashboard</a></li>
+    <li><a href="/admin">Admin</a></li>
+    <li><a href="/admin/images">Images</a></li>
+</ol>
+
+<h1>Images</h1>
+
+<div>
+{{#images}}
+    <div>
+        <a href="/images/{{getId}}"><img src="/content/images/crops/150/{{getFilename}}" alt="{{getFilename}}"></a>
+    </div>
+{{/images}}
+</div>
+
+<p>
+    <a href="/admin/images/upload">Upload new image</a>
+</p>

@@ -1,0 +1,35 @@
+@use '_core' as *;
+
+button {
+    background-color: #0077b6;
+    border: #0077b6 1px solid;
+    color: #fff;
+    font-size: 100%;
+    padding: $baseline / 2;
+}
+
+input {
+    border: #0077b6 1px solid;
+    font-size: 100%;
+    padding: $baseline / 2;
+}
+
+select {
+    border: #0077b6 1px solid;
+    font-size: 100%;
+    padding: $baseline / 2;
+}
+
+form.form-vertical {
+    max-width: 500px;
+
+    input[type="text"], input[type="password"], input[type="password"], textarea {
+        box-sizing: border-box;
+        margin-bottom: $baseline / 2;
+        width: 100%;
+    }
+
+    label {
+        display: block;
+    }
+}

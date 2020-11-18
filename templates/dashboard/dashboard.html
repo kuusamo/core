@@ -1,0 +1,22 @@
+{{#user}}
+<h1>Dashboard</h1>
+
+<p>Logged in as {{getFullname}}. <a href="/account">Manage account</a>. <a href="/logout">Logout</a>.</p>
+
+{{#hasCourses}}
+<h2>My courses</h2>
+
+<ul class="course-list">
+{{#getCourses}}
+    <li>
+    {{#getCourse}}
+        <div class="course-list-image">{{#getImage}}<img src="/content/images/crops/16-9/400/{{getFilename}}" alt="{{getDescription}}">{{/getImage}}</div>
+        <h3><a href="/course/{{getSlug}}">{{getName}}</a></h3>
+    {{/getCourse}}
+    </li>
+{{/getCourses}}
+</ul>
+{{/hasCourses}}
+
+<p><a href="/admin">Admin</a></p>
+{{/user}}

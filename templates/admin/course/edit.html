@@ -1,0 +1,30 @@
+{{#course}}
+<ol class="breadcrumbs">
+    <li><a href="/dashboard">Dashboard</a></li>
+    <li><a href="/admin">Admin</a></li>
+    <li><a href="/admin/courses/{{getId}}">Course</a></li>
+</ol>
+
+<h1>{{getName}}</h1>
+
+<ul class="tabs">
+    <li><a href="/admin/courses/{{getId}}">Overview</a></li>
+    <li><a href="/admin/courses/{{getId}}/lessons">Lessons</a></li>
+    <li><a href="/admin/courses/{{getId}}/students">Students</a></li>
+    <li class="active"><a href="/admin/courses/{{getId}}/edit">Edit</a></li>
+    <li><a href="/admin/courses/{{getId}}/delete">Delete</a></li>
+</ul>
+
+<form method="post" class="form-vertical">
+    <label for="name">Name</label>
+    <input type="text" name="name" id="name" maxlength="128" value="{{getName}}">
+
+    <label for="slug">Slug</label>
+    <input type="text" name="slug" id="slug" maxlength="128" value="{{getSlug}}">
+
+    <label for="image">Image ID</label>
+    <input type="text" name="image" id="image" value="{{#getImage}}{{getId}}{{/getImage}}">
+
+    <button>Edit</button>
+</form>
+{{/course}}

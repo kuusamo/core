@@ -1,0 +1,32 @@
+<ol class="breadcrumbs">
+    <li><a href="/dashboard">Dashboard</a></li>
+    <li><a href="/admin">Admin</a></li>
+</ol>
+
+<h1>Admin dashboard</h1>
+
+<h2>Manage courses</h2>
+
+<ul>
+{{#courses}}
+    <li><a href="/admin/courses/{{getId}}">{{getName}}</a></li>
+{{/courses}}
+</ul>
+
+<h2>Create a new course</h2>
+
+{{#course}}
+<form method="post">
+    <label for="name">Name</label>
+    <input type="text" name="name" id="name" maxlength="128" value="{{getName}}">
+
+    <label for="slug">Slug</label>
+    <input type="text" name="slug" id="slug" maxlength="128" value="{{getSlug}}">
+
+    <button>Create</button>
+</form>
+
+<h2>Manage images</h2>
+
+<p><a href="/admin/images">Manage images</a></p>
+{{/course}}

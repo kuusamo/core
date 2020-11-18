@@ -1,0 +1,20 @@
+{{#module}}
+<ol class="breadcrumbs">
+    <li><a href="/dashboard">Dashboard</a></li>
+    <li>{{#getCourse}}<a href="{{uri}}">{{getName}}</a>{{/getCourse}}</li>
+    <li><a href="{{uri}}">Module</a></li>
+</ol>
+
+<h1>{{getName}}</h1>
+{{/module}}
+
+<ol class="module-list">
+{{#lessons}}
+    <li>
+        <p>Lesson {{number}}</p>
+        <h2>{{name}}</h2>
+        {{#hasCompleted}}<p>☑️ completed</p>{{/hasCompleted}}
+        <p><a href="{{uri}}">{{cta}} lesson</a></p>
+    </li>
+{{/lessons}}
+</ol>

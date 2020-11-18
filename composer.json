@@ -1,0 +1,32 @@
+{
+    "name": "xmeltrut/kuusamo",
+    "tyoe": "project",
+    "description": "Kuusamo VLE",
+    "homepage": "https://github.com/xmeltrut/kuusamo",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Chris Worfolk",
+            "email": "chris@worfolk.co.uk",
+            "homepage": "http://www.worfolk.co.uk"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Kuusamo\\Vle\\": "src/"
+        }
+    },
+    "require": {
+        "mustache/mustache": "2.11.*",
+        "slim/slim": "4.*",
+        "slim/psr7": "1.*",
+        "slim/http": "1.*",
+        "php-di/php-di": "^6.1",
+        "doctrine/orm": "2.*",
+        "erusev/parsedown": "1.*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "7.*",
+        "squizlabs/php_codesniffer": "2.*"
+    }
+}

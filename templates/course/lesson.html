@@ -1,0 +1,44 @@
+{{#lesson}}
+<ol class="breadcrumbs">
+    <li><a href="/dashboard">Dashboard</a></li>
+    <li>{{#getCourse}}<a href="{{uri}}">{{getName}}</a>{{/getCourse}}</li>
+    <li>{{#getModule}}<a href="{{uri}}">{{getName}}</a>{{/getModule}}</li>
+    <li><a href="{{getUri}}">Lesson</a></li>
+</ol>
+
+<h1>{{getName}}</h1>
+{{/lesson}}
+
+{{#blocks}}
+<div>
+    {{{html}}}
+</div>
+{{/blocks}}
+
+<!--
+<div class="wrapper">
+    {{#personalisation}}
+    {{#isMarked}}
+        <div class="vle-completion-box">
+            {{#hasCompleted}}<i class="fas fa-check-circle" aria-label="Completed"></i>&nbsp;{{/hasCompleted}}
+            This lesson is marked by your tutor
+        </div>
+    {{/isMarked}}
+    {{^isMarked}}
+        <form method="post" class="vle-completion-box" id="completion-box" data-url="{{#lesson}}{{uri}}{{/lesson}}/status">
+            <input type="checkbox" id="completed" {{#hasCompleted}}checked{{/hasCompleted}}>
+            <label for="completed">Mark this lesson as completed</label>
+            <div class="vle-loading-icon" id="loading-icon"><div></div><div></div><div></div><div></div></div>
+
+        </form>
+    {{/isMarked}}
+    {{/personalisation}}
+
+    <div class="vle-navigation" role="navigation">
+    {{#navigation}}
+        <div>{{#previousLesson}}<a href="{{uri}}">Previous lesson</a>{{/previousLesson}}</div>
+        <div>{{#nextLesson}}<a href="{{uri}}">Next lesson</a>{{/nextLesson}}</div>
+    {{/navigation}}
+    </div>
+</div>
+-->

@@ -1,0 +1,31 @@
+{{#course}}
+<ol class="breadcrumbs">
+    <li><a href="/dashboard">Dashboard</a></li>
+    <li><a href="/admin">Admin</a></li>
+    <li><a href="/admin/courses/{{getId}}">Course</a></li>
+</ol>
+
+<h1>{{getName}}</h1>
+
+<ul class="tabs">
+    <li><a href="/admin/courses/{{getId}}">Overview</a></li>
+    <li><a href="/admin/courses/{{getId}}/lessons">Lessons</a></li>
+    <li class="active"><a href="/admin/courses/{{getId}}/students">Students</a></li>
+    <li><a href="/admin/courses/{{getId}}/edit">Edit</a></li>
+    <li><a href="/admin/courses/{{getId}}/delete">Delete</a></li>
+</ul>
+
+<table>
+{{#getUsers}}
+    <tr>
+        <td>{{#getUser}}{{getFullName}}{{/getUser}}</td>
+    </tr>
+{{/getUsers}}
+</table>
+
+<form method="post">
+    <label for="userId">User ID</label>
+    <input type="text" name="userId" id="userId">
+    <button>Enrol</button>
+</form>
+{{/course}}

@@ -1,0 +1,19 @@
+$baseline: 24px;
+
+a:link, a:visited {
+    color: #023e8a;
+}
+
+a:hover, a:active {
+    color: #0077b6;
+}
+
+body {
+    font-family: "Noto Sans JP", helvetica, sans-serif;
+}
+
+img {
+    max-width: 100%;
+}
+
+.mr-1 { margin-right: $baseline / 4; }

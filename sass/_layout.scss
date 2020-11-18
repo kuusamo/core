@@ -1,0 +1,33 @@
+@use '_core' as *;
+
+body {
+    margin: $baseline;
+}
+
+footer {
+    border: #999 1px solid;
+    padding: $baseline;
+
+    hr {
+        display: none;
+    }
+}
+
+header {
+    border: #999 1px solid;
+    font-size: 200%;
+    padding: $baseline;
+
+    a:link, a:visited, a:hover, a:active {
+        color: #000;
+        text-decoration: none;
+    }
+
+    hr {
+        display: none;
+    }
+}
+
+main {
+    padding: $baseline;
+}

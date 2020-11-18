@@ -1,0 +1,21 @@
+@use '_core' as *;
+
+$outlineColour: #999;
+
+.tabs {
+    border-bottom: $outlineColour 1px solid;
+    padding: 0;
+
+    li {
+        display: inline-block;
+        list-style-type: none;
+        padding: $baseline / 2;
+    }
+
+    li.active {
+        background-colour: #fff;
+        border-left: $outlineColour 1px solid;
+        border-top: $outlineColour 1px solid;
+        border-right: $outlineColour 1px solid;
+    }
+}
