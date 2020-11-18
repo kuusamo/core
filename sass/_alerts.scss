@@ -1,0 +1,15 @@
+@use '_core' as *;
+
+.alert {
+    color: #fff;
+    font-weight: bold;
+    padding: $baseline;
+}
+
+.alert-danger {
+    background: #D2253E;
+}
+
+.alert-success {
+    background: #1C9E36;
+}
