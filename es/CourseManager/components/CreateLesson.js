@@ -37,6 +37,7 @@ class CreateLesson extends Component {
                     className="form-control mr-1"
                     placeholder="Name"
                     name="name"
+                    maxLength={128}
                     value={this.state.name}
                     onChange={this.onChangeName.bind(this)}
                 />{" "}
