@@ -128,6 +128,21 @@ ol.breadcrumbs li:first-child::before {
   padding: 48px;
 }
 
+.cm-modal {
+  background-color: #fff;
+  border: #999 1px solid;
+  box-sizing: border-box;
+  filter: drop-shadow(10px 10px 10px #999);
+  left: 10%;
+  padding: 24px;
+  position: absolute;
+  width: 80%;
+  z-index: 1;
+}
+.cm-modal h3 {
+  margin-top: 0;
+}
+
 .cm-table {
   margin-bottom: 24px;
   width: 100%;

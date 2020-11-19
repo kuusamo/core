@@ -42,6 +42,22 @@
     padding: $baseline * 2;
 }
 
+.cm-modal {
+    background-color: #fff;
+    border: #999 1px solid;
+    box-sizing: border-box;
+    filter: drop-shadow(10px 10px 10px #999);
+    left: 10%;
+    padding: $baseline;
+    position: absolute;
+    width: 80%;
+    z-index: 1;
+
+    h3 {
+        margin-top: 0;
+    }
+}
+
 .cm-table {
     margin-bottom: $baseline;
     width: 100%;

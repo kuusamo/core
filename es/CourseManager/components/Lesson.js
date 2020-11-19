@@ -88,11 +88,11 @@ class Lesson extends Component {
 
     renderEditForm() {
         return (
-            <div className="modal fade show" tabIndex="-1" role="dialog" style={{ display: 'block' }}>
+            <div className="cm-modal" tabIndex="-1" role="dialog">
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
                         <div className="modal-header">
-                            <h5 className="modal-title">Edit lesson</h5>
+                            <h3 className="modal-title">Edit lesson</h3>
                         </div>
                         <div className="modal-body">
                             <form className="form" onSubmit={this.updateLesson.bind(this)}>
