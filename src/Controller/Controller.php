@@ -2,6 +2,8 @@
 
 namespace Kuusamo\Vle\Controller;
 
+use Kuusamo\Vle\Helper\Environment;
+
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -38,7 +40,8 @@ abstract class Controller
     protected function renderPage(Request $request, Response $response, $template, $data = [])
     {
         $data = array_merge($data, [
-            'alerts' => $this->alerts
+            'alerts' => $this->alerts,
+            'siteName' => Environment::get('SITE_NAME')
         ]);
 
         return $this->ci->get('templating')->renderPage(

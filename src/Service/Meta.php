@@ -2,6 +2,8 @@
 
 namespace Kuusamo\Vle\Service;
 
+use Kuusamo\Vle\Helper\Environment;
+
 class Meta
 {
     /**
@@ -33,6 +35,14 @@ class Meta
      * @var string
      */
     protected $ogImage;
+
+    /**
+     * Load in default config.
+     */
+    public function __construct()
+    {
+        $this->title = Environment::get('SITE_NAME');
+    }
     
     /**
      * Get the title.
