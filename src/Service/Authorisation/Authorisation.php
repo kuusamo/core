@@ -31,10 +31,7 @@ class Authorisation
      */
     public function authoriseUser(User $user)
     {
-        // @todo Do we need all of these values? Update deauthorise too
         $this->session->set('user_id', $user->getId());
-        $this->session->set('user_email', $user->getEmail());
-        $this->session->set('user_name', $user->getFullName());
         $this->session->regenerateId();
     }
 
@@ -46,8 +43,6 @@ class Authorisation
     public function deauthoriseUser()
     {
         $this->session->remove('user_id');
-        $this->session->remove('user_email');
-        $this->session->remove('user_name');
         $this->session->regenerateId();
     }
 

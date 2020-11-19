@@ -10,7 +10,7 @@ class AuthorisationTest extends TestCase
     public function testAuthorise()
     {
         $sessionMock = $this->createMock('Kuusamo\Vle\Service\Session\Session');
-        $sessionMock->expects($this->exactly(3))->method('set');
+        $sessionMock->expects($this->exactly(1))->method('set');
         $sessionMock->expects($this->once())->method('regenerateId');
 
         $entityMock = $this->createMock('Doctrine\ORM\EntityManager');
@@ -23,7 +23,7 @@ class AuthorisationTest extends TestCase
     public function testDeauthorise()
     {
         $sessionMock = $this->createMock('Kuusamo\Vle\Service\Session\Session');
-        $sessionMock->expects($this->exactly(3))->method('remove');
+        $sessionMock->expects($this->exactly(1))->method('remove');
         $sessionMock->expects($this->once())->method('regenerateId');
 
         $entityMock = $this->createMock('Doctrine\ORM\EntityManager');
