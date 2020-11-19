@@ -1,0 +1,12 @@
+.admin-image-gallery {
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: repeat(auto-fill, 180px);
+
+    div {
+        border: #ccc 1px solid;
+        border-radius: 5px;
+        padding: 0.5rem;
+        text-align: center;
+    }
+}

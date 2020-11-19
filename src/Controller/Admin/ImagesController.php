@@ -12,10 +12,10 @@ class ImagesController extends AdminController
 {
     public function index(Request $request, Response $response)
     {
-        $query = isset($request->getQueryParams()['q']) ? $request->getQueryParams()['q'] : null;
+        $query = $request->getQueryParam('q') ? $request->getQueryParam('q') : null;
 
         if ($query) {
-            $images = $this->runSearch($request->getQueryParams()['q']);
+            $images = $this->runSearch($request->getQueryParam('q'));
         } else {
             $images = $this->ci->get('db')->getRepository('Kuusamo\Vle\Entity\Image')->findBy([], ['id' => 'DESC'], 10);
         }
@@ -88,7 +88,7 @@ class ImagesController extends AdminController
         return $this->renderPage($request, $response, 'admin/images/upload.html');
     }
 
-    public function edit(Request $request, Response $response, array $args = [])
+    public function view(Request $request, Response $response, array $args = [])
     {
         $image = $this->ci->get('db')->find('Kuusamo\Vle\Entity\Image', $args['id']);
 
@@ -97,18 +97,32 @@ class ImagesController extends AdminController
         }
 
         if ($request->isPost()) {
-            $image->setDescription($request->getParam('description'));
-            $image->setKeywords($request->getParam('keywords'));
+            switch ($request->getParam('action')) {
+                case 'edit':
+                    $image->setDescription($request->getParam('description'));
+                    $image->setKeywords($request->getParam('keywords'));
 
-            $this->ci->get('db')->persist($image);
-            $this->ci->get('db')->flush();
+                    $this->ci->get('db')->persist($image);
+                    $this->ci->get('db')->flush();
 
-            $this->alertSuccess('Image updated successfully');
+                    $this->alertSuccess('Image updated successfully');
+                    break;
+                case 'delete':
+                    $this->ci->get('db')->remove($image);
+                    $this->ci->get('db')->flush();
+
+                    $this->ci->get('storage')->delete(
+                        sprintf('images/%s', $image->getFilename())
+                    );
+
+                    $this->alertSuccess('File deleted successfully');
+                    break;
+            }
         }
 
          $this->ci->get('meta')->setTitle('Images - Admin');
 
-        return $this->renderPage($request, $response, 'images/edit.html', [
+        return $this->renderPage($request, $response, 'admin/images/view.html', [
             'image' => $image
         ]);
     }

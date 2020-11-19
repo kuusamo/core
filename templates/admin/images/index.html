@@ -6,10 +6,15 @@
 
 <h1>Images</h1>
 
-<div>
+<form method="get">
+    <input type="text" name="q" aria-label="Search query" value="{{query}}">
+    <button>Search</button>
+</form>
+
+<div class="admin-image-gallery">
 {{#images}}
     <div>
-        <a href="/images/{{getId}}"><img src="/content/images/crops/150/{{getFilename}}" alt="{{getFilename}}"></a>
+        <a href="/admin/images/{{getId}}"><img src="/content/images/crops/150/{{getFilename}}" alt="{{getFilename}}"></a>
     </div>
 {{/images}}
 </div>

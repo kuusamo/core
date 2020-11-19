@@ -47,6 +47,7 @@ $app->group('', function($app) use ($container) {
         $app->any('/files/{id:[0-9]+}', '\Kuusamo\Vle\Controller\Admin\FilesController:view');
 
         $app->get('/images', '\Kuusamo\Vle\Controller\Admin\ImagesController:index');
+        $app->any('/images/{id:[0-9]+}', '\Kuusamo\Vle\Controller\Admin\ImagesController:view');
         $app->any('/images/upload', '\Kuusamo\Vle\Controller\Admin\ImagesController:upload');
     })->add(new RequirePermission($container->get('auth'), Role::ROLE_ADMIN));
 

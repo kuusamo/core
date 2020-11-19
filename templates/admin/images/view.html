@@ -1,0 +1,46 @@
+<ol class="breadcrumbs">
+    <li><a href="/dashboard">Dashboard</a></li>
+    <li><a href="/admin">Admin</a></li>
+    <li><a href="/admin/images">Images</a></li>
+</ol>
+
+{{#image}}
+<h1>{{getFilename}}</h1>
+
+<form method="post">
+    <div class="form-group">
+        <label for="filename">Filename</label>
+        <input type="text" class="form-control" id="filename" name="filename" value="{{getFilename}}" disabled>
+    </div>
+
+    <div class="form-group">
+        <label for="mediaType">Media Type</label>
+        <input type="text" class="form-control" id="mediaType" name="mediaType" value="{{getMediaType}}" disabled>
+    </div>
+
+    <div class="form-group">
+        <label for="mediaType">Size</label>
+        <input type="text" class="form-control" id="mediaType" name="mediaType" value="{{getWidth}}x{{getHeight}}" disabled>
+    </div>
+
+    <div class="form-group">
+        <label for="description">Description</label>
+        <textarea class="form-control" id="description" name="description" placeholder="Description" rows="2">{{getDescription}}</textarea>
+    </div>
+
+    <div class="form-group">
+        <label for="keywords">Keywords</label>
+        <textarea class="form-control" id="keywords" name="keywords" placeholder="Keywords" rows="2">{{getKeywords}}</textarea>
+    </div>
+
+    <input type="hidden" name="action" value="edit">
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>
+
+<h2>Delete</h2>
+
+<form method="post">
+    <input type="hidden" name="action" value="delete">
+    <button>Delete</button>
+</form>
+{{/image}}
