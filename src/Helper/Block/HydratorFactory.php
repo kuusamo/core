@@ -3,7 +3,6 @@
 namespace Kuusamo\Vle\Helper\Block;
 
 use Doctrine\ORM\EntityManager;
-use Exception;
 
 class HydratorFactory
 {
@@ -28,8 +27,7 @@ class HydratorFactory
             case 'video':
                 return new VideoHydrator;
             default:
-                // @todo This should throw a more specific exception
-                throw new Exception(sprintf('Block type %s not supported', $type));
+                throw new BlockException(sprintf('Block type %s not supported', $type));
         }
     }
 }

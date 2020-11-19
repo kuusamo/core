@@ -8,7 +8,6 @@ use Kuusamo\Vle\Entity\Block\ImageBlock;
 use Kuusamo\Vle\Entity\Block\MarkdownBlock;
 use Kuusamo\Vle\Entity\Block\QuestionBlock;
 use Kuusamo\Vle\Entity\Block\VideoBlock;
-use Exception;
 
 class BlockFactory
 {
@@ -34,8 +33,7 @@ class BlockFactory
             case 'video':
                 return new VideoBlock;
             default:
-                // @todo More specific exception
-                throw new Exception(sprintf('Block type %s not supported', $type));
+                throw new BlockException(sprintf('Block type %s not supported', $type));
         }
     }
 }

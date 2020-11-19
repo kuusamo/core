@@ -15,7 +15,7 @@ class HydratorFactoryTest extends TestCase
     }
 
     /**
-     * @expectedException Exception
+     * @expectedException Kuusamo\Vle\Helper\Block\BlockException
      */
     public function testInvalid()
     {
