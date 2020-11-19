@@ -9,7 +9,7 @@ class HydratorFactoryTest extends TestCase
 {
     public function testCreate()
     {
-        $sessionMock = $this->createMock('Kuusamo\Vle\Service\Session');
+        $sessionMock = $this->createMock('Kuusamo\Vle\Service\Session\Session');
         $entityMock = $this->createMock('Doctrine\ORM\EntityManager');
 
         $authorisation = AuthorisationFactory::create($sessionMock, $entityMock);

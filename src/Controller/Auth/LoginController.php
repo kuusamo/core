@@ -23,6 +23,10 @@ class LoginController extends Controller
         if ($request->isPost()) {
             if ($request->getParam('action') == 'login') {
                 try {
+                    if (!$this->ci->get('session')->getCsrfToken()->isValid($request->getParam('csrf'))) {
+                        throw new ProcessException('Request blocked for security reasons');
+                    }
+
                     $user = $this->ci->get('db')->getRepository('Kuusamo\Vle\Entity\User')->findOneBy(['email' => $request->getParam('email')]);
 
                     if (!$user) {
@@ -52,7 +56,8 @@ class LoginController extends Controller
 
         return $this->renderPage($request, $response, 'auth/login.html', [
             'from' => $request->getParam('from'),
-            'email' => $request->getParam('email')
+            'email' => $request->getParam('email'),
+            'csrf' => $this->ci->get('session')->getCsrfToken()->getToken()
         ]);
     }
 }

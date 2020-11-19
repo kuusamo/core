@@ -1,15 +1,18 @@
 <?php
 
-namespace Kuusamo\Vle\Service;
+namespace Kuusamo\Vle\Service\Session;
 
 class Session
 {
+    private $csrf;
+
     /**
      * Start the session.
      */
     public function __construct()
     {
         session_start();
+        $this->csrf = new CsrfToken;
     }
 
     /**
@@ -54,5 +57,15 @@ class Session
     public function regenerateId()
     {
         session_regenerate_id();
+    }
+
+    /**
+     * Get the CSRF token.
+     *
+     * @return CsrfToken
+     */
+    public function getCsrfToken(): CsrfToken
+    {
+        return $this->csrf;
     }
 }

@@ -15,7 +15,7 @@ class UserTest extends TestCase
         $user = new User;
 
         $this->assertSame(User::STATUS_ACTIVE, $user->getStatus());
-        $this->assertSame(32, strlen($user->getSecurityToken()));
+        $this->assertSame(64, strlen($user->getSecurityToken()));
 
         $user->setId(10);
         $user->setEmail('test@example.com');

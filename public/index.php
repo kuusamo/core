@@ -22,9 +22,13 @@ $container->set('storage', function() {
     return \Kuusamo\Vle\Service\Storage\StorageFactory::create();
 });
 
+$container->set('session', function() {
+    return new \Kuusamo\Vle\Service\Session\Session;
+});
+
 $container->set('auth', function() use ($container) {
     return \Kuusamo\Vle\Service\Authorisation\AuthorisationFactory::create(
-        new \Kuusamo\Vle\Service\Session,
+        $container->get('session'),
         $container->get('db')
     );
 });

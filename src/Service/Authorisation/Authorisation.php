@@ -3,7 +3,7 @@
 namespace Kuusamo\Vle\Service\Authorisation;
 
 use Kuusamo\Vle\Entity\User;
-use Kuusamo\Vle\Service\Session;
+use Kuusamo\Vle\Service\Session\Session;
 use Doctrine\ORM\EntityManager;
 
 // @todo Unit test
