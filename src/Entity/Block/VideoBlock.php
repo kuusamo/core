@@ -2,6 +2,7 @@
 
 namespace Kuusamo\Vle\Entity\Block;
 
+use InvalidArgumentException;
 use JsonSerializable;
 
 /**
@@ -10,6 +11,9 @@ use JsonSerializable;
  */
 class VideoBlock extends Block implements JsonSerializable
 {
+    const PROVIDER_VIMEO = 'vimeo';
+    const PROVIDER_YOUTUBE = 'youtube';
+
     /**
      * @Column(type="string")
      */
@@ -30,9 +34,12 @@ class VideoBlock extends Block implements JsonSerializable
         return $this->provider;
     }
 
-    // @todo Enforce a valid provider?
     public function setProvider(string $value)
     {
+        if (!in_array($value, [self::PROVIDER_VIMEO, self::PROVIDER_YOUTUBE])) {
+            throw new InvalidArgumentException('Unsupported provider');
+        }
+
         $this->provider = $value;
     }
 

@@ -2,6 +2,8 @@
 
 namespace Kuusamo\Vle\Helper\Block\Render;
 
+use Kuusamo\Vle\Entity\Block\VideoBlock;
+
 class VideoBlockRenderer extends BlockRenderer
 {
     public function render(): string
@@ -26,7 +28,7 @@ class VideoBlockRenderer extends BlockRenderer
      */
     private function getProviderTemplate($provider)
     {
-        if (in_array($provider, ['youtube', 'vimeo'])) {
+        if (in_array($provider, [VideoBlock::PROVIDER_YOUTUBE, VideoBlock::PROVIDER_VIMEO])) {
             return $provider;
         }
 

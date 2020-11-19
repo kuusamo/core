@@ -11,10 +11,19 @@ class VideoBlockTest extends TestCase
     {
         $block = new VideoBlock;
 
-        $block->setProvider('Vimeo');
+        $block->setProvider(VideoBlock::PROVIDER_VIMEO);
         $block->setProviderId('123');
 
-        $this->assertSame('Vimeo', $block->getProvider());
+        $this->assertSame(VideoBlock::PROVIDER_VIMEO, $block->getProvider());
         $this->assertSame('123', $block->getProviderId());
+    }
+
+    /**
+     * @expectedException InvalidArgumentException
+     */
+    public function testInvalidStatus()
+    {
+        $block = new VideoBlock;
+        $block->setProvider('google video');
     }
 }

@@ -13,6 +13,7 @@ const VideoBlock = props => {
         <div>
             Provider: <select className="form-control" value={props.provider} onChange={onChangeProvider}>
                 <option value="vimeo">Vimeo</option>
+                <option value="youtube">YouTube</option>
             </select>
             Provider ID: <input type="text" className="form-control" value={props.providerId} onChange={onChangeProviderId} />
         </div>
