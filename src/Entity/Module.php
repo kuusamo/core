@@ -104,12 +104,12 @@ class Module implements JsonSerializable
         $this->description = $value;
     }
 
-    public function getPriority()
+    public function getPriority(): ?int
     {
         return $this->priority;
     }
 
-    public function setPriority($value)
+    public function setPriority(?int $value)
     {
         $this->priority = $value;
     }
