@@ -33,7 +33,7 @@ class CourseDashboardController extends CourseController
             ]);
         }
 
-        $this->ci->get('meta')->setTitle(sprintf('%s - VLE', $course->getName()));
+        $this->ci->get('meta')->setTitle($course->getName());
 
         // @todo Do we need all of these variables?
         return $this->renderPage($request, $response, 'course/dashboard.html', [

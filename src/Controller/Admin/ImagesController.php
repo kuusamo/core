@@ -20,7 +20,7 @@ class ImagesController extends AdminController
             $images = $this->ci->get('db')->getRepository('Kuusamo\Vle\Entity\Image')->findBy([], ['id' => 'DESC'], 10);
         }
 
-        //$this->setPageTitle('Images');
+         $this->ci->get('meta')->setTitle('Images - Admin');
 
         return $this->renderPage($request, $response, 'admin/images/index.html', [
             'images' => $images,
@@ -83,6 +83,8 @@ class ImagesController extends AdminController
             }
         }
 
+         $this->ci->get('meta')->setTitle('Images - Admin');
+
         return $this->renderPage($request, $response, 'admin/images/upload.html');
     }
 
@@ -104,7 +106,7 @@ class ImagesController extends AdminController
             $this->alertSuccess('Image updated successfully');
         }
 
-        //$this->setPageTitle(sprintf('%s - Images', $image->getFilename()));
+         $this->ci->get('meta')->setTitle('Images - Admin');
 
         return $this->renderPage($request, $response, 'images/edit.html', [
             'image' => $image

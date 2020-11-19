@@ -18,6 +18,8 @@ class CourseController extends AdminController
             throw new HttpNotFoundException($request, $response);
         }
 
+        $this->ci->get('meta')->setTitle(sprintf('%s - Admin', $course->getName()));
+
         return $this->renderPage($request, $response, 'admin/course/view.html', [
             'course' => $course
         ]);
@@ -30,6 +32,8 @@ class CourseController extends AdminController
         if ($course === null) {
             throw new HttpNotFoundException($request, $response);
         }
+
+        $this->ci->get('meta')->setTitle(sprintf('%s - Admin', $course->getName()));
 
         return $this->renderPage($request, $response, 'admin/course/lessons.html', [
             'course' => $course
@@ -58,6 +62,8 @@ class CourseController extends AdminController
             $this->alertSuccess('Course updated successfully');
         }
 
+        $this->ci->get('meta')->setTitle(sprintf('%s - Admin', $course->getName()));
+
         return $this->renderPage($request, $response, 'admin/course/edit.html', [
             'course' => $course
         ]);
@@ -77,6 +83,8 @@ class CourseController extends AdminController
 
             $this->alertSuccess('Course deleted successfully');
         }
+
+        $this->ci->get('meta')->setTitle(sprintf('%s - Admin', $course->getName()));
 
         return $this->renderPage($request, $response, 'admin/course/delete.html', [
             'course' => $course

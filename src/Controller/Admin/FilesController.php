@@ -58,6 +58,8 @@ class FilesController extends Controller
 
         $files = $this->ci->get('db')->getRepository('Kuusamo\Vle\Entity\File')->findBy([], ['filename' => 'ASC']);
 
+         $this->ci->get('meta')->setTitle('Files - Admin');
+
         return $this->renderPage($request, $response, 'admin/files/index.html', [
             'files' => $files
         ]);

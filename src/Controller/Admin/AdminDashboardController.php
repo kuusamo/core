@@ -27,6 +27,8 @@ class AdminDashboardController extends AdminController
 
         $courses = $this->ci->get('db')->getRepository('Kuusamo\Vle\Entity\Course')->findBy([]);
 
+        $this->ci->get('meta')->setTitle('Admin');
+
         return $this->renderPage($request, $response, 'admin/dashboard.html', [
             'course' => $course,
             'courses' => $courses

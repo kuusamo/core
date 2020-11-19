@@ -48,6 +48,8 @@ class LoginController extends Controller
             }
         }
 
+        $this->ci->get('meta')->setTitle('Login');
+
         return $this->renderPage($request, $response, 'auth/login.html', [
             'from' => $request->getParam('from'),
             'email' => $request->getParam('email')

@@ -35,7 +35,7 @@ class LessonController extends CourseController
         }
 
         $this->ci->get('meta')->setTitle(sprintf(
-            '%s - %s - VLE',
+            '%s - %s',
             $lesson->getName(),
             $lesson->getCourse()->getName()
         ));

@@ -16,6 +16,8 @@ class AccountController extends Controller
             $this->changePassword($request);
         }
 
+        $this->ci->get('meta')->setTitle('My Account');
+
         return $this->renderPage($request, $response, 'account/account.html');
     }
 

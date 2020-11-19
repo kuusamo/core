@@ -37,6 +37,8 @@ class EnrolmentController extends AdminController
             }
         }
 
+        $this->ci->get('meta')->setTitle(sprintf('%s - Admin', $course->getName()));
+
         return $this->renderPage($request, $response, 'admin/course/students.html', [
             'course' => $course
         ]);
