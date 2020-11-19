@@ -24,7 +24,7 @@ class DatabaseFactory
         
         // database configuration parameters
         $dbParams = [
-            'driver'   => 'pdo_mysql',
+            'driver'   => Environment::get('DB_DRIVER', 'pdo_mysql'),
             'host'     => Environment::get('DB_HOST', 'localhost'),
             'user'     => Environment::get('DB_USER'),
             'password' => Environment::get('DB_PASS'),
