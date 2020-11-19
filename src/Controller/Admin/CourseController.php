@@ -3,6 +3,8 @@
 namespace Kuusamo\Vle\Controller\Admin;
 
 use Kuusamo\Vle\Entity\Course;
+use Kuusamo\Vle\Validation\CourseValidator;
+use Kuusamo\Vle\Validation\ValidationException;
 
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -51,15 +53,21 @@ class CourseController extends AdminController
         if ($request->isPost()) {
             $image = $request->getParam('image') ? $this->ci->get('db')->find('Kuusamo\Vle\Entity\Image', $request->getParam('image')) : null;
 
-            // @todo Validation
             $course->setName($request->getParam('name'));
             $course->setSlug($request->getParam('slug'));
             $course->setImage($image);
 
-            $this->ci->get('db')->persist($course);
-            $this->ci->get('db')->flush();
+            try {
+                $validator = new CourseValidator;
+                $validator($course);
 
-            $this->alertSuccess('Course updated successfully');
+                $this->ci->get('db')->persist($course);
+                $this->ci->get('db')->flush();
+
+                $this->alertSuccess('Course updated successfully');
+            } catch (ValidationException $e) {
+                $this->alertDanger($e->getMessage());
+            }
         }
 
         $this->ci->get('meta')->setTitle(sprintf('%s - Admin', $course->getName()));
