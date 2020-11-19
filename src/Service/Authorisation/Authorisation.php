@@ -6,7 +6,6 @@ use Kuusamo\Vle\Entity\User;
 use Kuusamo\Vle\Service\Session\Session;
 use Doctrine\ORM\EntityManager;
 
-// @todo Unit test
 class Authorisation
 {
     private $session;
@@ -67,7 +66,7 @@ class Authorisation
      *
      * @return integer|null
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->session->get('user_id');
     }
@@ -77,7 +76,7 @@ class Authorisation
      *
      * @return User|null
      */
-    public function getUser()
+    public function getUser(): ?User
     {
         if ($this->getId()) {
             return $this->db->find('Kuusamo\Vle\Entity\User', $this->getId());

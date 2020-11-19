@@ -5,7 +5,7 @@ namespace Kuusamo\Vle\Test\Service\Authorisation;
 use Kuusamo\Vle\Service\Authorisation\AuthorisationFactory;
 use PHPUnit\Framework\TestCase;
 
-class HydratorFactoryTest extends TestCase
+class AuthorisationFactoryTest extends TestCase
 {
     public function testCreate()
     {
