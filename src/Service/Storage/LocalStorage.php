@@ -32,11 +32,17 @@ class LocalStorage implements StorageInterface
      * @param string $key         Filename.
      * @param string $body        Body.
      * @param string $contentType Media type.
+     * @return boolean Success.
      */
-    public function put(string $key, string $body, string $contentType)
+    public function put(string $key, string $body, string $contentType): bool
     {
-        // @todo Return somthing better
-        return file_put_contents($this->getFilePath($key), $body);
+        $result = file_put_contents($this->getFilePath($key), $body);
+
+        if ($result === false) {
+            throw new StorageException('File could not be written');
+        }
+
+        return true;
     }
 
     /**
@@ -44,10 +50,15 @@ class LocalStorage implements StorageInterface
      *
      * @param string $key Filename.
      */
-    public function delete(string $key)
+    public function delete(string $key): bool
     {
-        // @todo What are we returning?
-        return unlink($this->getFilePath($key));
+        $result = unlink($this->getFilePath($key));
+
+        if ($result === false) {
+            throw new StorageException('File could not be deleted');
+        }
+
+        return true;
     }
 
     /**
