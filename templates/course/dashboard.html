@@ -6,6 +6,22 @@
 
 <h1>{{getName}}</h1>
 
+{{#showProgress}}
+<div class="course-progress-bar">
+    <div class="course-progress-bar__indicator" style="width: {{progress}}%;"></div>
+    <div class="course-progress-bar__text">
+        <div>Your progress</div>
+        <div>{{progress}}%</div>
+    </div>
+</div>
+{{/showProgress}}
+
+{{#hasCompleted}}
+<p class="course-congratulations">
+    Congratulations on completing this course!
+</p>
+{{/hasCompleted}}
+
 <ol class="module-list">
 {{#modules}}
     <li>

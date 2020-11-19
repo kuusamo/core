@@ -11,7 +11,45 @@
     padding: $baseline;
 }
 
+.course-congratulations {
+    background-color: #90e0ef;
+    border-radius: $baseline / 4;
+    margin: $baseline 0;
+    padding: $baseline;
+}
+
 .course-navigation {
     display: flex;
     justify-content: space-between;
+}
+
+.course-progress-bar {
+    background-color: #eee;
+    border-radius: $baseline / 4;
+    height: 50px;
+    margin-bottom: $baseline;
+    position: relative;
+
+    .course-progress-bar__indicator {
+        background-color: #90e0ef;
+        border-radius: ($baseline / 4);
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 2;
+    }
+
+    .course-progress-bar__text {
+        display: flex;
+        justify-content: space-between;
+        line-height: 50px;
+        padding: 0 16px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 3;
+    }
 }

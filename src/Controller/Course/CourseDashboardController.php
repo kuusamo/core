@@ -33,7 +33,6 @@ class CourseDashboardController extends CourseController
 
         $this->ci->get('meta')->setTitle($course->getName());
 
-        // @todo Do we need all of these variables?
         return $this->renderPage($request, $response, 'course/dashboard.html', [
             'course' => $course,
             'modules' => $this->prepareModules($course->getModules(), $day),
