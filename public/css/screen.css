@@ -46,6 +46,11 @@ ol.breadcrumbs li:first-child::before {
   content: "";
 }
 
+.course-navigation {
+  display: flex;
+  justify-content: space-between;
+}
+
 .cm-block-header {
   display: flex;
   justify-content: space-between;

@@ -17,6 +17,13 @@
     {{/blocks}}
 </article>
 
+<div class="course-navigation" role="navigation">
+{{#navigation}}
+    <div>{{#previousLesson}}<a href="{{uri}}">Previous lesson</a>{{/previousLesson}}</div>
+    <div>{{#nextLesson}}<a href="{{uri}}">Next lesson</a>{{/nextLesson}}</div>
+{{/navigation}}
+</div>
+
 <!--
 <div class="wrapper">
     {{#personalisation}}
@@ -35,12 +42,6 @@
         </form>
     {{/isMarked}}
     {{/personalisation}}
-
-    <div class="vle-navigation" role="navigation">
-    {{#navigation}}
-        <div>{{#previousLesson}}<a href="{{uri}}">Previous lesson</a>{{/previousLesson}}</div>
-        <div>{{#nextLesson}}<a href="{{uri}}">Next lesson</a>{{/nextLesson}}</div>
-    {{/navigation}}
     </div>
 </div>
 -->
