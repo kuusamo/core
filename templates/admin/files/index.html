@@ -9,7 +9,6 @@
 <table class="table table-striped">
     <thead>
         <tr>
-            <th>ID</th>
             <th>Name</th>
             <th>Filename</th>
             <th>Options</th>
@@ -17,16 +16,9 @@
     <tbody>
     {{#files}}
         <tr>
-            <td><a href="/vle/downloads/{{getId}}">{{getId}}</a></td>
             <td>{{getName}}</td>
             <td>{{getFilename}}</td>
-            <td>
-                <form action="" method="POST">
-                    <input type="hidden" name="action" value="delete">
-                    <input type="hidden" name="id" value="{{getId}}">
-                    <button type="submit">Delete</button>
-                </form>
-            </td>
+            <td><a href="/admin/files/{{getId}}">View</a></td>
         </tr>
     {{/files}}
     </tbody>

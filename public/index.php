@@ -78,6 +78,7 @@ $app->group('', function($app) use ($container) {
     $app->put('/courses/lessons/{id:[0-9]+}/blocks', '\Kuusamo\Vle\Controller\Admin\LessonsAjaxController:updateBlocks');
 
         $app->any('/files', '\Kuusamo\Vle\Controller\Admin\FilesController:index');
+        $app->any('/files/{id:[0-9]+}', '\Kuusamo\Vle\Controller\Admin\FilesController:view');
 
         $app->get('/images', '\Kuusamo\Vle\Controller\Admin\ImagesController:index');
         $app->any('/images/upload', '\Kuusamo\Vle\Controller\Admin\ImagesController:upload');

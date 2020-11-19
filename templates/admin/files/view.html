@@ -1,0 +1,32 @@
+{{#fileObj}}
+<ol class="breadcrumbs">
+    <li><a href="/dashboard">Dashboard</a></li>
+    <li><a href="/admin">Admin</a></li>
+    <li><a href="/admin/files">Files</a></li>
+</ol>
+
+<h1>{{getName}}</h1>
+
+<p>
+    <a href="/content/files/{{getFilename}}">{{getFilename}}</a><br>
+    {{getMediaType}}<br>
+    {{fileSize}}
+</p>
+
+<h2>Upload a new version</h2>
+
+<form method="post" enctype="multipart/form-data">
+    <label for="file">File</label>
+    <input type="file" id="file" name="file">
+
+    <input type="hidden" name="action" value="replace">
+    <button type="submit">Upload</button>
+</form>
+
+<h2>Delete</h2>
+
+<form method="post">
+    <input type="hidden" name="action" value="delete">
+    <button>Delete file</button>
+</form>
+{{/fileObj}}

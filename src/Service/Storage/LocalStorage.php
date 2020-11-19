@@ -14,11 +14,7 @@ class LocalStorage implements StorageInterface
      */
     public function get(string $key): StorageObject
     {
-        $filePath = sprintf(
-            '%s/../../../uploads/%s',
-            __DIR__,
-            $key
-        );
+        $filePath = $this->getFilePath($key);
 
         if (!file_exists($filePath)) {
             throw new StorageException(sprintf('%s does not exist', $key));
@@ -39,14 +35,8 @@ class LocalStorage implements StorageInterface
      */
     public function put(string $key, string $body, string $contentType)
     {
-        $filePath = sprintf(
-            '%s/../../../uploads/%s',
-            __DIR__,
-            $key
-        );
-
         // @todo Return somthing better
-        return file_put_contents($filePath, $body);
+        return file_put_contents($this->getFilePath($key), $body);
     }
 
     /**
@@ -56,14 +46,23 @@ class LocalStorage implements StorageInterface
      */
     public function delete(string $key)
     {
-        $filePath = sprintf(
+        // @todo What are we returning?
+        return unlink($this->getFilePath($key));
+    }
+
+    /**
+     * Get the full file path.
+     *
+     * @param string $key Key.
+     * @return string
+     */
+    private function getFilePath(string $key): string
+    {
+        return sprintf(
             '%s/../../../uploads/%s',
             __DIR__,
             $key
         );
-
-        // @todo What are we returning?
-        return unlink($filePath);
     }
 
     /**
@@ -74,19 +73,6 @@ class LocalStorage implements StorageInterface
      */
     private function generateContentType(string $key): string
     {
-        $fileParts = explode('.', $key);
-        $extension = array_pop($fileParts);
-
-        switch ($extension) {
-            case 'jpg':
-            case 'jpeg':
-                return 'image/jpeg';
-            case 'gif':
-                return 'image/gif';
-            case 'png':
-                return 'image/png';
-        }
-
-        throw new Exception('Unknown file extension');
+        return mime_content_type($this->getFilePath($key));
     }
 }
