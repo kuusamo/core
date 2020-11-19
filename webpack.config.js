@@ -4,7 +4,8 @@ const config = {
     mode: 'production',
     devtool: 'source-map',
     entry: {
-        CourseManager: './es/CourseManager/index.js'
+        CourseManager: './es/CourseManager/index.js',
+        lesson: './es/lesson.js'
     },
     output: {
         path: path.resolve(__dirname + '/public/js'),

@@ -85,6 +85,17 @@ ol.breadcrumbs li:first-child::before {
   content: "";
 }
 
+.course-completion-box {
+  align-items: center;
+  background: #eee;
+  border-radius: 6px;
+  color: #333;
+  display: flex;
+  justify-content: center;
+  margin: 24px 0;
+  padding: 24px;
+}
+
 .course-navigation {
   display: flex;
   justify-content: space-between;

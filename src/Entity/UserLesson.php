@@ -26,7 +26,7 @@ class UserLesson
     private $completed;
 
     /**
-     * @Column(type="integer")
+     * @Column(type="integer", nullable=true)
      */
     private $score;
 
@@ -65,17 +65,15 @@ class UserLesson
         $this->completed = $value;
     }
 
-    public function getScore()
+    public function getScore(): ?int
     {
         return $this->score;
     }
 
-    public function setScore($value)
+    public function setScore(?int $value)
     {
-        $score = intval($value);
-
-        if ($score >= 0 && $score <= 100) {
-            $this->score = $score;
+        if ($value >= 0 && $value <= 100) {
+            $this->score = $value;
         }
     }
 }

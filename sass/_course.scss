@@ -1,3 +1,16 @@
+@use '_core' as *;
+
+.course-completion-box {
+    align-items: center;
+    background: #eee;
+    border-radius: $baseline / 4;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    margin: $baseline 0;
+    padding: $baseline;
+}
+
 .course-navigation {
     display: flex;
     justify-content: space-between;

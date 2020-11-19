@@ -15,6 +15,7 @@ class Lesson implements JsonSerializable
     const STATUS_ACTIVE = 'ACTIVE';
     const STATUS_HIDDEN = 'HIDDEN';
 
+    // @todo Unsupported
     const TYPE_CONTENT = 'CONTENT';
     const TYPE_ASSESSMENT = 'ASSESSMENT';
 
