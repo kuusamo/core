@@ -110,7 +110,7 @@ ol.breadcrumbs li:first-child::before {
   padding: 12px;
 }
 
-button {
+button.btn {
   background-color: #0077b6;
   border: #0077b6 1px solid;
   color: #fff;
@@ -118,13 +118,13 @@ button {
   padding: 12px;
 }
 
-input {
+input.form-control {
   border: #0077b6 1px solid;
   font-size: 100%;
   padding: 12px;
 }
 
-select {
+select.form-control {
   border: #0077b6 1px solid;
   font-size: 100%;
   padding: 12px;

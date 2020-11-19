@@ -1,6 +1,6 @@
 @use '_core' as *;
 
-button {
+button.btn {
     background-color: #0077b6;
     border: #0077b6 1px solid;
     color: #fff;
@@ -8,13 +8,13 @@ button {
     padding: $baseline / 2;
 }
 
-input {
+input.form-control {
     border: #0077b6 1px solid;
     font-size: 100%;
     padding: $baseline / 2;
 }
 
-select {
+select.form-control {
     border: #0077b6 1px solid;
     font-size: 100%;
     padding: $baseline / 2;
