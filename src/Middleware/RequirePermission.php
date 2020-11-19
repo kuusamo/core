@@ -1,0 +1,42 @@
+<?php
+
+namespace Kuusamo\Vle\Middleware;
+
+use Kuusamo\Vle\Service\Authorisation\Authorisation;
+use Slim\Exception\HttpForbiddenException;
+use Slim\Psr7\Response;
+
+class RequirePermission
+{
+    private $auth;
+    private $permission;
+
+    /**
+     * Constructor.
+     *
+     * @param Authorisation $auth       Authorisation service.
+     * @param string        $permission Permission to check for.
+     */
+    public function __construct(Authorisation $auth, string $permission)
+    {
+        $this->auth = $auth;
+        $this->permission = $permission;
+    }
+
+    /**
+     * Run the middleware.
+     */
+    public function __invoke($request, $handler)
+    {
+        $roles = $this->auth->getUser()->getRoles()->toArray();
+
+        foreach ($roles as $role) {
+            if ($role->getId() == $this->permission) {
+                // user has the required role
+                return $handler->handle($request);
+            }
+        }
+
+        throw new HttpForbiddenException($request);
+    }
+}

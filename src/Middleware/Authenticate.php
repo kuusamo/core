@@ -7,6 +7,8 @@ use Slim\Psr7\Response;
 
 class Authenticate
 {
+    private $auth;
+
     /**
      * Constructor.
      *

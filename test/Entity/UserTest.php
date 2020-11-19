@@ -37,6 +37,16 @@ class UserTest extends TestCase
         $this->assertSame($lastLogin, $user->getLastLogin());
     }
 
+    public function testRoles()
+    {
+        $user = new User;
+
+        $this->assertInstanceOf(
+            'Doctrine\Common\Collections\ArrayCollection',
+            $user->getRoles()
+        );
+    }
+
     public function testCourses()
     {
         $user = new User;

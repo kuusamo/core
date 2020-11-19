@@ -46,38 +46,43 @@ $app->group('/content/images', function($app) {
 
 $app->get('/content/files/{filename}', '\Kuusamo\Vle\Controller\Content\FileController:original');
 
-$app->group('', function($app) {
+$app->group('', function($app) use ($container) {
     $app->any('/account', '\Kuusamo\Vle\Controller\AccountController:account');
     $app->get('/dashboard', '\Kuusamo\Vle\Controller\DashboardController:dashboard');
 
     $app->get('/course/{course:[a-z,0-9,-]+}', 'Kuusamo\Vle\Controller\Course\CourseDashboardController:dashboard');
     $app->get('/course/{course:[a-z,0-9,-]+}/lessons/{lesson:[0-9]+}', 'Kuusamo\Vle\Controller\Course\LessonController:lesson');
     $app->get('/course/{course:[a-z,0-9,-]+}/modules/{module:[0-9]+}', 'Kuusamo\Vle\Controller\Course\ModuleController:module');
+
+
+    $app->group('/admin', function($app) {
+        $app->any('', '\Kuusamo\Vle\Controller\Admin\AdminDashboardController:dashboard');
+        $app->any('/courses/{id:[0-9]+}', '\Kuusamo\Vle\Controller\Admin\CourseController:view');
+        $app->any('/courses/{id:[0-9]+}/delete', '\Kuusamo\Vle\Controller\Admin\CourseController:delete');
+        $app->any('/courses/{id:[0-9]+}/edit', '\Kuusamo\Vle\Controller\Admin\CourseController:edit');
+        $app->any('/courses/{id:[0-9]+}/lessons', '\Kuusamo\Vle\Controller\Admin\CourseController:lessons');
+        $app->any('/courses/{id:[0-9]+}/students', '\Kuusamo\Vle\Controller\Admin\EnrolmentController:students');
+
+        $app->post('/courses/{id:[0-9]+}/modules', '\Kuusamo\Vle\Controller\Admin\ModulesAjaxController:create');
+        $app->get('/courses/{id:[0-9]+}/modules', '\Kuusamo\Vle\Controller\Admin\ModulesAjaxController:retrieve');
+        $app->put('/courses/{id:[0-9]+}/modules', '\Kuusamo\Vle\Controller\Admin\ModulesAjaxController:update');
+        $app->put('/courses/modules/{id:[0-9]+}', '\Kuusamo\Vle\Controller\Admin\ModulesAjaxController:updateModule');
+        $app->put('/courses/modules/{id:[0-9]+}/lessons', '\Kuusamo\Vle\Controller\Admin\ModulesAjaxController:updateModuleLessons');
+
+        $app->post('/courses/lessons', '\Kuusamo\Vle\Controller\Admin\LessonsAjaxController:create');
+    $app->put('/courses/lessons/{id:[0-9]+}', '\Kuusamo\Vle\Controller\Admin\LessonsAjaxController:update');
+    $app->put('/courses/lessons/{id:[0-9]+}/blocks', '\Kuusamo\Vle\Controller\Admin\LessonsAjaxController:updateBlocks');
+
+        $app->any('/files', '\Kuusamo\Vle\Controller\Admin\FilesController:index');
+
+        $app->get('/images', '\Kuusamo\Vle\Controller\Admin\ImagesController:index');
+        $app->any('/images/upload', '\Kuusamo\Vle\Controller\Admin\ImagesController:upload');
+    })->add(new \Kuusamo\Vle\Middleware\RequirePermission($container->get('auth'), \Kuusamo\Vle\Entity\Role::ROLE_ADMIN));
+
+
 })->add(new \Kuusamo\Vle\Middleware\Authenticate($container->get('auth')));
 
-$app->group('/admin', function($app) {
-    $app->any('', '\Kuusamo\Vle\Controller\Admin\AdminDashboardController:dashboard');
-    $app->any('/courses/{id:[0-9]+}', '\Kuusamo\Vle\Controller\Admin\CourseController:view');
-    $app->any('/courses/{id:[0-9]+}/delete', '\Kuusamo\Vle\Controller\Admin\CourseController:delete');
-    $app->any('/courses/{id:[0-9]+}/edit', '\Kuusamo\Vle\Controller\Admin\CourseController:edit');
-    $app->any('/courses/{id:[0-9]+}/lessons', '\Kuusamo\Vle\Controller\Admin\CourseController:lessons');
-    $app->any('/courses/{id:[0-9]+}/students', '\Kuusamo\Vle\Controller\Admin\EnrolmentController:students');
 
-    $app->post('/courses/{id:[0-9]+}/modules', '\Kuusamo\Vle\Controller\Admin\ModulesAjaxController:create');
-    $app->get('/courses/{id:[0-9]+}/modules', '\Kuusamo\Vle\Controller\Admin\ModulesAjaxController:retrieve');
-    $app->put('/courses/{id:[0-9]+}/modules', '\Kuusamo\Vle\Controller\Admin\ModulesAjaxController:update');
-    $app->put('/courses/modules/{id:[0-9]+}', '\Kuusamo\Vle\Controller\Admin\ModulesAjaxController:updateModule');
-    $app->put('/courses/modules/{id:[0-9]+}/lessons', '\Kuusamo\Vle\Controller\Admin\ModulesAjaxController:updateModuleLessons');
-
-    $app->post('/courses/lessons', '\Kuusamo\Vle\Controller\Admin\LessonsAjaxController:create');
-$app->put('/courses/lessons/{id:[0-9]+}', '\Kuusamo\Vle\Controller\Admin\LessonsAjaxController:update');
-$app->put('/courses/lessons/{id:[0-9]+}/blocks', '\Kuusamo\Vle\Controller\Admin\LessonsAjaxController:updateBlocks');
-
-    $app->any('/files', '\Kuusamo\Vle\Controller\Admin\FilesController:index');
-
-    $app->get('/images', '\Kuusamo\Vle\Controller\Admin\ImagesController:index');
-    $app->any('/images/upload', '\Kuusamo\Vle\Controller\Admin\ImagesController:upload');
-});
 
 // error handling
 $errorMiddleware = $app->addErrorMiddleware(true, true, true);
@@ -87,6 +92,13 @@ $errorMiddleware->setErrorHandler(
     function (Psr\Http\Message\ServerRequestInterface $request) use ($container) {
         $controller = new \Kuusamo\Vle\Controller\ExceptionController($container);
         return $controller->notFound($request);
+    });
+
+$errorMiddleware->setErrorHandler(
+    Slim\Exception\HttpForbiddenException::class,
+    function (Psr\Http\Message\ServerRequestInterface $request) use ($container) {
+        $controller = new \Kuusamo\Vle\Controller\ExceptionController($container);
+        return $controller->forbidden($request);
     });
 
 if ((getenv('environment') == 'production')) {

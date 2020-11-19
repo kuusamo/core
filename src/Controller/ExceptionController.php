@@ -23,4 +23,12 @@ class ExceptionController extends Controller
 
         return $this->renderPage($request, $response->withStatus(404), 'errors/not-found.html');
     }
+
+    public function forbidden(Request $request)
+    {
+        $response = new Response;
+        $this->ci->get('meta')->setTitle('Forbidden');
+
+        return $this->renderPage($request, $response->withStatus(403), 'errors/forbidden.html');
+    }
 }

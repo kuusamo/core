@@ -58,6 +58,11 @@ class User
     private $lastLogin;
 
     /**
+     * @ManyToMany(targetEntity="Role")
+     */
+    private $roles;
+
+    /**
      * @OneToMany(targetEntity="UserCourse", mappedBy="user")
      */
     private $courses;
@@ -66,6 +71,7 @@ class User
     {
         $this->status = self::STATUS_ACTIVE;
         $this->securityToken = TokenGenerator::generate();
+        $this->roles = new ArrayCollection;
         $this->courses = new ArrayCollection;
     }
 
@@ -158,6 +164,11 @@ class User
     public function hasCourses(): bool
     {
         return $this->courses->count() > 0;
+    }
+
+    public function getRoles()
+    {
+        return $this->roles;
     }
 
     public function getCourses()
