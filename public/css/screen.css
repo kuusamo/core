@@ -44,6 +44,23 @@ img {
   background: #1C9E36;
 }
 
+.badge {
+  border-radius: 6px;
+  display: inline-block;
+  font-size: 75%;
+  font-weight: bold;
+  padding: 4px 8px;
+}
+
+.badge-secondary {
+  background-color: #0096c7;
+  color: #fff;
+}
+
+.badge-info {
+  background-color: #90e0ef;
+}
+
 ol.breadcrumbs {
   padding: 0;
 }
