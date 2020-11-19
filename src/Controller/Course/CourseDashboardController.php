@@ -22,8 +22,7 @@ class CourseDashboardController extends CourseController
         }
 
         $user = $this->isEnrolled($course);
-        // @todo What are we doing about delay?
-        $day = 0;//$this->countDays($user, $course);
+        $day = $this->countDays($user, $course);
         $link = $this->getCourseLink($course, $user);
 
         if ($user === false) {
