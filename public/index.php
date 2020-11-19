@@ -105,7 +105,7 @@ $errorMiddleware->setErrorHandler(
         return $controller->forbidden($request);
     });
 
-if ((getenv('environment') == 'production')) {
+if (\Kuusamo\Vle\Helper\Environment::get('ENVIRONMENT') != 'development') {
     $errorMiddleware->setDefaultErrorHandler(
         function (Psr\Http\Message\ServerRequestInterface $request,
         Throwable $exception) use ($container) {

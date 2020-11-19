@@ -18,7 +18,7 @@ class DatabaseFactory
      */
     public static function create()
     {
-        $isDevMode = true;
+        $isDevMode = Environment::get('ENVIRONMENT') == 'development';
         $paths = [__DIR__ . '/../../Entity'];
         $metadata = Setup::createAnnotationMetadataConfiguration($paths, $isDevMode);
         
