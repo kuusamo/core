@@ -30,13 +30,6 @@ class LessonsAjaxController extends AdminController
             return $this->badRequest($response, 'Lesson name not provided');
         }
 
-        // @todo Do we need this? And the course ID in lesson without it?
-        // $duplicateSlug = $this->ci->get('db')->getRepository('Kuusamo\Vle\Entity\Lesson')->findOneBy(['course' => $module->getCourse(), 'slug' => $lesson->getSlug()]);
-
-        // if ($duplicateSlug) {
-        //     return $this->badRequest($response, 'This slug is already in use');
-        // }
-
         $lastLesson = $this->ci->get('db')->getRepository('Kuusamo\Vle\Entity\Lesson')->findOneBy(['module' => $module], ['priority' => 'DESC']);
         $priority = ($lastLesson) ? ($lastLesson->getPriority() + 1) : 1;
         $lesson->setPriority($priority);
