@@ -10,8 +10,8 @@ class ValidationTest extends TestCase
     public function testValid()
     {
         $course = $this->createMock('Kuusamo\Vle\Entity\Course');
-        $course->method('getName')->willReturn('Chemistry');
-        $course->method('getSlug')->willReturn('chemistry');
+        $course->method('getName')->willReturn('Chemistry 101');
+        $course->method('getSlug')->willReturn('chemistry-101');
 
         $validator = new CourseValidator;
 
@@ -39,6 +39,19 @@ class ValidationTest extends TestCase
         $course = $this->createMock('Kuusamo\Vle\Entity\Course');
         $course->method('getName')->willReturn('Chemistry');
         $course->method('getSlug')->willReturn('');
+
+        $validator = new CourseValidator;
+        $validator($course);
+    }
+
+    /**
+     * @expectedException Kuusamo\Vle\Validation\ValidationException
+     */
+    public function testInvalidSlug()
+    {
+        $course = $this->createMock('Kuusamo\Vle\Entity\Course');
+        $course->method('getName')->willReturn('Chemistry 101');
+        $course->method('getSlug')->willReturn('chemistry_101');
 
         $validator = new CourseValidator;
         $validator($course);

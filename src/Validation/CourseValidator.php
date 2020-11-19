@@ -16,7 +16,9 @@ class CourseValidator
             throw new ValidationException('Course slug empty');
         }
 
-        // @todo Should validate slug for a valid URI value
+        if (!ctype_alnum(str_replace('-', '', $course->getSlug()))) {
+            throw new ValidationException('Slug can only contain alphanumeric characters and hyphens');
+        }
 
         return true;
     }
