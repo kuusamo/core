@@ -25,7 +25,7 @@ class FilesController extends Controller
                     $fileObj->setSize($fileData->getSize());
 
                     if (strlen($fileObj->getFilename()) > 128) {
-                        $this->alertWarning('Filename cannot be longer than 100 characters');
+                        $this->alertWarning('Filename cannot be longer than 128 characters');
                     } else {
                         $this->ci->get('db')->persist($fileObj);
                         $this->ci->get('db')->flush();

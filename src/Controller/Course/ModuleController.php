@@ -26,9 +26,8 @@ class ModuleController extends CourseController
         $user = $this->isEnrolled($module->getCourse());
 
         if ($user === false) {
-            return $this->renderPage($request, $response, 'vle/not-enrolled.html', [
-                'name' => $course->getName(),
-                'simpleFooter' => true
+            return $this->renderPage($request, $response, 'errors/not-enrolled.html', [
+                'name' => $course->getName()
             ]);
         }
 

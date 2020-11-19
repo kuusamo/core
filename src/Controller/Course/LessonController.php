@@ -28,7 +28,7 @@ class LessonController extends CourseController
         $user = $this->isEnrolled($course);
 
         if ($user === false) {
-            return $this->renderPage($request, $response, 'vle/not-enrolled.html', [
+            return $this->renderPage($request, $response, 'errors/not-enrolled.html', [
                 'name' => $course->getName()
             ]);
         }
