@@ -6,14 +6,16 @@
     <li><a href="{{getUri}}">Lesson</a></li>
 </ol>
 
-<h1>{{getName}}</h1>
+<article>
+    <h1>{{getName}}</h1>
 {{/lesson}}
 
-{{#blocks}}
-<div>
-    {{{html}}}
-</div>
-{{/blocks}}
+    {{#blocks}}
+    <div>
+        {{{html}}}
+    </div>
+    {{/blocks}}
+</article>
 
 <!--
 <div class="wrapper">

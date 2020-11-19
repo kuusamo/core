@@ -153,6 +153,12 @@ header hr {
 main {
   padding: 24px;
 }
+main article {
+  max-width: 700px;
+}
+main article h1 {
+  font-size: 200%;
+}
 
 .course-list {
   display: grid;
