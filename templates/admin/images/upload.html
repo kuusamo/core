@@ -7,21 +7,15 @@
 
 <h1>Upload image</h1>
 
-<form action="" method="post" enctype="multipart/form-data">
-    <div class="form-group">
-        <label for="body">File</label>
-        <input type="file" class="form-control-file" id="file" name="file">
-    </div>
+<form action="" method="post" enctype="multipart/form-data" class="form-vertical">
+    <label for="file">File</label>
+    <input type="file" id="file" name="file">
 
-    <div class="form-group">
-        <label for="description">Description</label>
-        <textarea class="form-control" id="description" name="description" placeholder="Description" rows="2">{{getDescription}}</textarea>
-    </div>
+    <label for="description">Description</label>
+    <textarea id="description" name="description" placeholder="Description" rows="2">{{getDescription}}</textarea>
 
-    <div class="form-group">
-        <label for="keywords">Keywords</label>
-        <textarea class="form-control" id="keywords" name="keywords" placeholder="Keywords" rows="2">{{getKeywords}}</textarea>
-    </div>
+    <label for="keywords">Keywords</label>
+    <textarea id="keywords" name="keywords" placeholder="Keywords" rows="2">{{getKeywords}}</textarea>
 
-    <button type="submit" class="btn btn-primary">Upload</button>
+    <button type="submit" class="btn">Upload</button>
 </form>

@@ -1,6 +1,6 @@
 @use '_core' as *;
 
-button.btn {
+%button {
     background-color: #0077b6;
     border: #0077b6 1px solid;
     color: #fff;
@@ -8,22 +8,33 @@ button.btn {
     padding: $baseline / 2;
 }
 
-input.form-control {
+%input {
     border: #0077b6 1px solid;
     font-size: 100%;
     padding: $baseline / 2;
 }
 
+button.btn {
+    @extend %button;
+}
+
+input.form-control {
+    @extend %input;
+}
+
 select.form-control {
-    border: #0077b6 1px solid;
-    font-size: 100%;
-    padding: $baseline / 2;
+    @extend %input;
 }
 
 form.form-vertical {
     max-width: 500px;
 
-    input[type="text"], input[type="password"], input[type="password"], textarea {
+    button {
+        @extend %button;
+    }
+
+    input[type="text"], input[type="email"], input[type="password"], input[type="file"], textarea {
+        @extend %input;
         box-sizing: border-box;
         margin-bottom: $baseline / 2;
         width: 100%;

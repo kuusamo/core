@@ -7,39 +7,29 @@
 {{#image}}
 <h1>{{getFilename}}</h1>
 
-<form method="post">
-    <div class="form-group">
-        <label for="filename">Filename</label>
-        <input type="text" class="form-control" id="filename" name="filename" value="{{getFilename}}" disabled>
-    </div>
+<form method="post" class="form-vertical">
+    <label for="filename">Filename</label>
+    <input type="text" id="filename" name="filename" value="{{getFilename}}" disabled>
 
-    <div class="form-group">
-        <label for="mediaType">Media Type</label>
-        <input type="text" class="form-control" id="mediaType" name="mediaType" value="{{getMediaType}}" disabled>
-    </div>
+    <label for="mediaType">Media Type</label>
+    <input type="text" id="mediaType" name="mediaType" value="{{getMediaType}}" disabled>
 
-    <div class="form-group">
-        <label for="mediaType">Size</label>
-        <input type="text" class="form-control" id="mediaType" name="mediaType" value="{{getWidth}}x{{getHeight}}" disabled>
-    </div>
+    <label for="mediaType">Size</label>
+    <input type="text" id="mediaType" name="mediaType" value="{{getWidth}}x{{getHeight}}" disabled>
 
-    <div class="form-group">
-        <label for="description">Description</label>
-        <textarea class="form-control" id="description" name="description" placeholder="Description" rows="2">{{getDescription}}</textarea>
-    </div>
+    <label for="description">Description</label>
+    <textarea id="description" name="description" placeholder="Description" rows="2">{{getDescription}}</textarea>
 
-    <div class="form-group">
-        <label for="keywords">Keywords</label>
-        <textarea class="form-control" id="keywords" name="keywords" placeholder="Keywords" rows="2">{{getKeywords}}</textarea>
-    </div>
+    <label for="keywords">Keywords</label>
+    <textarea id="keywords" name="keywords" placeholder="Keywords" rows="2">{{getKeywords}}</textarea>
 
     <input type="hidden" name="action" value="edit">
-    <button type="submit" class="btn btn-primary">Save</button>
+    <button type="submit" class="btn">Save</button>
 </form>
 
 <h2>Delete</h2>
 
-<form method="post">
+<form method="post" class="form-vertical">
     <input type="hidden" name="action" value="delete">
     <button>Delete</button>
 </form>

@@ -191,7 +191,7 @@ class Module extends Component {
             <div className="cm-card">
                 {this.renderTitle()}
                 <div className="cm-card-body">
-                    <div>
+                    <div className="mb-3">
                         {this.renderMoveUpButton()}{" "}
                         {this.renderMoveDownButton()}
                     </div>

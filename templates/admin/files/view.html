@@ -17,15 +17,15 @@
 
 <form method="post" enctype="multipart/form-data">
     <label for="file">File</label>
-    <input type="file" id="file" name="file">
+    <input type="file" id="file" name="file" class="form-control">
 
     <input type="hidden" name="action" value="replace">
-    <button type="submit">Upload</button>
+    <button type="submit" class="btn">Upload</button>
 </form>
 
 <h2>Delete</h2>
 
-<form method="post">
+<form method="post" class="form-vertical">
     <input type="hidden" name="action" value="delete">
     <button>Delete file</button>
 </form>

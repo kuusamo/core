@@ -199,7 +199,7 @@ ol.breadcrumbs li:first-child::before {
   padding: 12px;
 }
 
-button.btn {
+form.form-vertical button, button.btn {
   background-color: #0077b6;
   border: #0077b6 1px solid;
   color: #fff;
@@ -207,13 +207,7 @@ button.btn {
   padding: 12px;
 }
 
-input.form-control {
-  border: #0077b6 1px solid;
-  font-size: 100%;
-  padding: 12px;
-}
-
-select.form-control {
+form.form-vertical input[type=text], form.form-vertical input[type=email], form.form-vertical input[type=password], form.form-vertical input[type=file], form.form-vertical textarea, select.form-control, input.form-control {
   border: #0077b6 1px solid;
   font-size: 100%;
   padding: 12px;
@@ -222,7 +216,7 @@ select.form-control {
 form.form-vertical {
   max-width: 500px;
 }
-form.form-vertical input[type=text], form.form-vertical input[type=password], form.form-vertical input[type=password], form.form-vertical textarea {
+form.form-vertical input[type=text], form.form-vertical input[type=email], form.form-vertical input[type=password], form.form-vertical input[type=file], form.form-vertical textarea {
   box-sizing: border-box;
   margin-bottom: 12px;
   width: 100%;
