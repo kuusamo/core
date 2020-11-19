@@ -6,13 +6,6 @@ use Exception;
 
 class LocalStorage implements StorageInterface
 {
-    private $bucketName;
-
-    public function __construct($bucketName)
-    {
-        $this->bucketName = $bucketName;
-    }
-
     /**
      * GET command.
      *
@@ -22,9 +15,8 @@ class LocalStorage implements StorageInterface
     public function get(string $key): StorageObject
     {
         $filePath = sprintf(
-            '%s/../../../uploads/%s/%s',
+            '%s/../../../uploads/%s',
             __DIR__,
-            $this->bucketName,
             $key
         );
 
@@ -48,9 +40,8 @@ class LocalStorage implements StorageInterface
     public function put(string $key, string $body, string $contentType)
     {
         $filePath = sprintf(
-            '%s/../../../uploads/%s/%s',
+            '%s/../../../uploads/%s',
             __DIR__,
-            $this->bucketName,
             $key
         );
 
@@ -66,9 +57,8 @@ class LocalStorage implements StorageInterface
     public function delete(string $key)
     {
         $filePath = sprintf(
-            '%s/../../../uploads/%s/%s',
+            '%s/../../../uploads/%s',
             __DIR__,
-            $this->bucketName,
             $key
         );
 

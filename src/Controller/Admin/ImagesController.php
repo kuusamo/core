@@ -73,7 +73,7 @@ class ImagesController extends AdminController
                 $this->ci->get('db')->flush();
 
                 $this->ci->get('storage')->put(
-                    $image->getFilename(),
+                    sprintf('images/%s', $image->getFilename()),
                     $file->getStream()->__toString(),
                     $image->getMediaType()
                 );

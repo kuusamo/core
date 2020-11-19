@@ -16,7 +16,7 @@ class ImageController extends Controller
     public function original(Request $request, Response $response, array $args = [])
     {
         try {
-            $image = $this->ci->get('storage')->get($args['filename']);
+            $image = $this->ci->get('storage')->get(sprintf('images/%s', $args['filename']));
         } catch (StorageException $e) {
             throw new HttpNotFoundException($request, $response);
         }

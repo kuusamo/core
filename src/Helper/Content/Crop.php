@@ -107,7 +107,7 @@ class Crop
     {
         try {
             // get the image
-            $this->file = $this->storage->get($filename);
+            $this->file = $this->storage->get(sprintf('images/%s', $filename));
 
             // read image into imagick object
             $image = new Imagick;
