@@ -3,35 +3,8 @@
 require '../config.php';
 require '../vendor/autoload.php';
 
-// service container
-$container = new \DI\Container;
-
-$container->set('db', function() {
-    return \Kuusamo\Vle\Service\Database\DatabaseFactory::create();
-});
-
-$container->set('templating', function() {
-    return new \Kuusamo\Vle\Service\Templating;
-});
-
-$container->set('meta', function() {
-    return new \Kuusamo\Vle\Service\Meta;
-});
-
-$container->set('storage', function() {
-    return \Kuusamo\Vle\Service\Storage\StorageFactory::create();
-});
-
-$container->set('session', function() {
-    return new \Kuusamo\Vle\Service\Session\Session;
-});
-
-$container->set('auth', function() use ($container) {
-    return \Kuusamo\Vle\Service\Authorisation\AuthorisationFactory::create(
-        $container->get('session'),
-        $container->get('db')
-    );
-});
+// configure services
+require '../config/services.php';
 
 // create the app
 \Slim\Factory\AppFactory::setContainer($container);
