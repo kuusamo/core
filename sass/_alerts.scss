@@ -6,6 +6,12 @@
     padding: $baseline;
 }
 
+.alert-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .alert-danger {
     background: #D2253E;
 }
