@@ -56,4 +56,13 @@ class UserTest extends TestCase
             $user->getCourses()
         );
     }
+
+    /**
+     * @expectedException InvalidArgumentException
+     */
+    public function testInvalidStatus()
+    {
+        $user = new User;
+        $user->setStatus('made up status');
+    }
 }

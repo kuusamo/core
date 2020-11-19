@@ -3,6 +3,7 @@
 namespace Kuusamo\Vle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use InvalidArgumentException;
 use JsonSerializable;
 
 /**
@@ -119,9 +120,12 @@ class Module implements JsonSerializable
         return $this->status;
     }
 
-    // @todo Enforce a valid status
     public function setStatus(string $value)
     {
+        if (!in_array($value, [self::STATUS_ACTIVE, self::STATUS_HIDDEN])) {
+            throw new InvalidArgumentException('Invalid status');
+        }
+
         $this->status = $value;
     }
 

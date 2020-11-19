@@ -50,4 +50,13 @@ class ModuleTest extends TestCase
             $module->getLessons()
         );
     }
+
+    /**
+     * @expectedException InvalidArgumentException
+     */
+    public function testInvalidStatus()
+    {
+        $module = new Module;
+        $module->setStatus('made up status');
+    }
 }

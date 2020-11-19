@@ -4,6 +4,7 @@ namespace Kuusamo\Vle\Entity;
 
 use Kuusamo\Vle\Helper\TokenGenerator;
 use Doctrine\Common\Collections\ArrayCollection;
+use InvalidArgumentException;
 use DateTime;
 
 /**
@@ -135,9 +136,12 @@ class User
         return $this->status;
     }
 
-    // @todo Enforce a valid status
     public function setStatus(string $value)
     {
+        if (!in_array($value, [self::STATUS_ACTIVE, self::STATUS_DISABLED])) {
+            throw new InvalidArgumentException('Invalid status');
+        }
+
         $this->status = $value;
     }
 
