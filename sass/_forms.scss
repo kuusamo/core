@@ -58,7 +58,7 @@ form.form-vertical {
         @extend %button-hover;
     }
 
-    input[type="text"], input[type="email"], input[type="password"], input[type="file"], textarea {
+    input[type="text"], input[type="email"], input[type="password"], input[type="file"], select, textarea {
         @extend %input;
         border-radius: $baseline / 6;
         margin-bottom: $baseline / 2;

@@ -1,19 +1,20 @@
 Kuusamo VLE
 ===========
 
-A learning management system that uses JSON blocks.
+A learning management system (LMS) that uses API-friendly JSON blocks to build lessons.
 
 
 To do list
 ----------
 
-* Set the user status
+* User notes
 
 
 Roadmap
 -------
 
 * Live developing styles and JS
+* Better select dropdown icon
 
 * Docs
 * Database install / migrations

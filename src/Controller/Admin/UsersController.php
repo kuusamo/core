@@ -4,6 +4,7 @@ namespace Kuusamo\Vle\Controller\Admin;
 
 use Kuusamo\Vle\Controller\Controller;
 use Kuusamo\Vle\Entity\User;
+use Kuusamo\Vle\Helper\Form\Select;
 use Kuusamo\Vle\Helper\Password;
 use Kuusamo\Vle\Helper\TokenGenerator;
 use Kuusamo\Vle\Validation\UserValidator;
@@ -85,6 +86,7 @@ class UsersController extends Controller
             $user->setEmail($request->getParam('email'));
             $user->setFirstName($request->getParam('firstName'));
             $user->setSurname($request->getParam('surname'));
+            $user->setStatus($request->getParam('status'));
 
             try {
                 $validator = new UserValidator;
@@ -101,8 +103,14 @@ class UsersController extends Controller
 
         $this->ci->get('meta')->setTitle(sprintf('%s - Users - Admin', $user->getFullName()));
 
+        $status = new Select;
+        $status->addOption(User::STATUS_ACTIVE);
+        $status->addOption(USER::STATUS_DISABLED);
+        $status->setDefaultOption($user->getStatus());
+
         return $this->renderPage($request, $response, 'admin/users/account.html', [
-            'user' => $user
+            'user' => $user,
+            'status' => $status()
         ]);
     }
 

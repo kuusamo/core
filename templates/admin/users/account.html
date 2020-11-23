@@ -23,6 +23,11 @@
     <label for="surname">Surname</label>
     <input type="text" name="surname" id="surname" value="{{getSurname}}">
 
+    <label for="status">Status</label>
+    <select name="status" id="status">
+    {{#status}}<option value="{{value}}" {{#selected}}selected{{/selected}}>{{label}}</option>{{/status}}
+    </select>
+
   <button type="submit"">Update</button>
 </form>
 {{/user}}
