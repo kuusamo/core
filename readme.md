@@ -7,7 +7,6 @@ A learning management system that uses JSON blocks.
 To do list
 ----------
 
-* Inline form sizing
 * Set the user status
 
 

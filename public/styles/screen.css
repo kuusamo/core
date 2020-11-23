@@ -219,11 +219,14 @@ ol.breadcrumbs li:first-child::before {
 form.form-vertical button, a.btn, button.btn {
   background-color: #0077b6;
   border: #0077b6 1px solid;
+  box-sizing: border-box;
   color: #fff;
   display: inline-block;
   font-size: 100%;
-  padding: 12px 24px;
+  height: 50px;
+  padding: 14px 24px;
   text-decoration: none;
+  vertical-align: middle;
 }
 
 form.form-vertical button:hover, a.btn:hover, button.btn:hover {
@@ -234,9 +237,12 @@ form.form-vertical button:hover, a.btn:hover, button.btn:hover {
 
 form.form-vertical input[type=text], form.form-vertical input[type=email], form.form-vertical input[type=password], form.form-vertical input[type=file], form.form-vertical textarea, select.form-control, input.form-control {
   border: #0077b6 1px solid;
+  box-sizing: border-box;
   font-family: inherit;
   font-size: 100%;
+  height: 50px;
   padding: 12px;
+  vertical-align: middle;
 }
 
 form.form-vertical {

@@ -3,11 +3,14 @@
 %button {
     background-color: $secondaryColour;
     border: $secondaryColour 1px solid;
+    box-sizing: border-box;
     color: #fff;
     display: inline-block;
     font-size: 100%;
-    padding: ($baseline / 2) $baseline;
+    height: 50px;
+    padding: 14px $baseline;
     text-decoration: none;
+    vertical-align: middle;
 }
 
 %button-hover {
@@ -18,9 +21,12 @@
 
 %input {
     border: $secondaryColour 1px solid;
+    box-sizing: border-box;
     font-family: inherit;
     font-size: 100%;
+    height: 50px;
     padding: $baseline / 2;
+    vertical-align: middle;
 }
 
 a.btn, button.btn {
