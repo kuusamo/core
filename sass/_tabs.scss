@@ -11,6 +11,14 @@ $outlineColour: #999;
         list-style-type: none;
         margin-bottom: -1px;
         padding: $baseline / 2;
+
+        a:link, a:visited {
+            text-decoration: none;
+        }
+
+        a:hover, a:active {
+            text-decoration: underline;
+        }
     }
 
     li.active {

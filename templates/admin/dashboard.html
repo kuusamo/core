@@ -7,11 +7,20 @@
 
 <h2>Manage courses</h2>
 
-<ul>
-{{#courses}}
-    <li><a href="/admin/courses/{{getId}}">{{getName}}</a></li>
-{{/courses}}
-</ul>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+        </tr>
+    </thead>
+    <tbody>
+    {{#courses}}
+        <tr>
+            <td><a href="/admin/courses/{{getId}}">{{getName}}</a></td>
+        </tr>
+    {{/courses}}
+    </tbody>
+</table>
 
 <h2>Create a new course</h2>
 

@@ -1,11 +1,15 @@
 $baseline: 24px;
 
+$primaryColour: #023e8a;
+$secondaryColour: #0077b6;
+$tertiaryColour: #0096c7;
+
 a:link, a:visited {
-    color: #023e8a;
+color: $primaryColour;
 }
 
 a:hover, a:active {
-    color: #0077b6;
+    color: $secondaryColour;
 }
 
 body {

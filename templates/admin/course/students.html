@@ -15,13 +15,24 @@
     <li><a href="/admin/courses/{{getId}}/delete">Delete</a></li>
 </ul>
 
-<table>
-{{#getUsers}}
-    <tr>
-        <td>{{#getUser}}{{getFullName}}{{/getUser}}</td>
-    </tr>
-{{/getUsers}}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Progress</th>
+        </tr>
+    </thead>
+    <tbody>
+    {{#getUsers}}
+        <tr>
+            <td>{{#getUser}}{{getFullName}}{{/getUser}}</td>
+            <td>{{getProgress}}%</td>
+        </tr>
+    {{/getUsers}}
+    </tbody>
 </table>
+
+<h2>Enrol a new student</h2>
 
 <form method="post">
     <label for="userId">User ID</label>

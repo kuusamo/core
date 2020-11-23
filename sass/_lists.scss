@@ -3,7 +3,7 @@
 .course-list {
     display: grid;
     grid-gap: $baseline;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 400px));
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     padding: 0;
 
     .course-list-image {
@@ -36,7 +36,7 @@
 .module-list {
     display: grid;
     grid-gap: $baseline;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 400px));
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     padding: 0;
 
     li {

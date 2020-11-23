@@ -72,7 +72,12 @@ img {
 }
 
 ol.breadcrumbs {
+  color: #666;
   padding: 0;
+}
+ol.breadcrumbs a:link, ol.breadcrumbs a:visited, ol.breadcrumbs a:hover, ol.breadcrumbs a:active {
+  color: #666;
+  text-decoration: none;
 }
 ol.breadcrumbs li {
   display: inline-block;
@@ -199,30 +204,44 @@ ol.breadcrumbs li:first-child::before {
   padding: 12px;
 }
 
-form.form-vertical button, button.btn {
+form.form-vertical button, a.btn, button.btn {
   background-color: #0077b6;
   border: #0077b6 1px solid;
   color: #fff;
+  display: inline-block;
   font-size: 100%;
-  padding: 12px;
+  padding: 12px 24px;
+  text-decoration: none;
+}
+
+form.form-vertical button:hover, a.btn:hover, button.btn:hover {
+  background-color: #0096c7;
+  border: #0096c7 1px solid;
+  text-decoration: none;
 }
 
 form.form-vertical input[type=text], form.form-vertical input[type=email], form.form-vertical input[type=password], form.form-vertical input[type=file], form.form-vertical textarea, select.form-control, input.form-control {
   border: #0077b6 1px solid;
+  font-family: inherit;
   font-size: 100%;
   padding: 12px;
 }
 
 form.form-vertical {
-  max-width: 500px;
+  width: 100%;
+}
+form.form-vertical button {
+  border-radius: 4px;
 }
 form.form-vertical input[type=text], form.form-vertical input[type=email], form.form-vertical input[type=password], form.form-vertical input[type=file], form.form-vertical textarea {
+  border-radius: 4px;
   box-sizing: border-box;
   margin-bottom: 12px;
   width: 100%;
 }
 form.form-vertical label {
   display: block;
+  margin-bottom: 6px;
 }
 
 body {
@@ -263,7 +282,7 @@ main article h1 {
 .course-list {
   display: grid;
   grid-gap: 24px;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 400px));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   padding: 0;
 }
 .course-list .course-list-image {
@@ -289,7 +308,7 @@ main article h1 {
 .module-list {
   display: grid;
   grid-gap: 24px;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 400px));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   padding: 0;
 }
 .module-list li {
@@ -330,6 +349,12 @@ table.table-striped tbody tr:nth-child(odd) {
   list-style-type: none;
   margin-bottom: -1px;
   padding: 12px;
+}
+.tabs li a:link, .tabs li a:visited {
+  text-decoration: none;
+}
+.tabs li a:hover, .tabs li a:active {
+  text-decoration: underline;
 }
 .tabs li.active {
   background-color: #fff;

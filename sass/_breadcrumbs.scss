@@ -1,5 +1,11 @@
 ol.breadcrumbs {
+    color: #666;
     padding: 0;
+
+    a:link, a:visited, a:hover, a:active {
+        color: #666;
+        text-decoration: none;
+    }
 
     li {
         display: inline-block;
