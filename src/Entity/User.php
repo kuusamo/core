@@ -59,6 +59,11 @@ class User
     private $lastLogin;
 
     /**
+     * @Column(type="text")
+     */
+    private $notes;
+
+    /**
      * @ManyToMany(targetEntity="Role")
      */
     private $roles;
@@ -163,6 +168,16 @@ class User
     public function setLastLogin(DateTime $value)
     {
         $this->lastLogin = $value;
+    }
+
+    public function getNotes(): ?string
+    {
+        return $this->notes;
+    }
+
+    public function setNotes(string $value)
+    {
+        $this->notes = $value != '' ? $value : null;
     }
 
     public function hasCourses(): bool

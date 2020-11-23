@@ -7,26 +7,26 @@ A learning management system (LMS) that uses API-friendly JSON blocks to build l
 To do list
 ----------
 
-* User notes
+* Live developing styles and JS
+* Better select dropdown icon
+* Database install / migrations
+* Assessments
+* Certificate generation
+* Rollbar integration
+* SMTP integration
+* Buttons / inline forms are still not perfect
 
 
 Roadmap
 -------
 
-* Live developing styles and JS
-* Better select dropdown icon
-
 * Docs
-* Database install / migrations
 * Website
 
 * Mailgun integration
-* Certificate generation
 * Storage folders that don't exist on file system
-* Assessments
 * Support duplicate file names
 * Themes
-* Rollbar integration
 * Favicon
 * S3 integration
 

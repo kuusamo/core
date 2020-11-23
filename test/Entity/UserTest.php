@@ -25,6 +25,7 @@ class UserTest extends TestCase
         $user->setStatus(User::STATUS_DISABLED);
         $user->setSecurityToken('QWERTY');
         $user->setLastLogin($lastLogin);
+        $user->setNotes('Notes');
 
         $this->assertSame(10, $user->getId());
         $this->assertSame('test@example.com', $user->getEmail());
@@ -35,6 +36,11 @@ class UserTest extends TestCase
         $this->assertSame('Test McTest', $user->getFullName());
         $this->assertSame('QWERTY', $user->getSecurityToken());
         $this->assertSame($lastLogin, $user->getLastLogin());
+        $this->assertSame('Notes', $user->getNotes());
+
+        $user->setNotes('');
+
+        $this->assertNull($user->getNotes());
     }
 
     public function testRoles()

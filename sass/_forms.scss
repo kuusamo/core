@@ -65,6 +65,10 @@ form.form-vertical {
         width: 100%;
     }
 
+    textarea {
+        height: ($baseline * 6);
+    }
+
     label {
         display: block;
         margin-bottom: $baseline / 4;

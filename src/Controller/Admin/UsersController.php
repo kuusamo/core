@@ -87,6 +87,7 @@ class UsersController extends Controller
             $user->setFirstName($request->getParam('firstName'));
             $user->setSurname($request->getParam('surname'));
             $user->setStatus($request->getParam('status'));
+            $user->setNotes($request->getParam('notes'));
 
             try {
                 $validator = new UserValidator;

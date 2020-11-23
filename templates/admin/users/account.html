@@ -28,6 +28,9 @@
     {{#status}}<option value="{{value}}" {{#selected}}selected{{/selected}}>{{label}}</option>{{/status}}
     </select>
 
+    <label for="notes">Notes</label>
+    <textarea name="notes" id="notes">{{getNotes}}</textarea>
+
   <button type="submit"">Update</button>
 </form>
 {{/user}}
