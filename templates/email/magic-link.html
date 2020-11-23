@@ -1,0 +1,76 @@
+<body>
+    <header>
+        <img src="cid:text-block-logo.png" alt="Resilient" width="100">
+    </header>
+
+    <main>
+        <p>
+            Hey {{name}},
+        </p>
+
+        <p>
+            Here is the link to log in to your account:
+        </p>
+
+        <p class="link">
+            <a href="{{url}}">Click here to log in</a>
+        </p>
+
+        <p>
+            Or copy and paste the URL into your browser:
+        </p>
+
+        <p>
+            {{url}}
+        </p>
+
+        <p>
+            This link will only work once.
+        </p>
+
+        <p>
+            Any problems, just hit reply!
+        </p>
+
+        <p>
+            Best wishes,<br>
+            Chris &amp; Team
+        </p>
+    </main>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #000;
+            padding: 24px;
+        }
+
+        main {
+            padding: 24px;
+        }
+
+        main p:first-child {
+            margin-top: 0;
+        }
+
+        p {
+            font-family: Helvetica, arial, sans-serif;
+            font-size: 16px;
+            line-height: 150%;
+        }
+
+        p.link {
+            margin: 36px 0;
+        }
+        
+        p.link a {
+            background-color: #eee;
+            padding: 24px;
+
+        }
+    </style>
+</body>

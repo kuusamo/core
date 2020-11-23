@@ -21,7 +21,16 @@ class LoginController extends Controller
         }
 
         if ($request->isPost()) {
-            if ($request->getParam('action') == 'login') {
+            if ($request->getParam('action') == 'magicLink') {
+                $user = $this->ci->get('db')->getRepository('Kuusamo\Vle\Entity\User')->findOneBy(['email' => $request->getParam('email')]);
+
+                if (!$user) {
+                    $this->alertDanger('This email addresss is not registered');
+                } else {
+                    $this->ci->get('email')->sendMagicLinkEmail($user);
+                    return $this->renderPage($request, $response, 'auth/magic-link-sent.html');
+                }
+            } elseif ($request->getParam('action') == 'login') {
                 try {
                     if (!$this->ci->get('session')->getCsrfToken()->isValid($request->getParam('csrf'))) {
                         throw new ProcessException('Request blocked for security reasons');
