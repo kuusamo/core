@@ -1,4 +1,5 @@
 @use '_core' as *;
+@use '_cards';
 
 .cm-block-header {
     display: flex;
@@ -11,8 +12,7 @@
 }
 
 .cm-card {
-    border: #ccc 1px solid;
-    border-radius: $baseline / 4;
+    @extend .card;
     margin-bottom: $baseline;
 
     textarea {
@@ -21,8 +21,7 @@
 }
 
 .cm-card-header {
-    background-color: #f2f3f4;
-    padding: $baseline;
+    @extend .card-header;
 
     h2 {
         margin: 0;
@@ -34,7 +33,7 @@
 }
 
 .cm-card-body {
-    padding: $baseline;
+    @extend .card-body;
 }
 
 .cm-loading {

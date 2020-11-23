@@ -8,12 +8,14 @@ To do list
 ----------
 
 * Inline form sizing
-* User view screen should be prettier (with cards)
+* More details on user enrollments
 * Set the user status
 
 
 Roadmap
 -------
+
+* Live developing styles and JS
 
 * Docs
 * Database install / migrations

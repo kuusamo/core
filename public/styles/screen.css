@@ -1,15 +1,3 @@
-.admin-image-gallery {
-  display: grid;
-  grid-gap: 1rem;
-  grid-template-columns: repeat(auto-fill, 180px);
-}
-.admin-image-gallery div {
-  border: #ccc 1px solid;
-  border-radius: 5px;
-  padding: 0.5rem;
-  text-align: center;
-}
-
 a:link, a:visited {
   color: #023e8a;
 }
@@ -32,6 +20,26 @@ img {
 
 .mr-1 {
   margin-right: 6px;
+}
+
+.admin-image-gallery {
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: repeat(auto-fill, 180px);
+}
+.admin-image-gallery div {
+  border: #ccc 1px solid;
+  border-radius: 5px;
+  padding: 0.5rem;
+  text-align: center;
+}
+
+.admin-user-profile {
+  display: flex;
+}
+.admin-user-profile div:first-child {
+  flex-shrink: 0;
+  margin-right: 24px;
 }
 
 .alert {
@@ -88,6 +96,20 @@ ol.breadcrumbs li::before {
 }
 ol.breadcrumbs li:first-child::before {
   content: "";
+}
+
+.card, .cm-card {
+  border: #ccc 1px solid;
+  border-radius: 6px;
+}
+
+.card-header, .cm-card-header {
+  background-color: #f2f3f4;
+  padding: 24px;
+}
+
+.card-body, .cm-card-body {
+  padding: 24px;
 }
 
 .course-completion-box {
@@ -152,27 +174,17 @@ ol.breadcrumbs li:first-child::before {
 }
 
 .cm-card {
-  border: #ccc 1px solid;
-  border-radius: 6px;
   margin-bottom: 24px;
 }
 .cm-card textarea {
   width: 100%;
 }
 
-.cm-card-header {
-  background-color: #f2f3f4;
-  padding: 24px;
-}
 .cm-card-header h2 {
   margin: 0;
 }
 .cm-card-header p {
   margin: 0;
-}
-
-.cm-card-body {
-  padding: 24px;
 }
 
 .cm-loading {

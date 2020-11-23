@@ -1,0 +1,15 @@
+@use '_core' as *;
+
+.card {
+    border: #ccc 1px solid;
+    border-radius: $baseline / 4;
+}
+
+.card-header {
+    background-color: #f2f3f4;
+    padding: $baseline;
+}
+
+.card-body {
+    padding: $baseline;
+}

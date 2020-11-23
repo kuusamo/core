@@ -68,7 +68,8 @@ class UsersController extends Controller
         $this->ci->get('meta')->setTitle(sprintf('%s - Users - Admin', $user->getFullName()));
 
         return $this->renderPage($request, $response, 'admin/users/view.html', [
-            'user' => $user
+            'user' => $user,
+            'gravatar' => md5(strtolower(trim($user->getEmail())))
         ]);
     }
 
