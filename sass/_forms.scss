@@ -8,7 +8,8 @@
     display: inline-block;
     font-size: 100%;
     height: 50px;
-    padding: 14px $baseline;
+    line-height: 50px;
+    padding: 0 $baseline;
     text-decoration: none;
     vertical-align: middle;
 }
@@ -60,7 +61,6 @@ form.form-vertical {
     input[type="text"], input[type="email"], input[type="password"], input[type="file"], textarea {
         @extend %input;
         border-radius: $baseline / 6;
-        box-sizing: border-box;
         margin-bottom: $baseline / 2;
         width: 100%;
     }
