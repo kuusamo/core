@@ -7,11 +7,9 @@ A learning management system that uses JSON blocks.
 To do list
 ----------
 
-* Image upload redirect
 * What even is the homepage?
 * Folders that don't exist on file system
 * User management
-* Check CSRF on magic link request
 
 
 Roadmap
