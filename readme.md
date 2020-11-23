@@ -19,7 +19,6 @@ To do list
 Roadmap
 -------
 
-* Docs
 * Website
 
 * Mailgun integration
