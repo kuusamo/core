@@ -33,7 +33,7 @@ class CourseDashboardController extends CourseController
 
         $this->ci->get('meta')->setTitle($course->getName());
 
-        return $this->renderPage($request, $response, 'course/dashboard.html', [
+        return $this->renderPage($request, $response, 'course/course.html', [
             'course' => $course,
             'modules' => $this->prepareModules($course->getModules(), $day),
             'showProgress' => ($link->getProgress() > 0),
