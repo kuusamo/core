@@ -5,7 +5,7 @@ namespace Kuusamo\Vle\Test\Validation;
 use Kuusamo\Vle\Validation\CourseValidator;
 use PHPUnit\Framework\TestCase;
 
-class ValidationTest extends TestCase
+class CourseValidatorTest extends TestCase
 {
     public function testValid()
     {

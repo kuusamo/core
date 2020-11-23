@@ -1,0 +1,29 @@
+<ol class="breadcrumbs">
+    <li><a href="/">Dashboard</a></li>
+    <li><a href="/admin">Admin</a></li>
+    <li><a href="/admin/users">Users</a></li>
+</ol>
+
+{{#user}}
+<h1>{{getFullname}}</h1>
+
+<ul class="tabs">
+    <li class="active"><a href="/admin/users/{{getId}}">View</a></li>
+    <li><a href="/admin/users/{{getId}}/account">Account</a></li>
+    <li><a href="/admin/users/{{getId}}/security">Security</a></li>
+</ul>
+
+<p>
+    <pre>{{getEmail}}</pre>
+</p>
+
+{{#hasCourses}}
+<h2>Courses</h2>
+
+<ul>
+{{#getCourses}}{{#getCourse}}
+    <li>{{getName}}</li>
+{{/getCourse}}{{/getCourses}}
+</ul>
+{{/hasCourses}}
+{{/user}}

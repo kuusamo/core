@@ -51,6 +51,11 @@ $app->group('', function($app) use ($container) {
         $app->get('/images', '\Kuusamo\Vle\Controller\Admin\ImagesController:index');
         $app->any('/images/{id:[0-9]+}', '\Kuusamo\Vle\Controller\Admin\ImagesController:view');
         $app->any('/images/upload', '\Kuusamo\Vle\Controller\Admin\ImagesController:upload');
+
+        $app->any('/users', '\Kuusamo\Vle\Controller\Admin\UsersController:index');
+        $app->any('/users/{id:[0-9]+}', '\Kuusamo\Vle\Controller\Admin\UsersController:view');
+        $app->any('/users/{id:[0-9]+}/account', '\Kuusamo\Vle\Controller\Admin\UsersController:account');
+        $app->any('/users/{id:[0-9]+}/security', '\Kuusamo\Vle\Controller\Admin\UsersController:security');
     })->add(new RequirePermission($container->get('auth'), Role::ROLE_ADMIN));
 
 

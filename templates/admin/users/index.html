@@ -1,0 +1,25 @@
+<ol class="breadcrumbs">
+    <li><a href="/">Dashboard</a></li>
+    <li><a href="/admin">Admin</a></li>
+    <li><a href="/admin/users">Users</a></li>
+</ol>
+
+<h1>Users</h1>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Options</th>
+    </thead>
+    <tbody>
+    {{#users}}
+        <tr>
+            <td>{{getFullName}}</td>
+            <td>{{getEmail}}</td>
+            <td><a href="/admin/users/{{getId}}">View</a></td>
+        </tr>
+    {{/users}}
+    </tbody>
+</table>

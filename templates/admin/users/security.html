@@ -1,0 +1,34 @@
+<ol class="breadcrumbs">
+    <li><a href="/">Dashboard</a></li>
+    <li><a href="/admin">Admin</a></li>
+    <li><a href="/admin/users">Users</a></li>
+</ol>
+
+{{#user}}
+<h1>{{getFullname}}</h1>
+
+<ul class="tabs">
+    <li><a href="/admin/users/{{getId}}">View</a></li>
+    <li><a href="/admin/users/{{getId}}/account">Account</a></li>
+    <li class="active"><a href="/admin/users/{{getId}}/security">Security</a></li>
+</ul>
+
+<h2>Change password</h2>
+
+<form method="post" class="form-vertical">
+    <label for="password">New password</label>
+    <input type="password" class="form-control" name="password" id="password">
+
+    <input type="hidden" name="action" value="password">
+    <button type="submit"">Change</button>
+</form>
+
+<h2>Refresh security token</h2>
+
+<p>The security token is used for magic link-based logins. It refreshes automatically when a user changes their password or logs in using a magic link.</p>
+
+<form method="post" class="form-vertical">
+    <input type="hidden" name="action" value="token">
+    <button type="submit"">Refresh</button>
+</form>
+{{/user}}

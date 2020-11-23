@@ -1,0 +1,28 @@
+<ol class="breadcrumbs">
+    <li><a href="/">Dashboard</a></li>
+    <li><a href="/admin">Admin</a></li>
+    <li><a href="/admin/users">Users</a></li>
+</ol>
+
+{{#user}}
+<h1>{{getFullname}}</h1>
+
+<ul class="tabs">
+    <li><a href="/admin/users/{{getId}}">View</a></li>
+    <li class="active"><a href="/admin/users/{{getId}}/account">Account</a></li>
+    <li><a href="/admin/users/{{getId}}/security">Security</a></li>
+</ul>
+
+<form method="post" class="form-vertical">
+    <label for="email">Email address</label>
+    <input type="email" name="email" id="email" value="{{getEmail}}">
+
+    <label for="firstName">First name</label>
+    <input type="text" name="firstName" id="firstName" value="{{getFirstName}}">
+
+    <label for="surname">Surname</label>
+    <input type="text" name="surname" id="surname" value="{{getSurname}}">
+
+  <button type="submit"">Update</button>
+</form>
+{{/user}}

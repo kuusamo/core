@@ -7,9 +7,10 @@ A learning management system that uses JSON blocks.
 To do list
 ----------
 
-* What even is the homepage?
-* Folders that don't exist on file system
-* User management
+* Inline form sizing
+* User view screen should be prettier (with cards)
+* Set the user status
+* Create user
 
 
 Roadmap
@@ -21,6 +22,7 @@ Roadmap
 
 * Mailgun integration
 * Certificate generation
+* Storage folders that don't exist on file system
 * Assessments
 * Support duplicate file names
 * Themes
