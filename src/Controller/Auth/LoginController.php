@@ -15,10 +15,12 @@ use DateTime;
 
 class LoginController extends Controller
 {
+    const DEFAULT_REDIRECT = '/';
+
     public function login(Request $request, Response $response)
     {
         if ($this->ci->get('auth')->isLoggedIn()) {
-            return $response->withRedirect('/dashboard');
+            return $response->withRedirect(self::DEFAULT_REDIRECT);
         }
 
         if ($request->isPost()) {
@@ -62,7 +64,7 @@ class LoginController extends Controller
                     $user->setLastLogin(new DateTime);
                     $this->ci->get('auth')->authoriseUser($user);
 
-                    $returnTo = $request->getParam('from') ? UrlUtils::sanitiseInternal($request->getParam('from')) : '/dashboard';
+                    $returnTo = $request->getParam('from') ? UrlUtils::sanitiseInternal($request->getParam('from')) : self::DEFAULT_REDIRECT;
                     return $response->withRedirect($returnTo);
                 } catch (ProcessException $e) {
                     $this->alertDanger($e->getMessage());
@@ -74,7 +76,7 @@ class LoginController extends Controller
             $result = $this->loginWithToken($request->getParam('token'));
 
             if ($result === true) {
-                return $response->withRedirect('/dashboard');
+                return $response->withRedirect(self::DEFAULT_REDIRECT);
             }
         }
 

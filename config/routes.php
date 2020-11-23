@@ -4,7 +4,7 @@ use Kuusamo\Vle\Entity\Role;
 use Kuusamo\Vle\Middleware\Authenticate;
 use Kuusamo\Vle\Middleware\RequirePermission;
 
-$app->get('/', '\Kuusamo\Vle\Controller\DefaultController:homepage');
+
 $app->any('/login', '\Kuusamo\Vle\Controller\Auth\LoginController:login');
 $app->any('/logout', '\Kuusamo\Vle\Controller\Auth\LogoutController:logout');
 
@@ -17,8 +17,8 @@ $app->group('/content/images', function($app) {
 $app->get('/content/files/{filename}', '\Kuusamo\Vle\Controller\Content\FileController:original');
 
 $app->group('', function($app) use ($container) {
+    $app->get('/', '\Kuusamo\Vle\Controller\DefaultController:dashboard');
     $app->any('/account', '\Kuusamo\Vle\Controller\AccountController:account');
-    $app->get('/dashboard', '\Kuusamo\Vle\Controller\DashboardController:dashboard');
 
     $app->get('/course/{course:[a-z,0-9,-]+}', 'Kuusamo\Vle\Controller\Course\CourseDashboardController:dashboard');
     $app->get('/course/{course:[a-z,0-9,-]+}/lessons/{lesson:[0-9]+}', 'Kuusamo\Vle\Controller\Course\LessonController:lesson');

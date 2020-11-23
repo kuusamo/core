@@ -2,13 +2,20 @@
 
 namespace Kuusamo\Vle\Controller;
 
+use Kuusamo\Vle\Entity\Role;
+
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 
 class DefaultController extends Controller
 {
-    public function homepage(Request $request, Response $response)
+    public function dashboard(Request $request, Response $response)
     {
-        return $this->renderPage($request, $response, 'homepage.html');
+        $user = $this->ci->get('auth')->getUser();
+
+        return $this->renderPage($request, $response, 'homepage.html', [
+            'user' => $user,
+            'isAdmin' => $user->hasRole(Role::ROLE_ADMIN)
+        ]);
     }
 }
