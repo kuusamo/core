@@ -7,11 +7,10 @@ A learning management system (LMS) that uses API-friendly JSON blocks to build l
 To do list
 ----------
 
-* Better select dropdown icon
+* Better select dropdown icon - https://css-tricks.com/styling-a-select-like-its-2019/
 * Database install / migrations
 * Assessments
 * Certificate generation
-* Rollbar integration
 * SMTP integration
 * Buttons / inline forms are still not perfect
 

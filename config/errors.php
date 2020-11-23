@@ -1,6 +1,6 @@
 <?php
 
-use Kuusamo\Vle\Controller\ExceptionController;
+use Kuusamo\Vle\Exception\ErrorHandler;
 use Kuusamo\Vle\Helper\Environment;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -24,7 +24,6 @@ if (Environment::get('ENVIRONMENT') != 'development') {
     $errorMiddleware->setDefaultErrorHandler(
         function (ServerRequestInterface $request,
         Throwable $exception) use ($container) {
-            $controller = new ExceptionController($container);
-            return $controller->error($request, $exception);
+            return ErrorHandler::handle($container, $request, $exception);
         });
 }
