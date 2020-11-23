@@ -6,18 +6,21 @@
 
 use Slim\Factory\AppFactory;
 
-// configure services
-require __DIR__ . '/config/services.php';
+function kuusamo()
+{
+    // configure services
+    require __DIR__ . '/config/services.php';
 
-// create the app
-AppFactory::setContainer($container);
-$app = AppFactory::create();
+    // create the app
+    AppFactory::setContainer($container);
+    $app = AppFactory::create();
 
-// define page routes
-require __DIR__ . '/config/routes.php';
+    // define page routes
+    require __DIR__ . '/config/routes.php';
 
-// error handling
-require __DIR__ . '/config/errors.php';
+    // error handling
+    require __DIR__ . '/config/errors.php';
 
-// run app
-$app->run();
+    // run app
+    $app->run();
+}
