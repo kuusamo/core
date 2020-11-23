@@ -5,7 +5,11 @@
 
 <h1>Admin dashboard</h1>
 
-<h2>Manage courses</h2>
+<ul class="tabs">
+    <li class="active"><a href="/admin">Courses</a></li>
+    <li><a href="/admin/images">Images</a></li>
+    <li><a href="/admin/files">Files</a></li>
+</ul>
 
 <table class="table table-striped">
     <thead>
@@ -34,8 +38,4 @@
 
     <button class="btn">Create</button>
 </form>
-
-<h2>Manage images</h2>
-
-<p><a href="/admin/images">Manage images</a>, <a href="/admin/files">manage files</a></p>
 {{/course}}

@@ -7,12 +7,16 @@ A learning management system that uses JSON blocks.
 To do list
 ----------
 
+* Test PHP Mail integration
+* Admin link on dashboard
+* What even is the homepage?
 * Folders that don't exist on file system
 
 
 Roadmap
 -------
 
+* Mailgun integration
 * Certificate generation
 * Assessments
 * Support duplicate file names
