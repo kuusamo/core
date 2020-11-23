@@ -1,0 +1,38 @@
+<ol class="breadcrumbs">
+    <li><a href="/dashboard">Dashboard</a></li>
+    <li><a href="/admin">Admin</a></li>
+</ol>
+
+<h1>Create course</h1>
+
+{{#course}}
+<form method="post" class="form-vertical">
+    <label for="name">Name</label>
+    <input type="text" name="name" id="name" maxlength="128" value="{{getName}}" class="form-control">
+
+    <label for="slug">URI</label>
+    <input type="text" name="slug" id="slug" maxlength="128" value="{{getSlug}}" class="form-control">
+
+    <button class="btn">Create</button>
+</form>
+
+<script>
+function generateSlug(str) {
+    str = str.toLowerCase();
+    str = str.replace(/ /g, '-');
+    str = str.replace(/---/g, '-');
+    str = str.replace(/&/g, 'and');
+    str = str.replace(/([^a-z0-9\-])/g, '');
+    return str;
+}
+
+var nameField = document.querySelector('#name');
+var slugField = document.querySelector('#slug');
+
+nameField.onchange = function(event) {
+    if (slugField.value == '') {
+        slugField.value = generateSlug(nameField.value);
+    }
+}
+</script>
+{{/course}}

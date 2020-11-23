@@ -79,7 +79,7 @@ class ImagesController extends AdminController
                 );
 
                 $this->alertSuccess('Image uploaded successfully.', true);
-                return $response->withHeader('Location', '/admin/images')->withStatus(302);
+                return $response->withRedirect('/admin/images', 303);
             }
         }
 

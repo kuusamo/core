@@ -26,16 +26,6 @@
     </tbody>
 </table>
 
-<h2>Create a new course</h2>
-
-{{#course}}
-<form method="post">
-    <label for="name">Name</label>
-    <input type="text" name="name" id="name" maxlength="128" value="{{getName}}" class="form-control">
-
-    <label for="slug">Slug</label>
-    <input type="text" name="slug" id="slug" maxlength="128" value="{{getSlug}}" class="form-control">
-
-    <button class="btn">Create</button>
-</form>
-{{/course}}
+<p>
+    <a href="/admin/courses/create" class="btn">Create new course</a>
+</p>

@@ -28,6 +28,7 @@ $app->group('', function($app) use ($container) {
 
     $app->group('/admin', function($app) {
         $app->any('', '\Kuusamo\Vle\Controller\Admin\AdminDashboardController:dashboard');
+        $app->any('/courses/create', '\Kuusamo\Vle\Controller\Admin\AdminDashboardController:createCourse');
         $app->any('/courses/{id:[0-9]+}', '\Kuusamo\Vle\Controller\Admin\CourseController:view');
         $app->any('/courses/{id:[0-9]+}/delete', '\Kuusamo\Vle\Controller\Admin\CourseController:delete');
         $app->any('/courses/{id:[0-9]+}/edit', '\Kuusamo\Vle\Controller\Admin\CourseController:edit');
