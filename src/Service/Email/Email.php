@@ -64,6 +64,7 @@ class Email
         );
 
         $message = $this->templating->renderTemplate('email/magic-link.html', [
+            'site' => Environment::get('SITE_NAME'),
             'url' => $url,
             'name' => $user->getFirstName()
         ]);

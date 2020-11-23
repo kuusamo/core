@@ -14,6 +14,9 @@ class PhpMail implements ProviderInterface
      */
     public function sendEmail(string $recipient, string $subject, string $message): bool
     {
-        return mail($recipient, $subject, $message);
+        $headers[] = 'MIME-Version: 1.0';
+        $headers[] = 'Content-type: text/html; charset=iso-8859-1';
+
+        return mail($recipient, $subject, $message, implode("\r\n", $headers));
     }
 }

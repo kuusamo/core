@@ -7,7 +7,7 @@ A learning management system that uses JSON blocks.
 To do list
 ----------
 
-* Test PHP Mail integration
+* Login with magic link
 * What even is the homepage?
 * Folders that don't exist on file system
 
