@@ -8,7 +8,7 @@ use Kuusamo\Vle\Entity\Block\DownloadBlock;
 use Kuusamo\Vle\Entity\Block\ImageBlock;
 use Kuusamo\Vle\Entity\Block\MarkdownBlock;
 use Kuusamo\Vle\Entity\Block\VideoBlock;
-use Kuusamo\Vle\Service\Templating;
+use Kuusamo\Vle\Service\Templating\Templating;
 use Exception;
 
 class BlockRendererFactory

@@ -6,7 +6,7 @@ use Kuusamo\Vle\Service\Email\EmailFactory;
 use Kuusamo\Vle\Service\Meta;
 use Kuusamo\Vle\Service\Session\Session;
 use Kuusamo\Vle\Service\Storage\StorageFactory;
-use Kuusamo\Vle\Service\Templating;
+use Kuusamo\Vle\Service\Templating\Templating;
 
 use DI\Container;
 

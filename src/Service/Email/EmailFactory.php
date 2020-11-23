@@ -3,7 +3,7 @@
 namespace Kuusamo\Vle\Service\Email;
 
 use Kuusamo\Vle\Service\Email\Provider\PhpMail;
-use Kuusamo\Vle\Service\Templating;
+use Kuusamo\Vle\Service\Templating\Templating;
 
 class EmailFactory
 {

@@ -5,7 +5,7 @@ namespace Kuusamo\Vle\Service\Email;
 use Kuusamo\Vle\Entity\User;
 use Kuusamo\Vle\Helper\Environment;
 use Kuusamo\Vle\Service\Email\Provider\ProviderInterface;
-use Kuusamo\Vle\Service\Templating;
+use Kuusamo\Vle\Service\Templating\Templating;
 
 /**
  * Email service.

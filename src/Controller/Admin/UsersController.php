@@ -115,7 +115,7 @@ class UsersController extends Controller
 
         if ($request->isPost()) {
             switch ($request->getParam('action')) {
-                case 'password';
+                case 'password':
                     if (strlen($request->getParam('password')) < 6) {
                         $this->alertDanger('Password is too short');
                     } else {

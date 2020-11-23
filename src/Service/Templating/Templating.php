@@ -1,6 +1,8 @@
 <?php
 
-namespace Kuusamo\Vle\Service;
+namespace Kuusamo\Vle\Service\Templating;
+
+use Kuusamo\Vle\Service\Meta;
 
 use Mustache_Engine;
 use Mustache_Loader_FilesystemLoader;
@@ -13,7 +15,7 @@ class Templating
 
     public function __construct()
     {
-        $this->initialise(__DIR__ . '/../../templates');
+        $this->initialise(__DIR__ . '/../../../templates');
     }
 
     /**

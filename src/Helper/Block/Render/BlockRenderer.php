@@ -3,7 +3,7 @@
 namespace Kuusamo\Vle\Helper\Block\Render;
 
 use Kuusamo\Vle\Entity\Block\Block;
-use Kuusamo\Vle\Service\Templating;
+use Kuusamo\Vle\Service\Templating\Templating;
 
 abstract class BlockRenderer
 {

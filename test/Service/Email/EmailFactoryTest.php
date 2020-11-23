@@ -9,7 +9,7 @@ class EmailFactoryTest extends TestCase
 {
     public function testAccessors()
     {
-        $templatingMock = $this->createMock('Kuusamo\Vle\Service\Templating');
+        $templatingMock = $this->createMock('Kuusamo\Vle\Service\Templating\Templating');
 
         $email = EmailFactory::create($templatingMock);
 

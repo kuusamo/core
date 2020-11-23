@@ -10,7 +10,7 @@ class BlockRendererFactoryTest extends TestCase
     public function testValid()
     {
         $blockMock = $this->createMock('Kuusamo\Vle\Entity\Block\MarkdownBlock');
-        $templatingMock = $this->createMock('Kuusamo\Vle\Service\Templating');
+        $templatingMock = $this->createMock('Kuusamo\Vle\Service\Templating\Templating');
 
         $renderer = BlockRendererFactory::get($blockMock, $templatingMock);
 
