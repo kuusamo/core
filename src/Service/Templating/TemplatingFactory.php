@@ -13,6 +13,9 @@ class TemplatingFactory
     {
         $templating = new Templating;
         $templating->addHelper('date', [
+            'iso' => function ($value) {
+                return ($value) ? $value->format('Y-m-d') : null;
+            },
             'long' => function ($value) {
                 return ($value) ? $value->format('j F Y') : null;
             }

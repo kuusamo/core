@@ -8,7 +8,6 @@ To do list
 ----------
 
 * Inline form sizing
-* More details on user enrollments
 * Set the user status
 
 

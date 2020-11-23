@@ -20,17 +20,30 @@
     <div>
         <a href="mailto:{{getEmail}}">{{getEmail}}</a><br>
         Last login: {{getLastLogin | date.long}}{{^getLastLogin}}Never{{/getLastLogin}}<br>
-        <a href="/admin/users/{{getId}}/account">Edit account</a>
+        User ID: {{getId}}
     </div>
 </div>
 
 {{#hasCourses}}
-<h2>Courses</h2>
+<h2>Enrolled courses</h2>
 
-<ul>
-{{#getCourses}}{{#getCourse}}
-    <li>{{getName}}</li>
-{{/getCourse}}{{/getCourses}}
-</ul>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Start</th>
+            <th>Progress</th>
+        </tr>
+    </thead>
+    <tbody>
+    {{#getCourses}}
+        <tr>
+            <td>{{#getCourse}}<a href="/admin/courses/{{getId}}">{{getName}}</a>{{/getCourse}}</td>
+            <td>{{getStart | date.iso}}</td>
+            <td>{{getProgress}}%</td>
+        </tr>
+    {{/getCourses}}
+    </tbody>
+</table>
 {{/hasCourses}}
 {{/user}}
