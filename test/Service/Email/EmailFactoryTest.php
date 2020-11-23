@@ -7,7 +7,7 @@ use PHPUnit\Framework\TestCase;
 
 class EmailFactoryTest extends TestCase
 {
-    public function testAccessors()
+    public function testCreate()
     {
         $templatingMock = $this->createMock('Kuusamo\Vle\Service\Templating\Templating');
 

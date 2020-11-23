@@ -6,7 +6,7 @@ use Kuusamo\Vle\Service\Email\EmailFactory;
 use Kuusamo\Vle\Service\Meta;
 use Kuusamo\Vle\Service\Session\Session;
 use Kuusamo\Vle\Service\Storage\StorageFactory;
-use Kuusamo\Vle\Service\Templating\Templating;
+use Kuusamo\Vle\Service\Templating\TemplatingFactory;
 
 use DI\Container;
 
@@ -17,7 +17,7 @@ $container->set('db', function() {
 });
 
 $container->set('templating', function() {
-    return new Templating;
+    return TemplatingFactory::create();
 });
 
 $container->set('email', function() use ($container) {
