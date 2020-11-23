@@ -1,6 +1,6 @@
 {
-    "name": "xmeltrut/kuusamo",
-    "tyoe": "project",
+    "name": "kuusamo/core",
+    "tyoe": "library",
     "description": "Kuusamo VLE",
     "homepage": "https://github.com/xmeltrut/kuusamo",
     "license": "MIT",
@@ -14,8 +14,14 @@
     "autoload": {
         "psr-4": {
             "Kuusamo\\Vle\\": "src/"
-        }
+        },
+        "files": [
+            "app.php"
+        ]
     },
+    "bin": [
+        "bin/kuusamo"
+    ],
     "require": {
         "mustache/mustache": "2.11.*",
         "slim/slim": "4.*",

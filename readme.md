@@ -30,7 +30,7 @@ Useful functions
     ant
     gulp webpack
     vendor/bin/doctrine orm:schema-tool:update
-    sass sass:public/css
+    sass sass:public/styles
 
 Colours
 

@@ -1,0 +1,27 @@
+#!/usr/bin/env php
+<?php
+
+function recursiveCopy($src, $dst) {
+    $dir = opendir($src); 
+    @mkdir($dst); 
+    while (false !== ($file = readdir($dir))) {
+        if (($file != '.') && ($file != '..')) {
+            if (is_dir($src . '/' . $file)) {
+                recursiveCopy($src . '/' . $file,$dst . '/' . $file);
+            } else {
+                copy($src . '/' . $file,$dst . '/' . $file); 
+            }
+        }
+    }
+
+    closedir($dir);
+}
+
+recursiveCopy(__DIR__ . '/../public/styles', './public/styles');
+recursiveCopy(__DIR__ . '/../public/js', './public/js');
+
+copy(__DIR__ . './../public/.htaccess', './public/.htaccess');
+copy(__DIR__ . './../public/favicon.png', './public/favicon.png');
+copy(__DIR__ . './../public/robots.txt', './public/robots.txt');
+
+echo "Operation complete!\n";
