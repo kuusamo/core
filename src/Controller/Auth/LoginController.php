@@ -6,6 +6,7 @@ use Kuusamo\Vle\Controller\Controller;
 use Kuusamo\Vle\Entity\User;
 use Kuusamo\Vle\Exception\ProcessException;
 use Kuusamo\Vle\Helper\Password;
+use Kuusamo\Vle\Helper\TokenGenerator;
 use Kuusamo\Vle\Helper\UrlUtils;
 
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -61,6 +62,14 @@ class LoginController extends Controller
             }
         }
 
+        if ($request->getParam('token')) {
+            $result = $this->loginWithToken($request->getParam('token'));
+
+            if ($result === true) {
+                return $response->withRedirect('/dashboard');
+            }
+        }
+
         $this->ci->get('meta')->setTitle('Login');
 
         return $this->renderPage($request, $response, 'auth/login.html', [
@@ -68,5 +77,36 @@ class LoginController extends Controller
             'email' => $request->getParam('email'),
             'csrf' => $this->ci->get('session')->getCsrfToken()->getToken()
         ]);
+    }
+
+    /**
+     * Attempt to authorise a user via their security token.
+     *
+     * @param string $token Token.
+     * @return boolean
+     */
+    private function loginWithToken(string $token): bool
+    {
+        $user = $this->ci->get('db')->getRepository('Kuusamo\Vle\Entity\User')->findOneBy(['securityToken' => $token]);
+
+        if (!$user) {
+            $this->alertDanger('This magic link has expired. You can generate a new one below.');
+            return false;
+        }
+
+        if ($user->getStatus() !== User::STATUS_ACTIVE) {
+            $this->alertDanger('This user account has been disabled. Please contact us for assistance.');
+            return false;
+        }
+
+        $user->setSecurityToken(TokenGenerator::generate());
+        $user->setLastLogin(new DateTime);
+
+        $this->ci->get('db')->persist($user);
+        $this->ci->get('db')->flush();
+
+        $this->ci->get('auth')->authoriseUser($user);
+
+        return true;
     }
 }
