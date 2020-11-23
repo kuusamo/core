@@ -5,6 +5,7 @@ namespace Kuusamo\Vle\Service\Session;
 class Session
 {
     private $csrf;
+    private $flash;
 
     /**
      * Start the session.
@@ -12,7 +13,6 @@ class Session
     public function __construct()
     {
         session_start();
-        $this->csrf = new CsrfToken;
     }
 
     /**
@@ -66,6 +66,24 @@ class Session
      */
     public function getCsrfToken(): CsrfToken
     {
+        if ($this->csrf === null) {
+            $this->csrf = new CsrfToken;
+        }
+
         return $this->csrf;
+    }
+
+    /**
+     * Get the flash component.
+     *
+     * @return Flash
+     */
+    public function getFlash(): Flash
+    {
+        if ($this->flash === null) {
+            $this->flash = new Flash;
+        }
+
+        return $this->flash;
     }
 }

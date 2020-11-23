@@ -7,7 +7,6 @@ A learning management system that uses JSON blocks.
 To do list
 ----------
 
-* Delayed alerts do not work
 * Image upload redirect
 * What even is the homepage?
 * Folders that don't exist on file system

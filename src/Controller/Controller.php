@@ -27,6 +27,10 @@ abstract class Controller
     public function __construct(ContainerInterface $ci)
     {
         $this->ci = $ci;
+
+        if ($this->ci->get('session')->getFlash()->has('success')) {
+            $this->alertSuccess($this->ci->get('session')->getFlash()->get('success'));
+        }
     }
 
     /**
@@ -69,11 +73,17 @@ abstract class Controller
     /**
      * Add a success alert.
      *
-     * @param string $message Message.
+     * @param string  $message Message.
+     * @param boolean flash    Flash the message on next request?
      * @return void
      */
-    protected function alertSuccess($message)
+    protected function alertSuccess($message, bool $flash = false)
     {
+        if ($flash) {
+            $this->ci->get('session')->getFlash()->set('success', $message);
+            return;
+        }
+
         $this->alerts[] = [
             'type' => 'success',
             'message' => $message

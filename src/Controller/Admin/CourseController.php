@@ -89,7 +89,8 @@ class CourseController extends AdminController
             $this->ci->get('db')->remove($course);
             $this->ci->get('db')->flush();
 
-            $this->alertSuccess('Course deleted successfully');
+            $this->alertSuccess('Course deleted successfully', true);
+            return $response->withRedirect('/admin', 303);
         }
 
         $this->ci->get('meta')->setTitle(sprintf('%s - Admin', $course->getName()));
