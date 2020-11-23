@@ -11,7 +11,6 @@ To do list
 * Database install / migrations
 * Assessments
 * Certificate generation
-* SMTP integration
 * Buttons / inline forms are still not perfect
 
 
@@ -20,7 +19,7 @@ Roadmap
 
 * Website
 
-* Mailgun integration
+
 * Storage folders that don't exist on file system
 * Support duplicate file names
 * Themes
