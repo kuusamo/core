@@ -3,6 +3,7 @@
 namespace Kuusamo\Vle\Controller\Admin;
 
 use Kuusamo\Vle\Controller\Controller;
+use Kuusamo\Vle\Entity\User;
 use Kuusamo\Vle\Helper\Password;
 use Kuusamo\Vle\Helper\TokenGenerator;
 use Kuusamo\Vle\Validation\UserValidator;
@@ -23,6 +24,36 @@ class UsersController extends Controller
 
         return $this->renderPage($request, $response, 'admin/users/index.html', [
             'users' => $users
+        ]);
+    }
+
+    public function create(Request $request, Response $response, $args)
+    {
+        $user = new User;
+
+        if ($request->isPost()) {
+            $user->setEmail($request->getParam('email'));
+            $user->setFirstName($request->getParam('firstName'));
+            $user->setSurname($request->getParam('surname'));
+
+            try {
+                $validator = new UserValidator;
+                $validator($user);
+
+                $this->ci->get('db')->persist($user);
+                $this->ci->get('db')->flush();
+
+                $this->alertSuccess('User created successfully');
+                $user = new User;
+            } catch (ValidationException $e) {
+                $this->alertDanger($e->getMessage());
+            }
+        }
+
+        $this->ci->get('meta')->setTitle('Users - Admin');
+
+        return $this->renderPage($request, $response, 'admin/users/create.html', [
+            'user' => $user
         ]);
     }
 

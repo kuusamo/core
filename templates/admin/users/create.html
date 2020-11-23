@@ -1,0 +1,22 @@
+<ol class="breadcrumbs">
+    <li><a href="/">Dashboard</a></li>
+    <li><a href="/admin">Admin</a></li>
+    <li><a href="/admin/users">Users</a></li>
+</ol>
+
+{{#user}}
+<h1>Create user</h1>
+
+<form method="post" class="form-vertical">
+    <label for="email">Email address</label>
+    <input type="email" name="email" id="email" value="{{getEmail}}">
+
+    <label for="firstName">First name</label>
+    <input type="text" name="firstName" id="firstName" value="{{getFirstName}}">
+
+    <label for="surname">Surname</label>
+    <input type="text" name="surname" id="surname" value="{{getSurname}}">
+
+  <button type="submit"">Create</button>
+</form>
+{{/user}}

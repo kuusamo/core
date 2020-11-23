@@ -53,6 +53,7 @@ $app->group('', function($app) use ($container) {
         $app->any('/images/upload', '\Kuusamo\Vle\Controller\Admin\ImagesController:upload');
 
         $app->any('/users', '\Kuusamo\Vle\Controller\Admin\UsersController:index');
+        $app->any('/users/create', '\Kuusamo\Vle\Controller\Admin\UsersController:create');
         $app->any('/users/{id:[0-9]+}', '\Kuusamo\Vle\Controller\Admin\UsersController:view');
         $app->any('/users/{id:[0-9]+}/account', '\Kuusamo\Vle\Controller\Admin\UsersController:account');
         $app->any('/users/{id:[0-9]+}/security', '\Kuusamo\Vle\Controller\Admin\UsersController:security');

@@ -10,7 +10,6 @@ To do list
 * Inline form sizing
 * User view screen should be prettier (with cards)
 * Set the user status
-* Create user
 
 
 Roadmap
