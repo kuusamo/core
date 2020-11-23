@@ -7,8 +7,8 @@ A learning management system that uses JSON blocks.
 To do list
 ----------
 
+* App bootstrap runs in unit tests
 * Test PHP Mail integration
-* Admin link on dashboard
 * What even is the homepage?
 * Folders that don't exist on file system
 

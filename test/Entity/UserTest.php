@@ -39,12 +39,19 @@ class UserTest extends TestCase
 
     public function testRoles()
     {
+        $roleMock = $this->createMock('Kuusamo\Vle\Entity\Role');
+        $roleMock->method('getId')->willReturn('ADMIN');
+
         $user = new User;
+        $user->getRoles()->add($roleMock);
 
         $this->assertInstanceOf(
             'Doctrine\Common\Collections\ArrayCollection',
             $user->getRoles()
         );
+
+        $this->assertSame(true, $user->hasRole('ADMIN'));
+        $this->assertSame(false, $user->hasRole('MODERATOR'));
     }
 
     public function testCourses()

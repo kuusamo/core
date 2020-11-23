@@ -28,13 +28,8 @@ class RequirePermission
      */
     public function __invoke($request, $handler)
     {
-        $roles = $this->auth->getUser()->getRoles()->toArray();
-
-        foreach ($roles as $role) {
-            if ($role->getId() == $this->permission) {
-                // user has the required role
-                return $handler->handle($request);
-            }
+        if ($this->auth->getUser()->hasRole($this->permission)) {
+            return $handler->handle($request);
         }
 
         throw new HttpForbiddenException($request);

@@ -1,7 +1,7 @@
 {{#user}}
 <h1>Dashboard</h1>
 
-<p>Logged in as {{getFullname}}. <a href="/account">Manage account</a>. <a href="/logout">Logout</a>.</p>
+<p>Logged in as {{getFullname}}. <a href="/account">Manage account</a>. <a href="/logout">Logout</a>.{{#isAdmin}} <a href="/admin">Admin</a>{{/isAdmin}}.</p>
 
 {{#hasCourses}}
 <h2>My courses</h2>
@@ -17,6 +17,4 @@
 {{/getCourses}}
 </ul>
 {{/hasCourses}}
-
-<p><a href="/admin">Admin</a></p>
 {{/user}}

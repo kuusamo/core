@@ -175,6 +175,17 @@ class User
         return $this->roles;
     }
 
+    public function hasRole(string $roleId): bool
+    {
+        foreach ($this->roles as $role) {
+            if ($role->getId() == $roleId) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     public function getCourses()
     {
         return $this->courses;
