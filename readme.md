@@ -7,7 +7,6 @@ A learning management system (LMS) that uses API-friendly JSON blocks to build l
 To do list
 ----------
 
-* Live developing styles and JS
 * Better select dropdown icon
 * Database install / migrations
 * Assessments
@@ -29,6 +28,8 @@ Roadmap
 * Themes
 * Favicon
 * S3 integration
+* Cache busting assets
+* Htaccess improvements
 
 
 Development
@@ -40,6 +41,11 @@ Useful functions
     gulp webpack
     vendor/bin/doctrine orm:schema-tool:update
     sass sass:public/styles
+
+If you are developing in a project, symlink the CSS and JS
+
+    vendor/bin/kuusamo dev-assets # symlink
+    vendor/bin/kuusamo assets # when done
 
 Colours
 

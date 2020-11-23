@@ -1,27 +1,40 @@
 #!/usr/bin/env php
 <?php
 
-function recursiveCopy($src, $dst) {
-    $dir = opendir($src); 
-    @mkdir($dst); 
-    while (false !== ($file = readdir($dir))) {
-        if (($file != '.') && ($file != '..')) {
-            if (is_dir($src . '/' . $file)) {
-                recursiveCopy($src . '/' . $file,$dst . '/' . $file);
-            } else {
-                copy($src . '/' . $file,$dst . '/' . $file); 
-            }
-        }
-    }
+use Kuusamo\Vle\Cli\FileTools;
 
-    closedir($dir);
+require './vendor/autoload.php';
+
+if ($argc < 2) {
+    echo "Kuusamo CLI is working\n";
+    die;
 }
 
-recursiveCopy(__DIR__ . '/../public/styles', './public/styles');
-recursiveCopy(__DIR__ . '/../public/js', './public/js');
+switch ($argv[1]) {
+    case 'assets':
+        if (is_link('./public/styles')) {
+            unlink('./public/styles');
+        }
 
-copy(__DIR__ . './../public/.htaccess', './public/.htaccess');
-copy(__DIR__ . './../public/favicon.png', './public/favicon.png');
-copy(__DIR__ . './../public/robots.txt', './public/robots.txt');
+        if (is_link('./public/js')) {
+            unlink('./public/js');
+        }
 
-echo "Operation complete!\n";
+        FileTools::recursiveCopy(__DIR__ . '/../public/styles', './public/styles');
+        FileTools::recursiveCopy(__DIR__ . '/../public/js', './public/js');
+
+        copy(__DIR__ . './../public/.htaccess', './public/.htaccess');
+        copy(__DIR__ . './../public/favicon.png', './public/favicon.png');
+        copy(__DIR__ . './../public/robots.txt', './public/robots.txt');
+
+        echo "Operation complete!\n";
+        break;
+    case 'dev-assets':
+        FileTools::recursiveDelete('./public/styles');
+        FileTools::recursiveDelete('./public/js');
+        symlink(__DIR__ . '/../public/styles', './public/styles');
+        symlink(__DIR__ . '/../public/js', './public/js');
+        break;
+    default:
+        echo "Unknown command\n";
+}
