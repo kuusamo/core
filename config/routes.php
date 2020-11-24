@@ -50,6 +50,7 @@ $app->group('', function($app) use ($container) {
         $app->any('/awarding-bodies/create', '\Kuusamo\Vle\Controller\Admin\AwardingBodiesController:create');
         $app->get('/awarding-bodies/{id:[0-9]+}', '\Kuusamo\Vle\Controller\Admin\AwardingBodiesController:view');
         $app->any('/awarding-bodies/{id:[0-9]+}/edit', '\Kuusamo\Vle\Controller\Admin\AwardingBodiesController:edit');
+        $app->any('/awarding-bodies/{id:[0-9]+}/delete', '\Kuusamo\Vle\Controller\Admin\AwardingBodiesController:delete');
 
         $app->any('/files', '\Kuusamo\Vle\Controller\Admin\FilesController:index');
         $app->any('/files/{id:[0-9]+}', '\Kuusamo\Vle\Controller\Admin\FilesController:view');

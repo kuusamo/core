@@ -109,4 +109,27 @@ class AwardingBodiesController extends Controller
             'body' => $body
         ]);
     }
+
+    public function delete(Request $request, Response $response, array $args = [])
+    {
+        $body = $this->ci->get('db')->find('Kuusamo\Vle\Entity\AwardingBody', $args['id']);
+
+        if ($body === null) {
+            throw new HttpNotFoundException($request, $response);
+        }
+
+        if ($request->isPost()) {
+            $this->ci->get('db')->persist($body);
+            $this->ci->get('db')->flush();
+
+            $this->alertSuccess('Awarding body deleted successfully', true);
+            return $response->withRedirect('/admin/awarding-bodies', 303);
+        }
+
+        $this->ci->get('meta')->setTitle('Awarding Bodies - Admin');
+
+        return $this->renderPage($request, $response, 'admin/awarding-bodies/delete.html', [
+            'body' => $body
+        ]);
+    }
 }
