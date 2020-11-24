@@ -35,7 +35,7 @@ class CertificateController extends CourseController
         }
 
         $html = $this->ci->get('templating')->renderTemplate('course/certificate.html', [
-            'studentName' => $user->getFullName(),
+            'studentName' => $user->getFullName() ?? $user->getEmail(),
             'qualification' => $course->getQualification(),
             'awardingBody' => $course->getAwardingBody(),
             'courseName' => $course->getName(),

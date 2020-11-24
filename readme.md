@@ -10,7 +10,6 @@ To do list
 * Better select dropdown icon - https://css-tricks.com/styling-a-select-like-its-2019/
 * Database install / migrations
 * Certificate accreditations
-* Test missing values: accrediting body, name of student
 
 
 Roadmap

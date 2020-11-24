@@ -131,9 +131,10 @@ class User
         $this->surname = $value;
     }
 
-    public function getFullName(): string
+    public function getFullName(): ?string
     {
-        return sprintf('%s %s', $this->firstName, $this->surname);
+        $fullName = trim(sprintf('%s %s', $this->firstName, $this->surname));
+        return $fullName == '' ? null : $fullName;
     }
 
     public function getStatus(): string

@@ -33,7 +33,6 @@ class UserTest extends TestCase
         $this->assertSame('Test', $user->getFirstName());
         $this->assertSame('McTest', $user->getSurname());
         $this->assertSame(User::STATUS_DISABLED, $user->getStatus());
-        $this->assertSame('Test McTest', $user->getFullName());
         $this->assertSame('QWERTY', $user->getSecurityToken());
         $this->assertSame($lastLogin, $user->getLastLogin());
         $this->assertSame('Notes', $user->getNotes());
@@ -41,6 +40,19 @@ class UserTest extends TestCase
         $user->setNotes('');
 
         $this->assertNull($user->getNotes());
+    }
+
+    public function testFullName()
+    {
+        $user = new User;
+
+        $this->assertSame(null, $user->getFullname());
+
+        $user->setFirstName('Jane');
+        $this->assertSame('Jane', $user->getFullName());
+
+        $user->setSurname('Smith');
+        $this->assertSame('Jane Smith', $user->getFullName());
     }
 
     public function testRoles()
