@@ -236,7 +236,7 @@ form.form-vertical button:hover, a.btn:hover, button.btn:hover {
   text-decoration: none;
 }
 
-form.form-vertical input[type=text], form.form-vertical input[type=email], form.form-vertical input[type=password], form.form-vertical input[type=file], form.form-vertical select, form.form-vertical textarea, select.form-control, input.form-control {
+form.form-vertical input[type=text], form.form-vertical input[type=email], form.form-vertical input[type=password], form.form-vertical input[type=file], form.form-vertical textarea, input.form-control, form.form-vertical select, select.form-control {
   border: #0077b6 1px solid;
   box-sizing: border-box;
   font-family: inherit;
@@ -246,13 +246,26 @@ form.form-vertical input[type=text], form.form-vertical input[type=email], form.
   vertical-align: middle;
 }
 
+form.form-vertical select, select.form-control {
+  -webkit-appearance: none;
+  background: url(data:image/webp;base64,UklGRpwAAABXRUJQVlA4TI8AAAAvD8ADEHU4rG03bZSkzMzMjPtPx7CAvmSrEQwZSRI0BoNwCIvwCIvwyI2yCD0B/P3XvfYZuy7l8B09sO8jp0exvrW2ZtV7usZsffN/ptmUSW8wxcz+PNrBDXQD+qUwBjjnR0th7kz72jrfHOfbOg++rU/1qkIVUKbcL70CBQFY6fHjbNOkhVd+Nt4IZcqPAgA=);
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  padding-right: 48px;
+}
+
 form.form-vertical {
   width: 100%;
 }
 form.form-vertical button {
   border-radius: 4px;
 }
-form.form-vertical input[type=text], form.form-vertical input[type=email], form.form-vertical input[type=password], form.form-vertical input[type=file], form.form-vertical select, form.form-vertical textarea {
+form.form-vertical input[type=text], form.form-vertical input[type=email], form.form-vertical input[type=password], form.form-vertical input[type=file], form.form-vertical textarea {
+  border-radius: 4px;
+  margin-bottom: 12px;
+  width: 100%;
+}
+form.form-vertical select {
   border-radius: 4px;
   margin-bottom: 12px;
   width: 100%;

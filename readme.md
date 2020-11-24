@@ -12,13 +12,8 @@ A learning management system (LMS) that uses API-friendly JSON blocks to build l
 To do list
 ----------
 
-* Better select dropdown icon - https://css-tricks.com/styling-a-select-like-its-2019/
 * Database install / migrations
-* Certificate accreditations
-
-Certificate accreditations
-
-* What fields are mandatory?
+* Certificate accreditations - what fields are mandatory?
 
 
 Roadmap

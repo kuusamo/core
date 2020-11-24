@@ -30,6 +30,15 @@
     vertical-align: middle;
 }
 
+%select-input {
+    @extend %input;
+    -webkit-appearance: none;
+    background: url(data:image/webp;base64,UklGRpwAAABXRUJQVlA4TI8AAAAvD8ADEHU4rG03bZSkzMzMjPtPx7CAvmSrEQwZSRI0BoNwCIvwCIvwyI2yCD0B/P3XvfYZuy7l8B09sO8jp0exvrW2ZtV7usZsffN/ptmUSW8wxcz+PNrBDXQD+qUwBjjnR0th7kz72jrfHOfbOg++rU/1qkIVUKbcL70CBQFY6fHjbNOkhVd+Nt4IZcqPAgA=);
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    padding-right: $baseline * 2;
+}
+
 a.btn, button.btn {
     @extend %button;
 }
@@ -43,7 +52,7 @@ input.form-control {
 }
 
 select.form-control {
-    @extend %input;
+    @extend %select-input;
 }
 
 form.form-vertical {
@@ -58,8 +67,15 @@ form.form-vertical {
         @extend %button-hover;
     }
 
-    input[type="text"], input[type="email"], input[type="password"], input[type="file"], select, textarea {
+    input[type="text"], input[type="email"], input[type="password"], input[type="file"], textarea {
         @extend %input;
+        border-radius: $baseline / 6;
+        margin-bottom: $baseline / 2;
+        width: 100%;
+    }
+
+    select {
+        @extend %select-input;
         border-radius: $baseline / 6;
         margin-bottom: $baseline / 2;
         width: 100%;
