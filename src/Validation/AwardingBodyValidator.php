@@ -16,10 +16,6 @@ class AwardingBodyValidator
             throw new ValidationException('Authoriser name empty');
         }
 
-        if ($body->getAuthoriserRole() == '') {
-            throw new ValidationException('Authoriser role empty');
-        }
-
         return true;
     }
 }

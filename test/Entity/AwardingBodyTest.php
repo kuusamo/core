@@ -28,8 +28,10 @@ class AwardingBodyTest extends TestCase
         $this->assertSame('Director of Teaching', $body->getAuthoriserRole());
 
         $body->setAuthoriserSignature('');
+        $body->setAuthoriserRole('');
 
         $this->assertNull($body->getAuthoriserSignature());
+        $this->assertNull($body->getAuthoriserRole());
     }
 
     public function testCourses()

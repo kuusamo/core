@@ -38,7 +38,7 @@ class AwardingBody
     private $authoriserSignature;
 
     /**
-     * @Column(type="string", length=128)
+     * @Column(type="string", length=128, nullable=true)
      */
     private $authoriserRole;
 
@@ -120,9 +120,9 @@ class AwardingBody
         return $this->authoriserRole;
     }
 
-    public function setAuthoriserRole(string $value)
+    public function setAuthoriserRole(?string $value)
     {
-        return $this->authoriserRole = $value;
+        return $this->authoriserRole = $value == '' ? null : $value;
     }
 
     public function hasCourses(): bool

@@ -13,7 +13,6 @@ To do list
 ----------
 
 * Database install / migrations
-* Certificate accreditations - what fields are mandatory?
 
 
 Roadmap
