@@ -25,9 +25,9 @@ Roadmap
 -------
 
 * Certificate preview
+* Read The Docs
 * Relationship cascades
 * Assessments
-* Travis CI
 * Storage folders that don't exist on file system
 * Support duplicate file names
 * Themes

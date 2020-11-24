@@ -35,6 +35,7 @@ switch ($argv[1]) {
         FileTools::recursiveDelete('./public/js');
         symlink(__DIR__ . '/../public/styles', './public/styles');
         symlink(__DIR__ . '/../public/js', './public/js');
+        echo "Assets are now symlinked\n";
         break;
     default:
         echo "Unknown command\n";
