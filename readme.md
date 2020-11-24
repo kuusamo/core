@@ -19,7 +19,6 @@ To do list
 Roadmap
 -------
 
-* Certificate preview
 * Relationship cascades
 * Assessments
 * Favicon
