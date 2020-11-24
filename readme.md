@@ -20,13 +20,14 @@ Roadmap
 -------
 
 * Certificate preview
-* Read The Docs
 * Relationship cascades
 * Assessments
+* Favicon
+* Themes
+
+* Read The Docs
 * Storage folders that don't exist on file system
 * Support duplicate file names
-* Themes
-* Favicon
 * S3 integration
 * Cache busting assets
 * Htaccess improvements
