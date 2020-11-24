@@ -42,6 +42,17 @@ class AwardingBody
      */
     private $authoriserRole;
 
+    /**
+     * @OneToMany(targetEntity="Course", mappedBy="awardingBody")
+     * @OrderBy({"name" = "ASC"})
+     */
+    private $courses;
+
+    public function __construct()
+    {
+        $this->courses = new ArrayCollection;
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -100,5 +111,15 @@ class AwardingBody
     public function setAuthoriserRole(string $value)
     {
         return $this->authoriserRole = $value;
+    }
+
+    public function hasCourses(): bool
+    {
+        return $this->courses->count() > 0;
+    }
+
+    public function getCourses()
+    {
+        return $this->courses;
     }
 }

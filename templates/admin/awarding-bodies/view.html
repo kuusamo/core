@@ -1,0 +1,33 @@
+<ol class="breadcrumbs">
+    <li><a href="/">Dashboard</a></li>
+    <li><a href="/admin">Admin</a></li>
+    <li><a href="/admin/awarding-bodies">Awarding bodies</a></li>
+</ol>
+
+{{#body}}
+<h1>{{getName}}</h1>
+
+<ul class="tabs">
+    <li class="active"><a href="/admin/awarding-bodies/{{getId}}">Overview</a></li>
+    <li><a href="/admin/awarding-bodies/{{getId}}/edit">Edit</a></li>
+</ul>
+
+{{#hasCourses}}
+<h2>Courses accrediting</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+        </tr>
+    </thead>
+    <tbody>
+    {{#getCourses}}
+        <tr>
+            <td><a href="/admin/courses/{{getId}}">{{getName}}</a></td>
+        </tr>
+    {{/getCourses}}
+    </tbody>
+</table>
+{{/hasCourses}}
+{{^hasCourses}}<p>This awarding body is not responsible for any courses.</p>{{/hasCourses}}
+{{/body}}

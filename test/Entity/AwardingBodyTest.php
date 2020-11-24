@@ -31,4 +31,21 @@ class AwardingBodyTest extends TestCase
 
         $this->assertNull($body->getAuthoriserSignature());
     }
+
+
+    public function testModules()
+    {
+        $body = new AwardingBody;
+
+        $this->assertSame(false, $body->hasCourses());
+
+        $this->assertInstanceOf(
+            'Doctrine\Common\Collections\ArrayCollection',
+            $body->getCourses()
+        );
+
+        $body->getCourses()->add((object)[]);
+
+        $this->assertSame(true, $body->hasCourses());
+    }
 }

@@ -58,6 +58,21 @@ class AwardingBodiesController extends Controller
         ]);
     }
 
+    public function view(Request $request, Response $response, array $args = [])
+    {
+        $body = $this->ci->get('db')->find('Kuusamo\Vle\Entity\AwardingBody', $args['id']);
+
+        if ($body === null) {
+            throw new HttpNotFoundException($request, $response);
+        }
+
+        $this->ci->get('meta')->setTitle('Awarding Bodies - Admin');
+
+        return $this->renderPage($request, $response, 'admin/awarding-bodies/view.html', [
+            'body' => $body
+        ]);
+    }
+
     public function edit(Request $request, Response $response, array $args = [])
     {
         $body = $this->ci->get('db')->find('Kuusamo\Vle\Entity\AwardingBody', $args['id']);

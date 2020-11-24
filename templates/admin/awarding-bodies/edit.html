@@ -7,6 +7,11 @@
 {{#body}}
 <h1>{{getName}}</h1>
 
+<ul class="tabs">
+    <li><a href="/admin/awarding-bodies/{{getId}}">Overview</a></li>
+    <li class="active"><a href="/admin/awarding-bodies/{{getId}}/edit">Edit</a></li>
+</ul>
+
 <form method="post" class="form-vertical">
     <label for="name">Name</label>
     <input type="text" name="name" id="name" value="{{getName}}">

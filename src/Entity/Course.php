@@ -33,7 +33,7 @@ class Course
     private $qualification;
 
     /**
-     * @ManyToOne(targetEntity="AwardingBody")
+     * @ManyToOne(targetEntity="AwardingBody", inversedBy="courses")
      */
     private $awardingBody;
 
