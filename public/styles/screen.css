@@ -276,6 +276,10 @@ footer {
   border: #999 1px solid;
   padding: 24px;
 }
+footer a:link, footer a:visited, footer a:hover, footer a:active {
+  color: #000;
+  text-decoration: underline;
+}
 footer hr {
   display: none;
 }

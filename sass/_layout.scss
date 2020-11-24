@@ -8,6 +8,11 @@ footer {
     border: #999 1px solid;
     padding: $baseline;
 
+    a:link, a:visited, a:hover, a:active {
+        color: #000;
+        text-decoration: underline;
+    }
+
     hr {
         display: none;
     }
