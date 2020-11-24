@@ -4,6 +4,7 @@ Kuusamo VLE
 [![Latest Stable Version](https://poser.pugx.org/kuusamo/core/v)](//packagist.org/packages/kuusamo/core)
 [![Total Downloads](https://poser.pugx.org/kuusamo/core/downloads)](//packagist.org/packages/kuusamo/core)
 [![License](https://poser.pugx.org/kuusamo/core/license)](//packagist.org/packages/kuusamo/core)
+[![Build Status](https://travis-ci.org/kuusamo/core.svg?branch=master)](https://travis-ci.org/kuusamo/core)
 
 A learning management system (LMS) that uses API-friendly JSON blocks to build lessons.
 
