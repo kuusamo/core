@@ -11,11 +11,16 @@ To do list
 * Database install / migrations
 * Certificate accreditations
 
+Certificate accreditations
+
+* What fields are mandatory?
+
 
 Roadmap
 -------
 
-* Website
+* Certificate preview
+* Relationship cascades
 * Assessments
 * Travis CI
 * Storage folders that don't exist on file system

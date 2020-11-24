@@ -51,6 +51,12 @@
                                 </div>
                             </div>
                         </td>
+                        {{#getAccreditations}}
+                        <td>
+                            {{#getLogo}}<div><img src="{{webUrl}}/content/images/originals/{{getFilename}}"></div>{{/getLogo}}
+                            <div class="hint">{{getName}}</div>
+                        </td>
+                        {{/getAccreditations}}
                     </tr>
                 </table>
             </div>

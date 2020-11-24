@@ -1,0 +1,47 @@
+<ol class="breadcrumbs">
+    <li><a href="/">Dashboard</a></li>
+    <li><a href="/admin">Admin</a></li>
+    <li><a href="/admin/awarding-bodies">Awarding bodies</a></li>
+</ol>
+
+{{#body}}
+<h1>{{getName}}</h1>
+
+<ul class="tabs">
+    <li><a href="/admin/awarding-bodies/{{getId}}">Overview</a></li>
+    <li class="active"><a href="/admin/awarding-bodies/{{getId}}/accreditations">Accreditations</a></li>
+    <li><a href="/admin/awarding-bodies/{{getId}}/edit">Edit</a></li>
+    <li><a href="/admin/awarding-bodies/{{getId}}/delete">Delete</a></li>
+</ul>
+
+<table class="table table-striped mb-3">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {{#getAccreditations}}
+        <tr>
+            <td><a href="/admin/awarding-bodies/{{getId}}">{{getName}}</a></td>
+            <td>
+                <form method="post">
+                    <input type="hidden" name="id" value="{{getId}}">
+                    <input type="hidden" name="action" value="remove">
+                    <button type="submit" class="btn">Remove</button>
+                </form>
+            </td>
+        </tr>
+    {{/getAccreditations}}
+    </tbody>
+</table>
+
+<form method="post">
+    <select name="id" class="form-control" aria-label="Add new awarding body">
+    {{#bodyList}}<option value="{{value}}" {{#selected}}selected{{/selected}}>{{label}}</option>{{/bodyList}}
+    </select>
+    <input type="hidden" name="action" value="add">
+    <button type="submit" class="btn">Add</button>
+</form>
+{{/body}}

@@ -9,12 +9,13 @@
 
 <ul class="tabs">
     <li class="active"><a href="/admin/awarding-bodies/{{getId}}">Overview</a></li>
+    <li><a href="/admin/awarding-bodies/{{getId}}/accreditations">Accreditations</a></li>
     <li><a href="/admin/awarding-bodies/{{getId}}/edit">Edit</a></li>
     <li><a href="/admin/awarding-bodies/{{getId}}/delete">Delete</a></li>
 </ul>
 
-{{#hasCourses}}
 <h2>Courses accrediting</h2>
+{{#hasCourses}}
 <table class="table table-striped">
     <thead>
         <tr>
@@ -31,4 +32,23 @@
 </table>
 {{/hasCourses}}
 {{^hasCourses}}<p>This awarding body is not responsible for any courses.</p>{{/hasCourses}}
+
+<h2>Accreditees</h2>
+{{#hasAccreditees}}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+        </tr>
+    </thead>
+    <tbody>
+    {{#getAccreditees}}
+        <tr>
+            <td><a href="/admin/awarding-bodies/{{getId}}">{{getName}}</a></td>
+        </tr>
+    {{/getAccreditees}}
+    </tbody>
+</table>
+{{/hasAccreditees}}
+{{^hasAccreditees}}<p>This awarding body is not responsible for any accreditees.</p>{{/hasAccreditees}}
 {{/body}}

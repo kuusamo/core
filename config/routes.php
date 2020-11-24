@@ -49,6 +49,7 @@ $app->group('', function($app) use ($container) {
         $app->get('/awarding-bodies', '\Kuusamo\Vle\Controller\Admin\AwardingBodiesController:index');
         $app->any('/awarding-bodies/create', '\Kuusamo\Vle\Controller\Admin\AwardingBodiesController:create');
         $app->get('/awarding-bodies/{id:[0-9]+}', '\Kuusamo\Vle\Controller\Admin\AwardingBodiesController:view');
+        $app->any('/awarding-bodies/{id:[0-9]+}/accreditations', '\Kuusamo\Vle\Controller\Admin\AwardingBodiesController:accreditations');
         $app->any('/awarding-bodies/{id:[0-9]+}/edit', '\Kuusamo\Vle\Controller\Admin\AwardingBodiesController:edit');
         $app->any('/awarding-bodies/{id:[0-9]+}/delete', '\Kuusamo\Vle\Controller\Admin\AwardingBodiesController:delete');
 

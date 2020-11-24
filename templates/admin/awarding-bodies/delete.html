@@ -9,9 +9,14 @@
 
 <ul class="tabs">
     <li><a href="/admin/awarding-bodies/{{getId}}">Overview</a></li>
+    <li><a href="/admin/awarding-bodies/{{getId}}/accreditations">Accreditations</a></li>
     <li><a href="/admin/awarding-bodies/{{getId}}/edit">Edit</a></li>
     <li class="active"><a href="/admin/awarding-bodies/{{getId}}/delete">Delete</a></li>
 </ul>
+
+<p>
+    Note that the delete will fail if this awarding body is currently accrediting any courses or other awarding bodies.
+</p>
 
 <form method="post" class="form-vertical">
     <button type="submit">Delete awarding body</button>

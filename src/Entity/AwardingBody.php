@@ -48,9 +48,21 @@ class AwardingBody
      */
     private $courses;
 
+    /**
+     * @ManyToMany(targetEntity="AwardingBody", mappedBy="accreditations")
+     */
+    private $accreditees;
+
+    /**
+     * @ManyToMany(targetEntity="AwardingBody", inversedBy="accreditees")
+     */
+    private $accreditations;
+
     public function __construct()
     {
         $this->courses = new ArrayCollection;
+        $this->accreditees = new ArrayCollection;
+        $this->accreditations = new ArrayCollection;
     }
 
     public function getId(): ?int
@@ -121,5 +133,20 @@ class AwardingBody
     public function getCourses()
     {
         return $this->courses;
+    }
+
+    public function hasAccreditees()
+    {
+        return $this->accreditees->count() > 0;
+    }
+
+    public function getAccreditees()
+    {
+        return $this->accreditees;
+    }
+
+    public function getAccreditations()
+    {
+        return $this->accreditations;
     }
 }

@@ -4,6 +4,7 @@ namespace Kuusamo\Vle\Controller\Admin;
 
 use Kuusamo\Vle\Controller\Controller;
 use Kuusamo\Vle\Entity\AwardingBody;
+use Kuusamo\Vle\Helper\Form\Select;
 use Kuusamo\Vle\Validation\AwardingBodyValidator;
 use Kuusamo\Vle\Validation\ValidationException;
 
@@ -73,6 +74,58 @@ class AwardingBodiesController extends Controller
         ]);
     }
 
+    public function accreditations(Request $request, Response $response, array $args = [])
+    {
+        $body = $this->ci->get('db')->find('Kuusamo\Vle\Entity\AwardingBody', $args['id']);
+
+        if ($body === null) {
+            throw new HttpNotFoundException($request, $response);
+        }
+
+        if ($request->isPost()) {
+            switch ($request->getParam('action')) {
+                case 'add':
+                    $accreditation = $this->ci->get('db')->find('Kuusamo\Vle\Entity\AwardingBody', $request->getParam('id'));
+                    $body->getAccreditations()->add($accreditation);
+                    $this->ci->get('db')->persist($body);
+                    $this->ci->get('db')->flush();
+                    $this->alertSuccess('Accreditation added successfully');
+                    break;
+                case 'remove':
+                    foreach ($body->getAccreditations() as $key => $val) {
+                        if ($val->getId() == $request->getParam('id')) {
+                            unset($body->getAccreditations()[$key]);
+                            break;
+                        }
+                    }
+
+                    $this->ci->get('db')->persist($body);
+                    $this->ci->get('db')->flush();
+                    $this->alertSuccess('Accreditation removed successfully');
+                    break;
+            }
+        }
+
+        $this->ci->get('meta')->setTitle('Awarding Bodies - Admin');
+
+        return $this->renderPage($request, $response, 'admin/awarding-bodies/accreditations.html', [
+            'body' => $body,
+            'bodyList' => $this->awardingBodyDropdown($body)
+        ]);
+    }
+
+    private function awardingBodyDropdown(AwardingBody $bodyx)
+    {
+        $awardingBody = new Select;
+
+        $bodies = $this->ci->get('db')->getRepository('Kuusamo\Vle\Entity\AwardingBody')->findBy([], ['name' => 'ASC']);
+        foreach ($bodies as $body) {
+            $awardingBody->addOption($body->getId(), $body->getName());
+        }
+
+        return $awardingBody();
+    }
+
     public function edit(Request $request, Response $response, array $args = [])
     {
         $body = $this->ci->get('db')->find('Kuusamo\Vle\Entity\AwardingBody', $args['id']);
@@ -119,7 +172,7 @@ class AwardingBodiesController extends Controller
         }
 
         if ($request->isPost()) {
-            $this->ci->get('db')->persist($body);
+            $this->ci->get('db')->remove($body);
             $this->ci->get('db')->flush();
 
             $this->alertSuccess('Awarding body deleted successfully', true);
