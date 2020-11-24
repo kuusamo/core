@@ -28,6 +28,16 @@ class Course
     private $slug;
 
     /**
+     * @Column(type="string", length=127, nullable=true)
+     */
+    private $qualification;
+
+    /**
+     * @ManyToOne(targetEntity="AwardingBody")
+     */
+    private $awardingBody;
+
+    /**
      * @ManyToOne(targetEntity="Image")
      */
     private $image;
@@ -77,6 +87,26 @@ class Course
     public function setSlug(string $value)
     {
         $this->slug = $value;
+    }
+
+    public function getQualification(): ?string
+    {
+        return $this->qualification;
+    }
+
+    public function setQualification(?string $value)
+    {
+        $this->qualification = $value == '' ? null : $value;
+    }
+
+    public function getAwardingBody(): ?AwardingBody
+    {
+        return $this->awardingBody;
+    }
+
+    public function setAwardingBody(?AwardingBody $value)
+    {
+        $this->awardingBody = $value;
     }
 
     public function getImage(): ?Image

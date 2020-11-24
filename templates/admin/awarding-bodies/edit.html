@@ -1,0 +1,28 @@
+<ol class="breadcrumbs">
+    <li><a href="/">Dashboard</a></li>
+    <li><a href="/admin">Admin</a></li>
+    <li><a href="/admin/awarding-bodies">Awarding bodies</a></li>
+</ol>
+
+{{#body}}
+<h1>{{getName}}</h1>
+
+<form method="post" class="form-vertical">
+    <label for="name">Name</label>
+    <input type="text" name="name" id="name" value="{{getName}}">
+
+    <label for="logo">Logo <small>Image ID</small></label>
+    <input type="text" name="logo" id="logo" value="{{#getLogo}}{{getId}}{{/getLogo}}">
+
+    <label for="authoriserName">Authoriser name</label>
+    <input type="text" name="authoriserName" id="authoriserName" value="{{getAuthoriserName}}">
+
+    <label for="authoriserSignature">Authoriser signature <small>Leave blank to use name</small></label>
+    <input type="text" name="authoriserSignature" id="authoriserSignature" value="{{getAuthoriserSignature}}">
+
+    <label for="authoriserRole">Authoriser role</label>
+    <input type="text" name="authoriserRole" id="authoriserRole" value="{{getAuthoriserRole}}">
+
+  <button type="submit"">Update</button>
+</form>
+{{/body}}

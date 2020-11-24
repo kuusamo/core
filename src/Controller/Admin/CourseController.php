@@ -3,6 +3,7 @@
 namespace Kuusamo\Vle\Controller\Admin;
 
 use Kuusamo\Vle\Entity\Course;
+use Kuusamo\Vle\Helper\Form\Select;
 use Kuusamo\Vle\Validation\CourseValidator;
 use Kuusamo\Vle\Validation\ValidationException;
 
@@ -51,10 +52,13 @@ class CourseController extends AdminController
         }
 
         if ($request->isPost()) {
+            $awardingBody = $request->getParam('awardingBody') ? $this->ci->get('db')->find('Kuusamo\Vle\Entity\AwardingBody', $request->getParam('awardingBody')) : null;
             $image = $request->getParam('image') ? $this->ci->get('db')->find('Kuusamo\Vle\Entity\Image', $request->getParam('image')) : null;
 
             $course->setName($request->getParam('name'));
             $course->setSlug($request->getParam('slug'));
+            $course->setQualification($request->getParam('qualification'));
+            $course->setAwardingBody($awardingBody);
             $course->setImage($image);
 
             try {
@@ -73,8 +77,26 @@ class CourseController extends AdminController
         $this->ci->get('meta')->setTitle(sprintf('%s - Admin', $course->getName()));
 
         return $this->renderPage($request, $response, 'admin/course/edit.html', [
-            'course' => $course
+            'course' => $course,
+            'awardingBody' => $this->awardingBodyDropdown($course)
         ]);
+    }
+
+    private function awardingBodyDropdown(Course $course)
+    {
+        $awardingBody = new Select;
+        $awardingBody->addOption('');
+
+        if ($course->getAwardingBody()) {
+            $awardingBody->setDefaultOption($course->getAwardingBody()->getId());
+        }
+
+        $bodies = $this->ci->get('db')->getRepository('Kuusamo\Vle\Entity\AwardingBody')->findBy([], ['name' => 'ASC']);
+        foreach ($bodies as $body) {
+            $awardingBody->addOption($body->getId(), $body->getName());
+        }
+
+        return $awardingBody();
     }
 
     public function delete(Request $request, Response $response, array $args = [])

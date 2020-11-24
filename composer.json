@@ -29,7 +29,8 @@
         "slim/http": "1.*",
         "php-di/php-di": "^6.1",
         "doctrine/orm": "2.*",
-        "erusev/parsedown": "1.*"
+        "erusev/parsedown": "1.*",
+        "dompdf/dompdf": "*"
     },
     "require-dev": {
         "phpunit/phpunit": "7.*",

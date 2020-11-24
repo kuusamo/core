@@ -22,9 +22,17 @@
     <label for="slug">URI</label>
     <input type="text" name="slug" id="slug" maxlength="128" value="{{getSlug}}">
 
+    <label for="qualification">Qualification <small>Used for certificates, leave blank to use the course name</small></label>
+    <input type="text" name="qualification" id="qualification" maxlength="128" value="{{getQualification}}">
+
+    <label for="awardingBody">Awarding body</label>
+    <select name="awardingBody" id="awardingBody">
+    {{#awardingBody}}<option value="{{value}}" {{#selected}}selected{{/selected}}>{{label}}</option>{{/awardingBody}}
+    </select>
+
     <label for="image">Image ID</label>
     <input type="text" name="image" id="image" value="{{#getImage}}{{getId}}{{/getImage}}">
 
-    <button>Edit</button>
+    <button>Update</button>
 </form>
 {{/course}}

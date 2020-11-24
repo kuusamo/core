@@ -257,6 +257,9 @@ form.form-vertical input[type=text], form.form-vertical input[type=email], form.
   margin-bottom: 12px;
   width: 100%;
 }
+form.form-vertical small {
+  color: #666;
+}
 form.form-vertical textarea {
   height: 144px;
 }

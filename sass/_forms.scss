@@ -65,6 +65,10 @@ form.form-vertical {
         width: 100%;
     }
 
+    small {
+        color: #666;
+    }
+
     textarea {
         height: ($baseline * 6);
     }

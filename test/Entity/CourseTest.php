@@ -9,6 +9,7 @@ class CourseTest extends TestCase
 {
     public function testAccessors()
     {
+        $awardingBodyMock = $this->createMock('Kuusamo\Vle\Entity\AwardingBody');
         $imageMock = $this->createMock('Kuusamo\Vle\Entity\Image');
 
         $course = new Course;
@@ -16,14 +17,21 @@ class CourseTest extends TestCase
         $course->setId(10);
         $course->setName('Chemistry 101');
         $course->setSlug('chemistry-101');
+        $course->setQualification('Chemistry Diploma');
+        $course->setAwardingBody($awardingBodyMock);
         $course->setImage($imageMock);
 
         $this->assertSame(10, $course->getId());
         $this->assertSame('Chemistry 101', $course->getName());
         $this->assertSame('chemistry-101', $course->getSlug());
+        $this->assertSame('Chemistry Diploma', $course->getQualification());
+        $this->assertSame($awardingBodyMock, $course->getAwardingBody());
         $this->assertSame($imageMock, $course->getImage());
-
         $this->assertSame('/course/chemistry-101', $course->uri());
+
+        $course->setQualification('');
+
+        $this->assertNull($course->getQualification());
     }
 
     public function testModules()

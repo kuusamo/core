@@ -21,6 +21,7 @@ $app->group('', function($app) use ($container) {
     $app->any('/account', '\Kuusamo\Vle\Controller\AccountController:account');
 
     $app->get('/course/{course:[a-z,0-9,-]+}', 'Kuusamo\Vle\Controller\Course\CourseDashboardController:dashboard');
+    $app->get('/course/{course:[a-z,0-9,-]+}/certificate', 'Kuusamo\Vle\Controller\Course\CertificateController:pdf');
     $app->get('/course/{course:[a-z,0-9,-]+}/lessons/{lesson:[0-9]+}', 'Kuusamo\Vle\Controller\Course\LessonController:lesson');
     $app->post('/course/{course:[a-z,0-9,-]+}/lessons/{lesson:[0-9]+}/status', 'Kuusamo\Vle\Controller\Course\LessonAjaxController:status');
     $app->get('/course/{course:[a-z,0-9,-]+}/modules/{module:[0-9]+}', 'Kuusamo\Vle\Controller\Course\ModuleController:module');
@@ -45,6 +46,10 @@ $app->group('', function($app) use ($container) {
     $app->put('/courses/lessons/{id:[0-9]+}', '\Kuusamo\Vle\Controller\Admin\LessonsAjaxController:update');
     $app->put('/courses/lessons/{id:[0-9]+}/blocks', '\Kuusamo\Vle\Controller\Admin\LessonsAjaxController:updateBlocks');
 
+        $app->get('/awarding-bodies', '\Kuusamo\Vle\Controller\Admin\AwardingBodiesController:index');
+        $app->any('/awarding-bodies/create', '\Kuusamo\Vle\Controller\Admin\AwardingBodiesController:create');
+        $app->any('/awarding-bodies/{id:[0-9]+}', '\Kuusamo\Vle\Controller\Admin\AwardingBodiesController:edit');
+
         $app->any('/files', '\Kuusamo\Vle\Controller\Admin\FilesController:index');
         $app->any('/files/{id:[0-9]+}', '\Kuusamo\Vle\Controller\Admin\FilesController:view');
 
@@ -52,7 +57,7 @@ $app->group('', function($app) use ($container) {
         $app->any('/images/{id:[0-9]+}', '\Kuusamo\Vle\Controller\Admin\ImagesController:view');
         $app->any('/images/upload', '\Kuusamo\Vle\Controller\Admin\ImagesController:upload');
 
-        $app->any('/users', '\Kuusamo\Vle\Controller\Admin\UsersController:index');
+        $app->get('/users', '\Kuusamo\Vle\Controller\Admin\UsersController:index');
         $app->any('/users/create', '\Kuusamo\Vle\Controller\Admin\UsersController:create');
         $app->any('/users/{id:[0-9]+}', '\Kuusamo\Vle\Controller\Admin\UsersController:view');
         $app->any('/users/{id:[0-9]+}/account', '\Kuusamo\Vle\Controller\Admin\UsersController:account');

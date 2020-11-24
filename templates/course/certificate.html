@@ -1,0 +1,61 @@
+<html>
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=Cedarville+Cursive|Muli:400,700" rel="stylesheet">
+        <style>
+        .accreditations > table { margin: 0 auto; }
+        .accreditations td { padding: 1em; }
+        .accreditations img { max-width: 150px; max-height: 100px; }
+        body { font-family: "Muli", Helvetica; }
+        .border { border: lightsteelblue 20px solid; position: absolute; top: 10px; bottom: 10px; right: 10px; left: 10px; }
+        h1 { font-size: 2em; }
+        h2 { font-size: 2em; border-bottom: #ccc 1px solid; }
+        .hint { color: #333; font-size: 80%; text-transform: uppercase; }
+        .logo { margin-bottom: 1em; }
+        .logo img { max-width: 200px; max-height: 75px; }
+        .keyline { border-top: #ccc 1px solid; }
+        main { padding: 40px 120px; text-align: center; }
+        .signature { font-family: "Cedarville Cursive"; font-size: 2em; max-height: 100px; overflow: hidden; }
+    </style>
+    </head>
+    <body>
+        <div class="border">
+        <main>
+            {{#awardingBody}}{{#getLogo}}<div class="logo"><img src="{{webUrl}}/content/images/originals/{{getFilename}}"></div>{{/getLogo}}{{/awardingBody}}
+            <div>{{#awardingBody}}{{getName}}{{/awardingBody}}{{^awardingBody}}This certificate{{/awardingBody}} hereby confirms that</div>
+            <h2>{{studentName}}</h2>
+            {{#qualification}}<div>has completed the prescribed course materials and having successfully passed all examinations, has been awarded the qualification of</div>
+            <h1>{{.}}</h1>{{/qualification}}
+            {{^qualification}}<div>has successfully completed the course</div>
+            <h1>{{courseName}}</h1>{{/qualification}}
+            <div>
+                <div>
+                    <div>{{date}}</div>
+                    <div class="hint">Certificate date</div>
+                </div>
+            </div>
+            {{#awardingBody}}
+            <div class="accreditations">
+                <table>
+                    <tr valign="bottom">
+                        <td>
+                            <div>
+                                <img src="{{webUrl}}/images/seal.png" alt="Seal">
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                <div class="signature">{{getAuthoriserSignature}}{{^getAuthoriserSignature}}{{getAuthoriserName}}{{/getAuthoriserSignature}}</div>
+                                <div class="keyline">
+                                    <strong>{{getAuthoriserName}}</strong><br>
+                                    {{getAuthoriserRole}}
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            {{/awardingBody}}
+        </main>
+        </div>
+    </body>
+</html>
