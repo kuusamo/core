@@ -36,7 +36,7 @@ class ErrorHandler
      * @param Callable $handler Error handler.
      * @return void
      */
-    public static function register(Callable $handler)
+    public static function register(callable $handler)
     {
         self::$customHandlers[] = $handler;
     }

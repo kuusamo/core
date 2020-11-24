@@ -21,7 +21,7 @@ class FileTools
                 if (is_dir($src . '/' . $file)) {
                     recursiveCopy($src . '/' . $file, $dst . '/' . $file);
                 } else {
-                    copy($src . '/' . $file, $dst . '/' . $file); 
+                    copy($src . '/' . $file, $dst . '/' . $file);
                 }
             }
         }
@@ -44,7 +44,7 @@ class FileTools
                 if (is_dir($src . '/' . $file)) {
                     self::recursiveDelete($src . '/' . $file);
                 } else {
-                    unlink($src . '/' . $file); 
+                    unlink($src . '/' . $file);
                 }
             }
         }

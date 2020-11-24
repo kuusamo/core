@@ -9,17 +9,16 @@ To do list
 
 * Better select dropdown icon - https://css-tricks.com/styling-a-select-like-its-2019/
 * Database install / migrations
-* Assessments
-* Certificate generation
-* Buttons / inline forms are still not perfect
+* Certificate accreditations
+* Allow students to access their certificate
 
 
 Roadmap
 -------
 
 * Website
-
-
+* Assessments
+* Travis CI
 * Storage folders that don't exist on file system
 * Support duplicate file names
 * Themes
