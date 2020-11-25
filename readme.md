@@ -18,11 +18,11 @@ To do list
 Roadmap
 -------
 
-* Relationship cascades
 * Assessments
 * Favicon
 * Themes
 
+* Relationship cascades
 * Read The Docs
 * Storage folders that don't exist on file system
 * Support duplicate file names

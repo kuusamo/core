@@ -1,44 +1,63 @@
-{{#lesson}}
-<ol class="breadcrumbs">
-    <li><a href="/">Dashboard</a></li>
-    <li>{{#getCourse}}<a href="{{uri}}">{{getName}}</a>{{/getCourse}}</li>
-    <li>{{#getModule}}<a href="{{uri}}">{{getName}}</a>{{/getModule}}</li>
-    <li><a href="{{getUri}}">Lesson</a></li>
-</ol>
+<div class="lesson-view">
+    <nav>
+        <ol>
+            <li>{{#lesson}}{{#getCourse}}<h2><a href="{{uri}}">{{getName}}</a></h2>{{/getCourse}}{{/lesson}}</li>
+        {{#navigation}}
+            <li>
+                <h3>{{name}}</h3>
+                <ol>
+                {{#lessons}}
+                    <li class="{{#active}}active{{/active}}"><a href="{{uri}}">{{name}}</a></li>
+                {{/lessons}}
+                </ol>
+            </li>
+        {{/navigation}}
+        </ol>
+    </nav>
+    <main>
+        {{#lesson}}
+        <ol class="breadcrumbs">
+            <li><a href="/">Dashboard</a></li>
+            <li>{{#getCourse}}<a href="{{uri}}">{{getName}}</a>{{/getCourse}}</li>
+            <li>{{#getModule}}<a href="{{uri}}">{{getName}}</a>{{/getModule}}</li>
+            <li><a href="{{getUri}}">Lesson</a></li>
+        </ol>
 
-<article>
-    <h1>{{getName}}</h1>
-{{/lesson}}
+        <article>
+            <h1>{{getName}}</h1>
+        {{/lesson}}
 
-    {{#blocks}}
-    <div>
-        {{{html}}}
-    </div>
-    {{/blocks}}
-</article>
+            {{#blocks}}
+            <div>
+                {{{html}}}
+            </div>
+            {{/blocks}}
+        </article>
 
-{{#personalisation}}
-{{#isMarked}}
-    <div class="course-completion-box">
-        {{#hasCompleted}}☑️&nbsp;{{/hasCompleted}}
-        This lesson is marked by your tutor
-    </div>
-{{/isMarked}}
-{{^isMarked}}
-    <form method="post" class="course-completion-box" id="completion-box" data-url="{{#lesson}}{{uri}}{{/lesson}}/status">
-        <input type="checkbox" id="completed" {{#hasCompleted}}checked{{/hasCompleted}}>
-        <label for="completed">Mark this lesson as completed</label>
-        <div class="vle-loading-icon" id="loading-icon"><div></div><div></div><div></div><div></div></div>
+        {{#personalisation}}
+        {{#isMarked}}
+            <div class="course-completion-box">
+                {{#hasCompleted}}☑️&nbsp;{{/hasCompleted}}
+                This lesson is marked by your tutor
+            </div>
+        {{/isMarked}}
+        {{^isMarked}}
+            <form method="post" class="course-completion-box" id="completion-box" data-url="{{#lesson}}{{uri}}{{/lesson}}/status">
+                <input type="checkbox" id="completed" {{#hasCompleted}}checked{{/hasCompleted}}>
+                <label for="completed">Mark this lesson as completed</label>
+                <div class="vle-loading-icon" id="loading-icon"><div></div><div></div><div></div><div></div></div>
 
-    </form>
-{{/isMarked}}
-{{/personalisation}}
+            </form>
+        {{/isMarked}}
+        {{/personalisation}}
 
-<div class="course-navigation" role="navigation">
-{{#navigation}}
-    <div>{{#previousLesson}}<a href="{{uri}}">Previous lesson</a>{{/previousLesson}}</div>
-    <div>{{#nextLesson}}<a href="{{uri}}">Next lesson</a>{{/nextLesson}}</div>
-{{/navigation}}
+        <div class="course-navigation" role="navigation">
+        {{#navigation}}
+            <div>{{#previousLesson}}<a href="{{uri}}">Previous lesson</a>{{/previousLesson}}</div>
+            <div>{{#nextLesson}}<a href="{{uri}}">Next lesson</a>{{/nextLesson}}</div>
+        {{/navigation}}
+        </div>
+
+        <script src="/js/lesson.js"></script>
+    </main>
 </div>
-
-<script src="/js/lesson.js"></script>

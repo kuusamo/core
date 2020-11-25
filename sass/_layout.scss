@@ -1,12 +1,13 @@
 @use '_core' as *;
 
 body {
-    margin: $baseline;
+    margin: 0;
 }
 
 footer {
-    border: #999 1px solid;
-    padding: $baseline;
+    background-color: #eee;
+    padding: $baseline * 2;
+    text-align: center;
 
     a:link, a:visited, a:hover, a:active {
         color: #000;
@@ -19,12 +20,10 @@ footer {
 }
 
 header {
-    border: #999 1px solid;
-    font-size: 200%;
-    padding: $baseline;
+    background-color: #333;
 
     a:link, a:visited, a:hover, a:active {
-        color: #000;
+        color: #fff;
         text-decoration: none;
     }
 
@@ -42,5 +41,108 @@ main {
         h1 {
             font-size: 200%;
         }
+    }
+}
+
+.course-view {
+    header {
+        box-sizing: border-box;
+        color: #fff;
+        display: flex;
+        font-size: 160%;
+        height: 75px;
+        justify-content: space-between;
+        line-height: 75px;
+        overflow: hidden;
+        padding: 0 $baseline;
+
+        button {
+            all: unset;
+        }
+    }
+
+    main {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        top: 75px;
+        right: 0;
+        overflow: auto;
+
+        @media only screen and (min-width: 700px) {
+            left: 300px;
+        }
+    }
+
+    nav {
+        background-color: #eee;
+        bottom: 0;
+        display: none;
+        overflow: auto;
+        position: fixed;
+        top: 75px;
+        width: 100%;
+        z-index: 10;
+
+        &.active {
+            display: block;
+        }
+
+        @media only screen and (min-width: 700px) {
+            display: block;
+            width: 300px;
+        }
+
+        a {
+            display: block;
+            padding: $baseline / 4 $baseline;
+        }
+
+        a:link, a:visited, a:hover, a:active {
+            color: #333;
+            text-decoration: none;
+        }
+
+        a:hover, a:active {
+            background-color: darken(#eee, 10%);
+        }
+
+        h2 {
+            margin: 0;
+        }
+
+        h3 {
+            border-top: #999 1px solid;
+            margin: 0;
+            padding: $baseline / 4 $baseline;
+        }
+
+        ol {
+            margin: 0;
+            padding: 0;
+
+            li {
+                list-style-type: none;
+            }
+
+            li.active {
+                background-color: lighten(#eee, 10%);
+            }
+        }
+    }
+}
+
+.site-view {
+    header {
+        font-size: 200%;
+        text-align: center;
+        padding: $baseline * 1;
+        padding-top: $baseline * 6;
+    }
+
+    main {
+        margin: 0 auto;
+        max-width: 700px;
+        padding: $baseline;
     }
 }

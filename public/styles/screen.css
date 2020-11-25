@@ -282,12 +282,13 @@ form.form-vertical label {
 }
 
 body {
-  margin: 24px;
+  margin: 0;
 }
 
 footer {
-  border: #999 1px solid;
-  padding: 24px;
+  background-color: #eee;
+  padding: 48px;
+  text-align: center;
 }
 footer a:link, footer a:visited, footer a:hover, footer a:active {
   color: #000;
@@ -298,12 +299,10 @@ footer hr {
 }
 
 header {
-  border: #999 1px solid;
-  font-size: 200%;
-  padding: 24px;
+  background-color: #333;
 }
 header a:link, header a:visited, header a:hover, header a:active {
-  color: #000;
+  color: #fff;
   text-decoration: none;
 }
 header hr {
@@ -318,6 +317,94 @@ main article {
 }
 main article h1 {
   font-size: 200%;
+}
+
+.course-view header {
+  box-sizing: border-box;
+  color: #fff;
+  display: flex;
+  font-size: 160%;
+  height: 75px;
+  justify-content: space-between;
+  line-height: 75px;
+  overflow: hidden;
+  padding: 0 24px;
+}
+.course-view header button {
+  all: unset;
+}
+.course-view main {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  top: 75px;
+  right: 0;
+  overflow: auto;
+}
+@media only screen and (min-width: 700px) {
+  .course-view main {
+    left: 300px;
+  }
+}
+.course-view nav {
+  background-color: #eee;
+  bottom: 0;
+  display: none;
+  overflow: auto;
+  position: fixed;
+  top: 75px;
+  width: 100%;
+  z-index: 10;
+}
+.course-view nav.active {
+  display: block;
+}
+@media only screen and (min-width: 700px) {
+  .course-view nav {
+    display: block;
+    width: 300px;
+  }
+}
+.course-view nav a {
+  display: block;
+  padding: 6px 24px;
+}
+.course-view nav a:link, .course-view nav a:visited, .course-view nav a:hover, .course-view nav a:active {
+  color: #333;
+  text-decoration: none;
+}
+.course-view nav a:hover, .course-view nav a:active {
+  background-color: #d5d5d5;
+}
+.course-view nav h2 {
+  margin: 0;
+}
+.course-view nav h3 {
+  border-top: #999 1px solid;
+  margin: 0;
+  padding: 6px 24px;
+}
+.course-view nav ol {
+  margin: 0;
+  padding: 0;
+}
+.course-view nav ol li {
+  list-style-type: none;
+}
+.course-view nav ol li.active {
+  background-color: white;
+}
+
+.site-view header {
+  font-size: 200%;
+  text-align: center;
+  padding: 24px;
+  padding-top: 144px;
+}
+.site-view main {
+  margin: 0 auto;
+  max-width: 700px;
+  padding: 24px;
 }
 
 .course-list {
