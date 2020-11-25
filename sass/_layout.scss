@@ -102,7 +102,7 @@ main {
             align-items: center;
             display: flex;
             justify-content: space-between;
-            padding: $baseline / 4 $baseline;
+            padding: $baseline / 2 $baseline;
         }
 
         a:link, a:visited, a:hover, a:active {
@@ -121,7 +121,7 @@ main {
         h3 {
             border-top: #999 1px solid;
             margin: 0;
-            padding: $baseline / 4 $baseline;
+            padding: $baseline / 2 $baseline;
         }
 
         ol {

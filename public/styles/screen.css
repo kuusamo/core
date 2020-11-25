@@ -390,7 +390,7 @@ main {
   align-items: center;
   display: flex;
   justify-content: space-between;
-  padding: 6px 24px;
+  padding: 12px 24px;
 }
 .course-view nav a:link, .course-view nav a:visited, .course-view nav a:hover, .course-view nav a:active {
   color: #333;
@@ -405,7 +405,7 @@ main {
 .course-view nav h3 {
   border-top: #999 1px solid;
   margin: 0;
-  padding: 6px 24px;
+  padding: 12px 24px;
 }
 .course-view nav ol {
   margin: 0;

@@ -19,8 +19,6 @@ To do list
 * Add your own logo
 * Add your colour scheme
 * Add your own favicon
-
-* In lesson CSS
 * Better mark as completed
 
 
