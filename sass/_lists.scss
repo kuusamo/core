@@ -63,6 +63,8 @@
         padding: $baseline / 2;
 
         li {
+            display: flex;
+            justify-content: space-between;
             list-style-type: none;
             padding: $baseline / 2;
         }

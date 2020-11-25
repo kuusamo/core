@@ -33,7 +33,7 @@
         </div>
         <ol>
         {{#lessons}}
-            <li><a href="{{uri}}">{{name}}</a></li>
+            <li><a href="{{uri}}">{{name}}</a> {{#completed}}<i class="fas fa-check-circle"></i>{{/completed}}</li>
         {{/lessons}}
         </ol>
     </li>

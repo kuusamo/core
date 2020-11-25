@@ -83,6 +83,24 @@ abstract class CourseController extends Controller
      */
     protected function courseNavigation(Course $course, Lesson $currentLesson = null): array
     {
+        $dql = "SELECT ul FROM Kuusamo\Vle\Entity\UserLesson ul
+                JOIN ul.lesson l
+                JOIN l.course c
+                WHERE c = :course
+                AND ul.user = :user";
+        $query = $this->ci->get('db')->createQuery($dql);
+        $query->setParameter('course', $course->getId());
+        $query->setParameter('user', $this->ci->get('auth')->getUser());
+        $result = $query->getResult();
+
+        $completedLessons = [];
+
+        foreach ($result as $userLesson) {
+            if ($userLesson->hasCompleted()) {
+                $completedLessons[] = $userLesson->getLesson()->getId();
+            }
+        }
+
         $modulesView = [];
         $moduleNumber = 1;
 
@@ -95,7 +113,8 @@ abstract class CourseController extends Controller
                         $lessonsView[] = [
                             'name' => $lesson->getName(),
                             'uri' => $lesson->uri(),
-                            'active' => $currentLesson && $lesson->getId() === $currentLesson->getId()
+                            'active' => $currentLesson && $lesson->getId() === $currentLesson->getId(),
+                            'completed' => in_array($lesson->getId(), $completedLessons)
                         ];
                     }
                 }

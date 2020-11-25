@@ -387,7 +387,9 @@ main {
   }
 }
 .course-view nav a {
-  display: block;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
   padding: 6px 24px;
 }
 .course-view nav a:link, .course-view nav a:visited, .course-view nav a:hover, .course-view nav a:active {
@@ -480,6 +482,8 @@ main {
   padding: 12px;
 }
 .module-list ol li {
+  display: flex;
+  justify-content: space-between;
   list-style-type: none;
   padding: 12px;
 }

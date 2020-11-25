@@ -99,7 +99,9 @@ main {
         }
 
         a {
-            display: block;
+            align-items: center;
+            display: flex;
+            justify-content: space-between;
             padding: $baseline / 4 $baseline;
         }
 
