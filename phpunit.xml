@@ -6,5 +6,6 @@
     </testsuites>
     <php>
         <env name="SITE_NAME" value="Kuusamo" />
+        <env name="FAVICON" value="/test/favicon.ico" />
     </php>
 </phpunit>

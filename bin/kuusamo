@@ -26,7 +26,6 @@ switch ($argv[1]) {
         FileTools::recursiveCopy(__DIR__ . '/../public/components', './public/components');
         FileTools::recursiveCopy(__DIR__ . '/../public/images', './public/images');
         copy(__DIR__ . './../public/.htaccess', './public/.htaccess');
-        copy(__DIR__ . './../public/favicon.png', './public/favicon.png');
         copy(__DIR__ . './../public/robots.txt', './public/robots.txt');
 
         echo "Operation complete!\n";

@@ -3,18 +3,18 @@
 <head>
     {{#meta}}
     <title>{{getTitle}}</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="{{getDescription}}">
     <meta name="keywords" content="{{getKeywords}}">
     {{#getOgTitle}}<meta property="og:title" content="{{.}}">{{/getOgTitle}}
     {{#getOgImage}}<meta property="og:image" content="{{.}}">{{/getOgImage}}
+    {{#getFavicon}}<link rel="shortcut icon" href="{{.}}">{{/getFavicon}}
     {{/meta}}
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="/styles/screen.css" rel="stylesheet">
     <link href="/components/fontawesome/css/all.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="shortcut icon" href="/favicon.png">
 </style>
 </head>
 <body>

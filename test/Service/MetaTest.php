@@ -61,4 +61,10 @@ class MetaTest extends TestCase
         $meta->setOgImage('og-image');
         $this->assertSame('og-image', $meta->getOgImage());
     }
+
+    public function testFavicon()
+    {
+        $meta = new Meta;
+        $this->assertSame('/test/favicon.ico', $meta->getFavicon());
+    }
 }

@@ -18,7 +18,6 @@ To do list
 
 * Add your own logo
 * Add your colour scheme
-* Add your own favicon
 * Better mark as completed
 
 

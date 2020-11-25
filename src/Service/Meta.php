@@ -190,4 +190,14 @@ class Meta
     {
         $this->ogImage = $value;
     }
+
+    /**
+     * Get the favicon location, if specified.
+     *
+     * @return string|null
+     */
+    public function getFavicon()
+    {
+        return Environment::get('FAVICON');
+    }
 }
