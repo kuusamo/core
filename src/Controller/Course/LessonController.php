@@ -51,13 +51,15 @@ class LessonController extends CourseController
             ]);
         }
 
+        $navigation = $this->courseNavigation($course, $lesson);
+
         return $this->renderPage($request, $response, 'course/lesson.html', [
             'lesson' => $lesson,
             'blocks' => $this->renderBlocks($lesson->getBlocks()),
-            'navigation' => $this->previousAndNextLesson($lesson),
+            'forwardBack' => $this->previousAndNextLesson($navigation),
             'personalisation' => $this->getLessonLink($lesson, $user),
             'isMarked' => $lesson->getMarking() !== Lesson::MARKING_AUTOMATIC,
-            'navigation' => $this->courseNavigation($course, $lesson),
+            'navigation' => $navigation,
             'courseView' => true
         ]);
     }
@@ -85,34 +87,34 @@ class LessonController extends CourseController
     /**
      * Previous and next lesson.
      *
-     * @param Lesson $currentLesson Current lesson.
+     * @param array $navigation Prepared navigation list.
      * @return array
      */
-    private function previousAndNextLesson(Lesson $currentLesson)
+    private function previousAndNextLesson(array $navigation): array
     {
         $previousLesson = null;
         $nextLesson = null;
-        $index = null;
+        $lessonList = [];
+        $currentIndex = null;
 
-        $lessons = $currentLesson->getModule()->getLessons()->toArray();
-
-        $lessons = array_values(array_filter($lessons, function ($lesson) {
-            return $lesson->getStatus() == Lesson::STATUS_ACTIVE;
-        }));
-
-        foreach ($lessons as $key => $lesson) {
-            if ($lesson->getId() == $currentLesson->getId()) {
-                $index = $key;
-                break;
+        foreach ($navigation as $module) {
+            foreach ($module['lessons'] as $lesson) {
+                $lessonList[] = $lesson;
             }
         }
 
-        if (isset($lessons[($index - 1)])) {
-            $previousLesson = $lessons[($index - 1)];
+        foreach ($lessonList as $index => $lesson) {
+            if ($lesson['active'] === true) {
+                $currentIndex = $index;
+            }
         }
 
-        if (isset($lessons[($index + 1)])) {
-            $nextLesson = $lessons[($index + 1)];
+        if ($currentIndex > 0) {
+            $previousLesson = $lessonList[($currentIndex - 1)];
+        }
+
+        if ($currentIndex < (count($lessonList) - 1)) {
+            $nextLesson = $lessonList[($currentIndex + 1)];
         }
 
         return [

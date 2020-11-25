@@ -16,13 +16,22 @@ To do list
 * Audio is loading the entire file through PHP and killing everything
 
 
+* Add your own logo
+* Add your colour scheme
+* Add your own favicon
+* Login screen styling
+* Quick jump to next lesson on course dashboard
+* Show progress on course dashboard
+
+* In lesson CSS
+* Better mark as completed
+
+
 Roadmap
 -------
 
+* Sticky lesson menu
 * Assessments
-* Favicon
-* Themes
-
 * Drip content
 * Relationship cascades
 * Read The Docs

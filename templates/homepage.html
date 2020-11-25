@@ -3,9 +3,9 @@
 
 <p>Logged in as {{getFullname}}. <a href="/account">Manage account</a>. <a href="/logout">Logout</a>.{{#isAdmin}} <a href="/admin">Admin</a>{{/isAdmin}}.</p>
 
-{{#hasCourses}}
 <h2>My courses</h2>
 
+{{#hasCourses}}
 <ul class="course-list">
 {{#getCourses}}
     <li>
@@ -17,4 +17,6 @@
 {{/getCourses}}
 </ul>
 {{/hasCourses}}
+
+{{^hasCourses}}<p>You are not currently enrolled on any courses.</p>{{/hasCourses}}
 {{/user}}
