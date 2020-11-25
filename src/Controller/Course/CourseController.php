@@ -6,6 +6,7 @@ use Kuusamo\Vle\Controller\Controller;
 use Kuusamo\Vle\Entity\User;
 use Kuusamo\Vle\Entity\Course;
 use Kuusamo\Vle\Entity\Lesson;
+use Kuusamo\Vle\Entity\Module;
 use Kuusamo\Vle\Entity\UserLesson;
 
 use Exception;
@@ -71,5 +72,45 @@ abstract class CourseController extends Controller
         }
 
         return $link;
+    }
+
+    /**
+     * Produce an array of lessons for use in the navigation.
+     *
+     * @param Course $course        Course.
+     * @param Lesson $currentLesson Lesson the user is currently browsing.
+     * @return array
+     */
+    protected function courseNavigation(Course $course, Lesson $currentLesson = null): array
+    {
+        $modulesView = [];
+        $moduleNumber = 1;
+
+        foreach ($course->getModules() as $module) {
+            if ($module->getStatus() == Module::STATUS_ACTIVE) {
+                $lessonsView = [];
+
+                foreach ($module->getLessons() as $lesson) {
+                    if ($lesson->getStatus() == Lesson::STATUS_ACTIVE) {
+                        $lessonsView[] = [
+                            'name' => $lesson->getName(),
+                            'uri' => $lesson->uri(),
+                            'active' => $currentLesson && $lesson->getId() === $currentLesson->getId()
+                        ];
+                    }
+                }
+
+                $modulesView[] = [
+                    'number' => $moduleNumber,
+                    'name' => $module->getName(),
+                    'description' => $module->getDescription(),
+                    'lessons' => $lessonsView
+                ];
+
+                $moduleNumber++;
+            }
+        }
+
+        return $modulesView;
     }
 }

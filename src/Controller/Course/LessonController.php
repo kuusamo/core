@@ -4,7 +4,6 @@ namespace Kuusamo\Vle\Controller\Course;
 
 use Kuusamo\Vle\Entity\Course;
 use Kuusamo\Vle\Entity\Lesson;
-use Kuusamo\Vle\Entity\Module;
 use Kuusamo\Vle\Helper\Block\Render\BlockRendererFactory;
 
 use Slim\Exception\HttpNotFoundException;
@@ -61,42 +60,6 @@ class LessonController extends CourseController
             'navigation' => $this->courseNavigation($course, $lesson),
             'courseView' => true
         ]);
-    }
-
-    /**
-     * Produce an array of lessons for use in the navigation.
-     *
-     * @param Course $course        Course.
-     * @param Lesson $currentLesson Lesson the user is currently browsing.
-     * @return array
-     */
-    private function courseNavigation(Course $course, Lesson $currentLesson): array
-    {
-        $modulesView = [];
-
-        foreach ($course->getModules() as $module) {
-            if ($module->getStatus() == Module::STATUS_ACTIVE) {
-                $lessonsView = [];
-
-                foreach ($module->getLessons() as $lesson) {
-                    if ($lesson->getStatus() == Lesson::STATUS_ACTIVE) {
-                        $lessonsView[] = [
-                            'name' => $lesson->getName(),
-                            'uri' => $lesson->uri(),
-                            'active' => $lesson->getId() === $currentLesson->getId()
-                        ];
-                    }
-                }
-
-                $modulesView[] = [
-                    'uri' => $module->uri(),
-                    'name' => $module->getName(),
-                    'lessons' => $lessonsView
-                ];
-            }
-        }
-
-        return $modulesView;
     }
 
     /**

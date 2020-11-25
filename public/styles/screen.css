@@ -421,7 +421,12 @@ main article h1 {
   background: linear-gradient(135deg, #e1e1e1 25%, transparent 25%) -50px 0, linear-gradient(225deg, #e1e1e1 25%, transparent 25%) -50px 0, linear-gradient(315deg, #e1e1e1 25%, transparent 25%), linear-gradient(45deg, #e1e1e1 25%, transparent 25%);
   background-size: 100px 100px;
   background-color: #cfd8dc;
+  height: 200px;
+  overflow: hidden;
+}
+.course-list .course-list-image img {
   min-height: 200px;
+  width: 100%;
 }
 .course-list a:link, .course-list a:visited {
   color: #000;
@@ -438,17 +443,28 @@ main article h1 {
 }
 
 .module-list {
-  display: grid;
-  grid-gap: 24px;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   padding: 0;
 }
-.module-list li {
+.module-list div {
+  background-color: #eee;
+  padding: 24px;
+}
+.module-list > li {
   border: #999 1px solid;
   border-radius: 6px;
   list-style-type: none;
-  padding: 24px;
-  text-align: center;
+  margin-bottom: 24px;
+}
+.module-list h3, .module-list p {
+  margin: 0;
+}
+.module-list ol {
+  margin: 0;
+  padding: 12px;
+}
+.module-list ol li {
+  list-style-type: none;
+  padding: 12px;
 }
 
 table.table {

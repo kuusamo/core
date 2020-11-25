@@ -22,15 +22,21 @@
 </p>
 {{/hasCompleted}}
 
+<h2>Curriculum</h2>
+
 <ol class="module-list">
-{{#modules}}
+{{#navigation}}
     <li>
-        <p>Module {{number}}</p>
-        <h2>{{name}}</h2>
-        <p>{{description}}</p>
-        {{#available}}<p><a href="{{uri}}">Get started</a></p>{{/available}}
-        {{^available}}<p><span>Available soon</span></p>{{/available}}
+        <div>
+            <h3>{{number}}. {{name}}</h3>
+            <p>{{description}}</p>
+        </div>
+        <ol>
+        {{#lessons}}
+            <li><a href="{{uri}}">{{name}}</a></li>
+        {{/lessons}}
+        </ol>
     </li>
-{{/modules}}
+{{/navigation}}
 </ol>
 {{/course}}

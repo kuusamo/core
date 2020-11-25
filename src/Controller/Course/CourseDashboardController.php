@@ -35,43 +35,17 @@ class CourseDashboardController extends CourseController
 
         return $this->renderPage($request, $response, 'course/course.html', [
             'course' => $course,
-            'modules' => $this->prepareModules($course->getModules(), $day),
             'showProgress' => ($link->getProgress() > 0),
             'progress' => $link->getProgress(),
-            'hasCompleted' => $link->getCompleted() !== null
+            'hasCompleted' => $link->getCompleted() !== null,
+            'navigation' => $this->courseNavigation($course)
         ]);
     }
 
     /**
-     * Generate a list of modules to display.
-     *
-     * @param ArrayCollection $modules Modules.
-     * @param int             $day     Day of course from the user's perspective.
-     * @return array
-     */
-    private function prepareModules($modules, $day = 0)
-    {
-        $number = 1;
-        $modulesView = [];
-
-        foreach ($modules as $module) {
-            if ($module->getStatus() == Module::STATUS_ACTIVE) {
-                $modulesView[] = [
-                    'number' => $number,
-                    'uri' => $module->uri(),
-                    'name' => $module->getName(),
-                    'description' => $module->getDescription(),
-                    'available' => ($day >= $module->getDelay())
-                ];
-                $number++;
-            }
-        }
-
-        return $modulesView;
-    }
-
-    /**
      * Get the number of days the user has been on the course.
+     *
+     * @todo This is not yet in use
      *
      * @param User $user User object.
      * @param Course $course Course object.

@@ -10,7 +10,7 @@
 {{#getCourses}}
     <li>
     {{#getCourse}}
-        <div class="course-list-image">{{#getImage}}<img src="/content/images/crops/16-9/400/{{getFilename}}" alt="{{getDescription}}">{{/getImage}}</div>
+        <div class="course-list-image"><a href="/course/{{getSlug}}">{{#getImage}}<img src="/content/images/crops/16-9/400/{{getFilename}}" alt="{{getDescription}}">{{/getImage}}</a></div>
         <h3><a href="/course/{{getSlug}}">{{getName}}</a></h3>
     {{/getCourse}}
     </li>

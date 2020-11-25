@@ -144,11 +144,6 @@ class Module implements JsonSerializable
         return $this->lessons;
     }
 
-    public function uri(): string
-    {
-        return sprintf('/course/%s/modules/%s', $this->course->getSlug(), $this->id);
-    }
-
     public function jsonSerialize(): array
     {
         return [

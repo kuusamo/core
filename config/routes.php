@@ -24,7 +24,6 @@ $app->group('', function($app) use ($container) {
     $app->get('/course/{course:[a-z,0-9,-]+}/certificate', 'Kuusamo\Vle\Controller\Course\CertificateController:pdf');
     $app->get('/course/{course:[a-z,0-9,-]+}/lessons/{lesson:[0-9]+}', 'Kuusamo\Vle\Controller\Course\LessonController:lesson');
     $app->post('/course/{course:[a-z,0-9,-]+}/lessons/{lesson:[0-9]+}/status', 'Kuusamo\Vle\Controller\Course\LessonAjaxController:status');
-    $app->get('/course/{course:[a-z,0-9,-]+}/modules/{module:[0-9]+}', 'Kuusamo\Vle\Controller\Course\ModuleController:module');
 
 
     $app->group('/admin', function($app) {

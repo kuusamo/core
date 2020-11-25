@@ -13,7 +13,13 @@
             linear-gradient(45deg, #e1e1e1 25%, transparent 25%);
         background-size: 100px 100px;
         background-color: #cfd8dc;
-        min-height: 200px;
+        height: 200px;
+        overflow: hidden;
+
+        img {
+            min-height: 200px;
+            width: 100%;
+        }
     }
 
     a:link, a:visited {
@@ -34,16 +40,31 @@
 }
 
 .module-list {
-    display: grid;
-    grid-gap: $baseline;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     padding: 0;
 
-    li {
-        border: #999 1px solid;
-        border-radius: ($baseline / 4);
-        list-style-type: none;
+    div {
+        background-color: #eee;
         padding: $baseline;
-        text-align: center;
+    }
+
+    > li {
+        border: #999 1px solid;
+        border-radius: $baseline / 4;
+        list-style-type: none;
+        margin-bottom: $baseline;
+    }
+
+    h3, p {
+        margin: 0;
+    }
+
+    ol {
+        margin: 0;
+        padding: $baseline / 2;
+
+        li {
+            list-style-type: none;
+            padding: $baseline / 2;
+        }
     }
 }

@@ -33,8 +33,6 @@ class ModuleTest extends TestCase
         $this->assertSame(Module::STATUS_ACTIVE, $module->getStatus());
         $this->assertSame(14, $module->getDelay());
 
-        $this->assertSame('/course/mock-course/modules/10', $module->uri());
-
         $this->assertSame(
             '{"id":10,"name":"Introduction","description":"The first module.","status":"ACTIVE","delay":14,"lessons":[]}',
             json_encode($module)

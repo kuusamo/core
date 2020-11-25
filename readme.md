@@ -19,7 +19,6 @@ Course view
 
 * FileTools did not work with fontawesome
 * Width of lesson content
-* Retire module pages?
 
 
 Roadmap
