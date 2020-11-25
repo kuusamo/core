@@ -17,7 +17,6 @@ To do list
 Course view
 
 * FileTools did not work with fontawesome
-* Menu button is there on desktop view
 * Width of lesson content
 * Retire module pages?
 

@@ -333,6 +333,11 @@ main article h1 {
 .course-view header button {
   all: unset;
 }
+@media only screen and (min-width: 700px) {
+  .course-view header button {
+    display: none;
+  }
+}
 .course-view main {
   position: fixed;
   bottom: 0;
@@ -349,19 +354,18 @@ main article h1 {
 .course-view nav {
   background-color: #eee;
   bottom: 0;
-  display: none;
   overflow: auto;
   position: fixed;
   top: 75px;
-  width: 100%;
+  width: 0%;
   z-index: 10;
+  transition: width 0.25s;
 }
 .course-view nav.active {
-  display: block;
+  width: 100%;
 }
 @media only screen and (min-width: 700px) {
   .course-view nav {
-    display: block;
     width: 300px;
   }
 }

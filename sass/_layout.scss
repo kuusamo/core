@@ -58,6 +58,10 @@ main {
 
         button {
             all: unset;
+
+            @media only screen and (min-width: 700px) {
+                display: none;
+            }
         }
     }
 
@@ -77,19 +81,18 @@ main {
     nav {
         background-color: #eee;
         bottom: 0;
-        display: none;
         overflow: auto;
         position: fixed;
         top: 75px;
-        width: 100%;
+        width: 0%;
         z-index: 10;
+        transition: width .25s;
 
         &.active {
-            display: block;
+            width: 100%;
         }
 
         @media only screen and (min-width: 700px) {
-            display: block;
             width: 300px;
         }
 
