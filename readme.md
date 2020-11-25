@@ -14,6 +14,13 @@ To do list
 
 * Database install / migrations
 
+Course view
+
+* FileTools did not work with fontawesome
+* Menu button is there on desktop view
+* Width of lesson content
+* Retire module pages?
+
 
 Roadmap
 -------
@@ -22,6 +29,7 @@ Roadmap
 * Favicon
 * Themes
 
+* Drip content
 * Relationship cascades
 * Read The Docs
 * Storage folders that don't exist on file system
