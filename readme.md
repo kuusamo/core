@@ -14,7 +14,6 @@ To do list
 
 * Database install / migrations
 * Audio is loading the entire file through PHP and killing everything
-* FileTools did not work with fontawesome
 
 
 Roadmap
