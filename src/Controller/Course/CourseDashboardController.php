@@ -31,6 +31,8 @@ class CourseDashboardController extends CourseController
             ]);
         }
 
+        $navigation = $this->courseNavigation($course);
+
         $this->ci->get('meta')->setTitle($course->getName());
 
         return $this->renderPage($request, $response, 'course/course.html', [
@@ -38,8 +40,29 @@ class CourseDashboardController extends CourseController
             'showProgress' => ($link->getProgress() > 0),
             'progress' => $link->getProgress(),
             'hasCompleted' => $link->getCompleted() !== null,
-            'navigation' => $this->courseNavigation($course)
+            'nextLesson' => $this->getNextLesson($navigation),
+            'nextLessonText' => $link->getProgress() > 0 ? 'Continue' : 'Start',
+            'navigation' => $navigation
         ]);
+    }
+
+    /**
+     * Get next lesson to jump the user into the flow.
+     *
+     * @param array $navigation List of modules/lessons.
+     * @return string|null
+     */
+    private function getNextLesson(array $navigation): ?string
+    {
+        foreach ($navigation as $module) {
+            foreach ($module['lessons'] as $lesson) {
+                if ($lesson['completed'] === false) {
+                    return $lesson['uri'];
+                }
+            }
+        }
+
+        return null;
     }
 
     /**
