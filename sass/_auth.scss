@@ -1,0 +1,19 @@
+@use '_core' as *;
+
+.auth-options {
+    display: grid;
+    grid-gap: $baseline;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+
+    > div {
+        background: #eee;
+        border-radius: $baseline / 4;
+        padding: $baseline;
+
+        h2 {
+            font-size: 100%;
+            margin-top: 0;
+            text-align: left;
+        }
+    }
+}

@@ -19,7 +19,6 @@ To do list
 * Add your own logo
 * Add your colour scheme
 * Add your own favicon
-* Login screen styling
 * Quick jump to next lesson on course dashboard
 * Show progress on course dashboard
 

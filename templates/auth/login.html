@@ -1,28 +1,34 @@
 <h1>Login</h1>
 
-<h2>Login with magic link</h2>
+<div class="auth-options">
+    <div>
+        <h2>Login with magic link</h2>
 
-<p>Enter your email address and we will send you a link that will log you in automatically.</p>
+        <p>Enter your email address and we will send you a link that will log you in automatically.</p>
 
-<form method="post" class="form-vertical">
-    <label for="magicEmail">Email address</label>
-    <input type="email" name="email" id="magicEmail" placeholder="Email address" value="{{email}}">
-    <input type="hidden" name="action" value="magicLink">
-    <input type="hidden" name="csrf" value="{{csrf}}">
-    <button>Send</button>
-</form>
+        <form method="post" class="form-vertical">
+            <label for="magicEmail">Email address</label>
+            <input type="email" name="email" id="magicEmail" placeholder="Email address" value="{{email}}">
+            <input type="hidden" name="action" value="magicLink">
+            <input type="hidden" name="csrf" value="{{csrf}}">
+            <button>Send</button>
+        </form>
+    </div>
 
-<h2>Login with password</h2>
+    <div>
+        <h2>Login with password</h2>
 
-<form method="post" class="form-vertical">
-    <label for="email">Email address</label>
-    <input type="email" name="email" id="email" placeholder="Email address">
+        <form method="post" class="form-vertical">
+            <label for="email">Email address</label>
+            <input type="email" name="email" id="email" placeholder="Email address">
 
-    <label for="password">Password</label>
-    <input type="password" name="password" id="password" placeholder="Password">
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" placeholder="Password">
 
-    <input type="hidden" name="action" value="login">
-    <input type="hidden" name="from" value="{{from}}">
-    <input type="hidden" name="csrf" value="{{csrf}}">
-    <button>Login</button>
-</form>
+            <input type="hidden" name="action" value="login">
+            <input type="hidden" name="from" value="{{from}}">
+            <input type="hidden" name="csrf" value="{{csrf}}">
+            <button>Login</button>
+        </form>
+    </div>
+</div>
