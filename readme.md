@@ -14,11 +14,7 @@ To do list
 
 * Database install / migrations
 * Audio is loading the entire file through PHP and killing everything
-
-Course view
-
 * FileTools did not work with fontawesome
-* Width of lesson content
 
 
 Roadmap

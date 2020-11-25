@@ -34,17 +34,19 @@ header {
 
 main {
     padding: $baseline;
-
-    article {
-        max-width: 700px;
-
-        h1 {
-            font-size: 200%;
-        }
-    }
 }
 
 .course-view {
+    article {
+        h1 {
+            font-size: 200%;
+            margin-top: 0;
+        }
+
+        p {
+            max-width: 700px;
+        }
+    }
     header {
         box-sizing: border-box;
         color: #fff;

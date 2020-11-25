@@ -312,13 +312,14 @@ header hr {
 main {
   padding: 24px;
 }
-main article {
+
+.course-view article h1 {
+  font-size: 200%;
+  margin-top: 0;
+}
+.course-view article p {
   max-width: 700px;
 }
-main article h1 {
-  font-size: 200%;
-}
-
 .course-view header {
   box-sizing: border-box;
   color: #fff;

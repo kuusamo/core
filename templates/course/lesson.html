@@ -15,10 +15,8 @@
         </ol>
     </nav>
     <main>
-        {{#lesson}}
         <article>
-            <h1>{{getName}}</h1>
-        {{/lesson}}
+            <h1>{{#lesson}}{{getName}}{{/lesson}}</h1>
 
             {{#blocks}}
             <div>

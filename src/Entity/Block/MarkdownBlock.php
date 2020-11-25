@@ -12,7 +12,7 @@ use Parsedown;
 class MarkdownBlock extends Block implements JsonSerializable
 {
     /**
-     * @Column(type="string")
+     * @Column(type="text")
      */
     private $markdown;
 
