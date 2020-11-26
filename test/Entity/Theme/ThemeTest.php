@@ -2,7 +2,7 @@
 
 namespace Kuusamo\Vle\Test\Entity;
 
-use Kuusamo\Vle\Entity\Theme;
+use Kuusamo\Vle\Entity\Theme\Theme;
 use PHPUnit\Framework\TestCase;
 
 class ThemeTest extends TestCase
@@ -15,11 +15,11 @@ class ThemeTest extends TestCase
 
         $theme->setLogo('/logo.png', true);
         $theme->setFooterText('Copyright');
-        $theme->setColour('header', 'red');
+        $theme->setColour('primary', '#f0f0f0');
 
         $this->assertSame('/logo.png', $theme->getLogo());
         $this->assertSame(true, $theme->isLogoFlush());
         $this->assertSame('Copyright', $theme->getFooterText());
-        $this->assertSame(['header' => 'red'], $theme->getColours());
+        $this->assertInternalType('array', $theme->getColours());
     }
 }

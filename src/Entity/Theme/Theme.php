@@ -1,6 +1,6 @@
 <?php
 
-namespace Kuusamo\Vle\Entity;
+namespace Kuusamo\Vle\Entity\Theme;
 
 class Theme
 {
@@ -85,6 +85,6 @@ class Theme
      */
     public function setColour(string $name, string $colour)
     {
-        $this->colours[$name] = $colour;
+        $this->colours[$name] = new Colour($colour);
     }
 }

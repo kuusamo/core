@@ -60,7 +60,9 @@
     {{#theme}}
     <style>
         {{#getColours}}
-        header { background-color: {{header}}; }
+        a:link, a:visited { color: {{primary}}; }
+        header { background-color: {{primary}}; }
+        a.btn, button.btn, form.form-vertical button { background-color: {{primary}}; }
         {{/getColours}}
         {{#isLogoFlush}}header { padding-top: 0 !important; }{{/isLogoFlush}}
     </style>

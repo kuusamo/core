@@ -2,7 +2,7 @@
 
 namespace Kuusamo\Vle\Service\Templating;
 
-use Kuusamo\Vle\Entity\Theme;
+use Kuusamo\Vle\Entity\Theme\Theme;
 
 class TemplatingFactory
 {

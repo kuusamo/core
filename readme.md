@@ -18,8 +18,10 @@ To do list
 
 Themes work
 
-* Validate values on setColour()
-* Match buttons to primary colour
+* Button highlight (and simplify?)
+* Link highlight
+* Progress bar
+* Form borders
 
 
 Roadmap

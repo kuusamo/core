@@ -228,6 +228,7 @@ ol.breadcrumbs li:first-child::before {
 form.form-vertical button, a.btn, button.btn {
   background-color: #0077b6;
   border: #0077b6 1px solid;
+  border-radius: 4px;
   box-sizing: border-box;
   color: #fff;
   display: inline-block;
@@ -263,11 +264,12 @@ form.form-vertical select, select.form-control {
   padding-right: 48px;
 }
 
+a.btn:link, a.btn:visited, a.btn:hover, a.btn:active {
+  color: #fff;
+}
+
 form.form-vertical {
   width: 100%;
-}
-form.form-vertical button {
-  border-radius: 4px;
 }
 form.form-vertical input[type=text], form.form-vertical input[type=email], form.form-vertical input[type=password], form.form-vertical input[type=file], form.form-vertical textarea {
   border-radius: 4px;

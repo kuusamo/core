@@ -3,6 +3,7 @@
 %button {
     background-color: $secondaryColour;
     border: $secondaryColour 1px solid;
+    border-radius: $baseline / 6;
     box-sizing: border-box;
     color: #fff;
     display: inline-block;
@@ -47,6 +48,10 @@ a.btn:hover, button.btn:hover {
     @extend %button-hover;
 }
 
+a.btn:link, a.btn:visited, a.btn:hover, a.btn:active {
+    color: #fff;
+}
+
 input.form-control {
     @extend %input;
 }
@@ -60,7 +65,6 @@ form.form-vertical {
 
     button {
         @extend %button;
-        border-radius: $baseline / 6;
     }
 
     button:hover {
