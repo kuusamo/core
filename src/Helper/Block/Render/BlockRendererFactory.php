@@ -7,6 +7,7 @@ use Kuusamo\Vle\Entity\Block\AudioBlock;
 use Kuusamo\Vle\Entity\Block\DownloadBlock;
 use Kuusamo\Vle\Entity\Block\ImageBlock;
 use Kuusamo\Vle\Entity\Block\MarkdownBlock;
+use Kuusamo\Vle\Entity\Block\QuestionBlock;
 use Kuusamo\Vle\Entity\Block\VideoBlock;
 use Kuusamo\Vle\Service\Templating\Templating;
 use Exception;
@@ -30,6 +31,8 @@ class BlockRendererFactory
             return new ImageBlockRenderer($block, $templating);
         } elseif ($block instanceof MarkdownBlock) {
             return new MarkdownBlockRenderer($block);
+        } elseif ($block instanceof QuestionBlock) {
+            return new QuestionBlockRenderer($block);
         } elseif ($block instanceof VideoBlock) {
             return new VideoBlockRenderer($block, $templating);
         }
