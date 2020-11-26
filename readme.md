@@ -14,14 +14,7 @@ To do list
 
 * Database install / migrations
 * Audio is loading the entire file through PHP and killing everything
-* Lesson navigation CSS
-
-Themes work
-
-* Button highlight (and simplify?)
-* Link highlight
-* Progress bar
-* Form borders
+* What happens if primary is missing?
 
 
 Roadmap

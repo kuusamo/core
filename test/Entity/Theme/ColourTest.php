@@ -16,6 +16,14 @@ class ColourTest extends TestCase
         $this->assertEquals('#000000', $colour2);
     }
 
+    public function testManipulation()
+    {
+        $colour = new Colour('#000');
+
+        $this->assertSame('#1a1a1a', $colour->highlight());
+        $this->assertSame('#808080', $colour->fade());
+    }
+
     /**
      * @expectedException InvalidArgumentException
      */

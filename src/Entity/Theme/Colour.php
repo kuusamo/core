@@ -2,6 +2,7 @@
 
 namespace Kuusamo\Vle\Entity\Theme;
 
+use OzdemirBurak\Iris\Color\Hex;
 use InvalidArgumentException;
 
 class Colour
@@ -28,6 +29,30 @@ class Colour
         }
 
         $this->hex = $hex;
+    }
+
+    /**
+     * Return a lighter version of the colour.
+     *
+     * @return string
+     */
+    public function highlight(): string
+    {
+        $highlight = new Hex($this->hex);
+        $highlight = $highlight->lighten(10);
+        return $highlight;
+    }
+
+    /**
+     * Return a faded  version suitable for backgrounds.
+     *
+     * @return string
+     */
+    public function fade(): string
+    {
+        $highlight = new Hex($this->hex);
+        $highlight = $highlight->lighten(50);
+        return $highlight;
     }
 
     /**

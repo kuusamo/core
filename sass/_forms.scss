@@ -2,7 +2,7 @@
 
 %button {
     background-color: $secondaryColour;
-    border: $secondaryColour 1px solid;
+    border: 0;
     border-radius: $baseline / 6;
     box-sizing: border-box;
     color: #fff;
@@ -17,12 +17,13 @@
 
 %button-hover {
     background-color: $tertiaryColour;
-    border: $tertiaryColour 1px solid;
+    border: 0;
     text-decoration: none;
 }
 
 %input {
     border: $secondaryColour 1px solid;
+    border-radius: $baseline / 6;
     box-sizing: border-box;
     font-family: inherit;
     font-size: 100%;
@@ -44,7 +45,7 @@ a.btn, button.btn {
     @extend %button;
 }
 
-a.btn:hover, button.btn:hover {
+a.btn:hover {
     @extend %button-hover;
 }
 
@@ -52,7 +53,7 @@ a.btn:link, a.btn:visited, a.btn:hover, a.btn:active {
     color: #fff;
 }
 
-input.form-control {
+input.form-control, textarea.form-control {
     @extend %input;
 }
 
@@ -63,24 +64,12 @@ select.form-control {
 form.form-vertical {
     width: 100%;
 
-    button {
-        @extend %button;
-    }
-
-    button:hover {
-        @extend %button-hover;
-    }
-
     input[type="text"], input[type="email"], input[type="password"], input[type="file"], textarea {
-        @extend %input;
-        border-radius: $baseline / 6;
         margin-bottom: $baseline / 2;
         width: 100%;
     }
 
     select {
-        @extend %select-input;
-        border-radius: $baseline / 6;
         margin-bottom: $baseline / 2;
         width: 100%;
     }

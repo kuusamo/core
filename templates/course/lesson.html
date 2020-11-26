@@ -28,15 +28,15 @@
         <div class="course-navigation" role="navigation">
         {{#previousAndNext}}
             <div>{{#previousLesson}}<a href="{{uri}}">Previous lesson</a>{{/previousLesson}}</div>
-            <div>
+            <div class="course-navigation-continue">
                 {{#isMarked}}This lesson is marked by your tutor{{/isMarked}}
                 {{^isMarked}}
                 <form method="post">
                     {{#hasCompleted}}
-                    <button type="submit">Mark as incomplete</button>
+                    <button type="submit" class="btn">Mark as incomplete</button>
                     {{/hasCompleted}}
                     {{^hasCompleted}}
-                    <button type="submit">Complete and continue</button>
+                    <button type="submit" class="btn">Complete and continue</button>
                     <input type="hidden" name="continue" value="true">
                     {{/hasCompleted}}
                 </form>

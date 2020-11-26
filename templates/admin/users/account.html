@@ -15,22 +15,22 @@
 
 <form method="post" class="form-vertical">
     <label for="email">Email address</label>
-    <input type="email" name="email" id="email" value="{{getEmail}}">
+    <input type="email" name="email" id="email" value="{{getEmail}}" class="form-control">
 
     <label for="firstName">First name</label>
-    <input type="text" name="firstName" id="firstName" value="{{getFirstName}}">
+    <input type="text" name="firstName" id="firstName" value="{{getFirstName}}" class="form-control">
 
     <label for="surname">Surname</label>
-    <input type="text" name="surname" id="surname" value="{{getSurname}}">
+    <input type="text" name="surname" id="surname" value="{{getSurname}}" class="form-control">
 
     <label for="status">Status</label>
-    <select name="status" id="status">
+    <select name="status" id="status" class="form-control">
     {{#status}}<option value="{{value}}" {{#selected}}selected{{/selected}}>{{label}}</option>{{/status}}
     </select>
 
     <label for="notes">Notes</label>
-    <textarea name="notes" id="notes">{{getNotes}}</textarea>
+    <textarea name="notes" id="notes" class="form-control">{{getNotes}}</textarea>
 
-  <button type="submit"">Update</button>
+  <button type="submit" class="btn">Update</button>
 </form>
 {{/user}}

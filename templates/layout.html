@@ -61,8 +61,12 @@
     <style>
         {{#getColours}}
         a:link, a:visited { color: {{primary}}; }
+        a:hover, a:active { color: {{#primary}}{{highlight}}{{/primary}}; }
         header { background-color: {{primary}}; }
-        a.btn, button.btn, form.form-vertical button { background-color: {{primary}}; }
+        input.form-control, select.form-control, textarea.form-control { border-color: {{primary}}; }
+        a.btn, button.btn { background-color: {{primary}}; }
+        a.btn:hover, button.btn:hover { background-color: {{#primary}}{{highlight}}{{/primary}}; }
+        .course-progress-bar .course-progress-bar__indicator { background-color: {{#primary}}{{fade}}{{/primary}}; }
         {{/getColours}}
         {{#isLogoFlush}}header { padding-top: 0 !important; }{{/isLogoFlush}}
     </style>

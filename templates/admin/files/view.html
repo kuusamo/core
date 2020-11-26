@@ -7,11 +7,13 @@
 
 <h1>{{getName}}</h1>
 
-<p>
-    <a href="/content/files/{{getFilename}}">{{getFilename}}</a><br>
-    {{getMediaType}}<br>
-    {{fileSize}}
-</p>
+<div class="card">
+    <div class="card-body">
+        <a href="/content/files/{{getFilename}}">{{getFilename}}</a><br>
+        {{getMediaType}}<br>
+        {{fileSize}}
+    </div>
+</div>
 
 <h2>Upload a new version</h2>
 
@@ -25,8 +27,8 @@
 
 <h2>Delete</h2>
 
-<form method="post" class="form-vertical">
+<form method="post">
     <input type="hidden" name="action" value="delete">
-    <button>Delete file</button>
+    <button type="submit" class="btn">Delete file</button>
 </form>
 {{/fileObj}}

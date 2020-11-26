@@ -31,7 +31,8 @@
         "php-di/php-di": "^6.1",
         "doctrine/orm": "2.*",
         "erusev/parsedown": "1.*",
-        "dompdf/dompdf": "*"
+        "dompdf/dompdf": "*",
+        "ozdemirburak/iris": "2.*"
     },
     "require-dev": {
         "phpunit/phpunit": "7.*",

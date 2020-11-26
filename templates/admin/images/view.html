@@ -9,19 +9,19 @@
 
 <form method="post" class="form-vertical">
     <label for="filename">Filename</label>
-    <input type="text" id="filename" name="filename" value="{{getFilename}}" disabled>
+    <input type="text" id="filename" name="filename" value="{{getFilename}}" class="form-control" disabled>
 
     <label for="mediaType">Media Type</label>
-    <input type="text" id="mediaType" name="mediaType" value="{{getMediaType}}" disabled>
+    <input type="text" id="mediaType" name="mediaType" value="{{getMediaType}}" class="form-control" disabled>
 
     <label for="mediaType">Size</label>
-    <input type="text" id="mediaType" name="mediaType" value="{{getWidth}}x{{getHeight}}" disabled>
+    <input type="text" id="mediaType" name="mediaType" value="{{getWidth}}x{{getHeight}}" class="form-control" disabled>
 
     <label for="description">Description</label>
-    <textarea id="description" name="description" placeholder="Description" rows="2">{{getDescription}}</textarea>
+    <textarea id="description" name="description" placeholder="Description" rows="2" class="form-control">{{getDescription}}</textarea>
 
     <label for="keywords">Keywords</label>
-    <textarea id="keywords" name="keywords" placeholder="Keywords" rows="2">{{getKeywords}}</textarea>
+    <textarea id="keywords" name="keywords" placeholder="Keywords" rows="2" class="form-control">{{getKeywords}}</textarea>
 
     <input type="hidden" name="action" value="edit">
     <button type="submit" class="btn">Save</button>
@@ -29,8 +29,8 @@
 
 <h2>Delete</h2>
 
-<form method="post" class="form-vertical">
+<form method="post">
     <input type="hidden" name="action" value="delete">
-    <button>Delete</button>
+    <button type="submit" class="btn">Delete</button>
 </form>
 {{/image}}

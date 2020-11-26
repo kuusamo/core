@@ -16,20 +16,20 @@
 
 <form method="post" class="form-vertical">
     <label for="name">Name</label>
-    <input type="text" name="name" id="name" value="{{getName}}">
+    <input type="text" name="name" id="name" value="{{getName}}" class="form-control">
 
     <label for="logo">Logo <small>Image ID</small></label>
-    <input type="text" name="logo" id="logo" value="{{#getLogo}}{{getId}}{{/getLogo}}">
+    <input type="text" name="logo" id="logo" value="{{#getLogo}}{{getId}}{{/getLogo}}" class="form-control">
 
     <label for="authoriserName">Authoriser name</label>
-    <input type="text" name="authoriserName" id="authoriserName" value="{{getAuthoriserName}}">
+    <input type="text" name="authoriserName" id="authoriserName" value="{{getAuthoriserName}}" class="form-control">
 
     <label for="authoriserSignature">Authoriser signature <small>Leave blank to use name</small></label>
-    <input type="text" name="authoriserSignature" id="authoriserSignature" value="{{getAuthoriserSignature}}">
+    <input type="text" name="authoriserSignature" id="authoriserSignature" value="{{getAuthoriserSignature}}" class="form-control">
 
     <label for="authoriserRole">Authoriser role</label>
-    <input type="text" name="authoriserRole" id="authoriserRole" value="{{getAuthoriserRole}}">
+    <input type="text" name="authoriserRole" id="authoriserRole" value="{{getAuthoriserRole}}" class="form-control">
 
-  <button type="submit"">Update</button>
+  <button type="submit" class="btn">Update</button>
 </form>
 {{/body}}

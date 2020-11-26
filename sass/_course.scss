@@ -9,11 +9,30 @@
 
 .course-navigation {
     align-items: center;
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-gap: $baseline;
+    grid-template-columns: 1fr 1fr;
 
     div:last-child {
         text-align: right;
+    }
+
+    .course-navigation-continue {
+        grid-column: 1 / span 2;
+        grid-row-start: 1;
+
+        button {
+            width: 100%;
+        }
+    }
+
+    @media only screen and (min-width: 700px) {
+        grid-template-columns: auto 1fr auto;
+
+        .course-navigation-continue {
+            grid-column: auto;
+            grid-row-start: auto;
+        }
     }
 }
 

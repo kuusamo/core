@@ -9,13 +9,13 @@
 
 <form action="" method="post" enctype="multipart/form-data" class="form-vertical">
     <label for="file">File</label>
-    <input type="file" id="file" name="file">
+    <input type="file" id="file" name="file" class="form-control">
 
     <label for="description">Description</label>
-    <textarea id="description" name="description" placeholder="Description" rows="2">{{getDescription}}</textarea>
+    <textarea id="description" name="description" placeholder="Description" rows="2" class="form-control">{{getDescription}}</textarea>
 
     <label for="keywords">Keywords</label>
-    <textarea id="keywords" name="keywords" placeholder="Keywords" rows="2">{{getKeywords}}</textarea>
+    <textarea id="keywords" name="keywords" placeholder="Keywords" rows="2" class="form-control">{{getKeywords}}</textarea>
 
     <button type="submit" class="btn">Upload</button>
 </form>

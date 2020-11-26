@@ -8,10 +8,10 @@
 
         <form method="post" class="form-vertical">
             <label for="magicEmail">Email address</label>
-            <input type="email" name="email" id="magicEmail" placeholder="Email address" value="{{email}}">
+            <input type="email" name="email" id="magicEmail" placeholder="Email address" value="{{email}}" class="form-control">
             <input type="hidden" name="action" value="magicLink">
             <input type="hidden" name="csrf" value="{{csrf}}">
-            <button>Send</button>
+            <button type="submit" class="btn">Send</button>
         </form>
     </div>
 
@@ -20,15 +20,15 @@
 
         <form method="post" class="form-vertical">
             <label for="email">Email address</label>
-            <input type="email" name="email" id="email" placeholder="Email address">
+            <input type="email" name="email" id="email" placeholder="Email address" class="form-control">
 
             <label for="password">Password</label>
-            <input type="password" name="password" id="password" placeholder="Password">
+            <input type="password" name="password" id="password" placeholder="Password" class="form-control">
 
             <input type="hidden" name="action" value="login">
             <input type="hidden" name="from" value="{{from}}">
             <input type="hidden" name="csrf" value="{{csrf}}">
-            <button>Login</button>
+            <button type="submit" class="btn">Login</button>
         </form>
     </div>
 </div>
