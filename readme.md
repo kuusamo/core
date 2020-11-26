@@ -9,16 +9,10 @@ Kuusamo VLE
 A learning management system (LMS) that uses API-friendly JSON blocks to build lessons.
 
 
-To do list
-----------
-
-* Database install / migrations
-* Audio is loading the entire file through PHP and killing everything
-
-
 Roadmap
 -------
 
+* Database migrations
 * Sticky lesson menu
 * Assessments
 * Drip content
@@ -29,6 +23,7 @@ Roadmap
 * S3 integration
 * Cache busting assets
 * Htaccess improvements
+* Use streams for Crop
 
 
 Development
