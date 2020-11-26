@@ -14,7 +14,7 @@ To do list
 
 * Database install / migrations
 * Audio is loading the entire file through PHP and killing everything
-* Better mark as completed
+* Lesson navigation CSS
 
 Themes work
 

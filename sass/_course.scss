@@ -1,16 +1,5 @@
 @use '_core' as *;
 
-.course-completion-box {
-    align-items: center;
-    background: #eee;
-    border-radius: $baseline / 4;
-    color: #333;
-    display: flex;
-    justify-content: center;
-    margin: $baseline 0;
-    padding: $baseline;
-}
-
 .course-congratulations {
     background-color: #90e0ef;
     border-radius: $baseline / 4;
@@ -19,8 +8,13 @@
 }
 
 .course-navigation {
+    align-items: center;
     display: flex;
     justify-content: space-between;
+
+    div:last-child {
+        text-align: right;
+    }
 }
 
 .course-progress-bar {

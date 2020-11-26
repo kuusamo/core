@@ -128,17 +128,6 @@ ol.breadcrumbs li:first-child::before {
   padding: 24px;
 }
 
-.course-completion-box {
-  align-items: center;
-  background: #eee;
-  border-radius: 6px;
-  color: #333;
-  display: flex;
-  justify-content: center;
-  margin: 24px 0;
-  padding: 24px;
-}
-
 .course-congratulations {
   background-color: #90e0ef;
   border-radius: 6px;
@@ -147,8 +136,12 @@ ol.breadcrumbs li:first-child::before {
 }
 
 .course-navigation {
+  align-items: center;
   display: flex;
   justify-content: space-between;
+}
+.course-navigation div:last-child {
+  text-align: right;
 }
 
 .course-progress-bar {
