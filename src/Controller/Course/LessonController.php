@@ -59,24 +59,15 @@ class LessonController extends CourseController
             $lesson->getCourse()->getName()
         ));
 
-        // @todo We don't support assessments yet
-        if ($lesson->getType() == 'ASSESSMENT') {
-            return $this->renderPage($request, $response, 'vle/assessment.html', [
-                'lesson' => $lesson,
-                'blocks' => json_encode($lesson->getBlocks()->toArray()),
-                'navigation' => $this->previousAndNextLesson($lesson),
-                'personalisation' => $link
-            ]);
-        }
-
         return $this->renderPage($request, $response, 'course/lesson.html', [
             'lesson' => $lesson,
-            'blocks' => $this->renderBlocks($lesson->getBlocks()),
+            //'blocks' => $this->renderBlocks($lesson->getBlocks()),
             'previousAndNext' => $previousAndNext,
             'isMarked' => $lesson->getMarking() !== Lesson::MARKING_AUTOMATIC,
             'hasCompleted' => $link->hasCompleted(),
             'navigation' => $navigation,
-            'courseView' => true
+            'courseView' => true,
+            'lessonData' => json_encode($lesson)
         ]);
     }
 

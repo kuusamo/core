@@ -28,7 +28,7 @@ class ImageTest extends TestCase
         $this->assertSame(150, $image->getHeight());
 
         $this->assertSame(
-            '{"id":10,"filename":"example.jpg"}',
+            '{"id":10,"filename":"example.jpg","description":"test description"}',
             json_encode($image)
         );
     }

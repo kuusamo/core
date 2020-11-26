@@ -24,7 +24,7 @@ class FileTest extends TestCase
         $this->assertEquals(123456, $file->getSize());
 
         $this->assertSame(
-            '{"id":10,"filename":"document.pdf"}',
+            '{"id":10,"name":"PDF","filename":"document.pdf"}',
             json_encode($file)
         );
     }

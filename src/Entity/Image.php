@@ -121,7 +121,8 @@ class Image implements JsonSerializable
     {
         return [
             'id' => $this->id,
-            'filename' => $this->filename
+            'filename' => $this->filename,
+            'description' => $this->description
         ];
     }
 }

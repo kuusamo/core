@@ -5,6 +5,7 @@ const config = {
     devtool: 'source-map',
     entry: {
         CourseManager: './es/CourseManager/index.js',
+        LessonView: './es/LessonView/index.js',
         lesson: './es/lesson.js'
     },
     output: {
