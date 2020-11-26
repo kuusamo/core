@@ -15,6 +15,8 @@ Roadmap
 * Database migrations
 * Sticky lesson menu
 * Assessments
+* SMTP
+
 * Drip content
 * Relationship cascades
 * Read The Docs
@@ -24,6 +26,7 @@ Roadmap
 * Cache busting assets
 * Htaccess improvements
 * Use streams for Crop
+* Audio preloading
 
 
 Development
