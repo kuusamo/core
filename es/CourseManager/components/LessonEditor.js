@@ -9,6 +9,7 @@ import {
     DownloadBlock,
     ImageBlock,
     MarkdownBlock,
+    QuestionBlock,
     VideoBlock
 } from './blocks';
 
@@ -78,6 +79,8 @@ class LessonEditor extends Component {
                 return <ImageBlock key={index} index={index} callback={this.updateBlock} {...block} />;
             case 'markdown':
                 return <MarkdownBlock key={index} index={index} callback={this.updateBlock} {...block} />;
+            case 'question':
+                return <QuestionBlock key={index} index={index} callback={this.updateBlock} {...block} />;
             case 'video':
                 return <VideoBlock key={index} index={index} callback={this.updateBlock} {...block} />;
             default:
@@ -138,11 +141,12 @@ class LessonEditor extends Component {
     renderCreateButtons() {
         return (
             <Fragment>
-                <button className="btn btn-success mr-1 mb-1" onClick={() => this.createBlock('markdown')}>Add Markdown</button>
-                <button className="btn btn-success mr-1 mb-1" onClick={() => this.createBlock('video', { provider: 'vimeo' })}>Add Video</button>
-                <button className="btn btn-success mr-1 mb-1" onClick={() => this.createBlock('image')}>Add Image</button>
-                <button className="btn btn-success mr-1 mb-1" onClick={() => this.createBlock('download')}>Add Download</button>
-                <button className="btn btn-success mb-1" onClick={() => this.createBlock('audio')}>Add Audio</button>
+                <button className="btn mr-1" onClick={() => this.createBlock('markdown')}>Add Markdown</button>
+                <button className="btn mr-1" onClick={() => this.createBlock('video', { provider: 'vimeo' })}>Add Video</button>
+                <button className="btn mr-1" onClick={() => this.createBlock('image')}>Add Image</button>
+                <button className="btn mr-1" onClick={() => this.createBlock('download')}>Add Download</button>
+                <button className="btn" onClick={() => this.createBlock('audio')}>Add Audio</button>
+                <button className="btn" onClick={() => this.createBlock('question', { answers: [] })}>Add Question</button>
             </Fragment>
         );
     }

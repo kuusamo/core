@@ -9,7 +9,7 @@ use Kuusamo\Vle\Entity\Lesson;
  * @Table(name="blocks")
  * @InheritanceType("JOINED")
  * @DiscriminatorColumn(name="type", type="string")
- * @DiscriminatorMap({"audio" = "AudioBlock", "download" = "DownloadBlock", "markdown" = "MarkdownBlock", "image" = "ImageBlock", "video" = "VideoBlock"})
+ * @DiscriminatorMap({"audio" = "AudioBlock", "download" = "DownloadBlock", "image" = "ImageBlock", "markdown" = "MarkdownBlock", "question" = "QuestionBlock", "video" = "VideoBlock"})
  */
 abstract class Block
 {

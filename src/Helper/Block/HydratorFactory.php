@@ -24,6 +24,8 @@ class HydratorFactory
                 return new ImageHydrator($db);
             case 'markdown':
                 return new MarkdownHydrator;
+            case 'question':
+                return new QuestionHydrator;
             case 'video':
                 return new VideoHydrator;
             default:

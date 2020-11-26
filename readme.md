@@ -12,6 +12,11 @@ A learning management system (LMS) that uses API-friendly JSON blocks to build l
 Roadmap
 -------
 
+* Buttons: btn-success, btn-secondary, btn-info
+* Bootstrap badges
+* CourseManager alert close icon
+
+
 * Database migrations
 * Sticky lesson menu
 * Assessments

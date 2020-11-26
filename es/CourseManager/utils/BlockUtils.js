@@ -9,6 +9,8 @@ class BlockUtils {
                 return 'Image';
             case 'markdown':
                 return 'Markdown';
+            case 'question':
+                return 'Question';
             case 'video':
                 return 'Video';
         }
