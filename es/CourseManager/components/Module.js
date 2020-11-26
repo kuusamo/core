@@ -73,21 +73,21 @@ class Module extends Component {
                 <form onSubmit={this.updateModule.bind(this)}>
                     <input
                         type="text"
-                        className="form-control mr-1"
+                        className="form-control mb-1 mr-1"
                         name="name"
                         value={this.state.name}
                         onChange={this.updateName.bind(this)}
                     />
                     <input
                         type="text"
-                        className="form-control mr-1"
+                        className="form-control mb-1 mr-1"
                         name="description"
                         placeholder="Description"
                         value={this.state.description}
                         onChange={this.updateDescription.bind(this)}
                     />
                     <select
-                        className="form-control mr-1"
+                        className="form-control mb-1 mr-1"
                         value={this.state.status}
                         onChange={this.updateStatus.bind(this)}>
                         <option>{STATUS_ACTIVE}</option>
@@ -95,7 +95,7 @@ class Module extends Component {
                     </select>
                     <input
                         type="number"
-                        className="form-control mr-1"
+                        className="form-control mb-1 mr-1"
                         name="delay"
                         placeholder="Delay"
                         maxLength="3"
@@ -103,8 +103,8 @@ class Module extends Component {
                         value={this.state.delay}
                         onChange={this.updateDelay.bind(this)}
                     />
-                    <button className="btn btn-primary mr-1">Save</button>{" "}
-                    <button className="btn btn-warning" onClick={this.cancelEdit.bind(this)}>Cancel</button>
+                    <button className="btn btn-primary mb-1 mr-1">Save</button>
+                    <button className="btn btn-warning mb-1" onClick={this.cancelEdit.bind(this)}>Cancel</button>
                 </form>
             </div>
         );
@@ -147,7 +147,7 @@ class Module extends Component {
         if (this.props.index > 0) {
             return (
                 <button
-                    className="btn btn-secondary"
+                    className="btn btn-secondary btn-sm"
                     onClick={() => this.props.moveModule(this.props.index, 'up')}
                 >Move up</button>
             );
@@ -158,7 +158,7 @@ class Module extends Component {
         if (!this.props.lastItem) {
             return (
                 <button
-                    className="btn btn-secondary"
+                    className="btn btn-secondary btn-sm"
                     onClick={() => this.props.moveModule(this.props.index, 'down')}
                 >Move down</button>
             );

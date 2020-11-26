@@ -11,6 +11,8 @@ const ImageBlock = props => {
             <input
                 type="number"
                 className="form-control"
+                aria-label="Image ID"
+                placeholder="Image ID"
                 value={props.image?.id || ''}
                 onChange={onChange}
             />

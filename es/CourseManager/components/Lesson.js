@@ -95,7 +95,7 @@ class Lesson extends Component {
                             <h3 className="modal-title">Edit lesson</h3>
                         </div>
                         <div className="modal-body">
-                            <form className="form" onSubmit={this.updateLesson.bind(this)}>
+                            <form className="cm-form-grid" onSubmit={this.updateLesson.bind(this)}>
                                 <div className="form-group row">
                                     <label htmlFor="name" className="col-sm-3 col-form-label">Name</label>
                                     <div className="col-sm-9">
@@ -164,8 +164,10 @@ class Lesson extends Component {
                                         />
                                     </div>
                                 </div>
-                                <button className="btn btn-primary">Save</button>{" "}
-                                <button className="btn btn-warning" onClick={this.cancelEdit.bind(this)}>Cancel</button>
+                                <div className="cm-form-grid-buttons">
+                                    <button className="btn">Save</button>{" "}
+                                    <button className="btn btn-warning" onClick={this.cancelEdit.bind(this)}>Cancel</button>
+                                </div>
                             </form>
                         </div>
                     </div>

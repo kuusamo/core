@@ -11,11 +11,11 @@ const VideoBlock = props => {
 
     return (
         <div>
-            Provider: <select className="form-control" value={props.provider} onChange={onChangeProvider}>
+            <select className="form-control mr-1" aria-label="Provider" value={props.provider} onChange={onChangeProvider}>
                 <option value="vimeo">Vimeo</option>
                 <option value="youtube">YouTube</option>
             </select>
-            Provider ID: <input type="text" className="form-control" value={props.providerId} onChange={onChangeProviderId} />
+            <input type="text" className="form-control" aria-label="Provider ID" placeholder="Provider ID" value={props.providerId} onChange={onChangeProviderId} />
         </div>
     );
 }

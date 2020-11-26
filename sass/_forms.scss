@@ -27,7 +27,6 @@
     box-sizing: border-box;
     font-family: inherit;
     font-size: 100%;
-    height: 50px;
     padding: $baseline / 2;
     vertical-align: middle;
 }
@@ -35,7 +34,7 @@
 %select-input {
     @extend %input;
     -webkit-appearance: none;
-    background: url(data:image/webp;base64,UklGRpwAAABXRUJQVlA4TI8AAAAvD8ADEHU4rG03bZSkzMzMjPtPx7CAvmSrEQwZSRI0BoNwCIvwCIvwyI2yCD0B/P3XvfYZuy7l8B09sO8jp0exvrW2ZtV7usZsffN/ptmUSW8wxcz+PNrBDXQD+qUwBjjnR0th7kz72jrfHOfbOg++rU/1qkIVUKbcL70CBQFY6fHjbNOkhVd+Nt4IZcqPAgA=);
+    background: #fff url(data:image/webp;base64,UklGRpwAAABXRUJQVlA4TI8AAAAvD8ADEHU4rG03bZSkzMzMjPtPx7CAvmSrEQwZSRI0BoNwCIvwCIvwyI2yCD0B/P3XvfYZuy7l8B09sO8jp0exvrW2ZtV7usZsffN/ptmUSW8wxcz+PNrBDXQD+qUwBjjnR0th7kz72jrfHOfbOg++rU/1qkIVUKbcL70CBQFY6fHjbNOkhVd+Nt4IZcqPAgA=);
     background-repeat: no-repeat;
     background-position: right 15px center;
     padding-right: $baseline * 2;
@@ -53,12 +52,49 @@ a.btn:link, a.btn:visited, a.btn:hover, a.btn:active {
     color: #fff;
 }
 
-input.form-control, textarea.form-control {
+button.btn.btn-secondary {
+    background-color: #6c757d;
+}
+
+button.btn.btn-secondary:hover {
+    background-color: #666666;
+}
+
+button.btn.btn-warning {
+    background-color: #ffc107;
+    color: #000;
+}
+
+button.btn.btn-warning:hover {
+    background-color: #E6AE07;
+}
+
+button.btn.btn-danger {
+    background-color: #C22F3D;
+}
+
+button.btn.btn-danger:hover {
+    background-color: #A82835;
+}
+
+button.btn-sm {
+    height: 30px;
+    line-height: 30px;
+    padding: 0 $baseline / 2;
+}
+
+input.form-control {
     @extend %input;
+    height: 50px;
 }
 
 select.form-control {
     @extend %select-input;
+}
+
+textarea.form-control {
+    @extend %input;
+    height: 150px;
 }
 
 form.form-vertical {
@@ -76,10 +112,6 @@ form.form-vertical {
 
     small {
         color: #666;
-    }
-
-    textarea {
-        height: ($baseline * 6);
     }
 
     label {

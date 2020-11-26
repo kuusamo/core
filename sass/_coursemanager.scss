@@ -24,6 +24,22 @@
     }
 }
 
+.cm-form-grid {
+    align-items: center;
+    display: grid;
+    grid-gap: $baseline / 2;
+    grid-template-columns: 1fr 3fr;
+
+    div {
+        display: contents;
+    }
+
+    .cm-form-grid-buttons {
+        display: block;
+        grid-column: 1 / span 2;
+    }
+}
+
 .cm-card-header {
     @extend .card-header;
 
@@ -68,5 +84,9 @@
     td {
         border-top: #ccc 1px solid;
         padding: $baseline / 2;
+    }
+
+    td:first-child {
+        width: 35%;
     }
 }

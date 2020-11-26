@@ -10,6 +10,8 @@ const MarkdownBlock = props => {
             <textarea
                 className="form-control"
                 rows="5"
+                aria-label="Markdown text"
+                placeholder="Markdown text"
                 value={props.markdown}
                 onChange={onChange}
             />

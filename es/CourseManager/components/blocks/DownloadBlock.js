@@ -11,6 +11,8 @@ const DownloadBlock = props => {
             <input
                 type="number"
                 className="form-control"
+                aria-label="File ID"
+                placeholder="File ID"
                 value={props.file?.id || ''}
                 onChange={onChange}
             />

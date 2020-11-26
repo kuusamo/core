@@ -55,8 +55,8 @@ const QuestionBlock = props => {
                         value={explanationValue}
                         onChange={event => updateAnswer(index, 'explanation', event.currentTarget.value)}
                     />
-                    <button className="btn btn-info mr-1" onClick={() => toggleCorrect(index)}>{correctText + ' answer'}</button>
-                    <button className="btn btn-danger" onClick={() => deleteAnswer(index)}>Delete</button>
+                    <button className="btn btn-secondary mr-1" onClick={() => toggleCorrect(index)}>{correctText}</button>
+                    <button className="btn btn-danger" aria-label="Delete" onClick={() => deleteAnswer(index)}>&times;</button>
                 </div>
             );
         });

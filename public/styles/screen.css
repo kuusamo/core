@@ -14,6 +14,10 @@ img {
   max-width: 100%;
 }
 
+.mb-1 {
+  margin-bottom: 6px;
+}
+
 .mb-3 {
   margin-bottom: 24px;
 }
@@ -216,6 +220,20 @@ ol.breadcrumbs li:first-child::before {
   width: 100%;
 }
 
+.cm-form-grid {
+  align-items: center;
+  display: grid;
+  grid-gap: 12px;
+  grid-template-columns: 1fr 3fr;
+}
+.cm-form-grid div {
+  display: contents;
+}
+.cm-form-grid .cm-form-grid-buttons {
+  display: block;
+  grid-column: 1/span 2;
+}
+
 .cm-card-header h2 {
   margin: 0;
 }
@@ -251,6 +269,9 @@ ol.breadcrumbs li:first-child::before {
   border-top: #ccc 1px solid;
   padding: 12px;
 }
+.cm-table td:first-child {
+  width: 35%;
+}
 
 a.btn, button.btn {
   background-color: #0077b6;
@@ -273,20 +294,19 @@ a.btn:hover {
   text-decoration: none;
 }
 
-input.form-control, textarea.form-control, select.form-control {
+textarea.form-control, input.form-control, select.form-control {
   border: #0077b6 1px solid;
   border-radius: 4px;
   box-sizing: border-box;
   font-family: inherit;
   font-size: 100%;
-  height: 50px;
   padding: 12px;
   vertical-align: middle;
 }
 
 select.form-control {
   -webkit-appearance: none;
-  background: url(data:image/webp;base64,UklGRpwAAABXRUJQVlA4TI8AAAAvD8ADEHU4rG03bZSkzMzMjPtPx7CAvmSrEQwZSRI0BoNwCIvwCIvwyI2yCD0B/P3XvfYZuy7l8B09sO8jp0exvrW2ZtV7usZsffN/ptmUSW8wxcz+PNrBDXQD+qUwBjjnR0th7kz72jrfHOfbOg++rU/1qkIVUKbcL70CBQFY6fHjbNOkhVd+Nt4IZcqPAgA=);
+  background: #fff url(data:image/webp;base64,UklGRpwAAABXRUJQVlA4TI8AAAAvD8ADEHU4rG03bZSkzMzMjPtPx7CAvmSrEQwZSRI0BoNwCIvwCIvwyI2yCD0B/P3XvfYZuy7l8B09sO8jp0exvrW2ZtV7usZsffN/ptmUSW8wxcz+PNrBDXQD+qUwBjjnR0th7kz72jrfHOfbOg++rU/1qkIVUKbcL70CBQFY6fHjbNOkhVd+Nt4IZcqPAgA=);
   background-repeat: no-repeat;
   background-position: right 15px center;
   padding-right: 48px;
@@ -294,6 +314,45 @@ select.form-control {
 
 a.btn:link, a.btn:visited, a.btn:hover, a.btn:active {
   color: #fff;
+}
+
+button.btn.btn-secondary {
+  background-color: #6c757d;
+}
+
+button.btn.btn-secondary:hover {
+  background-color: #666666;
+}
+
+button.btn.btn-warning {
+  background-color: #ffc107;
+  color: #000;
+}
+
+button.btn.btn-warning:hover {
+  background-color: #E6AE07;
+}
+
+button.btn.btn-danger {
+  background-color: #C22F3D;
+}
+
+button.btn.btn-danger:hover {
+  background-color: #A82835;
+}
+
+button.btn-sm {
+  height: 30px;
+  line-height: 30px;
+  padding: 0 12px;
+}
+
+input.form-control {
+  height: 50px;
+}
+
+textarea.form-control {
+  height: 150px;
 }
 
 form.form-vertical {
@@ -309,9 +368,6 @@ form.form-vertical select {
 }
 form.form-vertical small {
   color: #666;
-}
-form.form-vertical textarea {
-  height: 144px;
 }
 form.form-vertical label {
   display: block;
