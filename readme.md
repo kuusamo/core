@@ -12,6 +12,12 @@ A learning management system (LMS) that uses API-friendly JSON blocks to build l
 Roadmap
 -------
 
+React version: it's ready, but we need to clean up the old stuff.
+
+Do we need Parsedown?
+
+
+
 * Database migrations
 * Sticky lesson menu
 * Assessments

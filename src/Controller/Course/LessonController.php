@@ -6,7 +6,6 @@ use Kuusamo\Vle\Entity\Course;
 use Kuusamo\Vle\Entity\Lesson;
 use Kuusamo\Vle\Entity\User;
 use Kuusamo\Vle\Entity\UserLesson;
-use Kuusamo\Vle\Helper\Block\Render\BlockRendererFactory;
 
 use Slim\Exception\HttpNotFoundException;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -61,7 +60,6 @@ class LessonController extends CourseController
 
         return $this->renderPage($request, $response, 'course/lesson.html', [
             'lesson' => $lesson,
-            //'blocks' => $this->renderBlocks($lesson->getBlocks()),
             'previousAndNext' => $previousAndNext,
             'isMarked' => $lesson->getMarking() !== Lesson::MARKING_AUTOMATIC,
             'hasCompleted' => $link->hasCompleted(),
@@ -69,26 +67,6 @@ class LessonController extends CourseController
             'courseView' => true,
             'lessonData' => json_encode($lesson)
         ]);
-    }
-
-    /**
-     * Render all of the lesson blocks.
-     *
-     * @param ArrayCollection $blocks Blocks.
-     * @return array
-     */
-    private function renderBlocks($blocks): array
-    {
-        $renderedBlocks = [];
-
-        foreach ($blocks as $block) {
-            $renderer = BlockRendererFactory::get($block, $this->ci->get('templating'));
-            $renderedBlocks[] = [
-                'html' => $renderer->render()
-            ];
-        }
-
-        return $renderedBlocks;
     }
 
     /**

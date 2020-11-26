@@ -26,13 +26,6 @@ class MarkdownBlock extends Block implements JsonSerializable
         $this->markdown = $value;
     }
 
-    public function toHtml(): string
-    {
-        $parsedown = new Parsedown;
-        $parsedown->setSafeMode(true);
-        return $parsedown->text($this->markdown);
-    }
-
     public function jsonSerialize(): array
     {
         return [

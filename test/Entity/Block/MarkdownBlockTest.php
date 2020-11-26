@@ -14,6 +14,5 @@ class MarkdownBlockTest extends TestCase
         $block->setMarkdown("**Bold text**");
 
         $this->assertSame("**Bold text**", $block->getMarkdown());
-        $this->assertSame("<p><strong>Bold text</strong></p>", $block->toHtml());
     }
 }
