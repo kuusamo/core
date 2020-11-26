@@ -21,7 +21,7 @@ class LocalStorage implements StorageInterface
         }
 
         return new StorageObject(
-            file_get_contents($filePath),
+            fopen($filePath, 'r'),
             $this->generateContentType($key)
         );
     }
@@ -30,13 +30,13 @@ class LocalStorage implements StorageInterface
      * PUT command.
      *
      * @param string $key         Filename.
-     * @param string $body        Body.
+     * @param string $data        String or stream.
      * @param string $contentType Media type.
      * @return boolean Success.
      */
-    public function put(string $key, string $body, string $contentType): bool
+    public function put(string $key, $data, string $contentType): bool
     {
-        $result = file_put_contents($this->getFilePath($key), $body);
+        $result = file_put_contents($this->getFilePath($key), $data);
 
         if ($result === false) {
             throw new StorageException('File could not be written');

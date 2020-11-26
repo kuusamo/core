@@ -28,8 +28,7 @@ class FileController extends Controller
             throw new HttpNotFoundException($request, $response);
         }
 
-        $response = $response->withHeader('Content-type', $fileData->getContentType());
-        $response->getBody()->write($fileData->getBody());
+        $response = $response->withFile($fileData->getStream(), $fileData->getContentType());
         return $response;
     }
 }

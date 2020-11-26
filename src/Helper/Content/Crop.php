@@ -52,9 +52,9 @@ class Crop
      *
      * @param string  $filename Key.
      * @param integer $size     Size of box.
-     * @return ImageResponse
+     * @return CroppedImage
      */
-    public function resize(string $filename, int $size): StorageObject
+    public function resize(string $filename, int $size): CroppedImage
     {
         $size = intval($size);
 
@@ -70,7 +70,7 @@ class Crop
             $image->resizeImage($size, $size, Imagick::FILTER_LANCZOS, 1, true);
         }
 
-        return new StorageObject($image->getImageBlob(), $this->file->getContentType());
+        return new CroppedImage($image->getImageBlob(), $this->file->getContentType());
     }
 
     /**
@@ -78,9 +78,9 @@ class Crop
      *
      * @param string  $filename Filename.
      * @param integer $width    Width.
-     * @return ImageResponse
+     * @return CroppedImage
      */
-    public function ratio(string $filename, int $width, $ratio = '16x9'): StorageObject
+    public function ratio(string $filename, int $width, $ratio = '16x9'): CroppedImage
     {
         $width = intval($width);
         $ratio = explode('x', $ratio);
@@ -94,7 +94,7 @@ class Crop
         $image = $this->getImage($filename);
         $image->cropThumbnailImage($width, $height);
 
-        return new StorageObject($image->getImageBlob(), $this->file->getContentType());
+        return new CroppedImage($image->getImageBlob(), $this->file->getContentType());
     }
 
     /**
@@ -111,7 +111,7 @@ class Crop
 
             // read image into imagick object
             $image = new Imagick;
-            $image->readImageBlob($this->file->getBody());
+            $image->readImageFile($this->file->getStream());
 
             // return the object
             return $image;

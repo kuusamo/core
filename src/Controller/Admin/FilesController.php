@@ -32,7 +32,7 @@ class FilesController extends Controller
 
                         $this->ci->get('storage')->put(
                             sprintf('files/%s', $fileObj->getFilename()),
-                            $fileData->getStream()->__toString(),
+                            $fileData->getStream(),
                             $fileObj->getMediaType()
                         );
 
@@ -75,7 +75,7 @@ class FilesController extends Controller
 
                         $this->ci->get('storage')->put(
                             sprintf('files/%s', $fileObj->getFilename()),
-                            $fileData->getStream()->__toString(),
+                            $fileData->getStream(),
                             $fileObj->getMediaType()
                         );
 

@@ -4,29 +4,29 @@ namespace Kuusamo\Vle\Service\Storage;
 
 class StorageObject
 {
-    private $body;
+    private $stream;
     private $contentType;
 
     /**
      * Constructor.
      *
-     * @param string $body        File contents as a string.
-     * @param string $contentType Content type.
+     * @param resource $stream      File pointer.
+     * @param string   $contentType Content type.
      */
-    public function __construct(string $body, string $contentType)
+    public function __construct($stream, string $contentType)
     {
-        $this->body = $body;
+        $this->stream = $stream;
         $this->contentType = $contentType;
     }
 
     /**
-     * Get file body.
+     * Get file pointer.
      *
-     * @return string
+     * @return resource
      */
-    public function getBody(): string
+    public function getStream()
     {
-        return $this->body;
+        return $this->stream;
     }
 
     /**

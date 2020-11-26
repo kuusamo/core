@@ -11,7 +11,7 @@ class StorageObjectTest extends TestCase
     {
         $file = new StorageObject('filedata', 'plain/text');
 
-        $this->assertSame('filedata', $file->getBody());
+        $this->assertSame('filedata', $file->getStream());
         $this->assertSame('plain/text', $file->getContentType());
     }
 }

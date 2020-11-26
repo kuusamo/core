@@ -4,6 +4,7 @@ namespace Kuusamo\Vle\Controller\Content;
 
 use Kuusamo\Vle\Controller\Controller;
 use Kuusamo\Vle\Helper\Content\Crop;
+use Kuusamo\Vle\Helper\Content\CroppedImage;
 use Kuusamo\Vle\Service\Storage\StorageException;
 use Kuusamo\Vle\Service\Storage\StorageObject;
 
@@ -21,7 +22,8 @@ class ImageController extends Controller
             throw new HttpNotFoundException($request, $response);
         }
 
-        return $this->prepareResponse($response, $image);
+        $response = $response->withFile($image->getStream(), $image->getContentType());
+        return $response;
     }
 
     public function resize(Request $request, Response $response, array $args = [])
@@ -41,11 +43,11 @@ class ImageController extends Controller
     /**
      * Load the image into the response object.
      *
-     * @param Response      $response Response.
-     * @param StorageObject $image    Image.
+     * @param Response     $response Response.
+     * @param CroppedImage $image    Image.
      * @return Response
      */
-    private function prepareResponse(Response $response, StorageObject $image)
+    private function prepareResponse(Response $response, CroppedImage $image)
     {
         $response = $response->withHeader('Content-type', $image->getContentType());
         $response->getBody()->write($image->getBody());
