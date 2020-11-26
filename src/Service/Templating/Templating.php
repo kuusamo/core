@@ -2,6 +2,7 @@
 
 namespace Kuusamo\Vle\Service\Templating;
 
+use Kuusamo\Vle\Entity\Theme;
 use Kuusamo\Vle\Service\Meta;
 
 use Mustache_Engine;
@@ -11,11 +12,13 @@ use Psr\Http\Message\ResponseInterface as Response;
 class Templating
 {
     private $engine;
+    private $theme;
     private $data = [];
 
-    public function __construct()
+    public function __construct(Theme $theme = null)
     {
         $this->initialise(__DIR__ . '/../../../templates');
+        $this->theme = $theme;
     }
 
     /**
@@ -77,7 +80,10 @@ class Templating
     {
         $content = $this->engine->render($template, array_merge($this->data, $data));
 
-        $layoutData = ['body' => $content];
+        $layoutData = [
+            'body' => $content,
+            'theme' => $this->theme
+        ];
 
         if ($meta) {
             $layoutData['meta'] = $meta;

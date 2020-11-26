@@ -419,10 +419,22 @@ main {
 }
 
 .site-view header {
+  align-items: center;
   font-size: 200%;
   text-align: center;
   padding: 24px;
-  padding-top: 144px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.site-view header div.logo {
+  height: 150px;
+  margin-bottom: 24px;
+  width: 300px;
+}
+.site-view header div.logo img {
+  max-width: 100%;
+  max-height: 100%;
 }
 .site-view main {
   margin: 0 auto;

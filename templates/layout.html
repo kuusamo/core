@@ -35,7 +35,8 @@
     {{^courseView}}
     <div class="site-view">
         <header>
-            <a href="/">{{siteName}}</a>
+            <div class="logo">{{#theme}}{{#getLogo}}<a href="/"><img src="{{.}}" alt=""></a>{{/getLogo}}{{/theme}}</div>
+            <div><a href="/">{{siteName}}</a></div>
             <hr>
         </header>
         <main>
@@ -50,10 +51,20 @@
 
         <footer>
             <hr>
+            {{#theme}}{{#getFooterText}}<p>{{.}}</p>{{/getFooterText}}{{/theme}}
             Powered by <a href="https://www.kuusamo.org/" target="_blank">Kuusamo</a>.
         </footer>
     </div>
     {{/courseView}}
+
+    {{#theme}}
+    <style>
+        {{#getColours}}
+        header { background-color: {{header}}; }
+        {{/getColours}}
+        {{#isLogoFlush}}header { padding-top: 0 !important; }{{/isLogoFlush}}
+    </style>
+    {{/theme}}
 
 </body>
 </html>

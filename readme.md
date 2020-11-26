@@ -14,11 +14,12 @@ To do list
 
 * Database install / migrations
 * Audio is loading the entire file through PHP and killing everything
-
-
-* Add your own logo
-* Add your colour scheme
 * Better mark as completed
+
+Themes work
+
+* Validate values on setColour()
+* Match buttons to primary colour
 
 
 Roadmap
