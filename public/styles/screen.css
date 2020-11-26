@@ -151,6 +151,12 @@ ol.breadcrumbs li:first-child::before {
 .course-navigation .course-navigation-continue button {
   width: 100%;
 }
+.course-navigation .course-navigation-continue p {
+  background-color: #eee;
+  border-radius: 6px;
+  padding: 12px;
+  text-align: center;
+}
 @media only screen and (min-width: 700px) {
   .course-navigation {
     grid-template-columns: auto 1fr auto;

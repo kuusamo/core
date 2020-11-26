@@ -59,15 +59,15 @@
 
     {{#theme}}
     <style>
-        {{#getColours}}
-        a:link, a:visited { color: {{primary}}; }
-        a:hover, a:active { color: {{#primary}}{{highlight}}{{/primary}}; }
-        header { background-color: {{primary}}; }
-        input.form-control, select.form-control, textarea.form-control { border-color: {{primary}}; }
-        a.btn, button.btn { background-color: {{primary}}; }
-        a.btn:hover, button.btn:hover { background-color: {{#primary}}{{highlight}}{{/primary}}; }
-        .course-progress-bar .course-progress-bar__indicator { background-color: {{#primary}}{{fade}}{{/primary}}; }
-        {{/getColours}}
+        {{#getColours}}{{#primary}}
+        a:link, a:visited { color: {{.}}; }
+        a:hover, a:active { color: {{highlight}}; }
+        header { background-color: {{.}}; }
+        input.form-control, select.form-control, textarea.form-control { border-color: {{.}}; }
+        a.btn, button.btn { background-color: {{.}}; }
+        a.btn:hover, button.btn:hover { background-color: {{highlight}}; }
+        .course-progress-bar .course-progress-bar__indicator { background-color: {{fade}}; }
+        {{/primary}}{{/getColours}}
         {{#isLogoFlush}}header { padding-top: 0 !important; }{{/isLogoFlush}}
     </style>
     {{/theme}}

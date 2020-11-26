@@ -24,6 +24,13 @@
         button {
             width: 100%;
         }
+
+        p {
+            background-color: #eee;
+            border-radius: $baseline / 4;
+            padding: $baseline / 2;
+            text-align: center;
+        }
     }
 
     @media only screen and (min-width: 700px) {

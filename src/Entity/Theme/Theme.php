@@ -10,7 +10,7 @@ class Theme
 
     private $footerText;
 
-    private $colours;
+    private $colours = [];
 
     /**
      * Get the path to the logo.

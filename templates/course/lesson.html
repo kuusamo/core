@@ -29,7 +29,7 @@
         {{#previousAndNext}}
             <div>{{#previousLesson}}<a href="{{uri}}">Previous lesson</a>{{/previousLesson}}</div>
             <div class="course-navigation-continue">
-                {{#isMarked}}This lesson is marked by your tutor{{/isMarked}}
+                {{#isMarked}}<p>This lesson is marked by your tutor</p>{{/isMarked}}
                 {{^isMarked}}
                 <form method="post">
                     {{#hasCompleted}}
