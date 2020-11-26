@@ -205,6 +205,10 @@ ol.breadcrumbs li:first-child::before {
   padding: 6px 12px;
 }
 
+.cm-close {
+  all: unset;
+}
+
 .cm-card {
   margin-bottom: 24px;
 }

@@ -16,7 +16,7 @@ const StatusBar = ({ status, clearStatus }) => {
         <div className={`alert alert-${status.level} alert-flex mb-3`} role="alert">
             <div>{message}</div>
             <div>
-                <button type="button" className="close" aria-label="Close" onClick={() => clearStatus()}>
+                <button type="button" className="cm-close" aria-label="Close" onClick={() => clearStatus()}>
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>

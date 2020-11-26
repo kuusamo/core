@@ -11,6 +11,10 @@
     }
 }
 
+.cm-close {
+    all: unset;
+}
+
 .cm-card {
     @extend .card;
     margin-bottom: $baseline;

@@ -14,7 +14,6 @@ Roadmap
 
 * Buttons: btn-success, btn-secondary, btn-info
 * Bootstrap badges
-* CourseManager alert close icon
 
 
 * Database migrations
