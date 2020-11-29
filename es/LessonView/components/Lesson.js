@@ -5,6 +5,7 @@ import {
     Download,
     Image,
     Markdown,
+    Question,
     Video
 } from '../blocks';
 
@@ -19,6 +20,8 @@ const Lesson = ({ lesson }) => {
                 return(<Image {...block} />);
             case 'markdown':
                 return(<Markdown {...block} />);
+            case 'question':
+                return(<Question {...block} />);
             case 'video':
                 return(<Video {...block} />);
             default:

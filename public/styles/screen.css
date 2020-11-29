@@ -1,3 +1,4 @@
+@charset "UTF-8";
 a:link, a:visited {
   color: #023e8a;
 }
@@ -198,6 +199,66 @@ ol.breadcrumbs li:first-child::before {
   right: 0;
   bottom: 0;
   z-index: 3;
+}
+
+.course-question {
+  margin-bottom: 24px;
+}
+.course-question h2 {
+  font-size: 100%;
+  margin: 0;
+}
+.course-question input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  display: inline-block;
+  position: relative;
+  background-color: #f1f1f1;
+  color: #666;
+  top: 3px;
+  height: 30px;
+  width: 30px;
+  border: 0;
+  border-radius: 50px;
+  cursor: pointer;
+  margin-right: 12px;
+  outline: none;
+}
+.course-question input:checked::before {
+  position: absolute;
+  font: 13px/1 "Open Sans", sans-serif;
+  left: 11px;
+  top: 7px;
+  content: "⅃";
+  transform: rotate(40deg);
+}
+.course-question input:hover {
+  background-color: #ccc;
+}
+.course-question input:checked {
+  background-color: #f1f1f1;
+}
+.course-question label {
+  align-items: center;
+  border: #ccc 1px solid;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  margin-bottom: 24px;
+  padding: 12px;
+}
+.course-question label:last-child {
+  margin-bottom: 0;
+}
+.course-question label.is-correct {
+  background: #90ee90;
+}
+.course-question label.is-incorrect {
+  background: #FF7F7F;
+}
+.course-question p {
+  margin-bottom: 0;
 }
 
 .cm-block-header {

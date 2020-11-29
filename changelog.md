@@ -5,3 +5,4 @@ Changelog
 ---
 
 * Audio is now explictly not preloaded
+* Quiz questions
