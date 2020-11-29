@@ -1,8 +1,9 @@
 import React, { Component, Fragment } from 'react';
 import axios from 'axios';
+
 import Lesson from './Lesson';
 import CreateLesson from './CreateLesson';
-import { STATUS_ACTIVE, STATUS_HIDDEN } from '../constants';
+import { STATUS_ACTIVE, STATUS_HIDDEN } from '../../constants';
 
 class Module extends Component {
     constructor(props) {

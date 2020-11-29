@@ -7,6 +7,9 @@ const htmlElement = document.querySelector('#lesson-view');
 ReactDOM.render(
     <LessonView
         lessonData={lessonData}
+        previousLesson={previousLesson}
+        nextLesson={nextLesson}
+        hasCompleted={hasCompleted}
     />,
     htmlElement
 );

@@ -2,9 +2,14 @@ import React from 'react';
 
 import Lesson from './components/Lesson';
 
-const LessonView = ({ lessonData }) => {
+const LessonView = ({ lessonData, previousLesson, nextLesson, hasCompleted }) => {
     return (
-        <Lesson lesson={lessonData} />
+        <Lesson
+            lesson={lessonData}
+            previousLesson={previousLesson}
+            nextLesson={nextLesson}
+            hasCompleted={hasCompleted}
+        />
     );
 }
 

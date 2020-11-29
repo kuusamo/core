@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import axios from 'axios';
 import BlockUtils from '../utils/BlockUtils';
 
-import { TYPE_ASSESSMENT } from '../constants';
+import { TYPE_ASSESSMENT } from '../../constants';
 
 import {
     AudioBlock,

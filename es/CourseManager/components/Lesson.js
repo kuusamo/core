@@ -7,7 +7,7 @@ import {
     TYPE_ASSESSMENT,
     MARKING_AUTOMATIC,
     MARKING_TUTOR
-} from '../constants';
+} from '../../constants';
 
 class Lesson extends Component {
     constructor(props) {

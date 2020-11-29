@@ -60,8 +60,8 @@ class LessonController extends CourseController
 
         return $this->renderPage($request, $response, 'course/lesson.html', [
             'lesson' => $lesson,
-            'previousAndNext' => $previousAndNext,
-            'isMarked' => $lesson->getMarking() !== Lesson::MARKING_AUTOMATIC,
+            'previousLesson' => json_encode($previousAndNext['previousLesson']),
+            'nextLesson' => json_encode($previousAndNext['nextLesson']),
             'hasCompleted' => $link->hasCompleted(),
             'navigation' => $navigation,
             'courseView' => true,

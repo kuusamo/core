@@ -21,30 +21,12 @@
             <div id="lesson-view"></div>
             <script>
                 var lessonData = {{{lessonData}}};
+                var previousLesson = {{{previousLesson}}};
+                var nextLesson = {{{nextLesson}}};
+                var hasCompleted = {{#hasCompleted}}true{{/hasCompleted}}{{^hasCompleted}}false{{/hasCompleted}};
             </script>
             <script src="/js/LessonView.js"></script>
         </article>
-
-        <div class="course-navigation" role="navigation">
-        {{#previousAndNext}}
-            <div>{{#previousLesson}}<a href="{{uri}}">Previous lesson</a>{{/previousLesson}}</div>
-            <div class="course-navigation-continue">
-                {{#isMarked}}<p>This lesson is marked by your tutor</p>{{/isMarked}}
-                {{^isMarked}}
-                <form method="post">
-                    {{#hasCompleted}}
-                    <button type="submit" class="btn">Mark as incomplete</button>
-                    {{/hasCompleted}}
-                    {{^hasCompleted}}
-                    <button type="submit" class="btn">Complete and continue</button>
-                    <input type="hidden" name="continue" value="true">
-                    {{/hasCompleted}}
-                </form>
-                {{/isMarked}}
-            </div>
-            <div>{{#nextLesson}}<a href="{{uri}}">Next lesson</a>{{/nextLesson}}</div>
-        {{/previousAndNext}}
-        </div>
 
         <script src="/js/lesson.js"></script>
     </main>

@@ -9,7 +9,13 @@ import {
     Video
 } from '../blocks';
 
-const Lesson = ({ lesson }) => {
+import {
+    MARKING_AUTOMATIC
+} from '../../constants'
+
+import Navigation from './Navigation';
+
+const Lesson = ({ lesson, previousLesson, nextLesson, hasCompleted }) => {
     const renderBlock = (block) => {
         switch(block.type) {
             case 'audio':
@@ -45,9 +51,17 @@ const Lesson = ({ lesson }) => {
         });
     }
 
+    const isMarked = lesson.marking !== MARKING_AUTOMATIC;
+
     return (
         <div>
             {renderBlocks()}
+            <Navigation
+                previousLesson={previousLesson}
+                nextLesson={nextLesson}
+                isMarked={isMarked}
+                hasCompleted={hasCompleted}
+            />
         </div>
     );
 }
