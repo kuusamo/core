@@ -25,7 +25,7 @@ const Question = ({ id, text, answers }) => {
                         onChange={() => { setSelectedIndex(index)}}
                     />
                 </div>
-                <div>{text}</div>
+                <div>{answer.text}</div>
             </label>
         );
     }
