@@ -52,7 +52,7 @@ class CreateModule extends Component {
                     value={this.state.description}
                     onChange={this.onChangeDescription.bind(this)}
                 />{" "}
-                <button className="btn btn-primary">Create module</button>
+                <button className="btn">Create module</button>
             </form>
         );
     }

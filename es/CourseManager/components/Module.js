@@ -104,7 +104,7 @@ class Module extends Component {
                         value={this.state.delay}
                         onChange={this.updateDelay.bind(this)}
                     />
-                    <button className="btn btn-primary mb-1 mr-1">Save</button>
+                    <button className="btn mb-1 mr-1">Save</button>
                     <button className="btn btn-warning mb-1" onClick={this.cancelEdit.bind(this)}>Cancel</button>
                 </form>
             </div>

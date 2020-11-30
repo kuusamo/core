@@ -163,7 +163,7 @@ class LessonEditor extends Component {
                 </p>
 
                 <p>
-                    <button className="btn btn-primary" onClick={this.saveBlocks.bind(this)}>Save</button>{" "}
+                    <button className="btn" onClick={this.saveBlocks.bind(this)}>Save</button>{" "}
                     <button className="btn btn-secondary" onClick={() => this.props.closeLessonEditor()}>Close editor</button>
                 </p>
             </div>
