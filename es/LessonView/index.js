@@ -6,6 +6,7 @@ const htmlElement = document.querySelector('#lesson-view');
 
 ReactDOM.render(
     <LessonView
+        courseUri={courseUri}
         lessonData={lessonData}
         userLessonData={userLessonData}
         previousLesson={previousLesson}

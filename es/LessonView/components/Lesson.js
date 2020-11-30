@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
 import {
     Audio,
@@ -16,7 +17,7 @@ import {
 import Navigation from './Navigation';
 import Result from './Result';
 
-const Lesson = ({ lesson, defaultUserLesson, previousLesson, nextLesson }) => {
+const Lesson = ({ courseUri, lesson, defaultUserLesson, previousLesson, nextLesson }) => {
     // track user progress
     const [userLesson, setUserLesson] = useState(defaultUserLesson);
 
@@ -32,6 +33,7 @@ const Lesson = ({ lesson, defaultUserLesson, previousLesson, nextLesson }) => {
     // is the user currently undertaking a graded quiz?
     const defaultMode = lesson.marking == MARKING_GRADED && defaultUserLesson.score === null
     const [isGrading, setIsGrading] = useState(defaultMode);
+    const [loading, setLoading] = useState(false);
 
     // derive what we should show
     const showAnswers = isGrading === false;
@@ -41,8 +43,19 @@ const Lesson = ({ lesson, defaultUserLesson, previousLesson, nextLesson }) => {
 
     const submitQuiz = event => {
         event.preventDefault();
-        setIsGrading(false);
-        setUserLesson({ score: 50, completed: false });
+        setLoading(true);
+
+        axios.post(
+            `${courseUri}/lessons/${lesson.id}/score`,
+            { score: 100 },
+            //{ score: scorePercentage(responses, totalQuestions) }
+        ).then(response => {
+            setLoading(false);
+            setIsGrading(false);
+            setUserLesson(response.data);
+        }).catch(error => {
+            setLoading(false);
+        });
     }
 
     const resetQuiz = event => {
@@ -99,7 +112,11 @@ const Lesson = ({ lesson, defaultUserLesson, previousLesson, nextLesson }) => {
     const renderResult = () => {
         if (showResult) {
             return (
-                <Result score={userLesson.score} reset={resetQuiz} />
+                <Result
+                    score={userLesson.score}
+                    passMark={lesson.passMark}
+                    reset={resetQuiz}
+                />
             );
         }
     }
@@ -116,6 +133,7 @@ const Lesson = ({ lesson, defaultUserLesson, previousLesson, nextLesson }) => {
                 isGrading={isGrading}
                 submitQuiz={submitQuiz}
                 resetQuiz={resetQuiz}
+                loading={loading}
             />
         </div>
     );

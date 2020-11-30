@@ -147,7 +147,7 @@ class LessonController extends CourseController
      * @param User   $user   User entity.
      * @return void
      */
-    private function updateProgress(Course $course, User $user)
+    protected function updateProgress(Course $course, User $user)
     {
         $userCourse = $this->getCourseLink($course, $user);
         $progress = $this->calculateProgress($course, $user);

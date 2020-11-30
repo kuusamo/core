@@ -65,7 +65,7 @@
         header { background-color: {{.}}; }
         input.form-control, select.form-control, textarea.form-control { border-color: {{.}}; }
         a.btn, button.btn { background-color: {{.}}; }
-        a.btn:hover, button.btn:hover { background-color: {{highlight}}; }
+        a.btn:hover, button.btn:hover:enabled { background-color: {{highlight}}; }
         .course-progress-bar .course-progress-bar__indicator { background-color: {{fade}}; }
         {{/primary}}{{/getColours}}
         {{#isLogoFlush}}header { padding-top: 0 !important; }{{/isLogoFlush}}

@@ -1,10 +1,18 @@
 import React from 'react';
 
-const Result = ({ score, reset }) => {
+const Result = ({ score, passMark, reset }) => {
+    const renderCongrats = () => {
+        if (score >= passMark) {
+            return 'Great job!';
+        }
+    }
+
     return (
         <div className="card mb-3">
             <div className="card-header">
-                <p>Your previous score on this assessment was {score}%.</p>
+                <p>
+                    Your score on this assessment was {score}%. To pass, you must achieve {passMark}%.  {renderCongrats()}
+                </p>
                 <p>
                     <button
                         type="button"

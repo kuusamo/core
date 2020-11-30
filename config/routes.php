@@ -23,6 +23,7 @@ $app->group('', function($app) use ($container) {
     $app->get('/course/{course:[a-z,0-9,-]+}', 'Kuusamo\Vle\Controller\Course\CourseDashboardController:dashboard');
     $app->get('/course/{course:[a-z,0-9,-]+}/certificate', 'Kuusamo\Vle\Controller\Course\CertificateController:pdf');
     $app->any('/course/{course:[a-z,0-9,-]+}/lessons/{lesson:[0-9]+}', 'Kuusamo\Vle\Controller\Course\LessonController:lesson');
+    $app->post('/course/{course:[a-z,0-9,-]+}/lessons/{lesson:[0-9]+}/score', 'Kuusamo\Vle\Controller\Course\LessonViewController:score');
 
     $app->group('/admin', function($app) {
         $app->any('', '\Kuusamo\Vle\Controller\Admin\AdminDashboardController:dashboard');

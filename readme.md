@@ -14,8 +14,9 @@ Roadmap
 
 Graded assessments
 
-* Build backend end-point and submit the score, then use result instead of dummy data
-* Add more information to result?
+* Calculate score
+* Loading icon
+* Persist score
 
 
 
@@ -23,7 +24,7 @@ Graded assessments
 * @todo in es/constants.js
 * Database migrations
 * Sticky lesson menu
-* Assessments
+* Graded assessments
 * Manual marking
 * Pass mark for non-graded lessons
 

@@ -5,7 +5,7 @@ import {
     MARKING_TUTOR
 } from '../../constants';
 
-const Navigation = ({ previousLesson, nextLesson, marking, hasCompleted, isGrading, submitQuiz, resetQuiz }) => {
+const Navigation = ({ previousLesson, nextLesson, marking, hasCompleted, isGrading, submitQuiz, resetQuiz, loading }) => {
     const renderPreviousLessonLink = () => {
         if (previousLesson) {
             return (
@@ -25,7 +25,10 @@ const Navigation = ({ previousLesson, nextLesson, marking, hasCompleted, isGradi
             if (isGrading) {
                 return (
                     <form onSubmit={submitQuiz}>
-                        <button type="submit" className="btn">Submit answers</button>
+                        <button
+                            type="submit"
+                            className="btn"
+                            disabled={loading}>Submit answers</button>
                     </form>
                 );
             }

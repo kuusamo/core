@@ -358,9 +358,8 @@ a.btn, button.btn {
   vertical-align: middle;
 }
 
-a.btn:hover {
+a.btn:hover, button.btn:hover:enabled {
   background-color: #0096c7;
-  border: 0;
   text-decoration: none;
 }
 
@@ -386,11 +385,16 @@ a.btn:link, a.btn:visited, a.btn:hover, a.btn:active {
   color: #fff;
 }
 
+button.btn:disabled {
+  background-color: #999;
+  cursor: not-allowed;
+}
+
 button.btn.btn-secondary {
   background-color: #6c757d;
 }
 
-button.btn.btn-secondary:hover {
+button.btn.btn-secondary:hover:enabled {
   background-color: #666666;
 }
 
@@ -399,7 +403,7 @@ button.btn.btn-warning {
   color: #000;
 }
 
-button.btn.btn-warning:hover {
+button.btn.btn-warning:hover:enabled {
   background-color: #E6AE07;
 }
 
@@ -407,7 +411,7 @@ button.btn.btn-danger {
   background-color: #C22F3D;
 }
 
-button.btn.btn-danger:hover {
+button.btn.btn-danger:hover:enabled {
   background-color: #A82835;
 }
 

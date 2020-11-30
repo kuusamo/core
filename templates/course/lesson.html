@@ -20,6 +20,7 @@
 
             <div id="lesson-view"></div>
             <script>
+                var courseUri = '{{#lesson}}{{#getCourse}}{{uri}}{{/getCourse}}{{/lesson}}';
                 var lessonData = {{{lessonData}}};
                 var userLessonData = {{{userLessonData}}};
                 var previousLesson = {{{previousLesson}}};
