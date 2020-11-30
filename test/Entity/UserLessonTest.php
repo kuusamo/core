@@ -25,6 +25,8 @@ class UserLessonTest extends TestCase
         $this->assertSame($mockLesson, $link->getLesson());
         $this->assertSame(true, $link->hasCompleted());
         $this->assertSame(100, $link->getScore());
+
+        $this->assertSame('{"completed":true,"score":100}', json_encode($link));
     }
 
     public function testScore()

@@ -62,10 +62,10 @@ class LessonController extends CourseController
             'lesson' => $lesson,
             'previousLesson' => json_encode($previousAndNext['previousLesson']),
             'nextLesson' => json_encode($previousAndNext['nextLesson']),
-            'hasCompleted' => $link->hasCompleted(),
             'navigation' => $navigation,
             'courseView' => true,
-            'lessonData' => json_encode($lesson)
+            'lessonData' => json_encode($lesson),
+            'userLessonData' => json_encode($link)
         ]);
     }
 

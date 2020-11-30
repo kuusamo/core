@@ -153,7 +153,8 @@ ol.breadcrumbs li:first-child::before {
   grid-column: 1/span 2;
   grid-row-start: 1;
 }
-.course-navigation .course-navigation-continue button {
+.course-navigation .course-navigation-continue a, .course-navigation .course-navigation-continue button {
+  text-align: center;
   width: 100%;
 }
 .course-navigation .course-navigation-continue p {
@@ -250,6 +251,13 @@ ol.breadcrumbs li:first-child::before {
 }
 .course-question label:last-child {
   margin-bottom: 0;
+}
+.course-question label.is-disabled {
+  color: #666;
+  cursor: not-allowed;
+}
+.course-question label.is-disabled input:hover {
+  background-color: #f1f1f1;
 }
 .course-question label.is-correct {
   background: #90ee90;

@@ -12,10 +12,28 @@ A learning management system (LMS) that uses API-friendly JSON blocks to build l
 Roadmap
 -------
 
+Graded assessments
+
+* Develop a scoring/answer system that can calculate a score
+* Submit the score to the backend using AJAX, which then updates userLesson
+
+Current setup
+
+* Does not work if you try and retake an assessment you have passed
+* Do we need this much state?
+
+
+
+
+
+
+* React "next lesson" button on final lesson
 * @todo in es/constants.js
 * Database migrations
 * Sticky lesson menu
 * Assessments
+* Manual marking
+* Pass mark for non-graded lessons
 
 * SMTP
 * Drip content

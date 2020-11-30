@@ -21,7 +21,8 @@
         grid-column: 1 / span 2;
         grid-row-start: 1;
 
-        button {
+        a, button {
+            text-align: center;
             width: 100%;
         }
 
@@ -129,6 +130,15 @@
 
     label:last-child {
         margin-bottom: 0;
+    }
+
+    label.is-disabled {
+        color: #666;
+        cursor: not-allowed;
+
+        input:hover {
+            background-color: #f1f1f1;
+        }
     }
 
     label.is-correct {

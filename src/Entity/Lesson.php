@@ -20,6 +20,7 @@ class Lesson implements JsonSerializable
     const TYPE_ASSESSMENT = 'ASSESSMENT';
 
     const MARKING_AUTOMATIC = 'AUTOMATIC';
+    const MARKING_GRADED = 'GRADED';
     const MARKING_TUTOR = 'TUTOR';
 
     /**
@@ -175,7 +176,11 @@ class Lesson implements JsonSerializable
 
     public function setMarking(string $value)
     {
-        if (!in_array($value, [self::MARKING_AUTOMATIC, self::MARKING_TUTOR])) {
+        if (!in_array($value, [
+            self::MARKING_AUTOMATIC,
+            self::MARKING_GRADED,
+            self::MARKING_TUTOR
+        ])) {
             throw new InvalidArgumentException('Invalid type');
         }
 

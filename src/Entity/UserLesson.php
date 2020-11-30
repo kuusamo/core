@@ -2,11 +2,13 @@
 
 namespace Kuusamo\Vle\Entity;
 
+use JsonSerializable;
+
 /**
  * @Entity
  * @Table(name="users_lessons")
  */
-class UserLesson
+class UserLesson implements JsonSerializable
 {
     /**
      * @ManyToOne(targetEntity="User")
@@ -75,5 +77,13 @@ class UserLesson
         if ($value >= 0 && $value <= 100) {
             $this->score = $value;
         }
+    }
+
+    public function jsonSerialize(): array
+    {
+        return [
+            'completed' => $this->completed,
+            'score' => $this->score
+        ];
     }
 }

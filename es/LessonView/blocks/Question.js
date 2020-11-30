@@ -1,17 +1,22 @@
 import React, { useState } from 'react';
 
-const Question = ({ id, text, answers }) => {
-    const [selectedIndex, setSelectedIndex] = useState(null);
+import {
+    MARKING_GRADED
+} from '../../constants';
 
+const Question = ({ id, text, answers, disabled, currentAnswer, answerQuestion, showAnswers }) => {
     const renderAnswer = (answer, index) => {
         const elementId = `question-${id}-answer-${index}`;
         const classNames = [];
-        const isSelected = (index == selectedIndex);
-        const marked = false; // @todo Unused
+        const isSelected = (currentAnswer && currentAnswer.answer == index);
 
-        if (isSelected) {
+        if (showAnswers && isSelected) {
             const markingClass = answer.correct ? 'is-correct' : 'is-incorrect';
             classNames.push(markingClass);
+        }
+
+        if (disabled) {
+            classNames.push('is-disabled');
         }
 
         return (
@@ -21,8 +26,8 @@ const Question = ({ id, text, answers }) => {
                         type="radio"
                         id={elementId}
                         checked={isSelected}
-                        disabled={marked}
-                        onChange={() => { setSelectedIndex(index)}}
+                        disabled={disabled}
+                        onChange={() => answerQuestion(id, index, answer.correct)}
                     />
                 </div>
                 <div>{answer.text}</div>
@@ -37,12 +42,12 @@ const Question = ({ id, text, answers }) => {
     }
 
     const renderExplanation = () => {
-        if (selectedIndex === null) {
+        if (currentAnswer === null || showAnswers === false) {
             return null;
         }
 
         return (
-            <p>{answers[selectedIndex].explanation}</p>
+            <p>{answers[currentAnswer.answer].explanation}</p>
         );
     }
 

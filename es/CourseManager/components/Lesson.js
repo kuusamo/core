@@ -6,6 +6,7 @@ import {
     TYPE_CONTENT,
     TYPE_ASSESSMENT,
     MARKING_AUTOMATIC,
+    MARKING_GRADED,
     MARKING_TUTOR
 } from '../../constants';
 
@@ -147,6 +148,7 @@ class Lesson extends Component {
                                             value={this.state.marking}
                                             onChange={this.updateMarking.bind(this)}>
                                             <option>{MARKING_AUTOMATIC}</option>
+                                            <option>{MARKING_GRADED}</option>
                                             <option>{MARKING_TUTOR}</option>
                                         </select>
                                     </div>

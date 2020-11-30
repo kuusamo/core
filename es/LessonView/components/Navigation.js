@@ -1,6 +1,11 @@
 import React, { Fragment } from 'react';
 
-const Navigation = ({ previousLesson, nextLesson, isMarked, hasCompleted }) => {
+import {
+    MARKING_GRADED,
+    MARKING_TUTOR
+} from '../../constants';
+
+const Navigation = ({ userLesson, previousLesson, nextLesson, marking, showResult, submitQuiz, resetQuiz }) => {
     const renderPreviousLessonLink = () => {
         if (previousLesson) {
             return (
@@ -10,9 +15,29 @@ const Navigation = ({ previousLesson, nextLesson, isMarked, hasCompleted }) => {
     }
 
     const renderContinueButton = () => {
-        if (isMarked) {
+        if (marking === MARKING_TUTOR) {
             return (
                 <p>This lesson is marked by your tutor</p>
+            );
+        }
+
+        if (marking === MARKING_GRADED) {
+            if (userLesson.completed === true) {
+                return (<a href={nextLesson.uri} className="btn">Continue</a>);
+            }
+
+            if (showResult) {
+                return (
+                    <form onSubmit={resetQuiz}>
+                        <button type="submit" className="btn">Resit assessment</button>
+                    </form>
+                );
+            }
+
+            return (
+                <form onSubmit={submitQuiz}>
+                    <button type="submit" className="btn">Submit answers</button>
+                </form>
             );
         }
 
@@ -24,7 +49,7 @@ const Navigation = ({ previousLesson, nextLesson, isMarked, hasCompleted }) => {
     }
 
     const renderSubmitButton = () => {
-        if (hasCompleted) {
+        if (userLesson.hasCompleted) {
             return (
                 <button type="submit" className="btn">Mark as incomplete</button>
             );
