@@ -42,7 +42,7 @@ class LessonViewController extends LessonController
         $json = $request->getParsedBody();
         $score = intval($json['score']);
 
-        if ($score > $link->getScore()) {
+        if ($link->getScore() === null || $score > $link->getScore()) {
             $link->setScore($score);
         }
 

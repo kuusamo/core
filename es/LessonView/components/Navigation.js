@@ -23,12 +23,13 @@ const Navigation = ({ previousLesson, nextLesson, marking, hasCompleted, isGradi
 
         if (marking === MARKING_GRADED) {
             if (isGrading) {
+                const text = loading ? 'Loading...' : 'Submit answers';
                 return (
                     <form onSubmit={submitQuiz}>
                         <button
                             type="submit"
                             className="btn"
-                            disabled={loading}>Submit answers</button>
+                            disabled={loading}>{text}</button>
                     </form>
                 );
             }

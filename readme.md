@@ -15,7 +15,6 @@ Roadmap
 Graded assessments
 
 * Control the focus
-* Loading icon
 * Persist score
 
 
