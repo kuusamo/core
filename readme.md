@@ -19,7 +19,6 @@ Graded assessments
 
 
 
-* Lesson navigation bar spacing
 * React "next lesson" button on final lesson
 * @todo in es/constants.js
 * Database migrations

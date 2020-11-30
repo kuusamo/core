@@ -145,6 +145,7 @@ ol.breadcrumbs li:first-child::before {
   display: grid;
   grid-gap: 24px;
   grid-template-columns: 1fr 1fr;
+  margin-top: 24px;
 }
 .course-navigation div:last-child {
   text-align: right;

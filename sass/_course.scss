@@ -12,6 +12,7 @@
     display: grid;
     grid-gap: $baseline;
     grid-template-columns: 1fr 1fr;
+    margin-top: $baseline;
 
     div:last-child {
         text-align: right;
