@@ -20,6 +20,11 @@ img {
     max-width: 100%;
 }
 
+p, ol, ul {
+    line-height: $baseline;
+    margin: $baseline 0;
+}
+
 .mb-1 { margin-bottom: $baseline / 4; }
 .mb-3 { margin-bottom: $baseline; }
 
