@@ -17,14 +17,10 @@ import Navigation from './Navigation';
 import Result from './Result';
 
 const Lesson = ({ lesson, defaultUserLesson, previousLesson, nextLesson }) => {
-    const [showAnswers, setShowAnswers] = useState(lesson.marking !== MARKING_GRADED);
-    const disableInputs = showAnswers && (lesson.marking === MARKING_GRADED);
-
-    // @todo Do we need all of this state?
-    const [hideResult, setHideResult] = useState(false);
-    const [showBlocks, setShowBlocks] = useState(lesson.marking !== MARKING_GRADED || defaultUserLesson.score === null);
+    // track user progress
     const [userLesson, setUserLesson] = useState(defaultUserLesson);
 
+    // store and set question answers
     const [responses, setResponses] = useState([]);
 
     const answerQuestion = (questionId, answerIndex, correct) => {
@@ -33,21 +29,26 @@ const Lesson = ({ lesson, defaultUserLesson, previousLesson, nextLesson }) => {
         setResponses(newResponses);
     }
 
-    const showResult = lesson.marking === MARKING_GRADED && userLesson.score !== null &&hideResult === false;
+    // is the user currently undertaking a graded quiz?
+    const defaultMode = lesson.marking == MARKING_GRADED && defaultUserLesson.score === null
+    const [isGrading, setIsGrading] = useState(defaultMode);
+
+    // derive what we should show
+    const showAnswers = isGrading === false;
+    const disableInputs = showAnswers && (lesson.marking === MARKING_GRADED);
+    const showResult = lesson.marking === MARKING_GRADED && userLesson.score !== null && isGrading === false;
+    const showBlocks = (lesson.marking !== MARKING_GRADED || isGrading || responses.length > 0);
 
     const submitQuiz = event => {
         event.preventDefault();
-        setShowAnswers(true);
+        setIsGrading(false);
         setUserLesson({ score: 50, completed: false });
-        setHideResult(false);
     }
 
     const resetQuiz = event => {
         event.preventDefault();
+        setIsGrading(true);
         setResponses([]);
-        setShowAnswers(false);
-        setShowBlocks(true);
-        setHideResult(true);
     }
 
     const renderBlock = (block) => {
@@ -108,11 +109,11 @@ const Lesson = ({ lesson, defaultUserLesson, previousLesson, nextLesson }) => {
             {renderResult()}
             {renderBlocks()}
             <Navigation
-                userLesson={userLesson}
                 previousLesson={previousLesson}
                 nextLesson={nextLesson}
                 marking={lesson.marking}
-                showResult={showResult}
+                hasCompleted={userLesson.completed}
+                isGrading={isGrading}
                 submitQuiz={submitQuiz}
                 resetQuiz={resetQuiz}
             />

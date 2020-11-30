@@ -5,7 +5,7 @@ import {
     MARKING_TUTOR
 } from '../../constants';
 
-const Navigation = ({ userLesson, previousLesson, nextLesson, marking, showResult, submitQuiz, resetQuiz }) => {
+const Navigation = ({ previousLesson, nextLesson, marking, hasCompleted, isGrading, submitQuiz, resetQuiz }) => {
     const renderPreviousLessonLink = () => {
         if (previousLesson) {
             return (
@@ -22,21 +22,21 @@ const Navigation = ({ userLesson, previousLesson, nextLesson, marking, showResul
         }
 
         if (marking === MARKING_GRADED) {
-            if (userLesson.completed === true) {
-                return (<a href={nextLesson.uri} className="btn">Continue</a>);
-            }
-
-            if (showResult) {
+            if (isGrading) {
                 return (
-                    <form onSubmit={resetQuiz}>
-                        <button type="submit" className="btn">Resit assessment</button>
+                    <form onSubmit={submitQuiz}>
+                        <button type="submit" className="btn">Submit answers</button>
                     </form>
                 );
             }
 
+            if (hasCompleted === true) {
+                return (<a href={nextLesson.uri} className="btn">Continue</a>);
+            }
+
             return (
-                <form onSubmit={submitQuiz}>
-                    <button type="submit" className="btn">Submit answers</button>
+                <form onSubmit={resetQuiz}>
+                    <button type="submit" className="btn">Resit assessment</button>
                 </form>
             );
         }
@@ -49,7 +49,7 @@ const Navigation = ({ userLesson, previousLesson, nextLesson, marking, showResul
     }
 
     const renderSubmitButton = () => {
-        if (userLesson.hasCompleted) {
+        if (hasCompleted) {
             return (
                 <button type="submit" className="btn">Mark as incomplete</button>
             );

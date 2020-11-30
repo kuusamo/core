@@ -42,7 +42,7 @@ const Question = ({ id, text, answers, disabled, currentAnswer, answerQuestion, 
     }
 
     const renderExplanation = () => {
-        if (currentAnswer === null || showAnswers === false) {
+        if (currentAnswer === null || currentAnswer === undefined || showAnswers === false) {
             return null;
         }
 
