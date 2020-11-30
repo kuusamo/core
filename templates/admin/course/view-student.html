@@ -14,29 +14,30 @@
     <li><a href="/admin/courses/{{getId}}/edit">Edit</a></li>
     <li><a href="/admin/courses/{{getId}}/delete">Delete</a></li>
 </ul>
+{{/course}}
 
-<table class="table table-striped">
+<h2>{{#student}}{{getFullName}}{{/student}}</h2>
+
+<table class="table">
+    {{#lessonList}}
     <thead>
         <tr>
-            <th>Name</th>
-            <th>Progress</th>
+            <th colspan="3">{{name}}</th>
         </tr>
     </thead>
     <tbody>
-    {{#getUsers}}
+        {{#lessons}}
         <tr>
-            <td>{{#getUser}}<a href="students/{{getId}}">{{getFullName}}</a>{{/getUser}}</td>
-            <td>{{getProgress}}%</td>
+            <td>{{name}}</td>
+            <td>{{#completed}}<i class="fas fa-check-circle" aria-label="Completed"></i>{{/completed}}</td>
+            <td>
+                <form method="post">
+                    <input type="hidden" name="lesson" value="{{id}}">
+                    <button type="submit" class="btn btn-sm">Toggle</button>
+                </form>
+            </td>
         </tr>
-    {{/getUsers}}
+        {{/lessons}}
     </tbody>
+    {{/lessonList}}
 </table>
-
-<h2>Enrol a new student</h2>
-
-<form method="post">
-    <label for="userId">User ID</label>
-    <input type="text" name="userId" id="userId" class="form-control mr-1">
-    <button type="submit" class="btn">Enrol</button>
-</form>
-{{/course}}

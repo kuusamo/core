@@ -14,7 +14,6 @@ Roadmap
 
 * Database migrations
 * Sticky lesson menu
-* Manual marking
 * Pass mark for non-graded lessons
 
 * SMTP

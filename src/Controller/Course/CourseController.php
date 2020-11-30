@@ -77,6 +77,8 @@ abstract class CourseController extends Controller
     /**
      * Produce an array of lessons for use in the navigation.
      *
+     * @see EnrolmentController has a similar function.
+     *
      * @param Course $course        Course.
      * @param Lesson $currentLesson Lesson the user is currently browsing.
      * @return array
