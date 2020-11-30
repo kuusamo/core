@@ -7,3 +7,4 @@ Changelog
 * Audio is now explictly not preloaded
 * Multiple-choice questions
 * Graded assessments
+* Manual marking for students
