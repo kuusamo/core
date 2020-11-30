@@ -51,8 +51,8 @@ class LessonViewController extends LessonController
             $this->updateProgress($course, $user);
         }
 
-        //$this->ci->get('db')->persist($link);
-        //$this->ci->get('db')->flush();
+        $this->ci->get('db')->persist($link);
+        $this->ci->get('db')->flush();
 
         return $response->withJson($link);
     }

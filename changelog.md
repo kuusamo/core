@@ -5,4 +5,5 @@ Changelog
 ---
 
 * Audio is now explictly not preloaded
-* Quiz questions
+* Multiple-choice questions
+* Graded assessments

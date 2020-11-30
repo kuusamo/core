@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 
 const Result = ({ score, passMark, reset }) => {
     const renderCongrats = () => {
@@ -7,8 +7,15 @@ const Result = ({ score, passMark, reset }) => {
         }
     }
 
+    const resultRef = useRef();
+
+    React.useEffect(() => {
+        console.log('Effect');
+        resultRef.current.scrollIntoView({ behavior: "smooth" });
+    }, []);
+
     return (
-        <div className="card mb-3">
+        <div className="card mb-3" ref={resultRef}>
             <div className="card-header">
                 <p>
                     Your score on this assessment was {score}%. To pass, you must achieve {passMark}%.  {renderCongrats()}

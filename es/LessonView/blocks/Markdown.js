@@ -3,7 +3,7 @@ import MarkdownToJsx from 'markdown-to-jsx';
 
 const Markdown = ({ markdown }) => {
     return (
-        <MarkdownToJsx children={markdown} />
+        <MarkdownToJsx children={markdown} options={{ forceBlock: true }} />
     );
 }
 
