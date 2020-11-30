@@ -14,7 +14,7 @@ Roadmap
 
 Graded assessments
 
-* Calculate score
+* Control the focus
 * Loading icon
 * Persist score
 

@@ -47,8 +47,7 @@ const Lesson = ({ courseUri, lesson, defaultUserLesson, previousLesson, nextLess
 
         axios.post(
             `${courseUri}/lessons/${lesson.id}/score`,
-            { score: 100 },
-            //{ score: scorePercentage(responses, totalQuestions) }
+            { score: calculateScore() }
         ).then(response => {
             setLoading(false);
             setIsGrading(false);
@@ -62,6 +61,19 @@ const Lesson = ({ courseUri, lesson, defaultUserLesson, previousLesson, nextLess
         event.preventDefault();
         setIsGrading(true);
         setResponses([]);
+    }
+
+    const calculateScore = () => {
+        const questions = lesson.blocks.filter(block => block.type == 'question').length;
+        const correctAnswers = responses.filter(answer => answer && answer.correct).length;
+
+        if (questions === 0) {
+            return 100;
+        } else if (correctAnswers === 0) {
+            return 0;
+        }
+
+        return Math.round((correctAnswers / questions) * 100);
     }
 
     const renderBlock = (block) => {
