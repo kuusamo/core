@@ -12,8 +12,6 @@ A learning management system (LMS) that uses API-friendly JSON blocks to build l
 Roadmap
 -------
 
-* React "next lesson" button on final lesson
-* @todo in es/constants.js
 * Database migrations
 * Sticky lesson menu
 * Manual marking

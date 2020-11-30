@@ -138,6 +138,7 @@ const Lesson = ({ courseUri, lesson, defaultUserLesson, previousLesson, nextLess
             {renderResult()}
             {renderBlocks()}
             <Navigation
+                courseUri={courseUri}
                 previousLesson={previousLesson}
                 nextLesson={nextLesson}
                 marking={lesson.marking}

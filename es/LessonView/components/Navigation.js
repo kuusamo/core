@@ -5,7 +5,7 @@ import {
     MARKING_TUTOR
 } from '../../constants';
 
-const Navigation = ({ previousLesson, nextLesson, marking, hasCompleted, isGrading, submitQuiz, resetQuiz, loading }) => {
+const Navigation = ({ courseUri, previousLesson, nextLesson, marking, hasCompleted, isGrading, submitQuiz, resetQuiz, loading }) => {
     const renderPreviousLessonLink = () => {
         if (previousLesson) {
             return (
@@ -35,7 +35,8 @@ const Navigation = ({ previousLesson, nextLesson, marking, hasCompleted, isGradi
             }
 
             if (hasCompleted === true) {
-                return (<a href={nextLesson.uri} className="btn">Continue</a>);
+                const nextLink = nextLesson ? nextLesson.uri : courseUri;
+                return (<a href={nextLink} className="btn">Continue</a>);
             }
 
             return (
