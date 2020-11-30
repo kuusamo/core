@@ -18,7 +18,6 @@ class LessonTest extends TestCase
         $lesson = new Lesson;
 
         $this->assertSame(Lesson::STATUS_HIDDEN, $lesson->getStatus());
-        $this->assertSame(Lesson::TYPE_CONTENT, $lesson->getType());
         $this->assertSame(Lesson::MARKING_AUTOMATIC, $lesson->getMarking());
         $this->assertSame(100, $lesson->getPassMark());
 
@@ -28,7 +27,6 @@ class LessonTest extends TestCase
         $lesson->setName('Welcome');
         $lesson->setPriority(25);
         $lesson->setStatus(Lesson::STATUS_ACTIVE);
-        $lesson->setType(Lesson::TYPE_ASSESSMENT);
         $lesson->setMarking(Lesson::MARKING_TUTOR);
         $lesson->setPassMark(0);
 
@@ -38,14 +36,13 @@ class LessonTest extends TestCase
         $this->assertSame('Welcome', $lesson->getName());
         $this->assertSame(25, $lesson->getPriority());
         $this->assertSame(Lesson::STATUS_ACTIVE, $lesson->getStatus());
-        $this->assertSame(Lesson::TYPE_ASSESSMENT, $lesson->getType());
         $this->assertSame(Lesson::MARKING_TUTOR, $lesson->getMarking());
         $this->assertSame(0, $lesson->getPassMark());
 
         $this->assertSame('/course/mock-course/lessons/10', $lesson->uri());
 
         $this->assertSame(
-            '{"id":10,"name":"Welcome","status":"ACTIVE","type":"ASSESSMENT","marking":"TUTOR","passMark":0,"blocks":[]}',
+            '{"id":10,"name":"Welcome","status":"ACTIVE","marking":"TUTOR","passMark":0,"blocks":[]}',
             json_encode($lesson)
         );
     }
@@ -67,15 +64,6 @@ class LessonTest extends TestCase
     {
         $lesson = new Lesson;
         $lesson->setStatus('made up status');
-    }
-
-    /**
-     * @expectedException InvalidArgumentException
-     */
-    public function testInvalidType()
-    {
-        $lesson = new Lesson;
-        $lesson->setType('made up type');
     }
 
     /**

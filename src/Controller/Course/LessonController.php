@@ -116,11 +116,6 @@ class LessonController extends CourseController
      */
     private function changeStatus(UserLesson $link): bool
     {
-        if ($link->getLesson()->getType() === Lesson::TYPE_ASSESSMENT) {
-            $this->alertError('Wrong end-point for assignments');
-            return false;
-        }
-
         if ($link->getLesson()->getMarking() !== Lesson::MARKING_AUTOMATIC) {
             $this->alertError('Automatic marking disabled');
             return false;

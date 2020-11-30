@@ -15,10 +15,6 @@ class Lesson implements JsonSerializable
     const STATUS_ACTIVE = 'ACTIVE';
     const STATUS_HIDDEN = 'HIDDEN';
 
-    // @todo Unsupported
-    const TYPE_CONTENT = 'CONTENT';
-    const TYPE_ASSESSMENT = 'ASSESSMENT';
-
     const MARKING_AUTOMATIC = 'AUTOMATIC';
     const MARKING_GRADED = 'GRADED';
     const MARKING_TUTOR = 'TUTOR';
@@ -58,11 +54,6 @@ class Lesson implements JsonSerializable
     /**
      * @Column(type="string", length=16)
      */
-    private $type;
-
-    /**
-     * @Column(type="string", length=16)
-     */
     private $marking;
 
     /**
@@ -84,7 +75,6 @@ class Lesson implements JsonSerializable
     public function __construct()
     {
         $this->status = self::STATUS_HIDDEN;
-        $this->type = self::TYPE_CONTENT;
         $this->marking = self::MARKING_AUTOMATIC;
         $this->passMark = 100;
         $this->blocks = new ArrayCollection;
@@ -155,20 +145,6 @@ class Lesson implements JsonSerializable
         $this->status = $value;
     }
 
-    public function getType(): string
-    {
-        return $this->type;
-    }
-
-    public function setType(string $value)
-    {
-        if (!in_array($value, [self::TYPE_CONTENT, self::TYPE_ASSESSMENT])) {
-            throw new InvalidArgumentException('Invalid type');
-        }
-
-        $this->type = $value;
-    }
-
     public function getMarking(): string
     {
         return $this->marking;
@@ -217,7 +193,6 @@ class Lesson implements JsonSerializable
             'id' => $this->id,
             'name' => $this->name,
             'status' => $this->status,
-            'type' => $this->type,
             'marking' =>  $this->marking,
             'passMark' => $this->passMark,
             'blocks' => $this->blocks->toArray()

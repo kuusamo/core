@@ -51,7 +51,6 @@ class LessonsAjaxController extends AdminController
 
         $lesson->setName($json['name']);
         $lesson->setStatus($json['status']);
-        $lesson->setType($json['type']);
         $lesson->setMarking($json['marking']);
         $lesson->setPassMark($json['passMark']);
 

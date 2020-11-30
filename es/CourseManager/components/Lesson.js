@@ -3,8 +3,6 @@ import axios from 'axios';
 import {
     STATUS_ACTIVE,
     STATUS_HIDDEN,
-    TYPE_CONTENT,
-    TYPE_ASSESSMENT,
     MARKING_AUTOMATIC,
     MARKING_GRADED,
     MARKING_TUTOR
@@ -18,7 +16,6 @@ class Lesson extends Component {
             editing: false,
             name: this.props.name,
             status: this.props.status,
-            type: this.props.type,
             marking: this.props.marking,
             passMark: this.props.passMark
         };
@@ -33,7 +30,6 @@ class Lesson extends Component {
         this.setState({
             name: this.props.name,
             status: this.props.status,
-            type: this.props.type,
             marking: this.props.marking,
             passMark: this.props.passMark
         });
@@ -46,7 +42,6 @@ class Lesson extends Component {
     axios.put(`/admin/courses/lessons/${this.props.id}`, {
             name: this.state.name,
             status: this.state.status,
-            type: this.state.type,
             marking: this.state.marking,
             passMark: this.state.passMark
         }).then (response => {
@@ -69,11 +64,6 @@ class Lesson extends Component {
     updateStatus(event) {
         event.preventDefault();
         this.setState({ status: event.currentTarget.value });
-    }
-
-    updateType(event) {
-        event.preventDefault();
-        this.setState({ type: event.currentTarget.value });
     }
 
     updateMarking(event) {
@@ -121,20 +111,6 @@ class Lesson extends Component {
                                             onChange={this.updateStatus.bind(this)}>
                                             <option>{STATUS_ACTIVE}</option>
                                             <option>{STATUS_HIDDEN}</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div className="form-group row">
-                                    <label htmlFor="type" className="col-sm-3 col-form-label">Type</label>
-                                    <div className="col-sm-9">
-                                        <select
-                                            name="type"
-                                            id="type"
-                                            className="form-control"
-                                            value={this.state.type}
-                                            onChange={this.updateType.bind(this)}>
-                                            <option>{TYPE_CONTENT}</option>
-                                            <option>{TYPE_ASSESSMENT}</option>
                                         </select>
                                     </div>
                                 </div>
