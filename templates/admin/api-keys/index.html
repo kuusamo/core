@@ -1,0 +1,37 @@
+<ol class="breadcrumbs">
+    <li><a href="/">Dashboard</a></li>
+    <li><a href="/admin">Admin</a></li>
+    <li><a href="/admin/api-keys">API keys</a></li>
+</ol>
+
+<h1>API Keys</h1>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Key</th>
+            <th>Description</th>
+    </thead>
+    <tbody>
+    {{#keys}}
+        <tr>
+            <td><a href="/admin/api-keys/{{getKey}}">{{getKey}}</a></td>
+            <td>{{getDescription}}</td>
+        </tr>
+    {{/keys}}
+    {{^keys}}
+        <tr>
+            <td colspan="2">
+                No API keys exist
+            </td>
+        </tr>
+    {{/keys}}
+    </tbody>
+</table>
+
+<h2>Create an API key</h2>
+
+<form method="post">
+    <input type="text" name="description" aria-label="Description" placeholder="Description" maxlength="64" class="form-control mr-1">
+    <button type="submit" class="btn">Create</button>
+</form>

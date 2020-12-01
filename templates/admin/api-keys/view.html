@@ -1,0 +1,30 @@
+<ol class="breadcrumbs">
+    <li><a href="/">Dashboard</a></li>
+    <li><a href="/admin">Admin</a></li>
+    <li><a href="/admin/api-keys">API keys</a></li>
+</ol>
+
+{{#key}}
+<h1>API key</h1>
+
+<form method="post" class="form-vertical">
+    <label for="key">Key <small>Cannot be changed</small></label>
+    <input type="text" id="key" value="{{getKey}}" class="form-control">
+
+    <label for="secret">Secret <small>Cannot be changed</small></label>
+    <input type="text" id="secret" value="{{getSecret}}" class="form-control">
+
+    <label for="descrption">Description</label>
+    <input type="text" name="description" id="description" value="{{getDescription}}" class="form-control">
+
+    <input type="hidden" name="action" value="edit">
+    <button type="submit" class="btn">Update</button>
+</form>
+
+<h2>Delete key</h2>
+
+<form method="post">
+    <input type="hidden" name="action" value="delete">
+    <button type="submit" class="btn btn-danger">Delete</button>
+</form>
+{{/key}}

@@ -9,8 +9,18 @@ class TokenGenerator
      *
      * @return string
      */
-    public static function generate()
+    public static function generate(): string
     {
         return bin2hex(random_bytes(32));
+    }
+
+    /**
+     * Generate a shorter random token.
+     *
+     * @return string
+     */
+    public static function short(): string
+    {
+        return bin2hex(random_bytes(16));
     }
 }

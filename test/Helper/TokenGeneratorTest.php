@@ -14,4 +14,12 @@ class TokenGeneratorTest extends TestCase
         $this->assertInternalType('string', $token);
         $this->assertEquals(64, strlen($token));
     }
+
+    public function testShort()
+    {
+        $token = TokenGenerator::short();
+
+        $this->assertInternalType('string', $token);
+        $this->assertEquals(32, strlen($token));
+    }
 }

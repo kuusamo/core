@@ -46,6 +46,9 @@ $app->group('', function($app) use ($container) {
     $app->put('/courses/lessons/{id:[0-9]+}', '\Kuusamo\Vle\Controller\Admin\LessonsAjaxController:update');
     $app->put('/courses/lessons/{id:[0-9]+}/blocks', '\Kuusamo\Vle\Controller\Admin\LessonsAjaxController:updateBlocks');
 
+        $app->any('/api-keys', '\Kuusamo\Vle\Controller\Admin\ApiKeysController:index');
+        $app->any('/api-keys/{key}', '\Kuusamo\Vle\Controller\Admin\ApiKeysController:view');
+
         $app->get('/awarding-bodies', '\Kuusamo\Vle\Controller\Admin\AwardingBodiesController:index');
         $app->any('/awarding-bodies/create', '\Kuusamo\Vle\Controller\Admin\AwardingBodiesController:create');
         $app->get('/awarding-bodies/{id:[0-9]+}', '\Kuusamo\Vle\Controller\Admin\AwardingBodiesController:view');
