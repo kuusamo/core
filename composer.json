@@ -2,7 +2,7 @@
     "name": "kuusamo/core",
     "tyoe": "library",
     "description": "Kuusamo VLE",
-    "homepage": "https://github.com/xmeltrut/kuusamo",
+    "homepage": "https://github.com/kuusamo/core",
     "license": "MIT",
     "authors": [
         {
