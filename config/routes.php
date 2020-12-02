@@ -6,6 +6,7 @@ use Kuusamo\Vle\Middleware\RequirePermission;
 
 $app->any('/api/test', 'Kuusamo\Vle\Controller\Api\TestApiController:test');
 $app->post('/api/users', 'Kuusamo\Vle\Controller\Api\UsersApiController:create');
+$app->post('/api/users/{id:[0-9]+}/courses', 'Kuusamo\Vle\Controller\Api\UsersApiController:enrol');
 
 $app->any('/login', '\Kuusamo\Vle\Controller\Auth\LoginController:login');
 $app->any('/logout', '\Kuusamo\Vle\Controller\Auth\LogoutController:logout');
