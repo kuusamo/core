@@ -10,6 +10,7 @@ use Kuusamo\Vle\Helper\TokenGenerator;
 use Kuusamo\Vle\Validation\UserValidator;
 use Kuusamo\Vle\Validation\ValidationException;
 
+use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 
@@ -48,6 +49,8 @@ class UsersController extends Controller
                 $user = new User;
             } catch (ValidationException $e) {
                 $this->alertDanger($e->getMessage());
+            } catch (UniqueConstraintViolationException $e) {
+                $this->alertDanger('User already exists');
             }
         }
 
@@ -99,6 +102,8 @@ class UsersController extends Controller
                 $this->alertSuccess('User updated successfully');
             } catch (ValidationException $e) {
                 $this->alertDanger($e->getMessage());
+            } catch (UniqueConstraintViolationException $e) {
+                $this->alertDanger('Email address already in use');
             }
         }
 

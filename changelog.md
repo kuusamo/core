@@ -11,3 +11,5 @@ Changelog
 * API added with test end-point
 * User create API
 * Handle JSON requests in exception controller
+* Handle duplicate email address errors
+* Handle duplicate course URI errors

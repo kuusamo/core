@@ -7,6 +7,7 @@ use Kuusamo\Vle\Helper\Form\Select;
 use Kuusamo\Vle\Validation\CourseValidator;
 use Kuusamo\Vle\Validation\ValidationException;
 
+use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use Slim\Exception\HttpNotFoundException;
@@ -71,6 +72,8 @@ class CourseController extends AdminController
                 $this->alertSuccess('Course updated successfully');
             } catch (ValidationException $e) {
                 $this->alertDanger($e->getMessage());
+            } catch (UniqueConstraintViolationException $e) {
+                $this->alertDanger('URI already in use');
             }
         }
 
