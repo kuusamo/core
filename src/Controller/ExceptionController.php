@@ -11,6 +11,17 @@ class ExceptionController extends Controller
     public function error(Request $request, Throwable $exception)
     {
         $response = new Response;
+
+        if ($request->getContentType() === 'application/json') {
+            $response = $response->withHeader('Content-Type', 'application/json');
+            $response = $response->withStatus(500);
+            $response->getBody()->write(json_encode([
+                'success' => false,
+                'message' => 'Internal server error'
+            ]));
+            return $response;
+        }
+
         $this->ci->get('meta')->setTitle('Server error');
 
         return $this->renderPage($request, $response->withStatus(500), 'errors/server-error.html');
