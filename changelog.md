@@ -10,3 +10,4 @@ Changelog
 * Manual marking for students
 * API added with test end-point
 * User create API
+* Handle JSON requests in exception controller
