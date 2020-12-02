@@ -5,13 +5,14 @@ namespace Kuusamo\Vle\Entity;
 use Kuusamo\Vle\Helper\TokenGenerator;
 use Doctrine\Common\Collections\ArrayCollection;
 use InvalidArgumentException;
+use JsonSerializable;
 use DateTime;
 
 /**
  * @Entity
  * @Table(name="users")
  */
-class User
+class User implements JsonSerializable
 {
     const STATUS_ACTIVE = 'ACTIVE';
     const STATUS_DISABLED = 'DISABLED';
@@ -34,12 +35,12 @@ class User
     private $password;
 
     /**
-     * @Column(type="string", name="first_name", length=128)
+     * @Column(type="string", name="first_name", length=128, nullable=true)
      */
     private $firstName;
 
     /**
-     * @Column(type="string", length=128)
+     * @Column(type="string", length=128, nullable=true)
      */
     private $surname;
 
@@ -59,7 +60,7 @@ class User
     private $lastLogin;
 
     /**
-     * @Column(type="text")
+     * @Column(type="text", nullable=true)
      */
     private $notes;
 
@@ -205,5 +206,15 @@ class User
     public function getCourses()
     {
         return $this->courses;
+    }
+
+    public function jsonSerialize(): array
+    {
+        return [
+            'id' => $this->id,
+            'email' => $this->email,
+            'firstName' => $this->firstName,
+            'surname' =>  $this->surname
+        ];
     }
 }

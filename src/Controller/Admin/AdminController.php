@@ -14,7 +14,7 @@ abstract class AdminController extends Controller
      * @param string   $message  Error message.
      * @return Response
      */
-    protected function badRequest(Response $response, $message)
+    protected function badRequest(Response $response, string $message): Response
     {
         return $response->withJson([
             'success' => false,

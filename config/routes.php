@@ -4,6 +4,8 @@ use Kuusamo\Vle\Entity\Role;
 use Kuusamo\Vle\Middleware\Authenticate;
 use Kuusamo\Vle\Middleware\RequirePermission;
 
+$app->any('/api/test', 'Kuusamo\Vle\Controller\Api\TestApiController:test');
+$app->post('/api/users', 'Kuusamo\Vle\Controller\Api\UsersApiController:create');
 
 $app->any('/login', '\Kuusamo\Vle\Controller\Auth\LoginController:login');
 $app->any('/logout', '\Kuusamo\Vle\Controller\Auth\LogoutController:logout');

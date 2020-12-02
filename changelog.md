@@ -8,3 +8,5 @@ Changelog
 * Multiple-choice questions
 * Graded assessments
 * Manual marking for students
+* API added with test end-point
+* User create API

@@ -11,8 +11,8 @@ class ApiKeyTest extends TestCase
     {
         $apiKey = new ApiKey;
 
-        $this->assertSame(64, strlen($apiKey->getKey()));
-        $this->assertSame(64, strlen($apiKey->getSecret()));
+        $this->assertSame(32, strlen($apiKey->getKey()));
+        $this->assertSame(32, strlen($apiKey->getSecret()));
 
         $apiKey->setDescription('Mobile app');
 

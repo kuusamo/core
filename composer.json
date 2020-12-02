@@ -24,6 +24,7 @@
     ],
     "require": {
         "php": ">=7.3.0",
+        "kuusamo/api": "1.*",
         "mustache/mustache": "2.11.*",
         "slim/slim": "4.*",
         "slim/psr7": "1.*",

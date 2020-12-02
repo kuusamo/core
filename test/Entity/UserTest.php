@@ -42,6 +42,18 @@ class UserTest extends TestCase
         $this->assertNull($user->getNotes());
     }
 
+    public function testJson()
+    {
+        $user = new User;
+
+        $user->setId(10);
+        $user->setEmail('test@example.com');
+        $user->setFirstName('Jane');
+        $user->setSurname('Smith');
+
+        $this->assertSame('{"id":10,"email":"test@example.com","firstName":"Jane","surname":"Smith"}', json_encode($user));
+    }
+
     public function testFullName()
     {
         $user = new User;
