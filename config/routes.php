@@ -11,6 +11,8 @@ $app->post('/api/users/{id:[0-9]+}/courses', 'Kuusamo\Vle\Controller\Api\UsersAp
 $app->any('/login', '\Kuusamo\Vle\Controller\Auth\LoginController:login');
 $app->any('/logout', '\Kuusamo\Vle\Controller\Auth\LogoutController:logout');
 
+$app->any('/setup', '\Kuusamo\Vle\Controller\Setup\SetupController:setup');
+
 $app->group('/content/images', function($app) {
     $app->get('/crops/16-9/{width:[0-9]+}/{filename}', '\Kuusamo\Vle\Controller\Content\ImageController:widescreenFill');
     $app->get('/crops/{size:[0-9]+}/{filename}', '\Kuusamo\Vle\Controller\Content\ImageController:resize');

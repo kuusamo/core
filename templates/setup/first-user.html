@@ -1,0 +1,20 @@
+<h1>Setup</h1>
+
+<p>
+    Use the form below to create your admin account.
+</p>
+
+{{#user}}
+<form method="post" class="form-vertical">
+    <label for="email">Email address</label>
+    <input type="email" name="email" id="email" maxlength="128" class="form-control" value="{{getEmail}}">
+
+    <label for="password">Password</label>
+    <input type="password" name="password" id="password" class="form-control">
+
+    <label for="confirm">Confirm password</label>
+    <input type="password" name="confirm" id="confirm" class="form-control">
+
+    <button type="submit" class="btn">Create user</button>
+</form>
+{{/user}}

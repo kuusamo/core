@@ -12,6 +12,9 @@ A learning management system (LMS) that uses API-friendly JSON blocks to build l
 Roadmap
 -------
 
+* Automatic asset installs
+* Schema install
+* Footer links, privacy policy
 * Database migrations
 * Sticky lesson menu
 * SMTP

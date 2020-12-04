@@ -1,6 +1,10 @@
 Changelog
 =========
 
+1.3
+---
+* Setup screen to install the first user
+
 1.2
 ---
 
