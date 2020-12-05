@@ -1,6 +1,10 @@
 #!/usr/bin/env php
 <?php
 
+/**
+ * @deprecated
+ */
+
 use Kuusamo\Vle\Cli\FileTools;
 
 require './vendor/autoload.php';
