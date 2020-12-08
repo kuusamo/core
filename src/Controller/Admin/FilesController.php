@@ -6,8 +6,9 @@ use Kuusamo\Vle\Controller\Controller;
 use Kuusamo\Vle\Entity\File;
 use Kuusamo\Vle\Helper\FileSizeUtils;
 
+use Doctrine\DBAL\Exception\ForeignKeyConstraintViolationException;
 use Psr\Http\Message\ServerRequestInterface as Request;
-use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ResponseInterface as Response; 
 
 class FilesController extends Controller
 {
@@ -83,14 +84,18 @@ class FilesController extends Controller
                     }
                     break;
                 case 'delete':
-                    $this->ci->get('db')->remove($fileObj);
-                    $this->ci->get('db')->flush();
+                    try {
+                        $this->ci->get('db')->remove($fileObj);
+                        $this->ci->get('db')->flush();
 
-                    $this->ci->get('storage')->delete(
-                        sprintf('files/%s', $fileObj->getFilename())
-                    );
+                        $this->ci->get('storage')->delete(
+                            sprintf('files/%s', $fileObj->getFilename())
+                        );
 
-                    $this->alertSuccess('File deleted successfully');
+                        $this->alertSuccess('File deleted successfully');
+                    } catch (ForeignKeyConstraintViolationException $e) {
+                        $this->alertDanger('This file is used in a lesson');
+                    }
                     break;
             }
         }

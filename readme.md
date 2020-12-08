@@ -38,7 +38,6 @@ Relationship cascades
 
 * User
 * Image
-* File
 
 
 Development
