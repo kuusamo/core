@@ -68,6 +68,18 @@ class Module extends Component {
         });
     }
 
+    deleteModule(event) {
+        event.preventDefault();
+        if (confirm('Are you sure?')) {
+            axios.delete(`/admin/courses/modules/${this.props.id}`).then(response => {
+                this.toggleEditing();
+                this.props.removeModule(this.props.index);
+            }).catch (error => {
+                this.props.alertError(error);
+            });
+        }
+    }
+
     renderEditForm() {
         return (
             <div className="cm-card-header">
@@ -105,7 +117,8 @@ class Module extends Component {
                         onChange={this.updateDelay.bind(this)}
                     />
                     <button className="btn mb-1 mr-1">Save</button>
-                    <button className="btn btn-warning mb-1" onClick={this.cancelEdit.bind(this)}>Cancel</button>
+                    <button className="btn btn-warning mb-1 mr-1" onClick={this.cancelEdit.bind(this)}>Cancel</button>
+                    <button className="btn btn-danger mb-1" onClick={this.deleteModule.bind(this)}>Delete</button>
                 </form>
             </div>
         );

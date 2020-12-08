@@ -95,6 +95,21 @@ class ModulesAjaxController extends AdminController
         return $this->success($response, $module);
     }
 
+    public function deleteModule(Request $request, Response $response, $args)
+    {
+        $json = $request->getParsedBody();
+        $module = $this->ci->get('db')->find('Kuusamo\Vle\Entity\Module', $args['id']);
+
+        if (!$module) {
+            return $this->badRequest($response, 'Module not found');
+        }
+
+        $this->ci->get('db')->remove($module);
+        $this->ci->get('db')->flush();
+
+        return $this->success($response);
+    }
+
     public function updateModuleLessons(Request $request, Response $response, $args)
     {
         $json = $request->getParsedBody();

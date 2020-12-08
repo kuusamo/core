@@ -7,6 +7,7 @@ Changelog
 * Add name to setup screen
 * Show "no rows" message when there is no data
 * Set default status on course manager
+* Delete module functionality
 
 1.3
 ---

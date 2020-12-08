@@ -62,6 +62,12 @@ class CourseManager extends Component {
         this.setState({ modules });
     }
 
+    removeModule(index) {
+        const modules = this.state.modules;
+        modules.splice(index, 1);
+        this.setState({ modules });
+    }
+
     moveModule(index, direction) {
         const indexToSwap = (direction == 'up') ? index-- : index++;
         const modules = this.state.modules;
@@ -138,6 +144,7 @@ class CourseManager extends Component {
                     lastItem={lastItem}
                     alertError={this.alertError.bind(this)}
                     updateModule={this.updateModule.bind(this)}
+                    removeModule={this.removeModule.bind(this)}
                     moveModule={this.moveModule.bind(this)}
                     addLesson={this.addLesson.bind(this)}
                     updateLesson={this.updateLesson.bind(this)}

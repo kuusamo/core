@@ -13,7 +13,7 @@ Roadmap
 -------
 
 * Admin preview for course
-* Delete module
+* Delete module with content
 * Delete lesson
 
 * Travis CI migration
