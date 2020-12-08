@@ -8,39 +8,40 @@ class ScriptHandler
 {
     public static function postInstall()
     {
-        self::installSymlinks();
+        self::installAssets();
         echo "Operation complete!\n";
     }
 
     public static function postUpdate()
     {
-        self::installSymlinks();
+        self::installAssets();
         echo "Operation complete!\n";
     }
 
     /**
-     * Install all of the symlinks.
+     * Install the public assets.
      *
      * @return void
      */
-    private static function installSymlinks()
+    private static function installAssets()
     {
-        self::installSymlink('components');
-        self::installSymlink('images');
-        self::installSymlink('js');
-        self::installSymlink('styles');
+        self::installAssetDirectory('components');
+        self::installAssetDirectory('images');
+        self::installAssetDirectory('js');
+        self::installAssetDirectory('styles');
     }
 
     /**
-     * Install a specific symlink.
+     * Install a specific directory of assets.
      *
      * @param string $path Relative path.
      * @return void
      */
-    private static function installSymlink(string $path)
+    private static function installAssetDirectory(string $path)
     {
-        if (!is_link('./public/' . $path)) {
-            symlink(__DIR__ . '/../../public/' . $path, './public/' . $path);
-        }
+        FileTools::recursiveCopy(
+            __DIR__ . '/../../public/' . $path,
+            './public/' . $path
+        );
     }
 }

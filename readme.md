@@ -32,9 +32,23 @@ Roadmap
 Development
 -----------
 
-Useful functions
+Run the tests:
 
     ant
+
+Compile the JavaScript:
+
     gulp webpack
-    vendor/bin/doctrine orm:schema-tool:update
+
+Compile the CSS:
+
     sass sass:public/styles
+
+Update the database schema:
+
+    vendor/bin/doctrine orm:schema-tool:update
+
+Symlink assets from a project
+
+    vendor/bin/kuusamo dev-assets
+    vendor/bin/kuusamo restore-assets # when done

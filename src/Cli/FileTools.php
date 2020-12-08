@@ -37,6 +37,10 @@ class FileTools
      */
     public static function recursiveDelete(string $src)
     {
+        if (!is_dir($src)) {
+            return;
+        }
+
         $dir = opendir($src);
  
         while (false !== ($file = readdir($dir))) {
