@@ -12,6 +12,7 @@ A learning management system (LMS) that uses API-friendly JSON blocks to build l
 Roadmap
 -------
 
+* Travis CI migration
 * Schema install
 * Footer links, privacy policy
 * Database migrations
