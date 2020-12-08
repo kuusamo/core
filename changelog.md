@@ -6,6 +6,7 @@ Changelog
 * Use email on homepage if name is not available
 * Add name to setup screen
 * Show "no rows" message when there is no data
+* Set default status on course manager
 
 1.3
 ---

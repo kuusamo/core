@@ -32,6 +32,10 @@ p, ol, ul {
   margin-right: 6px;
 }
 
+.mt-3 {
+  margin-top: 24px;
+}
+
 .admin-image-gallery {
   display: grid;
   grid-gap: 1rem;

@@ -1,6 +1,11 @@
 import React, { Component, Fragment } from 'react';
 import axios from 'axios';
 
+import {
+    STATUS_ACTIVE,
+    STATUS_HIDDEN
+} from '../../constants';
+
 import StatusBar from './StatusBar';
 import Module from './Module';
 import CreateModule from './CreateModule';
@@ -14,7 +19,8 @@ class CourseManager extends Component {
             modules: [],
             lessonEditor: null,
             status: null,
-            loading: true
+            loading: true,
+            options: { status: STATUS_HIDDEN }
         };
     }
 
@@ -29,6 +35,12 @@ class CourseManager extends Component {
 
     clearStatus() {
         this.setState({ status: null });
+    }
+
+    setOption(key, event) {
+        const options = this.state.options;
+        options[key] = event.target.value;
+        this.setState({ options });
     }
 
     loadModules() {
@@ -132,6 +144,7 @@ class CourseManager extends Component {
                     moveLesson={this.moveLesson.bind(this)}
                     openLessonEditor={this.openLessonEditor.bind(this)}
                     previewUri={this.props.previewUri}
+                    defaultStatus={this.state.options.status}
                     {...module}
                 />
             );
@@ -147,6 +160,33 @@ class CourseManager extends Component {
                 />
             );
         }
+    }
+
+    renderOptions() {
+        return (
+            <div className="card mt-3">
+                <div className="cm-card-header">
+                    <h2><i class="fas fa-cog" aria-hidden></i> Settings</h2>
+                </div>
+                <div className="card-body">
+                    <form className="cm-form-grid">
+                        <div>
+                            <div><label htmlFor="defaultStatus">Default status</label></div>
+                            <div>
+                                <select
+                                    id="defaultStatus"
+                                    className="form-control"
+                                    value={this.state.options.status}
+                                    onChange={event => { this.setOption('status', event)}}>
+                                    <option>{STATUS_ACTIVE}</option>
+                                    <option>{STATUS_HIDDEN}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        );
     }
 
     renderWorkArea() {
@@ -181,7 +221,10 @@ class CourseManager extends Component {
                     courseId={this.props.courseId}
                     addModule={this.addModule.bind(this)}
                     alertError={this.alertError.bind(this)}
+                    defaultStatus={this.state.options.status}
                 />
+
+                {this.renderOptions()}
             </Fragment>
         );
     }

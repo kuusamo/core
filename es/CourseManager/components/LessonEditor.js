@@ -142,10 +142,10 @@ class LessonEditor extends Component {
         return (
             <Fragment>
                 <button className="btn mb-1 mr-1" onClick={() => this.createBlock('markdown')}>Add Markdown</button>
-                <button className="btn mb-1  mr-1" onClick={() => this.createBlock('video', { provider: 'vimeo' })}>Add Video</button>
-                <button className="btn mb-1  mr-1" onClick={() => this.createBlock('image')}>Add Image</button>
-                <button className="btn mb-1  mr-1" onClick={() => this.createBlock('download')}>Add Download</button>
-                <button className="btn mb-1 " onClick={() => this.createBlock('audio')}>Add Audio</button>
+                <button className="btn mb-1 mr-1" onClick={() => this.createBlock('video', { provider: 'vimeo' })}>Add Video</button>
+                <button className="btn mb-1 mr-1" onClick={() => this.createBlock('image')}>Add Image</button>
+                <button className="btn mb-1 mr-1" onClick={() => this.createBlock('download')}>Add Download</button>
+                <button className="btn mb-1 mr-1" onClick={() => this.createBlock('audio')}>Add Audio</button>
                 <button className="btn mb-1 " onClick={() => this.createBlock('question', { answers: [] })}>Add Question</button>
             </Fragment>
         );

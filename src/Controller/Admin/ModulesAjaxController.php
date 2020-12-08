@@ -21,6 +21,7 @@ class ModulesAjaxController extends AdminController
         $module->setCourse($course);
         $module->setName($json['name']);
         $module->setDescription($json['description']);
+        $module->setStatus($json['status']);
 
         if ($module->getName() == '') {
             return $this->badRequest($response, 'Module name not provided');

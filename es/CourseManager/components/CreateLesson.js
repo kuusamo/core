@@ -19,7 +19,8 @@ class CreateLesson extends Component {
 
         return axios.post(`/admin/courses/lessons`, {
             ...this.state,
-            moduleId: this.props.moduleId
+            moduleId: this.props.moduleId,
+            status: this.props.defaultStatus
         }).then(response => {
             this.setState({ name: '' });
             this.props.addLesson(this.props.moduleIndex, response.data.data);

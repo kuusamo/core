@@ -25,6 +25,7 @@ class LessonsAjaxController extends AdminController
         $lesson->setCourse($module->getCourse());
         $lesson->setModule($module);
         $lesson->setName($json['name']);
+        $lesson->setStatus($json['status']);
 
         if ($lesson->getName() == '') {
             return $this->badRequest($response, 'Lesson name not provided');

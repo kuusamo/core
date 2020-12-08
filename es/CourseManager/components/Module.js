@@ -208,6 +208,7 @@ class Module extends Component {
                         moduleIndex={this.props.index}
                         alertError={this.props.alertError}
                         addLesson={this.props.addLesson}
+                        defaultStatus={this.props.defaultStatus}
                     />
                 </div>
             </div>
