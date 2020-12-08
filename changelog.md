@@ -9,6 +9,7 @@ Changelog
 * Set default status on course manager
 * Delete module functionality
 * Delete lesson functionality
+* Courses with modules can now be deleted
 
 1.3
 ---

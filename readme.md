@@ -20,7 +20,6 @@ Roadmap
 * Sticky lesson menu
 * SMTP
 * Drip content
-* Relationship cascades
 * Read The Docs
 * Storage folders that don't exist on file system
 * Support duplicate file names
@@ -29,6 +28,13 @@ Roadmap
 * Htaccess improvements
 * Use streams for Crop
 * Audio preloading
+
+Relationship cascades
+
+* Awarding body
+* User
+* Image
+* File
 
 
 Development

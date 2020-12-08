@@ -43,13 +43,13 @@ class Course
     private $image;
 
     /**
-     * @OneToMany(targetEntity="Module", mappedBy="course")
+     * @OneToMany(targetEntity="Module", mappedBy="course", cascade={"remove"})
      * @OrderBy({"priority" = "ASC"})
      */
     private $modules;
 
     /**
-     * @OneToMany(targetEntity="UserCourse", mappedBy="course")
+     * @OneToMany(targetEntity="UserCourse", mappedBy="course", cascade={"remove"})
      */
     private $users;
 
