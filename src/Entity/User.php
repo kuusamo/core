@@ -119,7 +119,7 @@ class User implements JsonSerializable
 
     public function setFirstName(?string $value)
     {
-        $this->firstName = $value;
+        $this->firstName = $value == '' ? null : $value;
     }
 
     public function getSurname(): ?string
@@ -129,7 +129,7 @@ class User implements JsonSerializable
 
     public function setSurname(?string $value)
     {
-        $this->surname = $value;
+        $this->surname = $value == '' ? null : $value;
     }
 
     public function getFullName(): ?string

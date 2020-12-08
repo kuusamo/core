@@ -15,6 +15,12 @@
     <label for="confirm">Confirm password</label>
     <input type="password" name="confirm" id="confirm" class="form-control">
 
+    <label for="firstName">First name</label>
+    <input type="text" name="firstName" id="firstName" class="form-control" value="{{getFirstName}}">
+
+    <label for="surname">Surname</label>
+    <input type="text" name="surname" id="surname" class="form-control" value="{{getSurname}}">
+
     <button type="submit" class="btn">Create user</button>
 </form>
 {{/user}}

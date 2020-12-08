@@ -102,7 +102,7 @@ class AwardingBody
 
     public function setAuthoriserName(string $value)
     {
-        return $this->authoriserName = $value;
+        $this->authoriserName = $value;
     }
 
     public function getAuthoriserSignature(): ?string
@@ -112,7 +112,7 @@ class AwardingBody
 
     public function setAuthoriserSignature(?string $value)
     {
-        return $this->authoriserSignature = $value == '' ? null : $value;
+        $this->authoriserSignature = $value == '' ? null : $value;
     }
 
     public function getAuthoriserRole(): ?string
@@ -122,7 +122,7 @@ class AwardingBody
 
     public function setAuthoriserRole(?string $value)
     {
-        return $this->authoriserRole = $value == '' ? null : $value;
+        $this->authoriserRole = $value == '' ? null : $value;
     }
 
     public function hasCourses(): bool

@@ -31,6 +31,8 @@ class SetupController extends Controller
             try {
                 $user = new User;
                 $user->setEmail($request->getParam('email'));
+                $user->setFirstName($request->getParam('firstName'));
+                $user->setSurname($request->getParam('surname'));
                 $user->getRoles()->add($this->getAdminRole());
 
                 if ($request->getParam('password') != '') {

@@ -1,6 +1,11 @@
 Changelog
 =========
 
+1.4
+---
+* Use email on homepage if name is not available
+* Add name to setup screen
+
 1.3
 ---
 * Setup screen to install the first user
