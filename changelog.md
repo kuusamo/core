@@ -4,6 +4,7 @@ Changelog
 1.3
 ---
 * Setup screen to install the first user
+* Automatic asset installation
 
 1.2
 ---
