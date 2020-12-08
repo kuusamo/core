@@ -124,6 +124,11 @@ class Course
         return $this->modules;
     }
 
+    public function hasUsers()
+    {
+        return $this->users->count() > 0;
+    }
+
     public function getUsers()
     {
         return $this->users;

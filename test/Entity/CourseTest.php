@@ -46,11 +46,14 @@ class CourseTest extends TestCase
 
     public function testUsers()
     {
+        $userMock = $this->createMock('Kuusamo\Vle\Entity\User');
+
         $course = new Course;
 
-        $this->assertInstanceOf(
-            'Doctrine\Common\Collections\ArrayCollection',
-            $course->getusers()
-        );
+        $this->assertSame(false, $course->hasUsers());
+
+        $course->getUsers()->add($userMock);
+
+        $this->assertSame(true, $course->hasUsers());
     }
 }

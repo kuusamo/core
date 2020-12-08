@@ -29,6 +29,11 @@
             <td>{{getProgress}}%</td>
         </tr>
     {{/getUsers}}
+    {{^hasUsers}}
+        <tr>
+            <td colspan="2">No students enrolled</td>
+        </tr>
+    {{/hasUsers}}
     </tbody>
 </table>
 
