@@ -37,7 +37,7 @@ class CreateModule extends Component {
             <form className="form-inline" onSubmit={this.onSubmit.bind(this)}>
                 <input
                     type="text"
-                    className="form-control mr-1"
+                    className="form-control mr-1 mb-1"
                     placeholder="Name"
                     name="name"
                     maxLength={128}
@@ -46,7 +46,7 @@ class CreateModule extends Component {
                 />{" "}
                 <input
                     type="text"
-                    className="form-control mr-1"
+                    className="form-control mr-1 mb-1"
                     placeholder="Description"
                     name="description"
                     value={this.state.description}
