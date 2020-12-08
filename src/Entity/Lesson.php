@@ -62,13 +62,13 @@ class Lesson implements JsonSerializable
     private $passMark;
 
     /**
-     * @OneToMany(targetEntity="Kuusamo\Vle\Entity\Block\Block", mappedBy="lesson")
+     * @OneToMany(targetEntity="Kuusamo\Vle\Entity\Block\Block", mappedBy="lesson", cascade={"remove"})
      * @OrderBy({"priority" = "ASC"})
      */
     private $blocks;
 
     /**
-     * @OneToMany(targetEntity="UserLesson", mappedBy="lesson")
+     * @OneToMany(targetEntity="UserLesson", mappedBy="lesson", cascade={"remove"})
      */
     private $users;
 

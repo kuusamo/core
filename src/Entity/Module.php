@@ -53,7 +53,7 @@ class Module implements JsonSerializable
     private $delay;
 
     /**
-     * @OneToMany(targetEntity="Lesson", mappedBy="module")
+     * @OneToMany(targetEntity="Lesson", mappedBy="module", cascade={"remove"})
      * @OrderBy({"priority" = "ASC"})
      */
     private $lessons;
