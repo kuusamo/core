@@ -38,7 +38,7 @@
     <tbody>
     {{#getCourses}}
         <tr>
-            <td>{{#getCourse}}<a href="/admin/courses/{{getId}}">{{getName}}</a>{{/getCourse}}</td>
+            <td><a href="/admin/courses/{{#getCourse}}{{getId}}{{/getCourse}}/students/{{getId}}">{{#getCourse}}{{getName}}{{/getCourse}}</a></td>
             <td>{{getStart | date.iso}}</td>
             <td>{{getProgress}}%</td>
         </tr>

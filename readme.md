@@ -15,7 +15,6 @@ Roadmap
 * Unenrol a student
 * Edit a student enrollment
 * Delete a user
-* List courses on user page
 
 * Admin preview for course
 * Travis CI migration
@@ -37,7 +36,7 @@ Roadmap
 Relationship cascades
 
 * User
-* Image
+* Image (awarding body, course, image block)
 
 
 Development
