@@ -12,9 +12,11 @@ class DefaultController extends Controller
     public function dashboard(Request $request, Response $response)
     {
         $user = $this->ci->get('auth')->getUser();
+        $name = $user->getFullname() ?: $user->getEmail();
 
         return $this->renderPage($request, $response, 'homepage.html', [
             'user' => $user,
+            'name' => $name,
             'isAdmin' => $user->hasRole(Role::ROLE_ADMIN)
         ]);
     }
