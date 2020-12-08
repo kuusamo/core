@@ -13,7 +13,6 @@ Roadmap
 -------
 
 * Edit a student enrollment
-* Admin preview for course
 * Delete a user
 * Travis CI migration
 * Schema install

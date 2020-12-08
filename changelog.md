@@ -13,6 +13,7 @@ Changelog
 * Better handling of award body deletion
 * File usage report and handling of deletion
 * Unenrol user functionality
+* Admin preview of lessons
 
 1.3
 ---

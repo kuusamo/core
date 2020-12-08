@@ -7,6 +7,7 @@ use Kuusamo\Vle\Entity\User;
 use Kuusamo\Vle\Entity\Course;
 use Kuusamo\Vle\Entity\Lesson;
 use Kuusamo\Vle\Entity\Module;
+use Kuusamo\Vle\Entity\Role;
 use Kuusamo\Vle\Entity\UserLesson;
 
 use Exception;
@@ -25,6 +26,12 @@ abstract class CourseController extends Controller
 
         foreach ($user->getCourses() as $userCourse) {
             if ($userCourse->getCourse()->getId() === $course->getId()) {
+                return $user;
+            }
+        }
+
+        foreach ($user->getRoles() as $role) {
+            if ($role->getId() == Role::ROLE_ADMIN) {
                 return $user;
             }
         }

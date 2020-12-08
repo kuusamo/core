@@ -98,7 +98,7 @@ class LessonController extends CourseController
             $previousLesson = $lessonList[($currentIndex - 1)];
         }
 
-        if ($currentIndex < (count($lessonList) - 1)) {
+        if ($currentIndex !== null && $currentIndex < (count($lessonList) - 1)) {
             $nextLesson = $lessonList[($currentIndex + 1)];
         }
 
