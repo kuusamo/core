@@ -12,6 +12,7 @@ Changelog
 * Courses with modules can now be deleted
 * Better handling of award body deletion
 * File usage report and handling of deletion
+* Unenrol user functionality
 
 1.3
 ---

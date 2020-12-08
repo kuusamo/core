@@ -32,6 +32,7 @@
             <td>{{#completed}}<i class="fas fa-check-circle" aria-label="Completed"></i>{{/completed}}</td>
             <td>
                 <form method="post">
+                    <input type="hidden" name="action" value="toggle">
                     <input type="hidden" name="lesson" value="{{id}}">
                     <button type="submit" class="btn btn-sm">Toggle</button>
                 </form>
@@ -41,3 +42,14 @@
     </tbody>
     {{/lessonList}}
 </table>
+
+<h2>Unenrol</h2>
+
+<p>
+    This will remove the user's access to the course.
+</p>
+
+<form method="post">
+    <input type="hidden" name="action" value="unenrol">
+    <button class="btn btn-danger">Unenrol</button>
+</form>

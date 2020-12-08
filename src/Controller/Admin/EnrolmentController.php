@@ -64,7 +64,25 @@ class EnrolmentController extends AdminController
         }
 
         if ($request->isPost()) {
-            $this->toggleLesson($student, $request->getParam('lesson'));
+            switch ($request->getParam('action')) {
+                case 'toggle':
+                    $this->toggleLesson($student, $request->getParam('lesson'));
+                    break;
+                case 'unenrol':
+                    $userCourse = $this->ci->get('db')->find(
+                        'Kuusamo\Vle\Entity\UserCourse', [
+                        'course' => $course,
+                        'user' => $student
+                    ]);
+
+                    $this->ci->get('db')->remove($userCourse);
+                    $this->ci->get('db')->flush();
+
+                    $uri = sprintf('/admin/courses/%s/students', $course->getId());
+                    $this->alertSuccess('Student unenrolled successfully', true);
+                    return $response->withRedirect($uri, 303);
+                    break;
+            }
         }
 
         $this->ci->get('meta')->setTitle(sprintf('%s - Admin', $course->getName()));
