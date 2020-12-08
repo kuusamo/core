@@ -10,6 +10,7 @@ Changelog
 * Delete module functionality
 * Delete lesson functionality
 * Courses with modules can now be deleted
+* Better handling of award body deletion
 
 1.3
 ---

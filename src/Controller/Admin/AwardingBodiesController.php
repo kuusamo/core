@@ -8,6 +8,7 @@ use Kuusamo\Vle\Helper\Form\Select;
 use Kuusamo\Vle\Validation\AwardingBodyValidator;
 use Kuusamo\Vle\Validation\ValidationException;
 
+use Doctrine\DBAL\Exception\ForeignKeyConstraintViolationException;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use Slim\Exception\HttpNotFoundException;
@@ -172,11 +173,15 @@ class AwardingBodiesController extends Controller
         }
 
         if ($request->isPost()) {
-            $this->ci->get('db')->remove($body);
-            $this->ci->get('db')->flush();
+            try {
+                $this->ci->get('db')->remove($body);
+                $this->ci->get('db')->flush();
 
-            $this->alertSuccess('Awarding body deleted successfully', true);
-            return $response->withRedirect('/admin/awarding-bodies', 303);
+                $this->alertSuccess('Awarding body deleted successfully', true);
+                return $response->withRedirect('/admin/awarding-bodies', 303);
+            } catch (ForeignKeyConstraintViolationException $e) {
+                $this->alertDanger('You must remove all courses and accreditees first');
+            }
         }
 
         $this->ci->get('meta')->setTitle('Awarding Bodies - Admin');

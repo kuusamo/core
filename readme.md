@@ -31,7 +31,6 @@ Roadmap
 
 Relationship cascades
 
-* Awarding body
 * User
 * Image
 * File
