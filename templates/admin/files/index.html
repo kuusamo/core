@@ -21,6 +21,13 @@
             <td><a href="/admin/files/{{getId}}">View</a></td>
         </tr>
     {{/files}}
+    {{^files}}
+        <tr>
+            <td>
+                No files uploaded
+            </td>
+        </tr>
+    {{/files}}
     </tbody>
 </table>
 

@@ -26,6 +26,13 @@
             <td><a href="/admin/courses/{{getId}}">{{getName}}</a></td>
         </tr>
     {{/courses}}
+    {{^courses}}
+        <tr>
+            <td>
+                No courses exist
+            </td>
+        </tr>
+    {{/courses}}
     </tbody>
 </table>
 

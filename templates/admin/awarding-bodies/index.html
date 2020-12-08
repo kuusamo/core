@@ -21,6 +21,13 @@
             <td><a href="/admin/awarding-bodies/{{getId}}">View</a></td>
         </tr>
     {{/bodies}}
+    {{^bodies}}
+        <tr>
+            <td colspan="3">
+                No awarding bodies exist
+            </td>
+        </tr>
+    {{/bodies}}
     </tbody>
 </table>
 
