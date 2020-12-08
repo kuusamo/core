@@ -12,6 +12,11 @@ A learning management system (LMS) that uses API-friendly JSON blocks to build l
 Roadmap
 -------
 
+* Unenrol a student
+* Edit a student enrollment
+* Delete a user
+* List courses on user page
+
 * Admin preview for course
 * Travis CI migration
 * Schema install

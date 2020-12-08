@@ -1,0 +1,26 @@
+{{#fileObj}}
+<ol class="breadcrumbs">
+    <li><a href="/">Dashboard</a></li>
+    <li><a href="/admin">Admin</a></li>
+    <li><a href="/admin/files">Files</a></li>
+</ol>
+
+<h1>{{getName}}</h1>
+
+<ul class="tabs">
+    <li><a href="/admin/files/{{getId}}">Overview</a></li>
+    <li class="active"><a href="/admin/files/{{getId}}/usage">Usage</a></li>
+</ul>
+
+{{#blocks}}
+<p>
+    <a href="/admin/courses/{{id}}/lessons">{{name}}</a>
+</p>
+{{/blocks}}
+
+{{^blocks}}
+<p>
+    This file is not currently used in any lessons.
+</p>
+{{/blocks}}
+{{/fileObj}}

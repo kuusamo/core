@@ -102,4 +102,52 @@ class FilesController extends Controller
             'fileSize' => FileSizeUtils::humanReadable($fileObj->getSize())
         ]);
     }
+
+    public function usage(Request $request, Response $response, array $args = [])
+    {
+        $fileObj = $this->ci->get('db')->find('Kuusamo\Vle\Entity\File', $args['id']);
+
+        if ($fileObj === null) {
+            throw new HttpNotFoundException($request, $response);
+        }
+
+        $audioBlocks = $this->ci->get('db')->getRepository('Kuusamo\Vle\Entity\Block\AudioBlock')->findBy(['file' => $fileObj]);
+        $fileBlocks = $this->ci->get('db')->getRepository('Kuusamo\Vle\Entity\Block\AudioBlock')->findBy(['file' => $fileObj]);
+        
+        $blocks = [];
+        $blocks = $this->processBlocks($blocks, $audioBlocks);
+        $blocks = $this->processBlocks($blocks, $fileBlocks);
+        $blocks = array_values($blocks);
+
+        $this->ci->get('meta')->setTitle('Files - Admin');
+
+        return $this->renderPage($request, $response, 'admin/files/usage.html', [
+            'fileObj' => $fileObj,
+            'blocks' => $blocks
+        ]);
+    }
+
+    /**
+     * Process blocks into something we can use for the usage report.
+     *
+     * @param array $arr Array of existing data.
+     * @param array $blocks Blocks to process.
+     * @return array
+     */
+    private function processBlocks(array $arr, array $blocks): array
+    {
+        foreach ($blocks as $block) {
+            $arr[$block->getLesson()->getCourse()->getId()] = [
+                'id' => $block->getLesson()->getCourse()->getId(),
+                'name' => sprintf(
+                    '%s » %s » %s',
+                    $block->getLesson()->getCourse()->getName(),
+                    $block->getLesson()->getModule()->getName(),
+                    $block->getLesson()->getName()
+                )
+            ];
+        }
+
+        return $arr;
+    }
 }
