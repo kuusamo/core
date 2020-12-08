@@ -8,6 +8,7 @@ Changelog
 * Show "no rows" message when there is no data
 * Set default status on course manager
 * Delete module functionality
+* Delete lesson functionality
 
 1.3
 ---

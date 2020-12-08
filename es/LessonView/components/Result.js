@@ -10,7 +10,6 @@ const Result = ({ score, passMark, reset }) => {
     const resultRef = useRef();
 
     React.useEffect(() => {
-        console.log('Effect');
         resultRef.current.scrollIntoView({ behavior: "smooth" });
     }, []);
 

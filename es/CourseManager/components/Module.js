@@ -191,6 +191,7 @@ class Module extends Component {
                     moduleIndex={this.props.index}
                     alertError={this.props.alertError}
                     updateLesson={this.props.updateLesson}
+                    removeLesson={this.props.removeLesson}
                     moveLesson={this.props.moveLesson}
                     openLessonEditor={this.props.openLessonEditor}
                     previewUri={this.props.previewUri}

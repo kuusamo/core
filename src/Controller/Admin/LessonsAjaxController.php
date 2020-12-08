@@ -65,6 +65,21 @@ class LessonsAjaxController extends AdminController
         return $this->success($response, $lesson);
     }
 
+    public function delete(Request $request, Response $response, $args)
+    {
+        $json = $request->getParsedBody();
+        $lesson = $this->ci->get('db')->find('Kuusamo\Vle\Entity\Lesson', $args['id']);
+
+        if (!$lesson) {
+            return $this->badRequest($response, 'Lesson not found');
+        }
+
+        $this->ci->get('db')->remove($lesson);
+        $this->ci->get('db')->flush();
+
+        return $this->success($response);
+    }
+
     public function updateBlocks(Request $request, Response $response, $args)
     {
         $json = $request->getParsedBody();

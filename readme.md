@@ -14,7 +14,7 @@ Roadmap
 
 * Admin preview for course
 * Delete module with content
-* Delete lesson
+* Delete lesson with content
 
 * Travis CI migration
 * Schema install

@@ -56,6 +56,21 @@ class Lesson extends Component {
         });
     }
 
+    deleteLesson(event) {
+        event.preventDefault();
+        if (confirm('Are you sure?')) {
+            axios.delete(`/admin/courses/lessons/${this.props.id}`).then(response => {
+                this.toggleEditing();
+                this.props.removeLesson(
+                    this.props.moduleIndex,
+                    this.props.index
+                );
+            }).catch (error => {
+                this.props.alertError(error);
+            });
+        }
+    }
+
     updateName(event) {
         event.preventDefault();
         this.setState({ name: event.currentTarget.value });
@@ -143,8 +158,9 @@ class Lesson extends Component {
                                     </div>
                                 </div>
                                 <div className="cm-form-grid-buttons">
-                                    <button className="btn">Save</button>{" "}
-                                    <button className="btn btn-warning" onClick={this.cancelEdit.bind(this)}>Cancel</button>
+                                    <button className="btn mr-1">Save</button>
+                                    <button className="btn btn-warning mr-1" onClick={this.cancelEdit.bind(this)}>Cancel</button>
+                                    <button className="btn btn-danger" onClick={this.deleteLesson.bind(this)}>Delete</button>
                                 </div>
                             </form>
                         </div>

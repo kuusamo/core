@@ -118,6 +118,12 @@ class CourseManager extends Component {
         this.setState({ modules });
     }
 
+    removeLesson(moduleIndex, index) {
+        const modules = this.state.modules;
+        modules[moduleIndex].lessons.splice(index, 1);
+        this.setState({ modules });
+    }
+
     openLessonEditor(moduleIndex, index) {
         const lessonEditor = { moduleIndex, index };
         this.setState({ lessonEditor });
@@ -148,6 +154,7 @@ class CourseManager extends Component {
                     moveModule={this.moveModule.bind(this)}
                     addLesson={this.addLesson.bind(this)}
                     updateLesson={this.updateLesson.bind(this)}
+                    removeLesson={this.removeLesson.bind(this)}
                     moveLesson={this.moveLesson.bind(this)}
                     openLessonEditor={this.openLessonEditor.bind(this)}
                     previewUri={this.props.previewUri}
