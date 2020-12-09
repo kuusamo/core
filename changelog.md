@@ -15,6 +15,7 @@ Changelog
 * Unenrol user functionality
 * Admin preview of lessons
 * Support duplicate filenames for file uploads
+* Support duplicate filenames for image uploads
 
 1.3
 ---

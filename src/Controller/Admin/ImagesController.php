@@ -3,10 +3,12 @@
 namespace Kuusamo\Vle\Controller\Admin;
 
 use Kuusamo\Vle\Entity\Image;
+use Kuusamo\Vle\Helper\FileUtils;
 
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use Imagick;
+use Exception;
 
 class ImagesController extends AdminController
 {
@@ -55,11 +57,12 @@ class ImagesController extends AdminController
 
         if ($request->isPost()) {
             $file = $request->getUploadedFiles()['file'];
+            $filename = $this->findAvailableFilename($file->getClientFilename());
 
             $imagick = new Imagick;
             $imagick->readImageBlob($file->getStream());
 
-            $image->setFilename($file->getClientFilename());
+            $image->setFilename($filename);
             $image->setMediaType($file->getClientMediaType());
             $image->setDescription($request->getParam('description'));
             $image->setKeywords($request->getParam('keywords'));
@@ -125,5 +128,26 @@ class ImagesController extends AdminController
         return $this->renderPage($request, $response, 'admin/images/view.html', [
             'image' => $image
         ]);
+    }
+
+    /**
+     * Find the next available filename if there are duplicates.
+     *
+     * @param string $filename Filename.
+     * @return string
+     */
+    private function findAvailableFilename(string $filename): string
+    {
+        for ($i = 0; $i < 100; $i++) {
+            $file = $this->ci->get('db')->getRepository('Kuusamo\Vle\Entity\Image')->findOneBy(['filename' => $filename]);
+
+            if ($file === null) {
+                return $filename;
+            }
+
+            $filename = FileUtils::increment($filename);
+        }
+
+        throw new Exception('Filename is already in use');
     }
 }
