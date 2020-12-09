@@ -99,6 +99,21 @@ class ImagesController extends AdminController
             throw new HttpNotFoundException($request, $response);
         }
 
+        $this->ci->get('meta')->setTitle('Images - Admin');
+
+        return $this->renderPage($request, $response, 'admin/images/view.html', [
+            'image' => $image
+        ]);
+    }
+
+    public function edit(Request $request, Response $response, array $args = [])
+    {
+        $image = $this->ci->get('db')->find('Kuusamo\Vle\Entity\Image', $args['id']);
+
+        if ($image === null) {
+            throw new HttpNotFoundException($request, $response);
+        }
+
         if ($request->isPost()) {
             switch ($request->getParam('action')) {
                 case 'edit':
@@ -123,9 +138,9 @@ class ImagesController extends AdminController
             }
         }
 
-         $this->ci->get('meta')->setTitle('Images - Admin');
+        $this->ci->get('meta')->setTitle('Images - Admin');
 
-        return $this->renderPage($request, $response, 'admin/images/view.html', [
+        return $this->renderPage($request, $response, 'admin/images/edit.html', [
             'image' => $image
         ]);
     }

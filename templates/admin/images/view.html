@@ -7,30 +7,16 @@
 {{#image}}
 <h1>{{getFilename}}</h1>
 
-<form method="post" class="form-vertical">
-    <label for="filename">Filename</label>
-    <input type="text" id="filename" name="filename" value="{{getFilename}}" class="form-control" disabled>
+<ul class="tabs">
+    <li class="active"><a href="/admin/images/{{getId}}">View</a></li>
+    <li><a href="/admin/images/{{getId}}/edit">Edit</a></li>
+</ul>
 
-    <label for="mediaType">Media Type</label>
-    <input type="text" id="mediaType" name="mediaType" value="{{getMediaType}}" class="form-control" disabled>
+<p>
+    <img src="/content/images/crops/700/{{getFilename}}" alt="{{getDescription}}">
+</p>
 
-    <label for="mediaType">Size</label>
-    <input type="text" id="mediaType" name="mediaType" value="{{getWidth}}x{{getHeight}}" class="form-control" disabled>
-
-    <label for="description">Description</label>
-    <textarea id="description" name="description" placeholder="Description" rows="2" class="form-control">{{getDescription}}</textarea>
-
-    <label for="keywords">Keywords</label>
-    <textarea id="keywords" name="keywords" placeholder="Keywords" rows="2" class="form-control">{{getKeywords}}</textarea>
-
-    <input type="hidden" name="action" value="edit">
-    <button type="submit" class="btn">Save</button>
-</form>
-
-<h2>Delete</h2>
-
-<form method="post">
-    <input type="hidden" name="action" value="delete">
-    <button type="submit" class="btn btn-danger">Delete</button>
-</form>
+<p>
+    <a href="/content/images/originals/{{getFilename}}">View original in {{getWidth}} x {{getHeight}}</a>
+</p>
 {{/image}}

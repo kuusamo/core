@@ -16,6 +16,7 @@ Changelog
 * Admin preview of lessons
 * Support duplicate filenames for file uploads
 * Support duplicate filenames for image uploads
+* View image in admin area
 
 1.3
 ---
