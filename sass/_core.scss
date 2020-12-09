@@ -16,6 +16,10 @@ body {
     font-family: "Noto Sans JP", helvetica, sans-serif;
 }
 
+h1 {
+    word-break: break-all;
+}
+
 img {
     max-width: 100%;
 }

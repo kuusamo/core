@@ -12,6 +12,7 @@ A learning management system (LMS) that uses API-friendly JSON blocks to build l
 Roadmap
 -------
 
+* View image in admin
 * Edit a student enrollment
 * Delete a user
 * Travis CI migration
@@ -23,7 +24,6 @@ Roadmap
 * Drip content
 * Read The Docs
 * Storage folders that don't exist on file system
-* Support duplicate file names for images
 * S3 integration
 * Cache busting assets
 * Htaccess improvements
@@ -34,6 +34,20 @@ Relationship cascades
 
 * User
 * Image (awarding body, course, image block)
+
+Paging
+
+* Images
+* Files
+* Users
+* Students
+
+Autocomplete
+
+* Enrollment
+* Files in blocks
+* Images in blocks
+* Images attached to objects
 
 
 Development
