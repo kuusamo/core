@@ -35,7 +35,7 @@ Relationship cascades
 * User
 * Image (awarding body, course, image block)
 
-Paging
+Paging and search
 
 * Images
 * Files
