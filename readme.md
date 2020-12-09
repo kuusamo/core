@@ -23,7 +23,7 @@ Roadmap
 * Drip content
 * Read The Docs
 * Storage folders that don't exist on file system
-* Support duplicate file names
+* Support duplicate file names for images
 * S3 integration
 * Cache busting assets
 * Htaccess improvements

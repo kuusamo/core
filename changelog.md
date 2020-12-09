@@ -14,6 +14,7 @@ Changelog
 * File usage report and handling of deletion
 * Unenrol user functionality
 * Admin preview of lessons
+* Support duplicate filenames for file uploads
 
 1.3
 ---

@@ -4,11 +4,13 @@ namespace Kuusamo\Vle\Controller\Admin;
 
 use Kuusamo\Vle\Controller\Controller;
 use Kuusamo\Vle\Entity\File;
+use Kuusamo\Vle\Helper\FileUtils;
 use Kuusamo\Vle\Helper\FileSizeUtils;
 
 use Doctrine\DBAL\Exception\ForeignKeyConstraintViolationException;
 use Psr\Http\Message\ServerRequestInterface as Request;
-use Psr\Http\Message\ResponseInterface as Response; 
+use Psr\Http\Message\ResponseInterface as Response;
+use Exception;
 
 class FilesController extends Controller
 {
@@ -18,10 +20,11 @@ class FilesController extends Controller
             switch ($request->getParam('action')) {
                 case 'upload':
                     $fileData = $request->getUploadedFiles()['file'];
+                    $filename = $this->findAvailableFilename($fileData->getClientFilename());
 
                     $fileObj = new File;
                     $fileObj->setName($request->getParam('name'));
-                    $fileObj->setFilename($fileData->getClientFilename());
+                    $fileObj->setFilename($filename);
                     $fileObj->setMediaType($fileData->getClientMediaType());
                     $fileObj->setSize($fileData->getSize());
 
@@ -154,5 +157,26 @@ class FilesController extends Controller
         }
 
         return $arr;
+    }
+
+    /**
+     * Find the next available filename if there are duplicates.
+     *
+     * @param string $filename Filename.
+     * @return string
+     */
+    private function findAvailableFilename(string $filename): string
+    {
+        for ($i = 0; $i < 100; $i++) {
+            $file = $this->ci->get('db')->getRepository('Kuusamo\Vle\Entity\File')->findOneBy(['filename' => $filename]);
+
+            if ($file === null) {
+                return $filename;
+            }
+
+            $filename = FileUtils::increment($filename);
+        }
+
+        throw new Exception('Filename is already in use');
     }
 }
