@@ -70,10 +70,12 @@ class EnrolmentController extends AdminController
                     break;
                 case 'unenrol':
                     $userCourse = $this->ci->get('db')->find(
-                        'Kuusamo\Vle\Entity\UserCourse', [
-                        'course' => $course,
-                        'user' => $student
-                    ]);
+                        'Kuusamo\Vle\Entity\UserCourse',
+                        [
+                            'course' => $course,
+                            'user' => $student
+                        ]
+                    );
 
                     $this->ci->get('db')->remove($userCourse);
                     $this->ci->get('db')->flush();
