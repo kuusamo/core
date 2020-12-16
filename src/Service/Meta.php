@@ -43,7 +43,7 @@ class Meta
     {
         $this->title = Environment::get('SITE_NAME');
     }
-    
+
     /**
      * Get the title.
      *
