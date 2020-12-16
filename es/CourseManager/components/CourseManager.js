@@ -138,7 +138,7 @@ class CourseManager extends Component {
     updateLessonBlocks(moduleIndex, index, blocks) {
         const modules = this.state.modules;
         modules[moduleIndex].lessons[index].blocks = blocks;
-        this.setState({ modules, lessonEditor: null });
+        this.setState({ modules, lessonEditor: null, scrollToModule: moduleIndex });
     }
 
     renderModules() {
