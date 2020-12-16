@@ -60,6 +60,10 @@ class VideoBlock extends Block implements JsonSerializable
 
     public function setDuration(?int $value)
     {
+        if ($value < 1) {
+            $value = null;
+        }
+
         $this->duration = $value;
     }
 
@@ -69,7 +73,8 @@ class VideoBlock extends Block implements JsonSerializable
             'id' => $this->getId(),
             'type' => Block::TYPE_VIDEO,
             'provider' => $this->provider,
-            'providerId' => $this->providerId
+            'providerId' => $this->providerId,
+            'duration' => $this->duration
         ];
     }
 }

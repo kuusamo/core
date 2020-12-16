@@ -10,6 +10,10 @@ class VideoHydrator extends Hydrator
     {
         $block->setProvider($data['provider']);
         $block->setProviderId($data['providerId']);
+
+        if (isset($data['duration'])) {
+            $block->setDuration(intval($data['duration']));
+        }
     }
 
     public function validate(VideoBlock $block): bool
