@@ -40,6 +40,7 @@ class CreateLesson extends Component {
                     type="text"
                     className="form-control mr-1"
                     placeholder="Name"
+                    aria-label="Lesson name"
                     name="name"
                     maxLength={128}
                     value={this.state.name}

@@ -42,6 +42,7 @@ class CreateModule extends Component {
                     type="text"
                     className="form-control mb-1 mr-1"
                     placeholder="Name"
+                    aria-label="Module name"
                     name="name"
                     maxLength={128}
                     value={this.state.name}
@@ -51,6 +52,7 @@ class CreateModule extends Component {
                     type="text"
                     className="form-control mb-1 mr-1"
                     placeholder="Description"
+                    aria-label="Module description"
                     name="description"
                     value={this.state.description}
                     onChange={this.onChangeDescription.bind(this)}
