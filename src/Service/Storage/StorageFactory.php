@@ -11,6 +11,6 @@ class StorageFactory
      */
     public static function create(): StorageInterface
     {
-        return new LocalStorage();
+        return new LocalStorage;
     }
 }
