@@ -442,6 +442,16 @@ textarea.form-control {
   height: 150px;
 }
 
+form.form-inline-wide {
+  display: flex;
+}
+form.form-inline-wide button {
+  flex-shrink: 0;
+}
+form.form-inline-wide input[type=text] {
+  width: 100%;
+}
+
 form.form-vertical {
   width: 100%;
 }

@@ -37,7 +37,7 @@ class CreateModule extends Component {
 
     render() {
         return (
-            <form className="form-inline" onSubmit={this.onSubmit.bind(this)}>
+            <form onSubmit={this.onSubmit.bind(this)}>
                 <input
                     type="text"
                     className="form-control mb-1 mr-1"

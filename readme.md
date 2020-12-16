@@ -63,7 +63,7 @@ Compile the JavaScript:
 
 Compile the CSS:
 
-    sass sass:public/styles
+    sass --watch sass:public/styles
 
 Update the database schema:
 

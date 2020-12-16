@@ -101,6 +101,18 @@ textarea.form-control {
     height: 150px;
 }
 
+form.form-inline-wide {
+    display: flex;
+
+    button {
+        flex-shrink: 0;
+    }
+
+    input[type="text"] {
+        width: 100%;
+    }
+}
+
 form.form-vertical {
     width: 100%;
 

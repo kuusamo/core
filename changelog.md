@@ -1,6 +1,11 @@
 Changelog
 =========
 
+1.5
+---
+* Lesson name box in Course Manager is now wider
+* Focus jumps back to lesson box when creating a lesson
+
 1.4
 ---
 * Use email on homepage if name is not available
