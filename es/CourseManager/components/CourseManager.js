@@ -18,6 +18,7 @@ class CourseManager extends Component {
         this.state = {
             modules: [],
             lessonEditor: null,
+            scrollToModule: null,
             status: null,
             loading: true,
             options: { status: STATUS_HIDDEN }
@@ -130,7 +131,8 @@ class CourseManager extends Component {
     }
 
     closeLessonEditor() {
-        this.setState({ lessonEditor: null });
+        const moduleIndex = this.state.lessonEditor.moduleIndex;
+        this.setState({ lessonEditor: null, scrollToModule: moduleIndex });
     }
 
     updateLessonBlocks(moduleIndex, index, blocks) {
@@ -142,10 +144,12 @@ class CourseManager extends Component {
     renderModules() {
         return this.state.modules.map((module, index) => {
             const lastItem = ((index + 1) == this.state.modules.length);
+            const scrollIntoView = this.state.scrollToModule === index;
 
             return (
                 <Module
                     key={index}
+                    scrollIntoView={scrollIntoView}
                     index={index}
                     lastItem={lastItem}
                     alertError={this.alertError.bind(this)}

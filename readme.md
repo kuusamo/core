@@ -12,6 +12,8 @@ A learning management system (LMS) that uses API-friendly JSON blocks to build l
 Roadmap
 -------
 
+* Vimeo video is not responsive (YouTube?)
+* Video duration
 * Edit a student enrollment
 * Delete a user
 * Image usage report

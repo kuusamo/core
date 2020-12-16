@@ -5,6 +5,7 @@ Changelog
 ---
 * Lesson name box in Course Manager is now wider
 * Focus jumps back to lesson box when creating a lesson
+* Jump to module when closing the lesson editor
 
 1.4
 ---

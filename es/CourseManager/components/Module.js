@@ -16,6 +16,14 @@ class Module extends Component {
             status: this.props.status,
             delay: this.props.delay
         };
+
+        this.ref = React.createRef();
+    }
+
+    componentDidMount() {
+        if (this.props.scrollIntoView) {
+            this.ref.current.scrollIntoView();
+        }
     }
 
     toggleEditing() {
@@ -203,7 +211,7 @@ class Module extends Component {
 
     render() {
         return (
-            <div className="cm-card">
+            <div className="cm-card" ref={this.ref}>
                 {this.renderTitle()}
                 <div className="cm-card-body">
                     <div className="mb-3">
