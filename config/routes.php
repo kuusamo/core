@@ -65,6 +65,7 @@ $app->group('', function($app) use ($container) {
 
         $app->any('/files', '\Kuusamo\Vle\Controller\Admin\FilesController:index');
         $app->any('/files/{id:[0-9]+}', '\Kuusamo\Vle\Controller\Admin\FilesController:view');
+        $app->any('/files/{id:[0-9]+}/edit', '\Kuusamo\Vle\Controller\Admin\FilesController:edit');
         $app->get('/files/{id:[0-9]+}/usage', '\Kuusamo\Vle\Controller\Admin\FilesController:usage');
 
         $app->get('/images', '\Kuusamo\Vle\Controller\Admin\ImagesController:index');

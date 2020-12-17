@@ -4,6 +4,7 @@ Changelog
 1.7
 ---
 * New styling for downloads and improvements to lesson view
+* Files admin now has an edit screen for names
 
 1.6
 ---

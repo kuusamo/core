@@ -1,0 +1,30 @@
+{{#fileObj}}
+<ol class="breadcrumbs">
+    <li><a href="/">Dashboard</a></li>
+    <li><a href="/admin">Admin</a></li>
+    <li><a href="/admin/files">Files</a></li>
+</ol>
+
+<h1>{{getName}}</h1>
+
+<ul class="tabs">
+    <li><a href="/admin/files/{{getId}}">View</a></li>
+    <li class="active"><a href="/admin/files/{{getId}}/edit">Edit</a></li>
+    <li><a href="/admin/files/{{getId}}/usage">Usage</a></li>
+</ul>
+
+<form method="post" class="form-vertical">
+    <label for="name">Name</label>
+    <input type="text" id="name" name="name" value="{{getName}}" class="form-control">
+
+    <input type="hidden" name="action" value="edit">
+    <button type="submit" class="btn">Save</button>
+</form>
+
+<h2>Delete</h2>
+
+<form method="post">
+    <input type="hidden" name="action" value="delete">
+    <button type="submit" class="btn btn-danger">Delete file</button>
+</form>
+{{/fileObj}}

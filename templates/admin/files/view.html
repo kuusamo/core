@@ -8,7 +8,8 @@
 <h1>{{getName}}</h1>
 
 <ul class="tabs">
-    <li class="active"><a href="/admin/files/{{getId}}">Overview</a></li>
+    <li class="active"><a href="/admin/files/{{getId}}">View</a></li>
+    <li><a href="/admin/files/{{getId}}/edit">Edit</a></li>
     <li><a href="/admin/files/{{getId}}/usage">Usage</a></li>
 </ul>
 
@@ -28,12 +29,5 @@
 
     <input type="hidden" name="action" value="replace">
     <button type="submit" class="btn">Upload</button>
-</form>
-
-<h2>Delete</h2>
-
-<form method="post">
-    <input type="hidden" name="action" value="delete">
-    <button type="submit" class="btn btn-danger">Delete file</button>
 </form>
 {{/fileObj}}

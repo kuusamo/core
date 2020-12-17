@@ -86,6 +86,35 @@ class FilesController extends Controller
                         $this->alertSuccess('File uploaded successfully');
                     }
                     break;
+            }
+        }
+
+        $this->ci->get('meta')->setTitle('Files - Admin');
+
+        return $this->renderPage($request, $response, 'admin/files/view.html', [
+            'fileObj' => $fileObj,
+            'fileSize' => FileSizeUtils::humanReadable($fileObj->getSize())
+        ]);
+    }
+
+    public function edit(Request $request, Response $response, array $args = [])
+    {
+        $fileObj = $this->ci->get('db')->find('Kuusamo\Vle\Entity\File', $args['id']);
+
+        if ($fileObj === null) {
+            throw new HttpNotFoundException($request, $response);
+        }
+
+        if ($request->isPost()) {
+            switch ($request->getParam('action')) {
+                case 'edit':
+                    $fileObj->setName($request->getParam('name'));
+
+                    $this->ci->get('db')->persist($fileObj);
+                    $this->ci->get('db')->flush();
+
+                    $this->alertSuccess('File updated successfully');
+                    break;
                 case 'delete':
                     try {
                         $this->ci->get('db')->remove($fileObj);
@@ -105,9 +134,8 @@ class FilesController extends Controller
 
         $this->ci->get('meta')->setTitle('Files - Admin');
 
-        return $this->renderPage($request, $response, 'admin/files/view.html', [
-            'fileObj' => $fileObj,
-            'fileSize' => FileSizeUtils::humanReadable($fileObj->getSize())
+        return $this->renderPage($request, $response, 'admin/files/edit.html', [
+            'fileObj' => $fileObj
         ]);
     }
 
