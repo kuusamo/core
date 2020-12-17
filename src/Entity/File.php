@@ -97,7 +97,7 @@ class File implements JsonSerializable
         return $this->folder;
     }
 
-    public function setFolder(Folder $value)
+    public function setFolder(?Folder $value)
     {
         $this->folder = $value;
     }
