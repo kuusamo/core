@@ -4,6 +4,7 @@ Changelog
 1.8
 ---
 * Display filename if name is not available on downloads
+* Audio element now has a responsive width
 
 1.7
 ---

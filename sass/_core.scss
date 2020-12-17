@@ -12,6 +12,10 @@ a:hover, a:active {
     color: $secondaryColour;
 }
 
+audio {
+    width: 100%;
+}
+
 body {
     font-family: "Noto Sans JP", helvetica, sans-serif;
 }

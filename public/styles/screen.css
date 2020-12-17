@@ -7,6 +7,10 @@ a:hover, a:active {
   color: #0077b6;
 }
 
+audio {
+  width: 100%;
+}
+
 body {
   font-family: "Noto Sans JP", helvetica, sans-serif;
 }
