@@ -22,7 +22,10 @@ class FileController extends Controller
             throw new HttpNotFoundException($request, $response);
         }
 
-        $fileData = $this->ci->get('storage')->get(sprintf('files/%s', $args['filename']));
+        $fileData = $this->ci->get('storage')->get(sprintf(
+            'files/%s',
+            $fileObj->getFullPath()
+        ));
 
         if (!$fileData) {
             throw new HttpNotFoundException($request, $response);

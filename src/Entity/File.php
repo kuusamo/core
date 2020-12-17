@@ -102,6 +102,15 @@ class File implements JsonSerializable
         $this->folder = $value;
     }
 
+    public function getFullPath(): string
+    {
+        return $this->folder === null ? $this->filename : sprintf(
+            '%s/%s',
+            $this->folder->getPath(),
+            $this->filename
+        );
+    }
+
     public function jsonSerialize(): array
     {
         return [

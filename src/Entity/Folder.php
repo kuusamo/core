@@ -54,4 +54,18 @@ class Folder
     {
         $this->parent = $value;
     }
+
+    /**
+     * Return the full path including any parent folders.
+     *
+     * @return string
+     */
+    public function getPath(): string
+    {
+        return $this->parent === null ? $this->name : sprintf(
+            '%s/%s',
+            $this->parent->getPath(),
+            $this->name
+        );
+    }
 }

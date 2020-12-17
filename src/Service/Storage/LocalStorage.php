@@ -36,6 +36,7 @@ class LocalStorage implements StorageInterface
      */
     public function put(string $key, $data, string $contentType): bool
     {
+        $this->validatePath($key);
         $result = file_put_contents($this->getFilePath($key), $data);
 
         if ($result === false) {
@@ -74,6 +75,27 @@ class LocalStorage implements StorageInterface
             __DIR__,
             $key
         );
+    }
+
+    /**
+     * Check a directory exists before we write to it.
+     *
+     * @param string $path Path.
+     * @return void
+     */
+    private function validatePath(string $path): void
+    {
+        $directories = explode('/', $path);
+        array_pop($directories);
+
+        for ($i = 0; $i < count($directories); $i++) {
+            $parts = array_slice($directories, 0, $i + 1);
+            $thisPath = $this->getFilePath(implode('/', $parts));
+
+            if (!is_dir($thisPath)) {
+                mkdir($thisPath);
+            }
+        }
     }
 
     /**

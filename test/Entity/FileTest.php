@@ -32,4 +32,19 @@ class FileTest extends TestCase
             json_encode($file)
         );
     }
+
+    public function testFullPath()
+    {
+        $folderMock = $this->createMock('Kuusamo\Vle\Entity\Folder');
+        $folderMock->method('getPath')->willReturn('PDFs');
+
+        $file = new File;
+        $file->setFilename('document.pdf');
+
+        $this->assertSame('document.pdf', $file->getFullPath());
+
+        $file->setFolder($folderMock);
+
+        $this->assertSame('PDFs/document.pdf', $file->getFullPath());
+    }
 }

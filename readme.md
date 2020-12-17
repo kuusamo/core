@@ -13,9 +13,6 @@ Roadmap
 -------
 
 * Folder validator should check for special characters
-* Store files in relevant folders
-* Storage folders that don't exist on file system
-
 * Edit and delete folders
 * Can we merge images into files?
 * Remove navigation gap on first and last lesson
@@ -25,7 +22,6 @@ Roadmap
 * Delete a user
 * Image usage report
 * Travis CI migration
-* Schema install
 * Footer links, privacy policy
 * Sticky lesson menu
 * SMTP

@@ -7,6 +7,7 @@ Changelog
 * Files admin now has an edit screen for names
 * Database migration support
 * `schema` Files can now be organised into folders
+* Local storage will now create folders that do not exist
 
 1.6
 ---

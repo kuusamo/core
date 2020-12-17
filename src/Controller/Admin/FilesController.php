@@ -44,14 +44,14 @@ class FilesController extends Controller
                     if (strlen($fileObj->getFilename()) > 128) {
                         $this->alertWarning('Filename cannot be longer than 128 characters');
                     } else {
-                        $this->ci->get('db')->persist($fileObj);
-                        $this->ci->get('db')->flush();
-
                         $this->ci->get('storage')->put(
-                            sprintf('files/%s', $fileObj->getFilename()),
+                            sprintf('files/%s', $fileObj->getFullPath()),
                             $fileData->getStream(),
                             $fileObj->getMediaType()
                         );
+
+                        $this->ci->get('db')->persist($fileObj);
+                        $this->ci->get('db')->flush();
 
                         $this->alertSuccess('File uploaded successfully');
                     }
@@ -116,7 +116,7 @@ class FilesController extends Controller
                         $this->ci->get('db')->flush();
 
                         $this->ci->get('storage')->put(
-                            sprintf('files/%s', $fileObj->getFilename()),
+                            sprintf('files/%s', $fileObj->getFullPath()),
                             $fileData->getStream(),
                             $fileObj->getMediaType()
                         );
