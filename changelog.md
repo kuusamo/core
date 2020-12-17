@@ -1,6 +1,10 @@
 Changelog
 =========
 
+1.7
+---
+* New styling for downloads and improvements to lesson view
+
 1.6
 ---
 * Support custom storage providers

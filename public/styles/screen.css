@@ -283,6 +283,18 @@ ol.breadcrumbs li:first-child::before {
   margin-bottom: 0;
 }
 
+.download {
+  align-items: center;
+  background-color: #eee;
+  border-radius: 6px;
+  display: flex;
+  padding: 24px;
+}
+.download i {
+  font-size: 200%;
+  margin-right: 24px;
+}
+
 .cm-block-header {
   display: flex;
   justify-content: space-between;
