@@ -574,6 +574,7 @@ main {
   background-color: #d5d5d5;
 }
 .course-view nav h2 {
+  line-height: 150%;
   margin: 0;
 }
 .course-view nav h3 {
