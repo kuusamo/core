@@ -72,6 +72,11 @@ class File implements JsonSerializable
         $this->filename = $value;
     }
 
+    public function getDisplayName(): string
+    {
+        return $this->name ?: $this->filename;
+    }
+
     public function getMediaType(): string
     {
         return $this->mediaType;

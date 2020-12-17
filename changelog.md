@@ -1,6 +1,10 @@
 Changelog
 =========
 
+1.8
+---
+* Display filename if name is not available on downloads
+
 1.7
 ---
 * New styling for downloads and improvements to lesson view

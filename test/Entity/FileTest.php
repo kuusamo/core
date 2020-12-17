@@ -33,6 +33,18 @@ class FileTest extends TestCase
         );
     }
 
+    public function getDisplayName()
+    {
+        $file = new File;
+        $file->setFilename('document.pdf');
+
+        $this->assertSame('document.pdf', $file->getDisplayName());
+
+        $file->setName('Document');
+
+        $this->assertSame('Document', $file->getDisplayName());
+    }
+
     public function testFullPath()
     {
         $folderMock = $this->createMock('Kuusamo\Vle\Entity\Folder');
