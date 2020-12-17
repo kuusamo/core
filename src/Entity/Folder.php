@@ -50,7 +50,7 @@ class Folder
         return $this->parent;
     }
 
-    public function setParent(Folder $value)
+    public function setParent(?Folder $value)
     {
         $this->parent = $value;
     }
