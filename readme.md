@@ -26,7 +26,6 @@ Roadmap
 * Drip content
 * Read The Docs
 * Storage folders that don't exist on file system
-* S3 integration
 * Cache busting assets
 * Htaccess improvements
 * Use streams for Crop

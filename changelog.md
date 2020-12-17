@@ -1,6 +1,10 @@
 Changelog
 =========
 
+1.6
+---
+* Support custom storage providers
+
 1.5
 ---
 * Lesson name box in Course Manager is now wider
