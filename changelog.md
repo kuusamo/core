@@ -5,6 +5,7 @@ Changelog
 ---
 * Display filename if name is not available on downloads
 * Audio element now has a responsive width
+* Admins can now preview the course dashboard
 
 1.7
 ---

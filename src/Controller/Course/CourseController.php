@@ -4,6 +4,7 @@ namespace Kuusamo\Vle\Controller\Course;
 
 use Kuusamo\Vle\Controller\Controller;
 use Kuusamo\Vle\Entity\User;
+use Kuusamo\Vle\Entity\UserCourse;
 use Kuusamo\Vle\Entity\Course;
 use Kuusamo\Vle\Entity\Lesson;
 use Kuusamo\Vle\Entity\Module;
@@ -52,6 +53,12 @@ abstract class CourseController extends Controller
         foreach ($user->getCourses() as $userCourse) {
             if ($userCourse->getCourse()->getId() === $course->getId()) {
                 return $userCourse;
+            }
+        }
+
+        foreach ($user->getRoles() as $role) {
+            if ($role->getId() == Role::ROLE_ADMIN) {
+                return new UserCourse;
             }
         }
 
