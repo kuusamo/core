@@ -6,6 +6,7 @@ Changelog
 * Display filename if name is not available on downloads
 * Audio element now has a responsive width
 * Admins can now preview the course dashboard
+* Courses are now ordered alphabetically in admin
 
 1.7
 ---
