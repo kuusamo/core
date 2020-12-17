@@ -154,7 +154,7 @@ class LessonEditor extends Component {
     render() {
         return (
             <div>
-                <h2>Lesson editor</h2>
+                <h2>Lesson editor: {this.props.lesson.name}</h2>
 
                 {this.renderBlocks(this.state.blocks)}
 
