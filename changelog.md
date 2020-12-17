@@ -5,6 +5,8 @@ Changelog
 ---
 * New styling for downloads and improvements to lesson view
 * Files admin now has an edit screen for names
+* Database migration support
+* `schema` Files can now be organised into folders
 
 1.6
 ---

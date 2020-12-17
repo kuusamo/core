@@ -40,6 +40,10 @@ p, ol, ul {
   margin-top: 24px;
 }
 
+.text-centre {
+  text-align: center;
+}
+
 .admin-image-gallery {
   display: grid;
   grid-gap: 1rem;

@@ -12,6 +12,13 @@ A learning management system (LMS) that uses API-friendly JSON blocks to build l
 Roadmap
 -------
 
+* Folder validator should check for special characters
+* Store files in relevant folders
+* Storage folders that don't exist on file system
+
+* Edit and delete folders
+* Can we merge images into files?
+* Remove navigation gap on first and last lesson
 * Vimeo video is not responsive (YouTube?)
 * Video duration
 * Edit a student enrollment
@@ -20,12 +27,10 @@ Roadmap
 * Travis CI migration
 * Schema install
 * Footer links, privacy policy
-* Database migrations
 * Sticky lesson menu
 * SMTP
 * Drip content
 * Read The Docs
-* Storage folders that don't exist on file system
 * Cache busting assets
 * Htaccess improvements
 * Use streams for Crop
@@ -68,7 +73,8 @@ Compile the CSS:
 
 Update the database schema:
 
-    vendor/bin/doctrine orm:schema-tool:update
+    vendor/bin/doctrine-migrations diff
+    vendor/bin/doctrine-migrations migrate
 
 Symlink assets from a project
 

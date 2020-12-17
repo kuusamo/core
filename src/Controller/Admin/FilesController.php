@@ -4,8 +4,11 @@ namespace Kuusamo\Vle\Controller\Admin;
 
 use Kuusamo\Vle\Controller\Controller;
 use Kuusamo\Vle\Entity\File;
+use Kuusamo\Vle\Entity\Folder;
 use Kuusamo\Vle\Helper\FileUtils;
 use Kuusamo\Vle\Helper\FileSizeUtils;
+use Kuusamo\Vle\Validation\FolderValidator;
+use Kuusamo\Vle\Validation\ValidationException;
 
 use Doctrine\DBAL\Exception\ForeignKeyConstraintViolationException;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -16,6 +19,15 @@ class FilesController extends Controller
 {
     public function index(Request $request, Response $response)
     {
+        $parentFolder = null;
+
+        if ($request->getQueryParam('folder')) {
+            $parentFolder = $this->ci->get('db')->find(
+                'Kuusamo\Vle\Entity\Folder',
+                $request->getQueryParam('folder')
+            );
+        }
+
         if ($request->isPost()) {
             switch ($request->getParam('action')) {
                 case 'upload':
@@ -27,6 +39,7 @@ class FilesController extends Controller
                     $fileObj->setFilename($filename);
                     $fileObj->setMediaType($fileData->getClientMediaType());
                     $fileObj->setSize($fileData->getSize());
+                    $fileObj->setFolder($parentFolder);
 
                     if (strlen($fileObj->getFilename()) > 128) {
                         $this->alertWarning('Filename cannot be longer than 128 characters');
@@ -44,15 +57,40 @@ class FilesController extends Controller
                     }
 
                     break;
+                case 'folder':
+                    $folder = new Folder;
+                    $folder->setName($request->getParam('name'));
+                    $folder->setParent($parentFolder);
+
+                    try {
+                        $validator = new FolderValidator;
+                        $validator($folder);
+
+                        $this->ci->get('db')->persist($folder);
+                        $this->ci->get('db')->flush();
+
+                        $this->alertSuccess('Folder created successfully');
+                    } catch (ValidationException $e) {
+                        $this->alertDanger($e->getMessage());
+                    } catch (UniqueConstraintViolationException $e) {
+                        $this->alertDanger('Folder name already in use');
+                    }
             }
         }
 
-        $files = $this->ci->get('db')->getRepository('Kuusamo\Vle\Entity\File')->findBy([], ['filename' => 'ASC']);
+        $folders = $this->ci->get('db')->getRepository('Kuusamo\Vle\Entity\Folder')->findBy(['parent' => $parentFolder], ['name' => 'ASC']);
+
+        $files = $this->ci->get('db')->getRepository('Kuusamo\Vle\Entity\File')->findBy(['folder' => $parentFolder], ['filename' => 'ASC']);
+
+        $isEmpty = count($folders) === 0 && count($files) === 0;
 
         $this->ci->get('meta')->setTitle('Files - Admin');
 
         return $this->renderPage($request, $response, 'admin/files/index.html', [
-            'files' => $files
+            'folders' => $folders,
+            'files' => $files,
+            'isEmpty' => $isEmpty,
+            'tree' => $this->fetchFolderTree($parentFolder)
         ]);
     }
 
@@ -206,5 +244,35 @@ class FilesController extends Controller
         }
 
         throw new Exception('Filename is already in use');
+    }
+
+    /**
+     * Fetch the folder free for the current folder so we can display the full path.
+     *
+     * @param Folder|null $folder Parent folder.
+     * @return array
+     */
+
+    private function fetchFolderTree(?Folder $folder): array
+    {
+        $tree = [];
+
+        if ($folder === null) {
+            return $tree;
+        }
+
+        $workingFolder = $folder;
+
+        while (true) {
+            $tree[] = $workingFolder;
+
+            if ($workingFolder->getParent() === null) {
+                break;
+            }
+
+            $workingFolder = $workingFolder->getParent();
+        }
+
+        return array_reverse($tree);
     }
 }

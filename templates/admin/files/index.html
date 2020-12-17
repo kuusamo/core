@@ -6,28 +6,39 @@
 
 <h1>Files</h1>
 
+<p>
+    <a href="/admin/files">Root</a>
+    {{#tree}} &raquo; <a href="/admin/files?folder={{getId}}">{{getName}}</a>{{/tree}}
+</p>
+
 <table class="table table-striped">
     <thead>
         <tr>
+            <th style="width: 18px;">&nbsp;</th>
             <th>Name</th>
             <th>Filename</th>
-            <th>Options</th>
     </thead>
     <tbody>
+    {{#folders}}
+        <tr>
+            <td class="text-centre"><i class="fas fa-folder-open" aria-label="Folder"</i></td>
+            <td colspan="2"><a href="/admin/files?folder={{getId}}">{{getName}}</a></td>
+        </tr>
+    {{/folders}}
     {{#files}}
         <tr>
-            <td>{{getName}}</td>
-            <td>{{getFilename}}</td>
-            <td><a href="/admin/files/{{getId}}">View</a></td>
+            <td class="text-centre"><i class="fas fa-file-alt" aria-label="File"></i></td>
+            <td><a href="/admin/files/{{getId}}">{{getName}}</a></td>
+            <td><a href="/admin/files/{{getId}}">{{getFilename}}</a></td>
         </tr>
     {{/files}}
-    {{^files}}
+    {{#isEmpty}}
         <tr>
             <td colspan="3">
                 No files uploaded
             </td>
         </tr>
-    {{/files}}
+    {{/isEmpty}}
     </tbody>
 </table>
 
@@ -42,4 +53,13 @@
 
     <input type="hidden" name="action" value="upload">
     <button type="submit" class="btn">Upload</button>
+</form>
+
+<h2>Create folder</h2>
+
+<form method="post">
+    <label for="folderName">Name</label>
+    <input type="text" name="name" id="folderName" class="form-control mr-1" maxlength="128">
+    <input type="hidden" name="action" value="folder">
+    <button type="submit" class="btn">Create</button>
 </form>

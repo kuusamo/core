@@ -37,6 +37,11 @@ class File implements JsonSerializable
      */
     private $size;
 
+    /**
+     * @ManyToOne(targetEntity="Folder")
+     */
+    private $folder;
+
     public function getId(): int
     {
         return $this->id;
@@ -85,6 +90,16 @@ class File implements JsonSerializable
     public function setSize(int $value)
     {
         $this->size = $value;
+    }
+
+    public function getFolder(): ?Folder
+    {
+        return $this->folder;
+    }
+
+    public function setFolder(Folder $value)
+    {
+        $this->folder = $value;
     }
 
     public function jsonSerialize(): array
