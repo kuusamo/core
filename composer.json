@@ -33,7 +33,8 @@
         "doctrine/orm": "2.*",
         "doctrine/migrations": "3.*",
         "dompdf/dompdf": "*",
-        "ozdemirburak/iris": "2.*"
+        "ozdemirburak/iris": "2.*",
+        "erusev/parsedown": "1.*"
     },
     "require-dev": {
         "phpunit/phpunit": "7.*",

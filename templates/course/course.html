@@ -1,3 +1,5 @@
+{{%FILTERS}}
+
 {{#course}}
 <ol class="breadcrumbs">
     <li><a href="/">Dashboard</a></li>
@@ -21,6 +23,8 @@
     Congratulations on completing this course! <a href="{{#course}}{{uri}}{{/course}}/certificate">Download your certificate</a>.
 </p>
 {{/hasCompleted}}
+
+{{{getWelcomeText | markdown}}}
 
 {{#nextLesson}}
 <p><a href="{{.}}" class="btn">{{nextLessonText}} learning</a></p>

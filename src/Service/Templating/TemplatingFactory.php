@@ -4,6 +4,8 @@ namespace Kuusamo\Vle\Service\Templating;
 
 use Kuusamo\Vle\Entity\Theme\Theme;
 
+use Parsedown;
+
 class TemplatingFactory
 {
     private static $theme;
@@ -25,6 +27,14 @@ class TemplatingFactory
                 return ($value) ? $value->format('j F Y') : null;
             }
         ]);
+
+        $templating->addHelper('markdown', function($value) {
+            if ($value) {
+                $parsedown = new Parsedown;
+                $parsedown->setSafeMode(true);
+                return $parsedown->text($value);
+            }
+        });
 
         return $templating;
     }

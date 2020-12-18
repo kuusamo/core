@@ -12,8 +12,6 @@ A learning management system (LMS) that uses API-friendly JSON blocks to build l
 Roadmap
 -------
 
-* Course introduction
-
 * Folder validator should check for special characters
 * Edit and delete folders
 * Can we merge images into files?

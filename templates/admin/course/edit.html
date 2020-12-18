@@ -33,6 +33,9 @@
     <label for="image">Image ID</label>
     <input type="text" name="image" id="image" value="{{#getImage}}{{getId}}{{/getImage}}" class="form-control">
 
+    <label for="welcomeText">Welcome text <small>Supports Markdown</small></label>
+    <textarea name="welcomeText" id="welcomeText" class="form-control">{{getWelcomeText}}</textarea>
+
     <button type="submit" class="btn">Update</button>
 </form>
 {{/course}}

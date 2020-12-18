@@ -7,6 +7,7 @@ Changelog
 * Audio element now has a responsive width
 * Admins can now preview the course dashboard
 * Courses are now ordered alphabetically in admin
+* `schema` Added welcome text to courses
 
 1.7
 ---

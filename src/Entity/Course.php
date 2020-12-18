@@ -43,6 +43,11 @@ class Course
     private $image;
 
     /**
+     * @Column(type="text", name="welcome_text", nullable=true)
+     */
+    private $welcomeText;
+
+    /**
      * @OneToMany(targetEntity="Module", mappedBy="course", cascade={"remove"})
      * @OrderBy({"priority" = "ASC"})
      */
@@ -117,6 +122,20 @@ class Course
     public function setImage(?Image $value)
     {
         $this->image = $value;
+    }
+
+    public function getWelcomeText(): ?string
+    {
+        return $this->welcomeText;
+    }
+
+    public function setWelcomeText(?string $value)
+    {
+        if ($value === '') {
+            $value = null;
+        }
+
+        $this->welcomeText = $value;
     }
 
     public function getModules()

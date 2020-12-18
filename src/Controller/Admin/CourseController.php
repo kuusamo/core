@@ -61,6 +61,7 @@ class CourseController extends AdminController
             $course->setQualification($request->getParam('qualification'));
             $course->setAwardingBody($awardingBody);
             $course->setImage($image);
+            $course->setWelcomeText($request->getParam('welcomeText'));
 
             try {
                 $validator = new CourseValidator;

@@ -20,6 +20,7 @@ class CourseTest extends TestCase
         $course->setQualification('Chemistry Diploma');
         $course->setAwardingBody($awardingBodyMock);
         $course->setImage($imageMock);
+        $course->setWelcomeText('Welcome!');
 
         $this->assertSame(10, $course->getId());
         $this->assertSame('Chemistry 101', $course->getName());
@@ -28,10 +29,13 @@ class CourseTest extends TestCase
         $this->assertSame($awardingBodyMock, $course->getAwardingBody());
         $this->assertSame($imageMock, $course->getImage());
         $this->assertSame('/course/chemistry-101', $course->uri());
+        $this->assertSame('Welcome!', $course->getWelcomeText());
 
         $course->setQualification('');
+        $course->setWelcomeText('');
 
         $this->assertNull($course->getQualification());
+        $this->assertNull($course->getWelcomeText());
     }
 
     public function testModules()
