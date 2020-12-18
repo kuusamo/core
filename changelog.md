@@ -1,6 +1,10 @@
 Changelog
 =========
 
+1.8.2
+-----
+* Improvements on how certificates are produced
+
 1.8.1
 -----
 * Handle blobs as well as streams in image crops

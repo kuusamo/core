@@ -12,25 +12,28 @@
         .hint { color: #333; font-size: 80%; text-transform: uppercase; }
         .logo { margin-bottom: 1em; }
         .logo img { max-width: 200px; max-height: 75px; }
+        .key-details { padding: 0 80px; }
         .keyline { border-top: #ccc 1px solid; }
-        main { padding: 40px 120px; text-align: center; }
+        main { padding: 40px 40px; text-align: center; }
         .signature { font-family: "Cedarville Cursive"; font-size: 2em; max-height: 100px; overflow: hidden; }
     </style>
     </head>
     <body>
         <div class="border">
         <main>
-            {{#awardingBody}}{{#getLogo}}<div class="logo"><img src="{{webUrl}}/content/images/originals/{{getFilename}}"></div>{{/getLogo}}{{/awardingBody}}
-            <div>{{#awardingBody}}{{getName}}{{/awardingBody}}{{^awardingBody}}This certificate{{/awardingBody}} hereby confirms that</div>
-            <h2>{{studentName}}</h2>
-            {{#qualification}}<div>has completed the prescribed course materials and having successfully passed all examinations, has been awarded the qualification of</div>
-            <h1>{{.}}</h1>{{/qualification}}
-            {{^qualification}}<div>has successfully completed the course</div>
-            <h1>{{courseName}}</h1>{{/qualification}}
-            <div>
+            <div class="key-details">
+                {{#awardingBody}}{{#getLogo}}<div class="logo"><img src="{{webUrl}}/content/images/originals/{{getFilename}}"></div>{{/getLogo}}{{/awardingBody}}
+                <div>{{#awardingBody}}{{getName}}{{/awardingBody}}{{^awardingBody}}This certificate{{/awardingBody}} hereby confirms that</div>
+                <h2>{{studentName}}</h2>
+                {{#qualification}}<div>has completed the prescribed course materials and having successfully passed all examinations, has been awarded the qualification of</div>
+                <h1>{{.}}</h1>{{/qualification}}
+                {{^qualification}}<div>has successfully completed the course</div>
+                <h1>{{courseName}}</h1>{{/qualification}}
                 <div>
-                    <div>{{date}}</div>
-                    <div class="hint">Certificate date</div>
+                    <div>
+                        <div>{{date}}</div>
+                        <div class="hint">Certificate date</div>
+                    </div>
                 </div>
             </div>
             {{#awardingBody}}
@@ -42,7 +45,7 @@
                                 <img src="{{webUrl}}/images/seal.png" alt="Seal">
                             </div>
                         </td>
-                        <td>
+                        <td width="50%">
                             <div>
                                 <div class="signature">{{getAuthoriserSignature}}{{^getAuthoriserSignature}}{{getAuthoriserName}}{{/getAuthoriserSignature}}</div>
                                 <div class="keyline">
