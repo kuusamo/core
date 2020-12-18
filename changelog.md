@@ -1,6 +1,10 @@
 Changelog
 =========
 
+1.8.1
+-----
+* Handle blobs as well as streams in image crops
+
 1.8
 ---
 * Display filename if name is not available on downloads

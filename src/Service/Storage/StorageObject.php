@@ -10,7 +10,7 @@ class StorageObject
     /**
      * Constructor.
      *
-     * @param resource $stream      File pointer.
+     * @param resource $stream      File pointer or contents.
      * @param string   $contentType Content type.
      */
     public function __construct($stream, string $contentType)
@@ -22,7 +22,7 @@ class StorageObject
     /**
      * Get file pointer.
      *
-     * @return resource
+     * @return resource|blob
      */
     public function getStream()
     {

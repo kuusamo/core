@@ -111,7 +111,12 @@ class Crop
 
             // read image into imagick object
             $image = new Imagick;
-            $image->readImageFile($this->file->getStream());
+
+            if (is_resource($this->file->getStream())) {
+                $image->readImageFile($this->file->getStream());
+            } else {
+                $image->readImageBlob($this->file->getStream());
+            }
 
             // return the object
             return $image;
