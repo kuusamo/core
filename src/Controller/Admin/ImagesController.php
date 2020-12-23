@@ -4,6 +4,7 @@ namespace Kuusamo\Vle\Controller\Admin;
 
 use Kuusamo\Vle\Entity\Image;
 use Kuusamo\Vle\Helper\FileUtils;
+use Kuusamo\Vle\Service\Database\Pagination;
 
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -14,19 +15,22 @@ class ImagesController extends AdminController
 {
     public function index(Request $request, Response $response)
     {
-        $query = $request->getQueryParam('q') ? $request->getQueryParam('q') : null;
+        $q = $request->getQueryParam('q') ? $request->getQueryParam('q') : null;
 
-        if ($query) {
-            $images = $this->runSearch($request->getQueryParam('q'));
+        if ($q) {
+            $query = $this->runSearch($request->getQueryParam('q'));
         } else {
-            $images = $this->ci->get('db')->getRepository('Kuusamo\Vle\Entity\Image')->findBy([], ['id' => 'DESC'], 10);
+            $dql = "SELECT i FROM Kuusamo\Vle\Entity\Image i ORDER BY i.id DESC";
+            $query = $this->ci->get('db')->createQuery($dql);
         }
 
-         $this->ci->get('meta')->setTitle('Images - Admin');
+        $images = new Pagination($query, $request->getQueryParam('page', 1));
+
+        $this->ci->get('meta')->setTitle('Images - Admin');
 
         return $this->renderPage($request, $response, 'admin/images/index.html', [
             'images' => $images,
-            'query' => $query
+            'query' => $q
         ]);
     }
 
@@ -34,7 +38,7 @@ class ImagesController extends AdminController
      * Run an image search.
      *
      * @param string $query Query.
-     * @return array
+     * @return Query
      */
     private function runSearch($query)
     {
@@ -47,8 +51,7 @@ class ImagesController extends AdminController
            ))
            ->setParameters(['term' => '%' . $query . '%']);
 
-        $query = $qb->getQuery();
-        return $query->getResult();
+        return $qb->getQuery();
     }
 
     public function upload(Request $request, Response $response)

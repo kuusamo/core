@@ -15,13 +15,13 @@
             <th>Options</th>
     </thead>
     <tbody>
-    {{#items}}
+    {{#results}}
         <tr>
             <td>{{getFullName}}</td>
             <td>{{getEmail}}</td>
             <td><a href="/admin/users/{{getId}}">View</a></td>
         </tr>
-    {{/items}}
+    {{/results}}
     </tbody>
 </table>
 
@@ -30,7 +30,6 @@
     {{#pages}}<li><a href="?page={{number}}" class="{{#active}}active{{/active}}">{{number}}</a></li>{{/pages}}
 </ol>
 {{/hasPages}}
-
 {{/users}}
 
 <p>

@@ -34,7 +34,7 @@ class Pagination
      *
      * @return Paginator
      */
-    public function items(): Paginator
+    public function results(): Paginator
     {
         return $this->paginator;
     }
@@ -59,6 +59,16 @@ class Pagination
         }
 
         return $pages;
+    }
+
+    /**
+     * Does this query have any results?
+     *
+     * @return boolean
+     */
+    public function hasResults(): bool
+    {
+        return $this->paginator->count() > 0;
     }
 
     /**

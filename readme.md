@@ -39,8 +39,6 @@ Relationship cascades
 
 Paging and search
 
-* Images
-* Files
 * Students
 
 Autocomplete
