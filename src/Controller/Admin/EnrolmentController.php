@@ -8,6 +8,7 @@ use Kuusamo\Vle\Entity\Module;
 use Kuusamo\Vle\Entity\User;
 use Kuusamo\Vle\Entity\UserCourse;
 use Kuusamo\Vle\Entity\UserLesson;
+use Kuusamo\Vle\Service\Database\Pagination;
 
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -23,6 +24,14 @@ class EnrolmentController extends AdminController
         if ($course === null) {
             throw new HttpNotFoundException($request, $response);
         }
+
+        $dql = "SELECT uc FROM Kuusamo\Vle\Entity\UserCourse uc
+                JOIN uc.user u
+                WHERE uc.course = :course
+                ORDER BY u.surname ASC";
+        $query = $this->ci->get('db')->createQuery($dql);
+        $query->setParameter('course', $course);
+        $students = new Pagination($query, $request->getQueryParam('page', 1), 1);
 
         if ($request->isPost()) {
             $user = $this->ci->get('db')->find(
@@ -45,7 +54,8 @@ class EnrolmentController extends AdminController
         $this->ci->get('meta')->setTitle(sprintf('%s - Admin', $course->getName()));
 
         return $this->renderPage($request, $response, 'admin/course/students.html', [
-            'course' => $course
+            'course' => $course,
+            'students' => $students
         ]);
     }
 

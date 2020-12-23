@@ -16,6 +16,7 @@
     <li><a href="/course/{{getSlug}}" target="_blank">Preview</a></li>
 </ul>
 
+{{#students}}
 <table class="table table-striped">
     <thead>
         <tr>
@@ -24,19 +25,26 @@
         </tr>
     </thead>
     <tbody>
-    {{#getUsers}}
+    {{#results}}
         <tr>
             <td>{{#getUser}}<a href="students/{{getId}}">{{getFullName}}</a>{{/getUser}}</td>
             <td>{{getProgress}}%</td>
         </tr>
-    {{/getUsers}}
-    {{^hasUsers}}
+    {{/results}}
+    {{^hasResults}}
         <tr>
             <td colspan="2">No students enrolled</td>
         </tr>
-    {{/hasUsers}}
+    {{/hasResults}}
     </tbody>
 </table>
+
+{{#hasPages}}
+<ol class="pagination">
+    {{#pages}}<li><a href="?page={{number}}" class="{{#active}}active{{/active}}">{{number}}</a></li>{{/pages}}
+</ol>
+{{/hasPages}}
+{{/students}}
 
 <h2>Enrol a new student</h2>
 

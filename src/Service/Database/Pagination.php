@@ -26,7 +26,7 @@ class Pagination
 
         $this->page = $page;
         $this->resultsPerPage = $resultsPerPage;
-        $this->paginator = new Paginator($query);
+        $this->paginator = new Paginator($query, false);
     }
 
     /**
