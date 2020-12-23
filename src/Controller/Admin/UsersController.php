@@ -20,7 +20,8 @@ class UsersController extends Controller
     public function index(Request $request, Response $response)
     {
         $dql = "SELECT u FROM Kuusamo\Vle\Entity\user u ORDER BY u.surname ASC";
-        $users = new Pagination($this->ci->get('db'), $dql, $request->getQueryParam('page', 1));
+        $query = $this->ci->get('db')->createQuery($dql);
+        $users = new Pagination($query, $request->getQueryParam('page', 1));
 
         $this->ci->get('meta')->setTitle('Users - Admin');
 

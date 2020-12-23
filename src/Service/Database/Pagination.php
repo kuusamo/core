@@ -2,7 +2,7 @@
 
 namespace Kuusamo\Vle\Service\Database;
 
-use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\Query;
 use Doctrine\ORM\Tools\Pagination\Paginator;
 
 class Pagination
@@ -14,18 +14,15 @@ class Pagination
     /**
      * Create a pagination class.
      *
-     * @param EntityManager $db             Entity manager.
-     * @param string        $dql            Query.
-     * @param integer       $page           Page number.
-     * @param integer       $resultsPerPage Results per page.
+     * @param Query   $query          Doctrine query.
+     * @param integer $page           Page number.
+     * @param integer $resultsPerPage Results per page.
      */
-    public function __construct(EntityManager $db, string $dql, int $page = 1, int $resultsPerPage = 10)
+    public function __construct(Query $query, int $page = 1, int $resultsPerPage = 50)
     {
         $firstResult = ($page * $resultsPerPage) - $resultsPerPage;
 
-        $query = $db->createQuery($dql)
-                    ->setFirstResult($firstResult)
-                    ->setMaxResults($resultsPerPage);
+        $query->setFirstResult($firstResult)->setMaxResults($resultsPerPage);
 
         $this->page = $page;
         $this->resultsPerPage = $resultsPerPage;
