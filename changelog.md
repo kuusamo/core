@@ -7,6 +7,7 @@ Changelog
 * Preview links on list of courses in admin
 * Add preview tab to admin course view
 * Add Kussamo version and PHP version to admin info
+* Add a phpinfo() screen
 
 1.8.1
 -----

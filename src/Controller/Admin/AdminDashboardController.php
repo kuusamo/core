@@ -25,6 +25,12 @@ class AdminDashboardController extends AdminController
         ]);
     }
 
+    public function phpinfo(Request $request, Response $response)
+    {
+        phpinfo();
+        return $response;
+    }
+
     public function createCourse(Request $request, Response $response)
     {
         $course = new Course;
