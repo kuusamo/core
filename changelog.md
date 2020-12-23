@@ -6,6 +6,7 @@ Changelog
 * Improvements on how certificates handle multiple accreditations
 * Preview links on list of courses in admin
 * Add preview tab to admin course view
+* Add Kussamo version and PHP version to admin info
 
 1.8.1
 -----

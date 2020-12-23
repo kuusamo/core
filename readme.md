@@ -76,3 +76,9 @@ Symlink assets from a project
 
     vendor/bin/kuusamo dev-assets
     vendor/bin/kuusamo restore-assets # when done
+
+Releasing
+
+1. Update `changelog`
+2. Update version numberin `app.php`
+3. `git tag -a x.x.x -m "Version x.x.x"`

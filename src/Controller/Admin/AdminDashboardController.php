@@ -19,7 +19,9 @@ class AdminDashboardController extends AdminController
         $this->ci->get('meta')->setTitle('Admin');
 
         return $this->renderPage($request, $response, 'admin/dashboard.html', [
-            'courses' => $courses
+            'courses' => $courses,
+            'kuusamoVersion' => KUUSAMO_VERSION,
+            'phpVersion' => phpversion()
         ]);
     }
 
