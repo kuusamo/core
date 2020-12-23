@@ -31,7 +31,7 @@ class EnrolmentController extends AdminController
                 ORDER BY u.surname ASC";
         $query = $this->ci->get('db')->createQuery($dql);
         $query->setParameter('course', $course);
-        $students = new Pagination($query, $request->getQueryParam('page', 1), 1);
+        $students = new Pagination($query, $request->getQueryParam('page', 1));
 
         if ($request->isPost()) {
             $user = $this->ci->get('db')->find(
