@@ -22,7 +22,7 @@ class UsersController extends Controller
             'surname' => 'ASC'
         ]);
 
-         $this->ci->get('meta')->setTitle('Users - Admin');
+        $this->ci->get('meta')->setTitle('Users - Admin');
 
         return $this->renderPage($request, $response, 'admin/users/index.html', [
             'users' => $users
