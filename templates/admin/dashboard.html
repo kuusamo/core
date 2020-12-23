@@ -18,12 +18,14 @@
     <thead>
         <tr>
             <th>Name</th>
+            <th>Preview</th>
         </tr>
     </thead>
     <tbody>
     {{#courses}}
         <tr>
             <td><a href="/admin/courses/{{getId}}">{{getName}}</a></td>
+            <td><a href="/course/{{getSlug}}" target="_blank">Preview</a></td>
         </tr>
     {{/courses}}
     {{^courses}}

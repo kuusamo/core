@@ -3,7 +3,8 @@ Changelog
 
 1.8.2
 -----
-* Improvements on how certificates are produced
+* Improvements on how certificates handle multiple accreditations
+* Preview links on list of courses in admin
 
 1.8.1
 -----
