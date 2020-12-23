@@ -8,6 +8,7 @@ Changelog
 * Add preview tab to admin course view
 * Add Kussamo version and PHP version to admin info
 * Add a phpinfo() screen
+* Paginate users
 
 1.8.1
 -----

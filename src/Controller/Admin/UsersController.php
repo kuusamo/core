@@ -7,6 +7,7 @@ use Kuusamo\Vle\Entity\User;
 use Kuusamo\Vle\Helper\Form\Select;
 use Kuusamo\Vle\Helper\Password;
 use Kuusamo\Vle\Helper\TokenGenerator;
+use Kuusamo\Vle\Service\Database\Pagination;
 use Kuusamo\Vle\Validation\UserValidator;
 use Kuusamo\Vle\Validation\ValidationException;
 
@@ -18,9 +19,8 @@ class UsersController extends Controller
 {
     public function index(Request $request, Response $response)
     {
-        $users = $this->ci->get('db')->getRepository('Kuusamo\Vle\Entity\User')->findBy([], [
-            'surname' => 'ASC'
-        ]);
+        $dql = "SELECT u FROM Kuusamo\Vle\Entity\user u ORDER BY u.surname ASC";
+        $users = new Pagination($this->ci->get('db'), $dql, $request->getQueryParam('page', 1));
 
         $this->ci->get('meta')->setTitle('Users - Admin');
 

@@ -6,6 +6,7 @@
 
 <h1>Users</h1>
 
+{{#users}}
 <table class="table table-striped">
     <thead>
         <tr>
@@ -14,15 +15,23 @@
             <th>Options</th>
     </thead>
     <tbody>
-    {{#users}}
+    {{#items}}
         <tr>
             <td>{{getFullName}}</td>
             <td>{{getEmail}}</td>
             <td><a href="/admin/users/{{getId}}">View</a></td>
         </tr>
-    {{/users}}
+    {{/items}}
     </tbody>
 </table>
+
+{{#hasPages}}
+<ol class="pagination">
+    {{#pages}}<li><a href="?page={{number}}" class="{{#active}}active{{/active}}">{{number}}</a></li>{{/pages}}
+</ol>
+{{/hasPages}}
+
+{{/users}}
 
 <p>
     <a href="/admin/users/create" class="btn">Create new user</a>

@@ -70,3 +70,33 @@
         }
     }
 }
+
+.pagination {
+    display: flex;
+    line-height: auto;
+    padding: 0;
+
+    a {
+        border: #ccc 1px solid;
+        margin-right: $baseline / 4;
+        padding: ($baseline / 4) ($baseline / 2);
+    }
+
+    a:link, a:visited, a:hover, a:active {
+        text-decoration: none;
+    }
+
+    a:hover, a:active {
+        background-color: #eee;
+    }
+
+    a.active {
+        background-color: $tertiaryColour;
+        color: #fff;
+    }
+
+    li {
+        display: contents;
+        list-style-type: none;
+    }
+}

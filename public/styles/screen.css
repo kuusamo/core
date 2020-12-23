@@ -694,6 +694,31 @@ main {
   padding: 12px;
 }
 
+.pagination {
+  display: flex;
+  line-height: auto;
+  padding: 0;
+}
+.pagination a {
+  border: #ccc 1px solid;
+  margin-right: 6px;
+  padding: 6px 12px;
+}
+.pagination a:link, .pagination a:visited, .pagination a:hover, .pagination a:active {
+  text-decoration: none;
+}
+.pagination a:hover, .pagination a:active {
+  background-color: #eee;
+}
+.pagination a.active {
+  background-color: #0096c7;
+  color: #fff;
+}
+.pagination li {
+  display: contents;
+  list-style-type: none;
+}
+
 table.table {
   width: 100%;
   border-collapse: collapse;
