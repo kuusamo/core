@@ -5,6 +5,7 @@ Changelog
 -----
 * Improvements on how certificates handle multiple accreditations
 * Preview links on list of courses in admin
+* Add preview tab to admin course view
 
 1.8.1
 -----
