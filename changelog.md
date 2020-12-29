@@ -1,8 +1,8 @@
 Changelog
 =========
 
-1.8.2
------
+1.9
+---
 * Improvements on how certificates handle multiple accreditations
 * Preview links on list of courses in admin
 * Add preview tab to admin course view
@@ -10,6 +10,8 @@ Changelog
 * Add a phpinfo() screen
 * Paginate users, students and images in admin
 * Autocomplete for enrolling students
+* `schema` Footer text can now be set in the admin
+* Support for custom header tags
 
 1.8.1
 -----

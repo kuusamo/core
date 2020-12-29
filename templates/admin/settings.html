@@ -1,0 +1,17 @@
+<ol class="breadcrumbs">
+    <li><a href="/">Dashboard</a></li>
+    <li><a href="/admin">Admin</a></li>
+    <li><a href="/admin/settings">Settings</a></li>
+</ol>
+
+<h1>Settings</h1>
+
+<form method="post" class="form-vertical">
+    <label for="footerText">Footer text <small>Supports Markdown</small></label>
+    <textarea name="footerText" id="footerText" class="form-control">{{footerText}}</textarea>
+
+    <label for="headerTags">Header tags <small>Supports HTML</small></label>
+    <textarea name="headerTags" id="headerTags" class="form-control">{{headerTags}}</textarea>
+
+  <button type="submit" class="btn">Save</button>
+</form>

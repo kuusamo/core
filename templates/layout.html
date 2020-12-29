@@ -1,3 +1,4 @@
+{{% FILTERS}}
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,6 +16,7 @@
     <link href="/components/fontawesome/css/all.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    {{{headerTags}}}
 </style>
 </head>
 <body>
@@ -51,7 +53,7 @@
 
         <footer>
             <hr>
-            {{#theme}}{{#getFooterText}}<p>{{.}}</p>{{/getFooterText}}{{/theme}}
+            {{{footerText | markdown}}}
             Powered by <a href="https://www.kuusamo.org/" target="_blank">Kuusamo</a>.
         </footer>
     </div>

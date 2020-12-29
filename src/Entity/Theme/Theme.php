@@ -8,6 +8,9 @@ class Theme
 
     private $logoFlush = false;
 
+    /**
+     * @deprecated
+     */
     private $footerText;
 
     private $colours = [];
@@ -49,6 +52,7 @@ class Theme
      * Get the footer text.
      *
      * @param string|null
+     * @deprecated
      */
     public function getFooterText(): ?string
     {
@@ -60,6 +64,7 @@ class Theme
      *
      * @param string $text Text.
      * @return void
+     * @deprecated
      */
     public function setFooterText(string $text)
     {

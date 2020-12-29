@@ -5,6 +5,7 @@ use Kuusamo\Vle\Service\Database\DatabaseFactory;
 use Kuusamo\Vle\Service\Email\EmailFactory;
 use Kuusamo\Vle\Service\Meta;
 use Kuusamo\Vle\Service\Session\Session;
+use Kuusamo\Vle\Service\Settings\Settings;
 use Kuusamo\Vle\Service\Storage\StorageFactory;
 use Kuusamo\Vle\Service\Templating\TemplatingFactory;
 
@@ -34,6 +35,10 @@ $container->set('storage', function() {
 
 $container->set('session', function() {
     return new Session;
+});
+
+$container->set('settings', function() use ($container) {
+    return new Settings($container->get('db'));
 });
 
 $container->set('auth', function() use ($container) {

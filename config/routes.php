@@ -77,6 +77,8 @@ $app->group('', function($app) use ($container) {
         $app->any('/images/{id:[0-9]+}/edit', '\Kuusamo\Vle\Controller\Admin\ImagesController:edit');
         $app->any('/images/upload', '\Kuusamo\Vle\Controller\Admin\ImagesController:upload');
 
+        $app->any('/settings', '\Kuusamo\Vle\Controller\Admin\SettingsController:index');
+
         $app->get('/users', '\Kuusamo\Vle\Controller\Admin\UsersController:index');
         $app->any('/users/create', '\Kuusamo\Vle\Controller\Admin\UsersController:create');
         $app->any('/users/{id:[0-9]+}', '\Kuusamo\Vle\Controller\Admin\UsersController:view');

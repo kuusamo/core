@@ -45,7 +45,9 @@ abstract class Controller
     {
         $data = array_merge($data, [
             'alerts' => $this->alerts,
-            'siteName' => Environment::get('SITE_NAME')
+            'siteName' => Environment::get('SITE_NAME'),
+            'headerTags' => $this->ci->get('settings')->get('HEADER_TAGS'),
+            'footerText' => $this->ci->get('settings')->get('FOOTER_TEXT')
         ]);
 
         return $this->ci->get('templating')->renderPage(
