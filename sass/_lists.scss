@@ -1,5 +1,31 @@
 @use '_core' as *;
 
+.autocomplete {
+    display: inline;
+    position: relative;
+
+    ol {
+        left: 0;
+        margin: 0;
+        max-height: 200px;
+        overflow: auto;
+        padding: 0;
+        position: absolute;
+
+        li {
+            background-color: #fff;
+            border: #ccc 1px solid;
+            cursor: pointer;
+            list-style-type: none;
+            padding: $baseline / 2;
+        }
+
+        li:hover {
+            background-color: #eee;
+        }
+    }
+}
+
 .course-list {
     display: grid;
     grid-gap: $baseline;

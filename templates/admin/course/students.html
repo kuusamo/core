@@ -50,7 +50,59 @@
 
 <form method="post">
     <label for="userId">User ID</label>
-    <input type="text" name="userId" id="userId" class="form-control mr-1">
+    <div class="autocomplete mr-1" id="autocomplete">
+        <input type="text" name="userId" id="userId" class="form-control">
+        
+    </div>
     <button type="submit" class="btn">Enrol</button>
 </form>
+
+<script src="/js/axios.js"></script>
+<script>
+    function formatUser(user) {
+        var string = '';
+
+        if (user.firstName) {
+            string += '<strong>' + user.firstName + '</strong> ';
+        }
+
+        if (user.surname) {
+            string += '<strong>' + user.surname + '</strong> ';
+        }
+
+        return string + user.email;
+    }
+
+    function autocomplete(selector) {
+        var element = document.querySelector(selector);
+        var input = element.querySelector('input');
+        var suggestionList = document.createElement('ol');
+
+        element.appendChild(suggestionList);
+
+        input.onkeyup = function(event) {
+            if (event.target.value.length > 0) {
+                axios.get('/admin/autocomplete/users?q=' + encodeURIComponent(event.target.value)).then(function(response) {
+                    suggestionList.innerHTML = '';
+
+                    response.data.map(function(item) {
+                        var listItem = document.createElement('li');
+                        listItem.innerHTML = formatUser(item);
+                        listItem.setAttribute('data-id', item.id);
+                        listItem.onclick = function(event) {
+                            input.value = event.currentTarget.getAttribute('data-id');
+                            suggestionList.innerHTML = '';
+                        }
+                        suggestionList.appendChild(listItem);
+                    });
+                });
+            } else {
+                suggestionList.innerHTML = '';
+            }
+        }
+
+    }
+
+    autocomplete('#autocomplete');
+</script>
 {{/course}}

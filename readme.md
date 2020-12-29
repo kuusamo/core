@@ -43,7 +43,7 @@ Paging and search
 
 Autocomplete
 
-* Enrollment
+* Enrollment (make prettier, ES6)
 * Files in blocks
 * Images in blocks
 * Images attached to objects

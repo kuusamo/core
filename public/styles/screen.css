@@ -636,6 +636,29 @@ main {
   padding: 24px;
 }
 
+.autocomplete {
+  display: inline;
+  position: relative;
+}
+.autocomplete ol {
+  left: 0;
+  margin: 0;
+  max-height: 200px;
+  overflow: auto;
+  padding: 0;
+  position: absolute;
+}
+.autocomplete ol li {
+  background-color: #fff;
+  border: #ccc 1px solid;
+  cursor: pointer;
+  list-style-type: none;
+  padding: 12px;
+}
+.autocomplete ol li:hover {
+  background-color: #eee;
+}
+
 .course-list {
   display: grid;
   grid-gap: 24px;

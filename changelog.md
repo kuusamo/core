@@ -9,6 +9,7 @@ Changelog
 * Add Kussamo version and PHP version to admin info
 * Add a phpinfo() screen
 * Paginate users, students and images in admin
+* Autocomplete for enrolling students
 
 1.8.1
 -----

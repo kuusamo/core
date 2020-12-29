@@ -34,6 +34,8 @@ $app->group('', function($app) use ($container) {
         $app->any('', '\Kuusamo\Vle\Controller\Admin\AdminDashboardController:dashboard');
         $app->get('/phpinfo', '\Kuusamo\Vle\Controller\Admin\AdminDashboardController:phpinfo');
 
+        $app->get('/autocomplete/users', '\Kuusamo\Vle\Controller\Admin\AutocompleteController:users');
+
         $app->any('/courses/create', '\Kuusamo\Vle\Controller\Admin\AdminDashboardController:createCourse');
         $app->any('/courses/{id:[0-9]+}', '\Kuusamo\Vle\Controller\Admin\CourseController:view');
         $app->any('/courses/{id:[0-9]+}/delete', '\Kuusamo\Vle\Controller\Admin\CourseController:delete');
