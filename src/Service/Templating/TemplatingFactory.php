@@ -28,7 +28,7 @@ class TemplatingFactory
             }
         ]);
 
-        $templating->addHelper('markdown', function($value) {
+        $templating->addHelper('markdown', function ($value) {
             if ($value) {
                 $parsedown = new Parsedown;
                 $parsedown->setSafeMode(true);
