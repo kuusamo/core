@@ -28,7 +28,7 @@ class File implements JsonSerializable
     private $filename;
 
     /**
-     * @Column(type="string", name="media_type", length=64)
+     * @Column(type="string", name="media_type", length=128)
      */
     private $mediaType;
 

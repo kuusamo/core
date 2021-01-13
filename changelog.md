@@ -1,6 +1,10 @@
 Changelog
 =========
 
+1.10
+----
+* `schema` add support for longer media types on files
+
 1.9
 ---
 * Improvements on how certificates handle multiple accreditations
