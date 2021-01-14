@@ -12,6 +12,7 @@ A learning management system (LMS) that uses API-friendly JSON blocks to build l
 Roadmap
 -------
 
+* Optimise Doctrine
 * Folder validator should check for special characters
 * Edit and delete folders
 * Can we merge images into files?

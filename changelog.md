@@ -1,6 +1,10 @@
 Changelog
 =========
 
+1.10.1
+------
+* Disable doctrine cache
+
 1.10
 ----
 * `schema` add support for longer media types on files

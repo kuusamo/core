@@ -18,10 +18,10 @@ class DatabaseFactory
      */
     public static function create()
     {
-        $isDevMode = Environment::get('ENVIRONMENT') == 'development';
+        $isDevMode = true;
         $paths = [__DIR__ . '/../../Entity'];
         $metadata = Setup::createAnnotationMetadataConfiguration($paths, $isDevMode);
-        
+
         // database configuration parameters
         $dbParams = [
             'driver'   => Environment::get('DB_DRIVER', 'pdo_mysql'),
