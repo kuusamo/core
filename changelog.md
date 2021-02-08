@@ -5,6 +5,7 @@ Changelog
 ----
 * Admins can now see all courses from the homepage
 * Fixed display issue with no courses in admin dashboard
+* Fixed bug with most recent lesson not included in progress calculation
 
 1.10.1
 ------

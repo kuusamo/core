@@ -7,6 +7,7 @@ use Kuusamo\Vle\Entity\Lesson;
 use Kuusamo\Vle\Entity\User;
 use Kuusamo\Vle\Entity\UserLesson;
 
+use DateTime;
 use Slim\Exception\HttpNotFoundException;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -125,12 +126,12 @@ class LessonController extends CourseController
 
         $link->setCompleted(!$completed);
 
+        $this->ci->get('db')->persist($link);
+        $this->ci->get('db')->flush();
+
         if (!$completed) {
             $this->updateProgress($link->getLesson()->getCourse(), $link->getUser());
         }
-
-        $this->ci->get('db')->persist($link);
-        $this->ci->get('db')->flush();
 
         return true;
     }
@@ -156,6 +157,8 @@ class LessonController extends CourseController
             $userCourse->setCompleted(new DateTime);
             $this->ci->get('db')->persist($userCourse);
         }
+
+        $this->ci->get('db')->flush();
     }
 
     /**
