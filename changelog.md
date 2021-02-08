@@ -1,6 +1,11 @@
 Changelog
 =========
 
+1.11
+----
+* Admins can now see all courses from the homepage
+* Fixed display issue with no courses in admin dashboard
+
 1.10.1
 ------
 * Disable doctrine cache

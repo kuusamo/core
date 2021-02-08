@@ -20,3 +20,18 @@
 
 {{^hasCourses}}<p>You are not currently enrolled on any courses.</p>{{/hasCourses}}
 {{/user}}
+
+{{#isAdmin}}
+<h2>All courses</h2>
+
+<ul class="course-list">
+{{#allCourses}}
+    <li>
+        <div class="course-list-image"><a href="/course/{{getSlug}}">{{#getImage}}<img src="/content/images/crops/16-9/400/{{getFilename}}" alt="{{getDescription}}">{{/getImage}}</a></div>
+        <h3><a href="/course/{{getSlug}}">{{getName}}</a></h3>
+    </li>
+{{/allCourses}}
+</ul>
+
+{{^allCourses}}<p>No courses found.</p>{{/allCourses}}
+{{/isAdmin}}
