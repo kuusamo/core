@@ -6,6 +6,7 @@ Changelog
 * Admins can now see all courses from the homepage
 * Admins can now see enrolment information for a student
 * Admins can manually mark a course as complete
+* Toggling lesson completion status in the admin now recalculates progress
 * Fixed display issue with no courses in admin dashboard
 * Fixed bug with most recent lesson not included in progress calculation
 

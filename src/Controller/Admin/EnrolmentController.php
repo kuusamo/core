@@ -2,6 +2,7 @@
 
 namespace Kuusamo\Vle\Controller\Admin;
 
+use Kuusamo\Vle\Controller\Course\LessonTrait;
 use Kuusamo\Vle\Entity\Course;
 use Kuusamo\Vle\Entity\Lesson;
 use Kuusamo\Vle\Entity\Module;
@@ -18,6 +19,8 @@ use InvalidArgumentException;
 
 class EnrolmentController extends AdminController
 {
+    use LessonTrait;
+
     public function students(Request $request, Response $response, array $args = [])
     {
         $course = $this->ci->get('db')->find('Kuusamo\Vle\Entity\Course', $args['id']);
@@ -84,6 +87,7 @@ class EnrolmentController extends AdminController
             switch ($request->getParam('action')) {
                 case 'toggle':
                     $this->toggleLesson($student, $request->getParam('lesson'));
+                    $this->updateProgress($enrolment);
                     $this->alertSuccess('Lesson toggled successfully');
                     break;
                 case 'unenrol':

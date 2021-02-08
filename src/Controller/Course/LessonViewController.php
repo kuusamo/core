@@ -8,8 +8,10 @@ use Slim\Exception\HttpNotFoundException;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 
-class LessonViewController extends LessonController
+class LessonViewController extends CourseController
 {
+    use LessonTrait;
+
     public function score(Request $request, Response $response, $args)
     {
         $course = $this->ci->get('db')->getRepository('Kuusamo\Vle\Entity\Course')->findOneBy(['slug' => $args['course']]);
@@ -48,11 +50,13 @@ class LessonViewController extends LessonController
 
         if ($link->getScore() >= $lesson->getPassMark()) {
             $link->setCompleted(true);
-            $this->updateProgress($course, $user);
         }
 
         $this->ci->get('db')->persist($link);
         $this->ci->get('db')->flush();
+
+        $userCourse = $this->getCourseLink($course, $user);
+        $this->updateProgress($userCourse);
 
         return $response->withJson($link);
     }
