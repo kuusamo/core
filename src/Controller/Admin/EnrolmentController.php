@@ -84,6 +84,7 @@ class EnrolmentController extends AdminController
             switch ($request->getParam('action')) {
                 case 'toggle':
                     $this->toggleLesson($student, $request->getParam('lesson'));
+                    $this->alertSuccess('Lesson toggled successfully');
                     break;
                 case 'unenrol':
                     $this->ci->get('db')->remove($enrolment);
