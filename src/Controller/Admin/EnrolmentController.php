@@ -10,6 +10,7 @@ use Kuusamo\Vle\Entity\UserCourse;
 use Kuusamo\Vle\Entity\UserLesson;
 use Kuusamo\Vle\Service\Database\Pagination;
 
+use DateTime;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use Slim\Exception\HttpNotFoundException;
@@ -73,27 +74,36 @@ class EnrolmentController extends AdminController
             throw new HttpNotFoundException($request, $response);
         }
 
+        $enrolment = $this->ci->get('db')->find('Kuusamo\Vle\Entity\UserCourse', ['course' => $course, 'user' => $student]);
+
+        if ($enrolment === null) {
+            throw new HttpNotFoundException($request, $response);
+        }
+
         if ($request->isPost()) {
             switch ($request->getParam('action')) {
                 case 'toggle':
                     $this->toggleLesson($student, $request->getParam('lesson'));
                     break;
                 case 'unenrol':
-                    $userCourse = $this->ci->get('db')->find(
-                        'Kuusamo\Vle\Entity\UserCourse',
-                        [
-                            'course' => $course,
-                            'user' => $student
-                        ]
-                    );
-
-                    $this->ci->get('db')->remove($userCourse);
+                    $this->ci->get('db')->remove($enrolment);
                     $this->ci->get('db')->flush();
 
                     $uri = sprintf('/admin/courses/%s/students', $course->getId());
                     $this->alertSuccess('Student unenrolled successfully', true);
                     return $response->withRedirect($uri, 303);
                     break;
+                case 'complete':
+                    if ($enrolment->getCompleted()) {
+                        $enrolment->setCompleted(null);
+                    } else {
+                        $enrolment->setCompleted(new DateTime);
+                    }
+
+                    $this->ci->get('db')->persist($enrolment);
+                    $this->ci->get('db')->flush();
+
+                    $this->alertSuccess('Course completion toggled successfully');
             }
         }
 
@@ -102,6 +112,7 @@ class EnrolmentController extends AdminController
         return $this->renderPage($request, $response, 'admin/course/view-student.html', [
             'course' => $course,
             'student' => $student,
+            'enrolment' => $enrolment,
             'lessonList' => $this->lessonList($course, $student)
         ]);
     }
