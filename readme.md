@@ -17,6 +17,7 @@ Roadmap
 * Edit and delete folders
 * Can we merge images into files?
 * Remove navigation gap on first and last lesson
+* Allow admins to download certificates
 * Vimeo video is not responsive (YouTube?)
 * Video duration
 * Edit a student enrollment
@@ -77,5 +78,5 @@ Symlink assets from a project
 Releasing
 
 1. Update `changelog`
-2. Update version numberin `app.php`
+2. Update version number in `app.php`
 3. `git tag -a x.x.x -m "Version x.x.x"`
