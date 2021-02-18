@@ -12,13 +12,17 @@ class AccountController extends Controller
 {
     public function account(Request $request, Response $response)
     {
+        $user = $this->ci->get('auth')->getUser();
+
         if ($request->isPost()) {
             $this->changePassword($request);
         }
 
         $this->ci->get('meta')->setTitle('My Account');
 
-        return $this->renderPage($request, $response, 'account/account.html');
+        return $this->renderPage($request, $response, 'account/account.html', [
+            'hasPassword' => $user->getPassword() !== null
+        ]);
     }
 
     /**
@@ -31,7 +35,7 @@ class AccountController extends Controller
     {
         $user = $this->ci->get('auth')->getUser();
 
-        if (Password::verify($user->getpassword(), $request->getParam('old')) == false) {
+        if ($user->getPassword() && Password::verify($user->getpassword(), $request->getParam('old')) == false) {
             $this->alertDanger('Your current password did not match');
             return false;
         }

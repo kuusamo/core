@@ -8,8 +8,10 @@
 <h2>Change password</h2>
 
 <form method="post" class="form-vertical">
+    {{#hasPassword}}
     <label for="old">Current password</label>
     <input type="password" name="old" id="old" class="form-control">
+    {{/hasPassword}}
 
     <label for="new">New password</label>
     <input type="password" name="new" id="new" class="form-control">

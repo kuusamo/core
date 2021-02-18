@@ -1,6 +1,11 @@
 Changelog
 =========
 
+1.11.1
+------
+* Updating text for magic link confirmation screen
+* Only verify the existing  password on change if one exists
+
 1.11
 ----
 * Admins can now see all courses from the homepage
