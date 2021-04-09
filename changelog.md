@@ -1,6 +1,10 @@
 Changelog
 =========
 
+1.11.2
+------
+* Remove additional full stop from homepage (when not an admin)
+
 1.11.1
 ------
 * Updating text for magic link confirmation screen
