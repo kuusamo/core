@@ -4,6 +4,7 @@ Changelog
 1.11.2
 ------
 * Remove additional full stop from homepage (when not an admin)
+* Improved handling of magic link tokens
 
 1.11.1
 ------

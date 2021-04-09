@@ -6,7 +6,7 @@
 
         <p>Enter your email address and we will send you a link that will log you in automatically.</p>
 
-        <form method="post" class="form-vertical">
+        <form action="/login" method="post" class="form-vertical">
             <label for="magicEmail">Email address</label>
             <input type="email" name="email" id="magicEmail" placeholder="Email address" value="{{email}}" class="form-control">
             <input type="hidden" name="action" value="magicLink">
@@ -18,7 +18,7 @@
     <div>
         <h2>Login with password</h2>
 
-        <form method="post" class="form-vertical">
+        <form action="/login" method="post" class="form-vertical">
             <label for="email">Email address</label>
             <input type="email" name="email" id="email" placeholder="Email address" class="form-control">
 
