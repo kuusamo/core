@@ -72,8 +72,8 @@ class LoginController extends Controller
             }
         }
 
-        if ($request->getParam('token')) {
-            $result = $this->loginWithToken($request->getParam('token'));
+        if ($request->getQueryParam('token')) {
+            $result = $this->loginWithToken($request->getQueryParam('token'));
 
             if ($result === true) {
                 return $response->withRedirect(self::DEFAULT_REDIRECT);
