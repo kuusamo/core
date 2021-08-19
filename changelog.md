@@ -1,6 +1,10 @@
 Changelog
 =========
 
+1.11.3
+------
+* Upgrade dependencies
+
 1.11.2
 ------
 * Remove additional full stop from homepage (when not an admin)
