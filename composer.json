@@ -32,6 +32,7 @@
         "php-di/php-di": "^6.1",
         "doctrine/orm": "2.*",
         "doctrine/migrations": "3.*",
+        "doctrine/cache": "1.11",
         "dompdf/dompdf": "*",
         "ozdemirburak/iris": "2.*",
         "erusev/parsedown": "1.*"
