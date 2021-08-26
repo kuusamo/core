@@ -1,6 +1,10 @@
 Changelog
 =========
 
+1.12
+----
+* Fetch users API end-point
+
 1.11.3
 ------
 * Fixing Doctrine's cache peer dependency breaking change

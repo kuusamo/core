@@ -14,6 +14,27 @@ use Slim\Exception\HttpNotFoundException;
 
 class UsersApiController extends ApiController
 {
+    public function get(Request $request, Response $response)
+    {
+        if ($errorMsg = $this->verifyRequest($request)) {
+            return $this->badRequest($response, $errorMsg);
+        }
+
+        $qb = $this->ci->get('db')->createQueryBuilder();
+        $qb->select('u')
+            ->from('Kuusamo\Vle\Entity\User', 'u');
+
+        if ($request->getParam('email')) {
+            $qb->andWhere('u.email = :email')
+                ->setParameter('email', $request->getParam('email'));
+        }
+
+        $query = $qb->getQuery();
+        $users = $query->getResult();
+
+        return $response->withJson($users);
+    }
+
     public function create(Request $request, Response $response)
     {
         if ($errorMsg = $this->verifyRequest($request)) {
