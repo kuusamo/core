@@ -112,7 +112,7 @@ class UsersController extends Controller
 
         $status = new Select;
         $status->addOption(User::STATUS_ACTIVE);
-        $status->addOption(USER::STATUS_DISABLED);
+        $status->addOption(User::STATUS_DISABLED);
         $status->setDefaultOption($user->getStatus());
 
         return $this->renderPage($request, $response, 'admin/users/account.html', [
