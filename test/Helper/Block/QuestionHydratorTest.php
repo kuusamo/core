@@ -3,6 +3,7 @@
 namespace Kuusamo\Vle\Test\Helper\Block;
 
 use Kuusamo\Vle\Helper\Block\QuestionHydrator;
+use Kuusamo\Vle\Helper\Block\ValidationException;
 use PHPUnit\Framework\TestCase;
 
 class QuestionHydratorTest extends TestCase
@@ -33,11 +34,10 @@ class QuestionHydratorTest extends TestCase
         $this->assertSame(true, $hydrator->validate($blockMock));
     }
 
-    /**
-     * @expectedException Kuusamo\Vle\Helper\Block\ValidationException
-     */
     public function testValidateNoQustion()
     {
+        $this->expectException(ValidationException::class);
+
         $blockMock = $this->createMock('Kuusamo\Vle\Entity\Block\QuestionBlock');
         $blockMock->method('getText')->willReturn('');
 
@@ -46,11 +46,10 @@ class QuestionHydratorTest extends TestCase
         $hydrator->validate($blockMock);
     }
 
-    /**
-     * @expectedException Kuusamo\Vle\Helper\Block\ValidationException
-     */
     public function testValidateNoAnswers()
     {
+        $this->expectException(ValidationException::class);
+
         $blockMock = $this->createMock('Kuusamo\Vle\Entity\Block\QuestionBlock');
         $blockMock->method('getText')->willReturn('Favourite food?');
         $blockMock->method('getAnswers')->willReturn([]);
@@ -60,11 +59,10 @@ class QuestionHydratorTest extends TestCase
         $hydrator->validate($blockMock);
     }
 
-    /**
-     * @expectedException Kuusamo\Vle\Helper\Block\ValidationException
-     */
     public function testValidateAnswersMissingText()
     {
+        $this->expectException(ValidationException::class);
+
         $blockMock = $this->createMock('Kuusamo\Vle\Entity\Block\QuestionBlock');
         $blockMock->method('getText')->willReturn('Favourite food?');
         $blockMock->method('getAnswers')->willReturn([
@@ -76,11 +74,10 @@ class QuestionHydratorTest extends TestCase
         $hydrator->validate($blockMock);
     }
 
-    /**
-     * @expectedException Kuusamo\Vle\Helper\Block\ValidationException
-     */
     public function testValidateAnswersNoCorrectAnswer()
     {
+        $this->expectException(ValidationException::class);
+
         $blockMock = $this->createMock('Kuusamo\Vle\Entity\Block\QuestionBlock');
         $blockMock->method('getText')->willReturn('Favourite food?');
         $blockMock->method('getAnswers')->willReturn([

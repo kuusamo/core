@@ -5,6 +5,7 @@ namespace Kuusamo\Vle\Test\Entity;
 use Kuusamo\Vle\Entity\User;
 use PHPUnit\Framework\TestCase;
 use DateTime;
+use InvalidArgumentException;
 
 class UserTest extends TestCase
 {
@@ -98,11 +99,10 @@ class UserTest extends TestCase
         );
     }
 
-    /**
-     * @expectedException InvalidArgumentException
-     */
     public function testInvalidStatus()
     {
+        $this->expectException(InvalidArgumentException::class);
+
         $user = new User;
         $user->setStatus('made up status');
     }

@@ -3,6 +3,7 @@
 namespace Kuusamo\Vle\Test\Validation;
 
 use Kuusamo\Vle\Validation\CourseValidator;
+use Kuusamo\Vle\Validation\ValidationException;
 use PHPUnit\Framework\TestCase;
 
 class CourseValidatorTest extends TestCase
@@ -18,11 +19,10 @@ class CourseValidatorTest extends TestCase
         $this->assertSame(true, $validator($course));
     }
 
-    /**
-     * @expectedException Kuusamo\Vle\Validation\ValidationException
-     */
     public function testEmptyName()
     {
+        $this->expectException(ValidationException::class);
+
         $course = $this->createMock('Kuusamo\Vle\Entity\Course');
         $course->method('getName')->willReturn('');
         $course->method('getSlug')->willReturn('chemistry');
@@ -31,11 +31,10 @@ class CourseValidatorTest extends TestCase
         $validator($course);
     }
 
-    /**
-     * @expectedException Kuusamo\Vle\Validation\ValidationException
-     */
     public function testEmptySlug()
     {
+        $this->expectException(ValidationException::class);
+
         $course = $this->createMock('Kuusamo\Vle\Entity\Course');
         $course->method('getName')->willReturn('Chemistry');
         $course->method('getSlug')->willReturn('');
@@ -44,11 +43,10 @@ class CourseValidatorTest extends TestCase
         $validator($course);
     }
 
-    /**
-     * @expectedException Kuusamo\Vle\Validation\ValidationException
-     */
     public function testInvalidSlug()
     {
+        $this->expectException(ValidationException::class);
+
         $course = $this->createMock('Kuusamo\Vle\Entity\Course');
         $course->method('getName')->willReturn('Chemistry 101');
         $course->method('getSlug')->willReturn('chemistry_101');

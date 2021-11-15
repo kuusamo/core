@@ -4,6 +4,7 @@ namespace Kuusamo\Vle\Test\Entity;
 
 use Kuusamo\Vle\Entity\Lesson;
 use PHPUnit\Framework\TestCase;
+use InvalidArgumentException;
 
 class LessonTest extends TestCase
 {
@@ -57,20 +58,18 @@ class LessonTest extends TestCase
         );
     }
 
-    /**
-     * @expectedException InvalidArgumentException
-     */
     public function testInvalidStatus()
     {
+        $this->expectException(InvalidArgumentException::class);
+
         $lesson = new Lesson;
         $lesson->setStatus('made up status');
     }
 
-    /**
-     * @expectedException InvalidArgumentException
-     */
     public function testInvalidMarking()
     {
+        $this->expectException(InvalidArgumentException::class);
+
         $lesson = new Lesson;
         $lesson->setMarking('made up marking');
     }

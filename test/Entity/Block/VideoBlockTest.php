@@ -4,6 +4,7 @@ namespace Kuusamo\Vle\Test\Entity\Block;
 
 use Kuusamo\Vle\Entity\Block\VideoBlock;
 use PHPUnit\Framework\TestCase;
+use InvalidArgumentException;
 
 class VideoBlockTest extends TestCase
 {
@@ -24,11 +25,10 @@ class VideoBlockTest extends TestCase
         $this->assertNull($block->getDuration());
     }
 
-    /**
-     * @expectedException InvalidArgumentException
-     */
     public function testInvalidProvider()
     {
+        $this->expectException(InvalidArgumentException::class);
+
         $block = new VideoBlock;
         $block->setProvider('google video');
     }

@@ -3,6 +3,8 @@
 namespace Kuusamo\Vle\Test\Validation;
 
 use Kuusamo\Vle\Validation\AwardingBodyValidator;
+use Kuusamo\Vle\Validation\ValidationException;
+
 use PHPUnit\Framework\TestCase;
 
 class AwardingBodyValidatorTest extends TestCase
@@ -19,11 +21,10 @@ class AwardingBodyValidatorTest extends TestCase
         $this->assertSame(true, $validator($body));
     }
 
-    /**
-     * @expectedException Kuusamo\Vle\Validation\ValidationException
-     */
     public function testEmptyName()
     {
+        $this->expectException(ValidationException::class);
+
         $body = $this->createMock('Kuusamo\Vle\Entity\AwardingBody');
         $body->method('getName')->willReturn('');
         $body->method('getAuthoriserName')->willReturn('Jane Smith');
@@ -33,11 +34,10 @@ class AwardingBodyValidatorTest extends TestCase
         $validator($body);
     }
 
-    /**
-     * @expectedException Kuusamo\Vle\Validation\ValidationException
-     */
     public function testEmptyAuthoriserName()
     {
+        $this->expectException(ValidationException::class);
+
         $body = $this->createMock('Kuusamo\Vle\Entity\AwardingBody');
         $body->method('getName')->willReturn('ABC Awards');
         $body->method('getAuthoriserName')->willReturn('');

@@ -4,6 +4,7 @@ namespace Kuusamo\Vle\Test\Entity;
 
 use Kuusamo\Vle\Entity\Module;
 use PHPUnit\Framework\TestCase;
+use InvalidArgumentException;
 
 class ModuleTest extends TestCase
 {
@@ -49,11 +50,10 @@ class ModuleTest extends TestCase
         );
     }
 
-    /**
-     * @expectedException InvalidArgumentException
-     */
     public function testInvalidStatus()
     {
+        $this->expectException(InvalidArgumentException::class);
+
         $module = new Module;
         $module->setStatus('made up status');
     }

@@ -11,7 +11,7 @@ class TokenGeneratorTest extends TestCase
     {
         $token = TokenGenerator::generate();
 
-        $this->assertInternalType('string', $token);
+        $this->assertIsString($token);
         $this->assertEquals(64, strlen($token));
     }
 
@@ -19,7 +19,7 @@ class TokenGeneratorTest extends TestCase
     {
         $token = TokenGenerator::short();
 
-        $this->assertInternalType('string', $token);
+        $this->assertIsString($token);
         $this->assertEquals(32, strlen($token));
     }
 }

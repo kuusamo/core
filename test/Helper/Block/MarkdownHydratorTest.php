@@ -3,6 +3,7 @@
 namespace Kuusamo\Vle\Test\Helper\Block;
 
 use Kuusamo\Vle\Helper\Block\MarkdownHydrator;
+use Kuusamo\Vle\Helper\Block\ValidationException;
 use PHPUnit\Framework\TestCase;
 
 class MarkdownHydratorTest extends TestCase
@@ -26,11 +27,10 @@ class MarkdownHydratorTest extends TestCase
         $this->assertSame(true, $hydrator->validate($blockMock));
     }
 
-    /**
-     * @expectedException Kuusamo\Vle\Helper\Block\ValidationException
-     */
     public function testValidateInvalid()
     {
+        $this->expectException(ValidationException::class);
+
         $blockMock = $this->createMock('Kuusamo\Vle\Entity\Block\MarkdownBlock');
         $blockMock->method('getMarkdown')->willReturn('');
 

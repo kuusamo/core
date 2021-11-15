@@ -20,6 +20,6 @@ class ThemeTest extends TestCase
         $this->assertSame('/logo.png', $theme->getLogo());
         $this->assertSame(true, $theme->isLogoFlush());
         $this->assertSame('Copyright', $theme->getFooterText());
-        $this->assertInternalType('array', $theme->getColours());
+        $this->assertIsArray($theme->getColours());
     }
 }

@@ -4,6 +4,7 @@ namespace Kuusamo\Vle\Test\Entity;
 
 use Kuusamo\Vle\Entity\Theme\Colour;
 use PHPUnit\Framework\TestCase;
+use InvalidArgumentException;
 
 class ColourTest extends TestCase
 {
@@ -24,27 +25,24 @@ class ColourTest extends TestCase
         $this->assertSame('#808080', $colour->fade());
     }
 
-    /**
-     * @expectedException InvalidArgumentException
-     */
     public function testInvalidLength()
     {
+        $this->expectException(InvalidArgumentException::class);
+
         $colour = new Colour('#ffff');
     }
 
-    /**
-     * @expectedException InvalidArgumentException
-     */
     public function testMissingHash()
     {
+        $this->expectException(InvalidArgumentException::class);
+
         $colour = new Colour('ffff');
     }
 
-    /**
-     * @expectedException InvalidArgumentException
-     */
     public function testInvalidHex()
     {
+        $this->expectException(InvalidArgumentException::class);
+
         $colour = new Colour('#uuu');
     }
 }

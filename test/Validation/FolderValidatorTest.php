@@ -3,6 +3,7 @@
 namespace Kuusamo\Vle\Test\Validation;
 
 use Kuusamo\Vle\Validation\FolderValidator;
+use Kuusamo\Vle\Validation\ValidationException;
 use PHPUnit\Framework\TestCase;
 
 class FolderValidatorTest extends TestCase
@@ -17,11 +18,10 @@ class FolderValidatorTest extends TestCase
         $this->assertSame(true, $validator($folder));
     }
 
-    /**
-     * @expectedException Kuusamo\Vle\Validation\ValidationException
-     */
     public function testEmptyName()
     {
+        $this->expectException(ValidationException::class);
+
         $folder = $this->createMock('Kuusamo\Vle\Entity\Folder');
         $folder->method('getName')->willReturn('');
 
@@ -29,11 +29,10 @@ class FolderValidatorTest extends TestCase
         $validator($folder);
     }
 
-    /**
-     * @expectedException Kuusamo\Vle\Validation\ValidationException
-     */
     public function testNameTooLong()
     {
+        $this->expectException(ValidationException::class);
+
         $folder = $this->createMock('Kuusamo\Vle\Entity\Folder');
         $folder->method('getName')->willReturn(str_repeat('a', 129));
 

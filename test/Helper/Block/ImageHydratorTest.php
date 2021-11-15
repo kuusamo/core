@@ -3,6 +3,7 @@
 namespace Kuusamo\Vle\Test\Helper\Block;
 
 use Kuusamo\Vle\Helper\Block\ImageHydrator;
+use Kuusamo\Vle\Helper\Block\ValidationException;
 use PHPUnit\Framework\TestCase;
 
 class ImageHydratorTest extends TestCase
@@ -35,11 +36,10 @@ class ImageHydratorTest extends TestCase
         $this->assertSame(true, $hydrator->validate($blockMock));
     }
 
-    /**
-     * @expectedException Kuusamo\Vle\Helper\Block\ValidationException
-     */
     public function testValidateInvalid()
     {
+        $this->expectException(ValidationException::class);
+
         $dbMock = $this->createMock('Doctrine\ORM\EntityManager');
 
         $blockMock = $this->createMock('Kuusamo\Vle\Entity\Block\ImageBlock');
