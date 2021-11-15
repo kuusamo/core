@@ -1,6 +1,10 @@
 Changelog
 =========
 
+1.13
+----
+* Course privacy setting allows open-registration courses
+
 1.12
 ----
 * Fetch users API end-point

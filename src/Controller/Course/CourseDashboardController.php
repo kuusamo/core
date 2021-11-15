@@ -22,8 +22,6 @@ class CourseDashboardController extends CourseController
         }
 
         $user = $this->isEnrolled($course);
-        $day = $this->countDays($user, $course);
-        $link = $this->getCourseLink($course, $user);
 
         if ($user === false) {
             return $this->renderPage($request, $response, 'errors/not-enrolled.html', [
@@ -31,6 +29,8 @@ class CourseDashboardController extends CourseController
             ]);
         }
 
+        $day = $this->countDays($user, $course);
+        $link = $this->getCourseLink($course, $user);
         $navigation = $this->courseNavigation($course);
 
         $this->ci->get('meta')->setTitle($course->getName());

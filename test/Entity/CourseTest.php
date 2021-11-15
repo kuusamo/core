@@ -4,6 +4,7 @@ namespace Kuusamo\Vle\Test\Entity;
 
 use Kuusamo\Vle\Entity\Course;
 use PHPUnit\Framework\TestCase;
+use InvalidArgumentException;
 
 class CourseTest extends TestCase
 {
@@ -14,12 +15,15 @@ class CourseTest extends TestCase
 
         $course = new Course;
 
+        $this->assertSame(Course::PRIVACY_PRIVATE, $course->getPrivacy());
+
         $course->setId(10);
         $course->setName('Chemistry 101');
         $course->setSlug('chemistry-101');
         $course->setQualification('Chemistry Diploma');
         $course->setAwardingBody($awardingBodyMock);
         $course->setImage($imageMock);
+        $course->setPrivacy(Course::PRIVACY_OPEN);
         $course->setWelcomeText('Welcome!');
 
         $this->assertSame(10, $course->getId());
@@ -28,6 +32,7 @@ class CourseTest extends TestCase
         $this->assertSame('Chemistry Diploma', $course->getQualification());
         $this->assertSame($awardingBodyMock, $course->getAwardingBody());
         $this->assertSame($imageMock, $course->getImage());
+        $this->assertSame(Course::PRIVACY_OPEN, $course->getPrivacy());
         $this->assertSame('/course/chemistry-101', $course->uri());
         $this->assertSame('Welcome!', $course->getWelcomeText());
 
@@ -59,5 +64,13 @@ class CourseTest extends TestCase
         $course->getUsers()->add($userMock);
 
         $this->assertSame(true, $course->hasUsers());
+    }
+
+    public function testInvalidPrivacy()
+    {
+        $this->expectException(InvalidArgumentException::class);
+
+        $course = new Course;
+        $course->setPrivacy('made up privacy');
     }
 }

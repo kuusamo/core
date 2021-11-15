@@ -31,6 +31,10 @@ abstract class CourseController extends Controller
             }
         }
 
+        if ($course->getPrivacy() === Course::PRIVACY_OPEN) {
+            return $user;
+        }
+
         foreach ($user->getRoles() as $role) {
             if ($role->getId() == Role::ROLE_ADMIN) {
                 return $user;
@@ -56,13 +60,32 @@ abstract class CourseController extends Controller
             }
         }
 
+        if ($course->getPrivacy() === Course::PRIVACY_OPEN) {
+            return $this->generateCourseLink($course, $user);
+        }
+
         foreach ($user->getRoles() as $role) {
             if ($role->getId() == Role::ROLE_ADMIN) {
-                return new UserCourse;
+                return $this->generateCourseLink($course, $user);
             }
         }
 
         throw new Exception('Course link not found');
+    }
+
+    /**
+     * Generate a new user course link.
+     *
+     * @param Course $course  Lesson.
+     * @param User   $user   User.
+     * @return UserCourse
+     */
+    private function generateCourseLink(Course $course, User $user): UserCourse
+    {
+        $link = new UserCourse;
+        $link->setUser($user);
+        $link->setCourse($course);
+        return $link;
     }
 
     /**

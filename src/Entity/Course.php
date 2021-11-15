@@ -3,6 +3,7 @@
 namespace Kuusamo\Vle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use InvalidArgumentException;
 
 /**
  * @Entity
@@ -10,6 +11,9 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 class Course
 {
+    const PRIVACY_PRIVATE = 'PRIVATE';
+    const PRIVACY_OPEN = 'OPEN';
+
     /**
      * @Column(type="integer")
      * @Id
@@ -43,6 +47,11 @@ class Course
     private $image;
 
     /**
+     * @Column(type="string", length=16)
+     */
+    private $privacy;
+
+    /**
      * @Column(type="text", name="welcome_text", nullable=true)
      */
     private $welcomeText;
@@ -60,6 +69,7 @@ class Course
 
     public function __construct()
     {
+        $this->privacy = self::PRIVACY_PRIVATE;
         $this->modules = new ArrayCollection;
         $this->users = new ArrayCollection;
     }
@@ -122,6 +132,20 @@ class Course
     public function setImage(?Image $value)
     {
         $this->image = $value;
+    }
+
+    public function getPrivacy(): string
+    {
+        return $this->privacy;
+    }
+
+    public function setPrivacy(string $value)
+    {
+        if (!in_array($value, [self::PRIVACY_PRIVATE, self::PRIVACY_OPEN])) {
+            throw new InvalidArgumentException('Invalid privacy');
+        }
+
+        $this->privacy = $value;
     }
 
     public function getWelcomeText(): ?string

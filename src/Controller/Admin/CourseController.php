@@ -61,6 +61,7 @@ class CourseController extends AdminController
             $course->setQualification($request->getParam('qualification'));
             $course->setAwardingBody($awardingBody);
             $course->setImage($image);
+            $course->setPrivacy($request->getParam('privacy'));
             $course->setWelcomeText($request->getParam('welcomeText'));
 
             try {
@@ -80,9 +81,15 @@ class CourseController extends AdminController
 
         $this->ci->get('meta')->setTitle(sprintf('%s - Admin', $course->getName()));
 
+        $privacy = new Select;
+        $privacy->addOption(Course::PRIVACY_PRIVATE);
+        $privacy->addOption(Course::PRIVACY_OPEN);
+        $privacy->setDefaultOption($course->getPrivacy());
+
         return $this->renderPage($request, $response, 'admin/course/edit.html', [
             'course' => $course,
-            'awardingBody' => $this->awardingBodyDropdown($course)
+            'awardingBody' => $this->awardingBodyDropdown($course),
+            'privacy' => $privacy()
         ]);
     }
 

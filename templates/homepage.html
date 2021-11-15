@@ -21,7 +21,7 @@
 {{^hasCourses}}<p>You are not currently enrolled on any courses.</p>{{/hasCourses}}
 {{/user}}
 
-{{#isAdmin}}
+{{#hasAllCourses}}
 <h2>All courses</h2>
 
 <ul class="course-list">
@@ -32,6 +32,4 @@
     </li>
 {{/allCourses}}
 </ul>
-
-{{^allCourses}}<p>No courses found.</p>{{/allCourses}}
-{{/isAdmin}}
+{{/hasAllCourses}}

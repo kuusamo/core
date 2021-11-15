@@ -34,6 +34,11 @@
     <label for="image">Image ID</label>
     <input type="text" name="image" id="image" value="{{#getImage}}{{getId}}{{/getImage}}" class="form-control">
 
+    <label for="privacy">Privacy</label>
+    <select name="privacy" id="privacy" class="form-control">
+    {{#privacy}}<option value="{{value}}" {{#selected}}selected{{/selected}}>{{label}}</option>{{/privacy}}
+    </select>
+
     <label for="welcomeText">Welcome text <small>Supports Markdown</small></label>
     <textarea name="welcomeText" id="welcomeText" class="form-control">{{getWelcomeText}}</textarea>
 
