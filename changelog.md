@@ -1,6 +1,10 @@
 Changelog
 =========
 
+1.13.1
+------
+* Fixing version number
+
 1.13
 ----
 * Course privacy setting allows open-registration courses
