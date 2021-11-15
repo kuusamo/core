@@ -1,6 +1,10 @@
 Changelog
 =========
 
+1.13.2
+------
+* Increasing minimum PHP version to `7.4`
+
 1.13.1
 ------
 * Fixing version number
