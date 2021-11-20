@@ -6,6 +6,7 @@ Changelog
 * Course certificates can be enabled/disabled
 * Improve labelling of course privacy
 * Allow admins to download student certificates
+* Admins can delete users
 
 1.13.2
 ------

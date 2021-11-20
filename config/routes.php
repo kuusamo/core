@@ -86,6 +86,7 @@ $app->group('', function($app) use ($container) {
         $app->any('/users/{id:[0-9]+}', '\Kuusamo\Vle\Controller\Admin\UsersController:view');
         $app->any('/users/{id:[0-9]+}/account', '\Kuusamo\Vle\Controller\Admin\UsersController:account');
         $app->any('/users/{id:[0-9]+}/security', '\Kuusamo\Vle\Controller\Admin\UsersController:security');
+        $app->any('/users/{id:[0-9]+}/delete', '\Kuusamo\Vle\Controller\Admin\UsersController:delete');
     })->add(new RequirePermission($container->get('auth'), Role::ROLE_ADMIN));
 
 

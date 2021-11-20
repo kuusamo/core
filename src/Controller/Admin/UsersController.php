@@ -157,4 +157,27 @@ class UsersController extends Controller
             'user' => $user
         ]);
     }
+
+    public function delete(Request $request, Response $response, array $args = [])
+    {
+        $user = $this->ci->get('db')->find('Kuusamo\Vle\Entity\User', $args['id']);
+
+        if ($user === null) {
+            throw new HttpNotFoundException($request, $response);
+        }
+
+        if ($request->isPost()) {
+            $this->ci->get('db')->remove($user);
+            $this->ci->get('db')->flush();
+
+            $this->alertSuccess('User deleted successfully', true);
+            return $response->withRedirect('/admin/users', 303);
+        }
+
+        $this->ci->get('meta')->setTitle(sprintf('%s - Users - Admin', $user->getFullName()));
+
+        return $this->renderPage($request, $response, 'admin/users/delete.html', [
+            'user' => $user
+        ]);
+    }
 }

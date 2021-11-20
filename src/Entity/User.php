@@ -70,7 +70,7 @@ class User implements JsonSerializable
     private $roles;
 
     /**
-     * @OneToMany(targetEntity="UserCourse", mappedBy="user")
+     * @OneToMany(targetEntity="UserCourse", mappedBy="user", cascade={"remove"})
      */
     private $courses;
 

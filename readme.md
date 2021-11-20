@@ -13,6 +13,7 @@ Roadmap
 -------
 
 * Optimise Doctrine
+* Manage user roles
 * Folder validator should check for special characters
 * Edit and delete folders
 * Can we merge images into files?
@@ -20,7 +21,6 @@ Roadmap
 * Vimeo video is not responsive (YouTube?)
 * Video duration
 * Edit a student enrollment
-* Delete a user
 * Image usage report
 * Sticky lesson menu
 * SMTP
@@ -33,7 +33,7 @@ Roadmap
 
 Relationship cascades
 
-* User
+* User (roles)
 * Image (awarding body, course, image block)
 
 Paging and search
