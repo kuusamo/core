@@ -16,6 +16,10 @@ class FolderValidator
             throw new ValidationException('Folder names cannot be more than 128 characters');
         }
 
+        if (preg_match("/[^[:alnum:][:space:]\-_]/u", $folder->getName())) {
+            throw new ValidationException('Folder name can only contain letters, numbers, spaces, dashes and underscores');
+        }
+
         return true;
     }
 }

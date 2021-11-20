@@ -14,7 +14,6 @@ Roadmap
 
 * Optimise Doctrine
 * Manage user roles
-* Folder validator should check for special characters
 * Edit and delete folders
 * Can we merge images into files?
 * Vimeo video is not responsive (YouTube?)

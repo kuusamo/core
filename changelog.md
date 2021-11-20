@@ -8,6 +8,7 @@ Changelog
 * Allow admins to download student certificates
 * Admins can delete users
 * Decaching for CSS and JavaScript assets
+* Folder validator now check for special characters
 
 1.13.2
 ------

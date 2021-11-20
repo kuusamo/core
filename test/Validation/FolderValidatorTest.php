@@ -2,6 +2,7 @@
 
 namespace Kuusamo\Vle\Test\Validation;
 
+use Kuusamo\Vle\Entity\Folder;
 use Kuusamo\Vle\Validation\FolderValidator;
 use Kuusamo\Vle\Validation\ValidationException;
 use PHPUnit\Framework\TestCase;
@@ -10,8 +11,8 @@ class FolderValidatorTest extends TestCase
 {
     public function testValid()
     {
-        $folder = $this->createMock('Kuusamo\Vle\Entity\Folder');
-        $folder->method('getName')->willReturn('PDFs');
+        $folder = $this->createMock(Folder::class);
+        $folder->method('getName')->willReturn('PDFs ö-_');
 
         $validator = new FolderValidator;
 
@@ -22,7 +23,7 @@ class FolderValidatorTest extends TestCase
     {
         $this->expectException(ValidationException::class);
 
-        $folder = $this->createMock('Kuusamo\Vle\Entity\Folder');
+        $folder = $this->createMock(Folder::class);
         $folder->method('getName')->willReturn('');
 
         $validator = new FolderValidator;
@@ -33,8 +34,19 @@ class FolderValidatorTest extends TestCase
     {
         $this->expectException(ValidationException::class);
 
-        $folder = $this->createMock('Kuusamo\Vle\Entity\Folder');
+        $folder = $this->createMock(Folder::class);
         $folder->method('getName')->willReturn(str_repeat('a', 129));
+
+        $validator = new FolderValidator;
+        $validator($folder);
+    }
+
+    public function testNameHasInvalidCharacters()
+    {
+        $this->expectException(ValidationException::class);
+
+        $folder = $this->createMock(Folder::class);
+        $folder->method('getName')->willReturn('A/Bö');
 
         $validator = new FolderValidator;
         $validator($folder);
