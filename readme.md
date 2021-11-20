@@ -23,7 +23,6 @@ Roadmap
 * Edit a student enrollment
 * Image usage report
 * Sticky lesson menu
-* SMTP
 * Drip content
 * Read The Docs
 * Cache busting assets
