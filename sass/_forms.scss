@@ -87,6 +87,17 @@ button.btn-sm {
     padding: 0 $baseline / 2;
 }
 
+div.toggle {
+    margin-bottom: $baseline / 2;
+
+    label {
+        border: $secondaryColour 1px solid;
+        border-radius: $baseline / 6;
+        display: block;
+        padding: $baseline / 2;
+    }
+}
+
 input.form-control {
     @extend %input;
     height: 50px;

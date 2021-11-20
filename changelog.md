@@ -1,6 +1,10 @@
 Changelog
 =========
 
+1.14
+----
+* Course certificates can be enabled/disabled
+
 1.13.2
 ------
 * Increasing minimum PHP version to `7.4`

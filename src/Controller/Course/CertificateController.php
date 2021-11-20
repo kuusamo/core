@@ -19,7 +19,7 @@ class CertificateController extends CourseController
     {
         $course = $this->ci->get('db')->getRepository('Kuusamo\Vle\Entity\Course')->findOneBy(['slug' => $args['course']]);
 
-        if ($course === null) {
+        if ($course === null || $course->isCertificateAvailable() === false) {
             throw new HttpNotFoundException($request, $response);
         }
 

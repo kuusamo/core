@@ -31,6 +31,14 @@
     {{#awardingBody}}<option value="{{value}}" {{#selected}}selected{{/selected}}>{{label}}</option>{{/awardingBody}}
     </select>
 
+    <label for="certificate">Certificate</label>
+    <div class="toggle">
+        <label>
+            <input type="checkbox" name="certificate" id="certificate" value="true" {{#isCertificateAvailable}}checked{{/isCertificateAvailable}}>
+            Enable certificate
+        </label>
+    </div>
+
     <label for="image">Image ID</label>
     <input type="text" name="image" id="image" value="{{#getImage}}{{getId}}{{/getImage}}" class="form-control">
 

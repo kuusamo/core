@@ -15,6 +15,7 @@ class CourseTest extends TestCase
 
         $course = new Course;
 
+        $this->assertSame(true, $course->isCertificateAvailable());
         $this->assertSame(Course::PRIVACY_PRIVATE, $course->getPrivacy());
 
         $course->setId(10);
@@ -22,6 +23,7 @@ class CourseTest extends TestCase
         $course->setSlug('chemistry-101');
         $course->setQualification('Chemistry Diploma');
         $course->setAwardingBody($awardingBodyMock);
+        $course->setCertificateAvailable(false);
         $course->setImage($imageMock);
         $course->setPrivacy(Course::PRIVACY_OPEN);
         $course->setWelcomeText('Welcome!');
@@ -31,6 +33,7 @@ class CourseTest extends TestCase
         $this->assertSame('chemistry-101', $course->getSlug());
         $this->assertSame('Chemistry Diploma', $course->getQualification());
         $this->assertSame($awardingBodyMock, $course->getAwardingBody());
+        $this->assertSame(false, $course->isCertificateAvailable());
         $this->assertSame($imageMock, $course->getImage());
         $this->assertSame(Course::PRIVACY_OPEN, $course->getPrivacy());
         $this->assertSame('/course/chemistry-101', $course->uri());

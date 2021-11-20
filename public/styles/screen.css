@@ -454,6 +454,16 @@ button.btn-sm {
   padding: 0 12px;
 }
 
+div.toggle {
+  margin-bottom: 12px;
+}
+div.toggle label {
+  border: #0077b6 1px solid;
+  border-radius: 4px;
+  display: block;
+  padding: 12px;
+}
+
 input.form-control {
   height: 50px;
 }

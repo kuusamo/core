@@ -54,12 +54,14 @@ class CourseController extends AdminController
 
         if ($request->isPost()) {
             $awardingBody = $request->getParam('awardingBody') ? $this->ci->get('db')->find('Kuusamo\Vle\Entity\AwardingBody', $request->getParam('awardingBody')) : null;
+            $certificateAvailable = ($request->getParam('certificate') == 'true');
             $image = $request->getParam('image') ? $this->ci->get('db')->find('Kuusamo\Vle\Entity\Image', $request->getParam('image')) : null;
 
             $course->setName($request->getParam('name'));
             $course->setSlug($request->getParam('slug'));
             $course->setQualification($request->getParam('qualification'));
             $course->setAwardingBody($awardingBody);
+            $course->setCertificateAvailable($certificateAvailable);
             $course->setImage($image);
             $course->setPrivacy($request->getParam('privacy'));
             $course->setWelcomeText($request->getParam('welcomeText'));

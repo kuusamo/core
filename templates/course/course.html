@@ -18,11 +18,11 @@
 </div>
 {{/showProgress}}
 
-{{#hasCompleted}}
+{{#isCertificateAvailable}}{{#hasCompleted}}
 <p class="course-congratulations">
     Congratulations on completing this course! <a href="{{#course}}{{uri}}{{/course}}/certificate">Download your certificate</a>.
 </p>
-{{/hasCompleted}}
+{{/hasCompleted}}{{/isCertificateAvailable}}
 
 {{{getWelcomeText | markdown}}}
 

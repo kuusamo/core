@@ -42,6 +42,11 @@ class Course
     private $awardingBody;
 
     /**
+     * @Column(type="boolean", name="certificate_available")
+     */
+    private $certificateAvailable;
+
+    /**
      * @ManyToOne(targetEntity="Image")
      */
     private $image;
@@ -69,6 +74,7 @@ class Course
 
     public function __construct()
     {
+        $this->certificateAvailable = true;
         $this->privacy = self::PRIVACY_PRIVATE;
         $this->modules = new ArrayCollection;
         $this->users = new ArrayCollection;
@@ -122,6 +128,16 @@ class Course
     public function setAwardingBody(?AwardingBody $value)
     {
         $this->awardingBody = $value;
+    }
+
+    public function isCertificateAvailable(): bool
+    {
+        return $this->certificateAvailable;
+    }
+
+    public function setCertificateAvailable(bool $value)
+    {
+        $this->certificateAvailable = $value;
     }
 
     public function getImage(): ?Image
