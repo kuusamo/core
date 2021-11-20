@@ -22,7 +22,6 @@ Roadmap
 * Sticky lesson menu
 * Drip content
 * Read The Docs
-* Htaccess improvements
 * Use streams for Crop
 * Audio preloading
 
