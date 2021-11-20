@@ -18,6 +18,6 @@
         "@babel/runtime": "^7.12.1"
     },
     "scripts": {
-        "sass": "sass --watch sass:public/styles"
+        "sass": "sass --style=compressed --watch sass:public/styles"
     }
 }
