@@ -42,7 +42,7 @@ class Course
     private $awardingBody;
 
     /**
-     * @Column(type="boolean", name="certificate_available")
+     * @Column(type="boolean", name="certificate_available", options={"default" : true})
      */
     private $certificateAvailable;
 
