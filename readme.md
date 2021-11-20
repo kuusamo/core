@@ -31,10 +31,6 @@ Relationship cascades
 * User (roles)
 * Image (awarding body, course, image block)
 
-Paging and search
-
-* Students
-
 Autocomplete
 
 * Enrollment (make prettier, ES6)
