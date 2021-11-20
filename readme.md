@@ -17,10 +17,8 @@ Roadmap
 * Folder validator should check for special characters
 * Edit and delete folders
 * Can we merge images into files?
-* Remove navigation gap on first and last lesson
 * Vimeo video is not responsive (YouTube?)
 * Video duration
-* Edit a student enrollment
 * Image usage report
 * Sticky lesson menu
 * Drip content
