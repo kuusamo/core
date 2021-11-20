@@ -7,6 +7,7 @@ Changelog
 * Improve labelling of course privacy
 * Allow admins to download student certificates
 * Admins can delete users
+* Decaching for CSS and JavaScript assets
 
 1.13.2
 ------

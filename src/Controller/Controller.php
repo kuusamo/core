@@ -3,6 +3,7 @@
 namespace Kuusamo\Vle\Controller;
 
 use Kuusamo\Vle\Helper\Environment;
+use Kuusamo\Vle\Service\Templating\Decache;
 
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -47,7 +48,9 @@ abstract class Controller
             'alerts' => $this->alerts,
             'siteName' => Environment::get('SITE_NAME'),
             'headerTags' => $this->ci->get('settings')->get('HEADER_TAGS'),
-            'footerText' => $this->ci->get('settings')->get('FOOTER_TEXT')
+            'footerText' => $this->ci->get('settings')->get('FOOTER_TEXT'),
+            'css' => new Decache('css'),
+            'js' => new Decache('js')
         ]);
 
         return $this->ci->get('templating')->renderPage(
