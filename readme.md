@@ -20,8 +20,6 @@ Roadmap
 * Video duration
 * Image usage report
 * Sticky lesson menu
-* Drip content
-* Read The Docs
 * Use streams for Crop
 * Audio preloading
 
