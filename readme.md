@@ -14,13 +14,17 @@ Roadmap
 
 * Optimise Doctrine
 * Edit and delete folders
-* Can we merge images into files?
 * Vimeo video is not responsive (YouTube?)
 * Video duration
 * Image usage report
 * Sticky lesson menu
 * Use streams for Crop
 * Audio preloading
+
+Admin improvements
+
+* Inline image uploads
+* Inline file uploads
 
 Relationship cascades
 
