@@ -84,8 +84,8 @@ class CourseController extends AdminController
         $this->ci->get('meta')->setTitle(sprintf('%s - Admin', $course->getName()));
 
         $privacy = new Select;
-        $privacy->addOption(Course::PRIVACY_PRIVATE);
-        $privacy->addOption(Course::PRIVACY_OPEN);
+        $privacy->addOption(Course::PRIVACY_PRIVATE, 'Private');
+        $privacy->addOption(Course::PRIVACY_OPEN, 'Open');
         $privacy->setDefaultOption($course->getPrivacy());
 
         return $this->renderPage($request, $response, 'admin/course/edit.html', [

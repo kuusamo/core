@@ -4,6 +4,7 @@ Changelog
 1.14
 ----
 * Course certificates can be enabled/disabled
+* Improve labelling of course privacy
 
 1.13.2
 ------
