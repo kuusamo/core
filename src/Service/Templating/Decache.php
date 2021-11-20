@@ -12,7 +12,7 @@ class Decache
 
     /**
      * Work out the base path.
-     * 
+     *
      * @param string $fileType CSS, JS
      */
     public function __construct(string $fileType)
