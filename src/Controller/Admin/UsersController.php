@@ -3,6 +3,7 @@
 namespace Kuusamo\Vle\Controller\Admin;
 
 use Kuusamo\Vle\Controller\Controller;
+use Kuusamo\Vle\Entity\Role;
 use Kuusamo\Vle\Entity\User;
 use Kuusamo\Vle\Helper\Form\Select;
 use Kuusamo\Vle\Helper\Password;
@@ -155,6 +156,46 @@ class UsersController extends Controller
 
         return $this->renderPage($request, $response, 'admin/users/security.html', [
             'user' => $user
+        ]);
+    }
+
+    public function roles(Request $request, Response $response, array $args = [])
+    {
+        $user = $this->ci->get('db')->find('Kuusamo\Vle\Entity\User', $args['id']);
+
+        if ($user === null) {
+            throw new HttpNotFoundException($request, $response);
+        }
+
+        if ($request->isPost()) {
+            $adminRole = $this->ci->get('db')->find(
+                'Kuusamo\Vle\Entity\Role',
+                'ADMIN'
+            );
+
+            switch ($request->getParam('action')) {
+                case 'promote':
+                    $user->getRoles()->add($adminRole);
+                    $this->ci->get('db')->persist($user);
+                    $this->ci->get('db')->flush();
+                    $this->alertSuccess('User promoted to admin');
+                    break;
+                case 'demote':
+                    $user->getRoles()->removeElement($adminRole);
+                    $this->ci->get('db')->persist($user);
+                    $this->ci->get('db')->flush();
+                    $this->alertSuccess('User demoted');
+                    break;
+            }
+        }
+
+        $isAdmin = $user->hasRole(Role::ROLE_ADMIN);
+
+        $this->ci->get('meta')->setTitle(sprintf('%s - Users - Admin', $user->getFullName()));
+
+        return $this->renderPage($request, $response, 'admin/users/roles.html', [
+            'user' => $user,
+            'isAdmin' => $isAdmin
         ]);
     }
 

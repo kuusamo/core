@@ -1,0 +1,35 @@
+<ol class="breadcrumbs">
+    <li><a href="/">Dashboard</a></li>
+    <li><a href="/admin">Admin</a></li>
+    <li><a href="/admin/users">Users</a></li>
+</ol>
+
+{{#user}}
+<h1>{{getFullname}}</h1>
+
+<ul class="tabs">
+    <li><a href="/admin/users/{{getId}}">View</a></li>
+    <li><a href="/admin/users/{{getId}}/account">Account</a></li>
+    <li><a href="/admin/users/{{getId}}/security">Security</a></li>
+    <li class="active"><a href="/admin/users/{{getId}}/roles">Roles</a>
+    <li><a href="/admin/users/{{getId}}/delete">Delete</a></li>
+</ul>
+
+{{#isAdmin}}
+<p>This user is an administrator.</p>
+
+<form method="post">
+    <input type="hidden" name="action" value="demote">
+    <button type="submit" class="btn btn-danger">Demote</button>
+</form>
+{{/isAdmin}}
+
+{{^isAdmin}}
+<p>This user is not an administrator.</p>
+
+<form method="post">
+    <input type="hidden" name="action" value="promote">
+    <button type="submit" class="btn btn-primary">Promote</button>
+</form>
+{{/isAdmin}}
+{{/user}}

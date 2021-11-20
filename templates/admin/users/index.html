@@ -18,7 +18,7 @@
     <tbody>
     {{#results}}
         <tr>
-            <td><a href="/admin/users/{{getId}}">{{getFullName}}{{^getFullName}}User #{{getId}}{{/getFullName}}</a></td>
+            <td><a href="/admin/users/{{getId}}">{{getFullName}}{{^getFullName}}User #{{getId}}{{/getFullName}}</a> {{#getRoles}}<span class="badge badge-info">{{getId}}</span>{{/getRoles}}</td>
             <td>{{getEmail}}</td>
             <td>{{getLastLogin | date.iso}}{{^getLastLogin}}Never{{/getLastLogin}}</td>
         </tr>
