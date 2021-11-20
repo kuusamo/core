@@ -78,6 +78,7 @@ $app->group('', function($app) use ($container) {
         $app->get('/images/{id:[0-9]+}', '\Kuusamo\Vle\Controller\Admin\ImagesController:view');
         $app->any('/images/{id:[0-9]+}/edit', '\Kuusamo\Vle\Controller\Admin\ImagesController:edit');
         $app->any('/images/upload', '\Kuusamo\Vle\Controller\Admin\ImagesController:upload');
+        $app->post('/images/inline-upload', '\Kuusamo\Vle\Controller\Admin\ImagesAjaxController:upload');
 
         $app->any('/settings', '\Kuusamo\Vle\Controller\Admin\SettingsController:index');
 

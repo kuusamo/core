@@ -23,7 +23,6 @@ Roadmap
 
 Admin improvements
 
-* Inline image uploads
 * Inline file uploads
 
 Relationship cascades
@@ -34,8 +33,7 @@ Relationship cascades
 Autocomplete
 
 * Enrollment (make prettier, ES6)
-* Files in blocks
-* Images in blocks
+* Files in block
 * Images attached to objects
 
 

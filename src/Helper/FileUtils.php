@@ -13,8 +13,14 @@ class FileUtils
     public static function explode(string $filename): array
     {
         $fileParts = explode('.', $filename);
+
+        if (count($fileParts) == 1) {
+            return [$filename, null];
+        }
+
         $extension = array_pop($fileParts);
         $file = implode('.', $fileParts);
+
         return [$file, $extension];
     }
 
@@ -34,5 +40,22 @@ class FileUtils
         }
 
         return sprintf('%s-2.%s', $fileParts[0], $fileParts[1]);
+    }
+
+    /**
+     * Generate a UUID with the correct extension.
+     *
+     * @param string $filename Filename.
+     * @return string
+     */
+    public static function uuid(string $filename): string
+    {
+        $fileParts = self::explode($filename);
+
+        if ($fileParts[1] === null) {
+            return UuidUtils::generate();
+        }
+
+        return sprintf('%s.%s', UuidUtils::generate(), $fileParts[1]);
     }
 }

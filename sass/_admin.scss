@@ -1,5 +1,24 @@
 @use '_core' as *;
 
+.admin-block-image {
+    display: flex;
+
+    .admin-block-image-form {
+        input {
+            width: 100%;
+        }
+        input, button {
+            display: block;
+        }
+    }
+
+    .admin-block-image-preview {
+        flex-shrink: 0;
+        margin-bottom: $baseline;
+        margin-right: $baseline;
+    }
+}
+
 .admin-image-gallery {
     display: grid;
     grid-gap: 1rem;

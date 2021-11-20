@@ -3,12 +3,15 @@
 namespace Kuusamo\Vle\Test\Entity;
 
 use Kuusamo\Vle\Entity\Image;
+use Kuusamo\Vle\Helper\UuidUtils;
 use PHPUnit\Framework\TestCase;
 
 class ImageTest extends TestCase
 {
     public function testAccessors()
     {
+        UuidUtils::preset('123e4567-e89b-12d3-a456-426614174000');
+
         $image = new Image;
 
         $image->setId(10);
@@ -20,7 +23,8 @@ class ImageTest extends TestCase
         $image->setHeight(150);
 
         $this->assertSame(10, $image->getId());
-        $this->assertSame('example.jpg', $image->getFilename());
+        $this->assertSame('123e4567-e89b-12d3-a456-426614174000.jpg', $image->getFilename());
+        $this->assertSame('example.jpg', $image->getOriginalFilename());
         $this->assertSame('image/jpg', $image->getMediaType());
         $this->assertSame('test description', $image->getDescription());
         $this->assertSame('test1,test2', $image->getKeywords());
@@ -28,7 +32,7 @@ class ImageTest extends TestCase
         $this->assertSame(150, $image->getHeight());
 
         $this->assertSame(
-            '{"id":10,"filename":"example.jpg","description":"test description"}',
+            sprintf('{"id":10,"filename":"%s","description":"test description"}', $image->getFilename()),
             json_encode($image)
         );
     }

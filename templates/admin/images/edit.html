@@ -5,7 +5,7 @@
 </ol>
 
 {{#image}}
-<h1>{{getFilename}}</h1>
+<h1>{{getOriginalFilename}}</h1>
 
 <ul class="tabs">
     <li><a href="/admin/images/{{getId}}">View</a></li>
@@ -15,6 +15,9 @@
 <form method="post" class="form-vertical">
     <label for="filename">Filename</label>
     <input type="text" id="filename" name="filename" value="{{getFilename}}" class="form-control" disabled>
+
+    <label for="originalFilename">Original filename</label>
+    <input type="text" id="originalFilename" name="originalFilename" value="{{getOriginalFilename}}" class="form-control" disabled>
 
     <label for="mediaType">Media Type</label>
     <input type="text" id="mediaType" name="mediaType" value="{{getMediaType}}" class="form-control" disabled>

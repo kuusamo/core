@@ -2,6 +2,8 @@
 
 namespace Kuusamo\Vle\Entity;
 
+use Kuusamo\Vle\Helper\FileUtils;
+
 use JsonSerializable;
 
 /**
@@ -21,6 +23,11 @@ class Image implements JsonSerializable
      * @Column(type="string", length=128)
      */
     private $filename;
+
+    /**
+     * @Column(type="string", length=128, name="original_filename")
+     */
+    private $originalFilename;
 
     /**
      * @Column(type="string", name="media_type", length=64)
@@ -64,7 +71,13 @@ class Image implements JsonSerializable
 
     public function setFilename(string $value)
     {
-        $this->filename = $value;
+        $this->filename = FileUtils::uuid($value);
+        $this->originalFilename = $value;
+    }
+
+    public function getOriginalFilename(): string
+    {
+        return $this->originalFilename;
     }
 
     public function getMediaType(): string

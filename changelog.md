@@ -10,6 +10,7 @@ Changelog
 * Decaching for CSS and JavaScript assets
 * Folder validator now check for special characters
 * Users can be promoted to admins
+* Images are now uploaded directly in Lesson Editor
 
 1.13.2
 ------

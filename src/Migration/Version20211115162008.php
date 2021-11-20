@@ -11,7 +11,7 @@ final class Version20211115162008 extends AbstractMigration
 {
     public function getDescription(): string
     {
-        return 'Add privacy to course entity.';
+        return 'Add privacy to course entity';
     }
 
     public function up(Schema $schema): void
