@@ -44,6 +44,7 @@ $app->group('', function($app) use ($container) {
         $app->any('/courses/{id:[0-9]+}/lessons', '\Kuusamo\Vle\Controller\Admin\CourseController:lessons');
         $app->any('/courses/{id:[0-9]+}/students', '\Kuusamo\Vle\Controller\Admin\EnrolmentController:students');
         $app->any('/courses/{id:[0-9]+}/students/{student:[0-9]+}', '\Kuusamo\Vle\Controller\Admin\EnrolmentController:viewStudent');
+        $app->any('/courses/{id:[0-9]+}/students/{student:[0-9]+}/certificate', '\Kuusamo\Vle\Controller\Course\CertificateController:adminPdf');
         $app->get('/courses/{id:[0-9]+}/certificate', 'Kuusamo\Vle\Controller\Course\CertificateController:preview');
 
         $app->post('/courses/{id:[0-9]+}/modules', '\Kuusamo\Vle\Controller\Admin\ModulesAjaxController:create');

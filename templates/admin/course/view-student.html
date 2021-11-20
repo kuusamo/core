@@ -52,6 +52,12 @@
     {{#student}}{{getFirstName}}{{/student}} joined the course on {{getStart | date.long}}. Current progress {{getProgress}}%. {{#getCompleted}}Completed {{. | date.long}}.{{/getCompleted}}
 </p>
 
+{{#getCompleted}}{{#course}}{{#isCertificateAvailable}}
+<p>
+    <a href="/admin/courses/{{getId}}/students/{{#student}}{{getId}}{{/student}}/certificate">Download the certificate</a>.
+</p>
+{{/isCertificateAvailable}}{{/course}}{{/getCompleted}}
+
 <form method="post">
     <input type="hidden" name="action" value="complete">
     <button class="btn btn-danger">Mark as {{#getCompleted}}in{{/getCompleted}}complete</button>

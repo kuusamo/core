@@ -42,6 +42,9 @@ class CertificateController extends CourseController
         return $response;
     }
 
+    /**
+     * Allow admins to render a preview of the course certificate.
+     */
     public function preview(Request $request, Response $response, $args)
     {
         $course = $this->ci->get('db')->find('Kuusamo\Vle\Entity\Course', $args['id']);
@@ -56,6 +59,30 @@ class CertificateController extends CourseController
 
         $link = new UserCourse;
         $link->setCompleted(new \Datetime('1900-01-01'));
+
+        $body = $response->getBody();
+        $body->write($this->renderCertificate($course, $user, $link));
+        $response = $response->withHeader('Content-type', 'application/pdf');
+        return $response;
+    }
+
+    /**
+     * Allow admins to render a user's certificate.
+     */
+    public function adminPdf(Request $request, Response $response, $args)
+    {
+        $course = $this->ci->get('db')->find('Kuusamo\Vle\Entity\Course', $args['id']);
+        $user = $this->ci->get('db')->find('Kuusamo\Vle\Entity\User', $args['student']);
+
+        if ($course === null || $user === null) {
+            throw new HttpNotFoundException($request, $response);
+        }
+
+        $link = $this->getCourseLink($course, $user);
+
+        if ($link->getCompleted() === null) {
+            throw new HttpNotFoundException($request, $response);
+        }
 
         $body = $response->getBody();
         $body->write($this->renderCertificate($course, $user, $link));
