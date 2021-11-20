@@ -58,7 +58,7 @@ Compile the JavaScript:
 
 Compile the CSS:
 
-    sass --watch sass:public/styles
+    npm run sass
 
 Update the database schema:
 
