@@ -43,7 +43,7 @@ class LessonTest extends TestCase
         $this->assertSame('/course/mock-course/lessons/10', $lesson->uri());
 
         $this->assertSame(
-            '{"id":10,"name":"Welcome","status":"ACTIVE","marking":"TUTOR","passMark":0,"blocks":[]}',
+            '{"id":10,"name":"Welcome","priority":25,"status":"ACTIVE","marking":"TUTOR","passMark":0,"blocks":[]}',
             json_encode($lesson)
         );
     }

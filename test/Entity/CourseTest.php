@@ -39,6 +39,11 @@ class CourseTest extends TestCase
         $this->assertSame('/course/chemistry-101', $course->uri());
         $this->assertSame('Welcome!', $course->getWelcomeText());
 
+        $this->assertSame(
+            '{"name":"Chemistry 101","slug":"chemistry-101","qualification":"Chemistry Diploma","certificateAvailable":false,"privacy":"OPEN","welcomeText":"Welcome!","modules":[]}',
+            json_encode($course)
+        );
+
         $course->setQualification('');
         $course->setWelcomeText('');
 

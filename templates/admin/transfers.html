@@ -1,0 +1,35 @@
+<ol class="breadcrumbs">
+    <li><a href="/">Dashboard</a></li>
+    <li><a href="/admin">Admin</a></li>
+</ol>
+
+<h1>Transfers</h1>
+
+<p>
+    The course transfer function is experimental. It will not transfer <strong>images or awarding bodies</strong> for the course, not will it transfer any <strong>lesson content</strong>.
+</p>
+
+{{#report}}
+<h2>Report</h2>
+
+<pre>{{#getItems}}{{.}}
+{{/getItems}}</pre>
+{{/report}}
+
+<h2>Export</h2>
+
+<form method="post">
+    <select name="id" class="form-control">
+        {{#courses}}<option value="{{getId}}">{{getName}}</option>{{/courses}}
+    </select>
+    <input type="hidden" name="action" value="export">
+    <button type="submit" class="btn">Export</button>
+</form>
+
+<h2>Import</h2>
+
+<form method="post" enctype="multipart/form-data" class="form-vertical">
+    <input type="file" id="file" name="file" class="form-control">
+    <input type="hidden" name="action" value="import">
+    <button type="submit" class="btn">Upload</button>
+</form>

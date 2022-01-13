@@ -82,6 +82,8 @@ $app->group('', function($app) use ($container) {
 
         $app->any('/settings', '\Kuusamo\Vle\Controller\Admin\SettingsController:index');
 
+        $app->any('/transfers', '\Kuusamo\Vle\Controller\Admin\TransferController:index');
+
         $app->get('/users', '\Kuusamo\Vle\Controller\Admin\UsersController:index');
         $app->any('/users/create', '\Kuusamo\Vle\Controller\Admin\UsersController:create');
         $app->any('/users/{id:[0-9]+}', '\Kuusamo\Vle\Controller\Admin\UsersController:view');

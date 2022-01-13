@@ -35,7 +35,7 @@ class ModuleTest extends TestCase
         $this->assertSame(14, $module->getDelay());
 
         $this->assertSame(
-            '{"id":10,"name":"Introduction","description":"The first module.","status":"ACTIVE","delay":14,"lessons":[]}',
+            '{"id":10,"name":"Introduction","description":"The first module.","priority":25,"status":"ACTIVE","delay":14,"lessons":[]}',
             json_encode($module)
         );
     }

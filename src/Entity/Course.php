@@ -4,12 +4,13 @@ namespace Kuusamo\Vle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use InvalidArgumentException;
+use JsonSerializable;
 
 /**
  * @Entity
  * @Table(name="courses")
  */
-class Course
+class Course implements JsonSerializable
 {
     const PRIVACY_PRIVATE = 'PRIVATE';
     const PRIVACY_OPEN = 'OPEN';
@@ -196,5 +197,18 @@ class Course
     public function uri(): string
     {
         return sprintf('/course/%s', $this->slug);
+    }
+
+    public function jsonSerialize(): array
+    {
+        return [
+            'name' => $this->name,
+            'slug' => $this->slug,
+            'qualification' => $this->qualification,
+            'certificateAvailable' => $this->certificateAvailable,
+            'privacy' => $this->privacy,
+            'welcomeText' => $this->welcomeText,
+            'modules' => $this->modules->toArray()
+        ];
     }
 }

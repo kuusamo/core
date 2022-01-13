@@ -192,6 +192,7 @@ class Lesson implements JsonSerializable
         return [
             'id' => $this->id,
             'name' => $this->name,
+            'priority' => $this->priority,
             'status' => $this->status,
             'marking' =>  $this->marking,
             'passMark' => $this->passMark,

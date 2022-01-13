@@ -150,6 +150,7 @@ class Module implements JsonSerializable
             'id' => $this->id,
             'name' => $this->name,
             'description' => $this->description,
+            'priority' => $this->priority,
             'status' => $this->status,
             'delay' => $this->delay,
             'lessons' => $this->lessons->toArray()

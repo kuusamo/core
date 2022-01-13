@@ -98,6 +98,10 @@ div.toggle {
     }
 }
 
+div.form-control {
+    @extend %input;
+}
+
 input.form-control {
     @extend %input;
     height: 50px;
@@ -130,6 +134,10 @@ form.form-vertical {
     input[type="text"], input[type="email"], input[type="password"], input[type="file"], textarea {
         margin-bottom: $baseline / 2;
         width: 100%;
+    }
+
+    div.form-control {
+        margin-bottom: $baseline / 2;
     }
 
     select {
