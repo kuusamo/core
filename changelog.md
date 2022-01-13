@@ -1,6 +1,11 @@
 Changelog
 =========
 
+1.15
+----
+* Course transfers (experimental feature)
+* Pre-generate Doctrine proxies
+
 1.14
 ----
 * Course certificates can be enabled/disabled
