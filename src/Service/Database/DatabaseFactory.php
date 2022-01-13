@@ -38,7 +38,7 @@ class DatabaseFactory
             __DIR__ . '/../../Entity'
         );
 
-        $config->setProxyDir(__DIR__ . '/../../Proxy');
+        $config->setProxyDir(__DIR__ . '/../../../dist/proxies');
         $config->setProxyNamespace('Kuusamo\Vle\Proxy');
         $config->setMetadataDriverImpl($driverImpl);
         $config->setAutoGenerateProxyClasses($devMode);
