@@ -5,6 +5,7 @@ Changelog
 ----
 * Course transfers (experimental feature)
 * Pre-generate Doctrine proxies
+* Implement APCu for Doctrine
 
 1.14
 ----

@@ -43,7 +43,7 @@ class DatabaseFactory
         $config->setMetadataDriverImpl($driverImpl);
         $config->setAutoGenerateProxyClasses($devMode);
 
-        $cache = new \Doctrine\Common\Cache\ArrayCache;
+        $cache = CacheFactory::create($devMode);
         $config->setMetadataCacheImpl($cache);
         $config->setQueryCacheImpl($cache);
 

@@ -12,7 +12,6 @@ A learning management system (LMS) that uses API-friendly JSON blocks to build l
 Roadmap
 -------
 
-* Optimise Doctrine
 * Edit and delete folders
 * Vimeo video is not responsive (YouTube?)
 * Video duration
