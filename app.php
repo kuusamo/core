@@ -6,7 +6,7 @@
 
 use Slim\Factory\AppFactory;
 
-define('KUUSAMO_VERSION', '1.14.0');
+define('KUUSAMO_VERSION', '1.15.0');
 
 function kuusamo()
 {
