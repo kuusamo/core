@@ -28,3 +28,19 @@ table.table-striped {
         }
     }
 }
+
+.lesson-view article {
+    table {
+        border-collapse: collapse;
+
+        th {
+            background-color: #eee;
+        }
+
+        td, th {
+            border-top: #ccc 1px solid;
+            padding: ($baseline / 2);
+            text-align: left;
+        }
+    }
+}

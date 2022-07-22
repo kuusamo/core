@@ -1,6 +1,10 @@
 Changelog
 =========
 
+1.15.1
+------
+* Improve table styling in lesson content
+
 1.15
 ----
 * Course transfers (experimental feature)
