@@ -134,21 +134,24 @@ const Lesson = ({ courseUri, lesson, defaultUserLesson, previousLesson, nextLess
     }
 
     return (
-        <div>
-            {renderResult()}
-            {renderBlocks()}
-            <Navigation
-                courseUri={courseUri}
-                previousLesson={previousLesson}
-                nextLesson={nextLesson}
-                marking={lesson.marking}
-                hasCompleted={userLesson.completed}
-                isGrading={isGrading}
-                submitQuiz={submitQuiz}
-                resetQuiz={resetQuiz}
-                loading={loading}
-            />
-        </div>
+        <article>
+            <h1>{lesson.name}</h1>
+            <div>
+                {renderResult()}
+                {renderBlocks()}
+                <Navigation
+                    courseUri={courseUri}
+                    previousLesson={previousLesson}
+                    nextLesson={nextLesson}
+                    marking={lesson.marking}
+                    hasCompleted={userLesson.completed}
+                    isGrading={isGrading}
+                    submitQuiz={submitQuiz}
+                    resetQuiz={resetQuiz}
+                    loading={loading}
+                />
+            </div>
+        </article>
     );
 }
 

@@ -15,19 +15,15 @@
         </ol>
     </nav>
     <main>
-        <article>
-            <h1>{{#lesson}}{{getName}}{{/lesson}}</h1>
-
-            <div id="lesson-view"></div>
-            <script>
-                var courseUri = '{{#lesson}}{{#getCourse}}{{uri}}{{/getCourse}}{{/lesson}}';
-                var lessonData = {{{lessonData}}};
-                var userLessonData = {{{userLessonData}}};
-                var previousLesson = {{{previousLesson}}};
-                var nextLesson = {{{nextLesson}}};
-            </script>
-            <script src="{{#js}}{{LessonView}}{{/js}}"></script>
-        </article>
+        <div id="lesson-view"></div>
+        <script>
+            var courseUri = '{{#lesson}}{{#getCourse}}{{uri}}{{/getCourse}}{{/lesson}}';
+            var lessonData = {{{lessonData}}};
+            var userLessonData = {{{userLessonData}}};
+            var previousLesson = {{{previousLesson}}};
+            var nextLesson = {{{nextLesson}}};
+        </script>
+        <script src="{{#js}}{{LessonView}}{{/js}}"></script>
 
         <script src="{{#js}}{{lesson}}{{/js}}"></script>
     </main>
