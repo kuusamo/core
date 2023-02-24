@@ -197,11 +197,13 @@ class Lesson extends Component {
             }
         }
 
+        const number = this.props.index + 1;
+
         return (
             <Fragment>
                 {renderEditForm()}
                 <span onClick={this.toggleEditing.bind(this)}>
-                    {this.props.name}{" "}{renderStatus()}{renderMarking()}
+                    {number}. {this.props.name}{" "}{renderStatus()}{renderMarking()}
                 </span>
             </Fragment>
         );

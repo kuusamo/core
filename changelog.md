@@ -1,6 +1,10 @@
 Changelog
 =========
 
+1.16
+----
+* Add numbering to modules and lessons in Course Manager
+
 1.15.1
 ------
 * Improve table styling in lesson content

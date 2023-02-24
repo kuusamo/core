@@ -157,9 +157,11 @@ class Module extends Component {
             }
         }
 
+        const number = this.props.index + 1;
+
         return (
             <div className="cm-card-header" onClick={this.toggleEditing.bind(this)}>
-                <h2>{this.props.name}{" "}{renderStatus()}{" "}{renderDelay()}</h2>
+                <h2>{number}. {this.props.name}{" "}{renderStatus()}{" "}{renderDelay()}</h2>
                 <p>{this.props.description}</p>
             </div>
         );
