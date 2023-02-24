@@ -7,6 +7,17 @@ use Exception;
 class LocalStorage implements StorageInterface
 {
     /**
+     * Check a file exists.
+     *
+     * @param string $key Filename.
+     * @return boolean
+     */
+    public function exists(string $key): bool
+    {
+        return file_exists($this->getFilePath($key));
+    }
+
+    /**
      * GET command.
      *
      * @param string $key Filename.

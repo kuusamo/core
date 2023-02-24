@@ -3,6 +3,7 @@
 namespace Kuusamo\Vle\Controller\Content;
 
 use Kuusamo\Vle\Controller\Controller;
+use Kuusamo\Vle\Helper\Content\Cache;
 use Kuusamo\Vle\Helper\Content\Crop;
 use Kuusamo\Vle\Helper\Content\CroppedImage;
 use Kuusamo\Vle\Service\Storage\StorageException;
@@ -28,15 +29,35 @@ class ImageController extends Controller
 
     public function resize(Request $request, Response $response, array $args = [])
     {
+        $cache = new Cache($this->ci->get('storage'));
+        $cachePath = $args['size'];
+
+        if ($cache->isHit($args['filename'], $cachePath)) {
+            $cachedImage = $cache->get($args['filename'], $cachePath);
+            $response = $response->withFile($cachedImage->getStream(), $cachedImage->getContentType());
+            return $response;
+        }
+
         $cropTool = new Crop($this->ci->get('storage'), $request, $response);
         $image = $cropTool->resize($args['filename'], $args['size']);
+        $cache->set($args['filename'], $cachePath, $image);
         return $this->prepareResponse($response, $image);
     }
 
     public function widescreenFill(Request $request, Response $response, array $args = [])
     {
+        $cache = new Cache($this->ci->get('storage'));
+        $cachePath = sprintf('widescreen-%s', $args['width']);
+
+        if ($cache->isHit($args['filename'], $cachePath)) {
+            $cachedImage = $cache->get($args['filename'], $cachePath);
+            $response = $response->withFile($cachedImage->getStream(), $cachedImage->getContentType());
+            return $response;
+        }
+
         $cropTool = new Crop($this->ci->get('storage'), $request, $response);
         $image = $cropTool->ratio($args['filename'], $args['width']);
+        $cache->set($args['filename'], $cachePath, $image);
         return $this->prepareResponse($response, $image);
     }
 

@@ -12,11 +12,11 @@ A learning management system (LMS) that uses API-friendly JSON blocks to build l
 Roadmap
 -------
 
+* Deleting an image does not clear the cache
 * Edit and delete folders
 * Vimeo video is not responsive (YouTube?)
 * Video duration
 * Image usage report
-* Sticky lesson menu
 * Use streams for Crop
 * Audio preloading
 

@@ -58,8 +58,6 @@ class Crop
     {
         $size = intval($size);
 
-
-
         if ($size < 1 || $size > 2000) {
             throw new HttpNotFoundException($this->request, $this->response);
         }

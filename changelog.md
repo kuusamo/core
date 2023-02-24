@@ -1,6 +1,11 @@
 Changelog
 =========
 
+2.0
+---
+
+* Adds caching for resized and cropped images
+
 1.16
 ----
 * Add numbering to modules and lessons in Course Manager
