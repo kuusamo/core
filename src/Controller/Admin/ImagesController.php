@@ -85,7 +85,11 @@ class ImagesController extends AdminController
                 );
 
                 $this->alertSuccess('Image uploaded successfully.', true);
-                return $response->withRedirect('/admin/images', 303);
+
+                return $response->withRedirect(
+                    sprintf('/admin/images/%s', $image->getId()),
+                    303
+                );
             }
         }
 
