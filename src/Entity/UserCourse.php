@@ -4,12 +4,13 @@ namespace Kuusamo\Vle\Entity;
 
 use Kuusamo\Vle\Entity\User;
 use DateTime;
+use JsonSerializable;
 
 /**
  * @Entity
  * @Table(name="users_courses")
  */
-class UserCourse
+class UserCourse implements JsonSerializable
 {
     /**
      * @ManyToOne(targetEntity="User", inversedBy="courses")
@@ -92,5 +93,19 @@ class UserCourse
     public function setCompleted(?DateTime $value)
     {
         $this->completed = $value;
+    }
+
+    public function jsonSerialize(): array
+    {
+        return [
+            'course' => [
+                'id' => $this->course->getId(),
+                'name' => $this->course->getName(),
+                'qualification' => $this->course->getQualification(),
+            ],
+            'start' => $this->start->format('c'),
+            'progress' => $this->progress,
+            'completed' =>  $this->completed ? $this->completed->format('c') : null,
+        ];
     }
 }

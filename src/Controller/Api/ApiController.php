@@ -64,7 +64,22 @@ abstract class ApiController extends Controller
     {
         return $response->withJson([
             'success' => false,
-            'message' => $message
+            'message' => $message,
         ])->withStatus(400);
+    }
+
+    /**
+     * Return a not found request.
+     *
+     * @param Response $response PSR-7 response.
+     * @param string   $message  Error message.
+     * @return Response
+     */
+    protected function notFoundRequest(Response $response): Response
+    {
+        return $response->withJson([
+            'success' => false,
+            'message' => 'Not found',
+        ])->withStatus(404);
     }
 }

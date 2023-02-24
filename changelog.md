@@ -1,6 +1,11 @@
 Changelog
 =========
 
+2.1
+---
+
+* Add user courses API end-point
+
 2.0
 ---
 
