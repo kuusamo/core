@@ -6,10 +6,13 @@
 
 <h1>Images</h1>
 
-<form action="/admin/images" method="get" class="mb-3">
-    <input type="text" name="q" aria-label="Search query" value="{{query}}" class="form-control mr-1">
-    <button class="btn" type="submit">Search</button>
-</form>
+<div class="admin-two-buttons">
+    <form action="/admin/images" method="get" class="mb-3">
+        <input type="text" name="q" aria-label="Search query" value="{{query}}" class="form-control mr-1">
+        <button class="btn" type="submit">Search</button>
+    </form>
+    <a href="/admin/images/upload" class="btn">Upload new image</a>
+</div>
 
 {{#images}}
 <div class="admin-image-gallery">

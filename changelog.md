@@ -4,6 +4,7 @@ Changelog
 1.16
 ----
 * Add numbering to modules and lessons in Course Manager
+* Add upload new image button to top of images page
 
 1.15.1
 ------
