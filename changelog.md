@@ -1,6 +1,11 @@
 Changelog
 =========
 
+2.2
+---
+
+* Add single sign-on (SSO) functionality
+
 2.1
 ---
 

@@ -2,6 +2,7 @@
 
 namespace Kuusamo\Vle\Middleware;
 
+use Kuusamo\Vle\Helper\Environment;
 use Kuusamo\Vle\Service\Authorisation\Authorisation;
 use Slim\Psr7\Response;
 
@@ -28,6 +29,8 @@ class Authenticate
             return $handler->handle($request);
         }
 
+        $uri = Environment::get('SSO_LOGIN_URL', '/login');
+
         $from = sprintf(
             '%s%s%s',
             $request->getUri()->getPath(),
@@ -35,7 +38,7 @@ class Authenticate
             $request->getUri()->getQuery()
         );
 
-        $url = sprintf('/login?from=%s', $from);
+        $url = sprintf('%s?from=%s', $uri, $from);
         $response = new Response;
         return $response->withHeader('Location', $url)->withStatus(302);
     }
