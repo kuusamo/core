@@ -30,6 +30,7 @@ class Authenticate
         }
 
         $uri = Environment::get('SSO_LOGIN_URL', '/login');
+        $join = strpos($uri, '?') === false ? '?' : '&';
 
         $from = sprintf(
             '%s%s%s',
@@ -38,7 +39,7 @@ class Authenticate
             $request->getUri()->getQuery()
         );
 
-        $url = sprintf('%s?from=%s', $uri, $from);
+        $url = sprintf('%s%sfrom=%s', $uri, $join, $from);
         $response = new Response;
         return $response->withHeader('Location', $url)->withStatus(302);
     }

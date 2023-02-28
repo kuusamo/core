@@ -1,10 +1,15 @@
 Changelog
 =========
 
+2.2.1
+-----
+
+* Support query strings in SSO login URLs
+
 2.2
 ---
 
-* Add single sign-on (SSO) functionality
+* `schema` Add single sign-on (SSO) functionality
 
 2.1
 ---
