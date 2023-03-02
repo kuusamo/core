@@ -1,6 +1,11 @@
 Changelog
 =========
 
+2.2.4
+-----
+
+* Add support for from redirects to magic link emails
+
 2.2.3
 -----
 

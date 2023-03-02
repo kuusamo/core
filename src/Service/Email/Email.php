@@ -4,6 +4,7 @@ namespace Kuusamo\Vle\Service\Email;
 
 use Kuusamo\Vle\Entity\User;
 use Kuusamo\Vle\Helper\Environment;
+use Kuusamo\Vle\Helper\UrlUtils;
 use Kuusamo\Vle\Service\Email\Provider\ProviderInterface;
 use Kuusamo\Vle\Service\Templating\Templating;
 
@@ -50,17 +51,20 @@ class Email
     /**
      * Send a magic link to log in.
      *
-     * @param User $user User object.
+     * @param User   $user User object.
+     * @param string $from Return URL.
      * @return boolean
      */
-    public function sendMagicLinkEmail(User $user): bool
+    public function sendMagicLinkEmail(User $user, ?string $from): bool
     {
         $subject = sprintf('Login to %s', Environment::get('SITE_NAME'));
+        $from = $from ? UrlUtils::sanitiseInternal($from) : '';
 
         $url = sprintf(
-            '%s/login?token=%s',
+            '%s/login?token=%s&from=%s',
             Environment::get('SITE_URL'),
-            $user->getSecurityToken()
+            $user->getSecurityToken(),
+            $from,
         );
 
         $message = $this->templating->renderTemplate('email/magic-link.html', [

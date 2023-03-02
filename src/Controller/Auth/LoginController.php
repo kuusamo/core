@@ -42,7 +42,7 @@ class LoginController extends Controller
                         throw new ProcessException('This email address is not registered to any account');
                     }
 
-                    $this->ci->get('email')->sendMagicLinkEmail($user);
+                    $this->ci->get('email')->sendMagicLinkEmail($user, $request->getParam('from'));
                     return $this->renderPage($request, $response, 'auth/magic-link-sent.html');
                 } catch (ProcessException $e) {
                     $this->alertDanger($e->getMessage());
@@ -81,7 +81,7 @@ class LoginController extends Controller
             $result = $this->loginWithToken($request->getQueryParam('token'));
 
             if ($result === true) {
-                return $response->withRedirect(self::DEFAULT_REDIRECT);
+                return $response->withRedirect($this->returnTo($request));
             }
         }
 
