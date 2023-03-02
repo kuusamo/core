@@ -22,6 +22,10 @@ class LoginController extends Controller
     public function login(Request $request, Response $response)
     {
         if ($this->ci->get('auth')->isLoggedIn()) {
+            if ($request->getQueryParam('sso_token')) {
+                $this->pruneSsoToken($request->getQueryParam('sso_token'));
+            }
+
             return $response->withRedirect(self::DEFAULT_REDIRECT);
         }
 
@@ -172,5 +176,20 @@ class LoginController extends Controller
         $this->ci->get('auth')->authoriseUser($token->getUser());
 
         return true;
+    }
+
+    /**
+     * If the user is already logged in, burn the SSO token.
+     *
+     * @param string $token Token.
+     * @return void
+     */
+    private function pruneSsoToken(string $token): void
+    {
+        $dql = "DELETE Kuusamo\Vle\Entity\SsoToken t
+                WHERE t.token = :token";
+        $query = $this->ci->get('db')->createQuery($dql);
+        $query->setParameter('token', $token);
+        $query->execute();
     }
 }

@@ -1,6 +1,11 @@
 Changelog
 =========
 
+2.2.2
+-----
+
+* Burn the SSO token if the user is already logged in
+
 2.2.1
 -----
 
