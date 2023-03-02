@@ -26,7 +26,7 @@ class LoginController extends Controller
                 $this->pruneSsoToken($request->getQueryParam('sso_token'));
             }
 
-            return $response->withRedirect(self::DEFAULT_REDIRECT);
+            return $response->withRedirect($this->returnTo($request));
         }
 
         if ($request->isPost()) {
@@ -70,8 +70,7 @@ class LoginController extends Controller
                     $user->setLastLogin(new DateTime);
                     $this->ci->get('auth')->authoriseUser($user);
 
-                    $returnTo = $request->getParam('from') ? UrlUtils::sanitiseInternal($request->getParam('from')) : self::DEFAULT_REDIRECT;
-                    return $response->withRedirect($returnTo);
+                    return $response->withRedirect($this->returnTo($request));
                 } catch (ProcessException $e) {
                     $this->alertDanger($e->getMessage());
                 }
@@ -90,7 +89,7 @@ class LoginController extends Controller
             $result = $this->loginWithSsoToken($request->getQueryParam('sso_token'));
 
             if ($result === true) {
-                return $response->withRedirect(self::DEFAULT_REDIRECT);
+                return $response->withRedirect($this->returnTo($request));
             }
         }
 
@@ -107,6 +106,17 @@ class LoginController extends Controller
             'email' => $request->getParam('email'),
             'csrf' => $this->ci->get('session')->getCsrfToken()->getToken()
         ]);
+    }
+
+    /**
+     * Build the URL to redirect the user back to.
+     *
+     * @param Request $request Request.
+     * @return string
+     */
+    private function returnTo(Request $request): string
+    {
+        return $request->getParam('from') ? UrlUtils::sanitiseInternal($request->getParam('from')) : self::DEFAULT_REDIRECT;
     }
 
     /**

@@ -1,6 +1,11 @@
 Changelog
 =========
 
+2.2.3
+-----
+
+* SSO now supports from query string
+
 2.2.2
 -----
 
