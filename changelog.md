@@ -1,6 +1,11 @@
 Changelog
 =========
 
+2.2.5
+-----
+
+* Update `last_login` field when using password or SSO token
+
 2.2.4
 -----
 

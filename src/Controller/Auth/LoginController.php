@@ -68,6 +68,10 @@ class LoginController extends Controller
                     }
 
                     $user->setLastLogin(new DateTime);
+
+                    $this->ci->get('db')->persist($user);
+                    $this->ci->get('db')->flush();
+
                     $this->ci->get('auth')->authoriseUser($user);
 
                     return $response->withRedirect($this->returnTo($request));
@@ -180,6 +184,9 @@ class LoginController extends Controller
             return false;
         }
 
+        $token->getUser()->setLastLogin(new DateTime);
+
+        $this->ci->get('db')->persist($token->getUser());
         $this->ci->get('db')->remove($token);
         $this->ci->get('db')->flush();
 
