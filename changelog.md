@@ -1,6 +1,11 @@
 Changelog
 =========
 
+2.3
+---
+
+* Add `course.read` API end-point
+
 2.2.5
 -----
 

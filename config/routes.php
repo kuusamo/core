@@ -4,6 +4,7 @@ use Kuusamo\Vle\Entity\Role;
 use Kuusamo\Vle\Middleware\Authenticate;
 use Kuusamo\Vle\Middleware\RequirePermission;
 
+$app->get('/api/courses/{id:[0-9]+}', 'Kuusamo\Vle\Controller\Api\CoursesApiController:read');
 $app->any('/api/test', 'Kuusamo\Vle\Controller\Api\TestApiController:test');
 $app->post('/api/sso', 'Kuusamo\Vle\Controller\Api\SsoApiController:create');
 $app->get('/api/users', 'Kuusamo\Vle\Controller\Api\UsersApiController:get');
