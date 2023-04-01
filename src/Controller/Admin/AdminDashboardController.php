@@ -3,6 +3,7 @@
 namespace Kuusamo\Vle\Controller\Admin;
 
 use Kuusamo\Vle\Entity\Course;
+use Kuusamo\Vle\Entity\User;
 use Kuusamo\Vle\Validation\CourseValidator;
 use Kuusamo\Vle\Validation\ValidationException;
 
@@ -21,8 +22,30 @@ class AdminDashboardController extends AdminController
         return $this->renderPage($request, $response, 'admin/dashboard.html', [
             'courses' => $courses,
             'kuusamoVersion' => KUUSAMO_VERSION,
-            'phpVersion' => phpversion()
+            'phpVersion' => phpversion(),
+            'totalUsers' => $this->countUsers(),
+            'totalEnrolments' => $this->countEnrolments(),
         ]);
+    }
+
+    private function countUsers(): int
+    {
+        $dql = "SELECT COUNT(u.id)
+                FROM Kuusamo\Vle\Entity\User u
+                WHERE u.status = :status";
+        
+        $query = $this->ci->get('db')->createQuery($dql);
+        $query->setParameter('status', User::STATUS_ACTIVE);
+        return $query->getSingleScalarResult();
+    }
+
+    private function countEnrolments(): int
+    {
+        $dql = "SELECT COUNT(uc.user)
+                FROM Kuusamo\Vle\Entity\UserCourse uc";
+        
+        $query = $this->ci->get('db')->createQuery($dql);
+        return $query->getSingleScalarResult();
     }
 
     public function phpinfo(Request $request, Response $response)

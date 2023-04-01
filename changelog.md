@@ -1,6 +1,11 @@
 Changelog
 =========
 
+2.3.1
+-----
+
+* Add total user and enrolment stats to admin dashboard
+
 2.3
 ---
 
