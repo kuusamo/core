@@ -1,6 +1,11 @@
 Changelog
 =========
 
+2.3.3
+-----
+
+* Downgrading dependencies for PHP 8.0
+
 2.3.2
 -----
 
