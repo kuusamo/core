@@ -35,7 +35,7 @@ class Collection implements ArrayAccess
      * @param mixed $offset Key.
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
         return isset($this->data[$offset]) ? $this->data[$offset] : null;
     }
@@ -47,7 +47,7 @@ class Collection implements ArrayAccess
      * @param mixed $value  Value.
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         $this->data[$offset] = $value;
     }
@@ -58,7 +58,7 @@ class Collection implements ArrayAccess
      * @param mixed $offset Key.
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->data[$offset]);
     }

@@ -1,6 +1,11 @@
 Changelog
 =========
 
+2.3.2
+-----
+
+* Update dependencies and return types for PHP 8.2
+
 2.3.1
 -----
 

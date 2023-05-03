@@ -4,6 +4,9 @@ namespace Kuusamo\Vle\Helper\Content;
 
 class CroppedImage
 {
+    private $body;
+    private $contentType;
+
     /**
      * Constructor.
      *
