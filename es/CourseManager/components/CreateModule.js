@@ -23,8 +23,7 @@ class CreateModule extends Component {
         event.preventDefault();
 
         axios.post(`/admin/courses/${this.props.courseId}/modules`, {
-                ...this.state,
-                status: this.props.defaultStatus
+                ...this.state
             })
             .then(response => {
                 this.setState({ name: '', description: '' });

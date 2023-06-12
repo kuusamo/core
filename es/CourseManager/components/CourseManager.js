@@ -239,7 +239,6 @@ class CourseManager extends Component {
                     courseId={this.props.courseId}
                     addModule={this.addModule.bind(this)}
                     alertError={this.alertError.bind(this)}
-                    defaultStatus={this.state.options.status}
                 />
 
                 {this.renderOptions()}

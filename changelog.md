@@ -1,6 +1,11 @@
 Changelog
 =========
 
+2.4
+---
+
+* Default status now only affects lessons, not modules
+
 2.3.3
 -----
 

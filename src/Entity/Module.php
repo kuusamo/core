@@ -60,7 +60,7 @@ class Module implements JsonSerializable
 
     public function __construct()
     {
-        $this->status = self::STATUS_HIDDEN;
+        $this->status = self::STATUS_ACTIVE;
         $this->delay = 0;
         $this->lessons = new ArrayCollection;
     }
