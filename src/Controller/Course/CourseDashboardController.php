@@ -15,7 +15,7 @@ class CourseDashboardController extends CourseController
 {
     public function dashboard(Request $request, Response $response, $args)
     {
-        $course = $this->ci->get('db')->getRepository('Kuusamo\Vle\Entity\Course')->findOneBy(['slug' => $args['course']]);
+        $course = $this->ci->get('db')->getRepository(Course::class)->findOneBy(['slug' => $args['course']]);
 
         if ($course === null) {
             throw new HttpNotFoundException($request, $response);

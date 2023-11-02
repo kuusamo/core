@@ -3,12 +3,12 @@
 namespace Kuusamo\Vle\Controller\Course;
 
 use Kuusamo\Vle\Controller\Controller;
-use Kuusamo\Vle\Entity\User;
-use Kuusamo\Vle\Entity\UserCourse;
 use Kuusamo\Vle\Entity\Course;
 use Kuusamo\Vle\Entity\Lesson;
 use Kuusamo\Vle\Entity\Module;
 use Kuusamo\Vle\Entity\Role;
+use Kuusamo\Vle\Entity\User;
+use Kuusamo\Vle\Entity\UserCourse;
 use Kuusamo\Vle\Entity\UserLesson;
 
 use Exception;
@@ -97,7 +97,7 @@ abstract class CourseController extends Controller
      */
     protected function getLessonLink(Lesson $lesson, User $user)
     {
-        $link = $this->ci->get('db')->find('Kuusamo\Vle\Entity\UserLesson', [
+        $link = $this->ci->get('db')->find(UserLesson::class, [
             'lesson' => $lesson,
             'user' => $user
         ]);

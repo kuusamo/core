@@ -40,6 +40,6 @@ class DefaultController extends Controller
     {
         $filter = $isAdmin ? [] : ['privacy' => Course::PRIVACY_OPEN];
 
-        return $this->ci->get('db')->getRepository('Kuusamo\Vle\Entity\Course')->findBy($filter, ['name' => 'ASC']);
+        return $this->ci->get('db')->getRepository(Course::class)->findBy($filter, ['name' => 'ASC']);
     }
 }

@@ -2,6 +2,7 @@
 
 namespace Kuusamo\Vle\Controller\Course;
 
+use Kuusamo\Vle\Entity\Course;
 use Kuusamo\Vle\Entity\Lesson;
 
 use Slim\Exception\HttpNotFoundException;
@@ -14,13 +15,13 @@ class LessonViewController extends CourseController
 
     public function score(Request $request, Response $response, $args)
     {
-        $course = $this->ci->get('db')->getRepository('Kuusamo\Vle\Entity\Course')->findOneBy(['slug' => $args['course']]);
+        $course = $this->ci->get('db')->getRepository(Course::class)->findOneBy(['slug' => $args['course']]);
 
         if ($course === null) {
             throw new HttpNotFoundException($request, $response);
         }
 
-        $lesson = $this->ci->get('db')->getRepository('Kuusamo\Vle\Entity\Lesson')->findOneBy(['course' => $course, 'id' => $args['lesson']]);
+        $lesson = $this->ci->get('db')->getRepository(Lesson::class)->findOneBy(['course' => $course, 'id' => $args['lesson']]);
 
         if ($lesson === null) {
             throw new HttpNotFoundException($request, $response);

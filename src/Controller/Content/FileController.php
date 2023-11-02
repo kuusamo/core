@@ -3,6 +3,7 @@
 namespace Kuusamo\Vle\Controller\Content;
 
 use Kuusamo\Vle\Controller\Controller;
+use Kuusamo\Vle\Entity\File;
 use Kuusamo\Vle\Helper\Content\Crop;
 use Kuusamo\Vle\Service\Storage\StorageObject;
 
@@ -14,7 +15,7 @@ class FileController extends Controller
 {
     public function original(Request $request, Response $response, array $args = [])
     {
-        $fileObj = $this->ci->get('db')->getRepository('Kuusamo\Vle\Entity\File')->findOneBy([
+        $fileObj = $this->ci->get('db')->getRepository(File::class)->findOneBy([
             'filename' => $args['filename']
         ]);
 

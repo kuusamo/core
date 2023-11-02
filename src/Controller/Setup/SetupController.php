@@ -68,7 +68,7 @@ class SetupController extends Controller
      */
     private function getAdminRole(): Role
     {
-        $role = $this->ci->get('db')->find('Kuusamo\Vle\Entity\Role', 'ADMIN');
+        $role = $this->ci->get('db')->find(Role::class, 'ADMIN');
 
         if ($role === null) {
             $role = new Role;
