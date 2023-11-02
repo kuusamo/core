@@ -2,7 +2,9 @@
 
 namespace Kuusamo\Vle\Controller\Admin;
 
+use Kuusamo\Vle\Entity\AwardingBody;
 use Kuusamo\Vle\Entity\Course;
+use Kuusamo\Vle\Entity\Image;
 use Kuusamo\Vle\Helper\Form\Select;
 use Kuusamo\Vle\Validation\CourseValidator;
 use Kuusamo\Vle\Validation\ValidationException;
@@ -16,7 +18,7 @@ class CourseController extends AdminController
 {
     public function view(Request $request, Response $response, array $args = [])
     {
-        $course = $this->ci->get('db')->find('Kuusamo\Vle\Entity\Course', $args['id']);
+        $course = $this->ci->get('db')->find(Course::class, $args['id']);
 
         if ($course === null) {
             throw new HttpNotFoundException($request, $response);
@@ -31,7 +33,7 @@ class CourseController extends AdminController
 
     public function lessons(Request $request, Response $response, array $args = [])
     {
-        $course = $this->ci->get('db')->find('Kuusamo\Vle\Entity\Course', $args['id']);
+        $course = $this->ci->get('db')->find(Course::class, $args['id']);
 
         if ($course === null) {
             throw new HttpNotFoundException($request, $response);
@@ -46,16 +48,16 @@ class CourseController extends AdminController
 
     public function edit(Request $request, Response $response, array $args = [])
     {
-        $course = $this->ci->get('db')->find('Kuusamo\Vle\Entity\Course', $args['id']);
+        $course = $this->ci->get('db')->find(Course::class, $args['id']);
 
         if ($course === null) {
             throw new HttpNotFoundException($request, $response);
         }
 
         if ($request->isPost()) {
-            $awardingBody = $request->getParam('awardingBody') ? $this->ci->get('db')->find('Kuusamo\Vle\Entity\AwardingBody', $request->getParam('awardingBody')) : null;
+            $awardingBody = $request->getParam('awardingBody') ? $this->ci->get('db')->find(AwardingBody::class, $request->getParam('awardingBody')) : null;
             $certificateAvailable = ($request->getParam('certificate') == 'true');
-            $image = $request->getParam('image') ? $this->ci->get('db')->find('Kuusamo\Vle\Entity\Image', $request->getParam('image')) : null;
+            $image = $request->getParam('image') ? $this->ci->get('db')->find(Image::class, $request->getParam('image')) : null;
 
             $course->setName($request->getParam('name'));
             $course->setSlug($request->getParam('slug'));
@@ -104,7 +106,7 @@ class CourseController extends AdminController
             $awardingBody->setDefaultOption($course->getAwardingBody()->getId());
         }
 
-        $bodies = $this->ci->get('db')->getRepository('Kuusamo\Vle\Entity\AwardingBody')->findBy([], ['name' => 'ASC']);
+        $bodies = $this->ci->get('db')->getRepository(AwardingBody::class)->findBy([], ['name' => 'ASC']);
         foreach ($bodies as $body) {
             $awardingBody->addOption($body->getId(), $body->getName());
         }
@@ -114,7 +116,7 @@ class CourseController extends AdminController
 
     public function delete(Request $request, Response $response, array $args = [])
     {
-        $course = $this->ci->get('db')->find('Kuusamo\Vle\Entity\Course', $args['id']);
+        $course = $this->ci->get('db')->find(Course::class, $args['id']);
 
         if ($course === null) {
             throw new HttpNotFoundException($request, $response);

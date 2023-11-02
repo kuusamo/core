@@ -23,7 +23,7 @@ class ApiKeysController extends Controller
             $this->alertSuccess('API key created successfully');
         }
 
-        $keys = $this->ci->get('db')->getRepository('Kuusamo\Vle\Entity\ApiKey')->findBy([]);
+        $keys = $this->ci->get('db')->getRepository(ApiKey::class)->findBy([]);
 
         $this->ci->get('meta')->setTitle('API Keys - Admin');
 
@@ -34,7 +34,7 @@ class ApiKeysController extends Controller
 
     public function view(Request $request, Response $response, array $args = [])
     {
-        $apiKey = $this->ci->get('db')->find('Kuusamo\Vle\Entity\ApiKey', $args['key']);
+        $apiKey = $this->ci->get('db')->find(ApiKey::class, $args['key']);
 
         if ($apiKey === null) {
             throw new HttpNotFoundException($request, $response);

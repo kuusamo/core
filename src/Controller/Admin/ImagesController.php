@@ -44,7 +44,7 @@ class ImagesController extends AdminController
     {
         $qb = $this->ci->get('db')->createQueryBuilder();
         $qb->select('i')
-           ->from('Kuusamo\\Vle\\Entity\\Image', 'i')
+           ->from(Image::class, 'i')
            ->where($qb->expr()->orX(
                $qb->expr()->like('i.filename', ':term'),
                $qb->expr()->like('i.keywords', ':term')
@@ -100,7 +100,7 @@ class ImagesController extends AdminController
 
     public function view(Request $request, Response $response, array $args = [])
     {
-        $image = $this->ci->get('db')->find('Kuusamo\Vle\Entity\Image', $args['id']);
+        $image = $this->ci->get('db')->find(Image::class, $args['id']);
 
         if ($image === null) {
             throw new HttpNotFoundException($request, $response);
@@ -115,7 +115,7 @@ class ImagesController extends AdminController
 
     public function edit(Request $request, Response $response, array $args = [])
     {
-        $image = $this->ci->get('db')->find('Kuusamo\Vle\Entity\Image', $args['id']);
+        $image = $this->ci->get('db')->find(Image::class, $args['id']);
 
         if ($image === null) {
             throw new HttpNotFoundException($request, $response);

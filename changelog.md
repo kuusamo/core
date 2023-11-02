@@ -5,6 +5,7 @@ Changelog
 ---
 
 * Default status now only affects lessons, not modules
+* Fix file usage report only reporting audio blocks
 
 2.3.3
 -----

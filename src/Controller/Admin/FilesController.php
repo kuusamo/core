@@ -3,6 +3,8 @@
 namespace Kuusamo\Vle\Controller\Admin;
 
 use Kuusamo\Vle\Controller\Controller;
+use Kuusamo\Vle\Entity\Block\AudioBlock;
+use Kuusamo\Vle\Entity\Block\DownloadBlock;
 use Kuusamo\Vle\Entity\File;
 use Kuusamo\Vle\Entity\Folder;
 use Kuusamo\Vle\Helper\FileUtils;
@@ -23,7 +25,7 @@ class FilesController extends Controller
 
         if ($request->getQueryParam('folder')) {
             $parentFolder = $this->ci->get('db')->find(
-                'Kuusamo\Vle\Entity\Folder',
+                Folder::class,
                 $request->getQueryParam('folder')
             );
         }
@@ -78,9 +80,9 @@ class FilesController extends Controller
             }
         }
 
-        $folders = $this->ci->get('db')->getRepository('Kuusamo\Vle\Entity\Folder')->findBy(['parent' => $parentFolder], ['name' => 'ASC']);
+        $folders = $this->ci->get('db')->getRepository(Folder::class)->findBy(['parent' => $parentFolder], ['name' => 'ASC']);
 
-        $files = $this->ci->get('db')->getRepository('Kuusamo\Vle\Entity\File')->findBy(['folder' => $parentFolder], ['filename' => 'ASC']);
+        $files = $this->ci->get('db')->getRepository(File::class)->findBy(['folder' => $parentFolder], ['filename' => 'ASC']);
 
         $isEmpty = count($folders) === 0 && count($files) === 0;
 
@@ -96,7 +98,7 @@ class FilesController extends Controller
 
     public function view(Request $request, Response $response, array $args = [])
     {
-        $fileObj = $this->ci->get('db')->find('Kuusamo\Vle\Entity\File', $args['id']);
+        $fileObj = $this->ci->get('db')->find(File::class, $args['id']);
 
         if ($fileObj === null) {
             throw new HttpNotFoundException($request, $response);
@@ -137,7 +139,7 @@ class FilesController extends Controller
 
     public function edit(Request $request, Response $response, array $args = [])
     {
-        $fileObj = $this->ci->get('db')->find('Kuusamo\Vle\Entity\File', $args['id']);
+        $fileObj = $this->ci->get('db')->find(File::class, $args['id']);
 
         if ($fileObj === null) {
             throw new HttpNotFoundException($request, $response);
@@ -179,14 +181,14 @@ class FilesController extends Controller
 
     public function usage(Request $request, Response $response, array $args = [])
     {
-        $fileObj = $this->ci->get('db')->find('Kuusamo\Vle\Entity\File', $args['id']);
+        $fileObj = $this->ci->get('db')->find(File::class, $args['id']);
 
         if ($fileObj === null) {
             throw new HttpNotFoundException($request, $response);
         }
 
-        $audioBlocks = $this->ci->get('db')->getRepository('Kuusamo\Vle\Entity\Block\AudioBlock')->findBy(['file' => $fileObj]);
-        $fileBlocks = $this->ci->get('db')->getRepository('Kuusamo\Vle\Entity\Block\AudioBlock')->findBy(['file' => $fileObj]);
+        $audioBlocks = $this->ci->get('db')->getRepository(AudioBlock::class)->findBy(['file' => $fileObj]);
+        $fileBlocks = $this->ci->get('db')->getRepository(DownloadBlock::class)->findBy(['file' => $fileObj]);
         
         $blocks = [];
         $blocks = $this->processBlocks($blocks, $audioBlocks);
@@ -234,7 +236,7 @@ class FilesController extends Controller
     private function findAvailableFilename(string $filename): string
     {
         for ($i = 0; $i < 100; $i++) {
-            $file = $this->ci->get('db')->getRepository('Kuusamo\Vle\Entity\File')->findOneBy(['filename' => $filename]);
+            $file = $this->ci->get('db')->getRepository(File::class)->findOneBy(['filename' => $filename]);
 
             if ($file === null) {
                 return $filename;

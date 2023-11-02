@@ -2,7 +2,9 @@
 
 namespace Kuusamo\Vle\Controller\Admin;
 
+use Kuusamo\Vle\Entity\Block\Block;
 use Kuusamo\Vle\Entity\Lesson;
+use Kuusamo\Vle\Entity\Module;
 use Kuusamo\Vle\Helper\Block\BlockFactory;
 use Kuusamo\Vle\Helper\Block\HydratorFactory;
 use Kuusamo\Vle\Helper\Block\ValidationException;
@@ -15,7 +17,7 @@ class LessonsAjaxController extends AdminController
     public function create(Request $request, Response $response)
     {
         $json = $request->getParsedBody();
-        $module = $this->ci->get('db')->find('Kuusamo\Vle\Entity\Module', $json['moduleId']);
+        $module = $this->ci->get('db')->find(Module::class, $json['moduleId']);
 
         if (!$module) {
             return $this->badRequest($response, 'Module not found');
@@ -31,7 +33,7 @@ class LessonsAjaxController extends AdminController
             return $this->badRequest($response, 'Lesson name not provided');
         }
 
-        $lastLesson = $this->ci->get('db')->getRepository('Kuusamo\Vle\Entity\Lesson')->findOneBy(['module' => $module], ['priority' => 'DESC']);
+        $lastLesson = $this->ci->get('db')->getRepository(Lesson::class)->findOneBy(['module' => $module], ['priority' => 'DESC']);
         $priority = ($lastLesson) ? ($lastLesson->getPriority() + 1) : 1;
         $lesson->setPriority($priority);
 
@@ -44,7 +46,7 @@ class LessonsAjaxController extends AdminController
     public function update(Request $request, Response $response, $args)
     {
         $json = $request->getParsedBody();
-        $lesson = $this->ci->get('db')->find('Kuusamo\Vle\Entity\Lesson', $args['id']);
+        $lesson = $this->ci->get('db')->find(Lesson::class, $args['id']);
 
         if (!$lesson) {
             return $this->badRequest($response, 'Lesson not found');
@@ -68,7 +70,7 @@ class LessonsAjaxController extends AdminController
     public function delete(Request $request, Response $response, $args)
     {
         $json = $request->getParsedBody();
-        $lesson = $this->ci->get('db')->find('Kuusamo\Vle\Entity\Lesson', $args['id']);
+        $lesson = $this->ci->get('db')->find(Lesson::class, $args['id']);
 
         if (!$lesson) {
             return $this->badRequest($response, 'Lesson not found');
@@ -83,7 +85,7 @@ class LessonsAjaxController extends AdminController
     public function updateBlocks(Request $request, Response $response, $args)
     {
         $json = $request->getParsedBody();
-        $lesson = $this->ci->get('db')->find('Kuusamo\Vle\Entity\Lesson', $args['id']);
+        $lesson = $this->ci->get('db')->find(Lesson::class, $args['id']);
 
         if (!$lesson) {
             return $this->badRequest($response, 'Lesson not found');
@@ -102,7 +104,7 @@ class LessonsAjaxController extends AdminController
         foreach ($json['blocks'] as $block) {
             if (isset($block['id'])) {
                 $blockObj = $this->ci->get('db')->find(
-                    'Kuusamo\Vle\Entity\Block\Block',
+                    Block::class,
                     $block['id']
                 );
             } else {

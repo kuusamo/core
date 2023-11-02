@@ -15,7 +15,7 @@ class AdminDashboardController extends AdminController
 {
     public function dashboard(Request $request, Response $response)
     {
-        $courses = $this->ci->get('db')->getRepository('Kuusamo\Vle\Entity\Course')->findBy([], ['name' => 'ASC']);
+        $courses = $this->ci->get('db')->getRepository(Course::class)->findBy([], ['name' => 'ASC']);
 
         $this->ci->get('meta')->setTitle('Admin');
 

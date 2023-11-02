@@ -65,7 +65,7 @@ class UsersController extends Controller
 
     public function view(Request $request, Response $response, array $args = [])
     {
-        $user = $this->ci->get('db')->find('Kuusamo\Vle\Entity\User', $args['id']);
+        $user = $this->ci->get('db')->find(User::class, $args['id']);
 
         if ($user === null) {
             throw new HttpNotFoundException($request, $response);
@@ -81,7 +81,7 @@ class UsersController extends Controller
 
     public function account(Request $request, Response $response, $args)
     {
-        $user = $this->ci->get('db')->find('Kuusamo\Vle\Entity\User', $args['id']);
+        $user = $this->ci->get('db')->find(User::class, $args['id']);
 
         if (!$user) {
             throw new HttpNotFoundException;
@@ -124,7 +124,7 @@ class UsersController extends Controller
 
     public function security(Request $request, Response $response, $args)
     {
-        $user = $this->ci->get('db')->find('Kuusamo\Vle\Entity\User', $args['id']);
+        $user = $this->ci->get('db')->find(User::class, $args['id']);
 
         if (!$user) {
             throw new HttpNotFoundException;
@@ -161,7 +161,7 @@ class UsersController extends Controller
 
     public function roles(Request $request, Response $response, array $args = [])
     {
-        $user = $this->ci->get('db')->find('Kuusamo\Vle\Entity\User', $args['id']);
+        $user = $this->ci->get('db')->find(User::class, $args['id']);
 
         if ($user === null) {
             throw new HttpNotFoundException($request, $response);
@@ -169,7 +169,7 @@ class UsersController extends Controller
 
         if ($request->isPost()) {
             $adminRole = $this->ci->get('db')->find(
-                'Kuusamo\Vle\Entity\Role',
+                Role::class,
                 'ADMIN'
             );
 
@@ -201,7 +201,7 @@ class UsersController extends Controller
 
     public function delete(Request $request, Response $response, array $args = [])
     {
-        $user = $this->ci->get('db')->find('Kuusamo\Vle\Entity\User', $args['id']);
+        $user = $this->ci->get('db')->find(User::class, $args['id']);
 
         if ($user === null) {
             throw new HttpNotFoundException($request, $response);

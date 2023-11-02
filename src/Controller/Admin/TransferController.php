@@ -21,7 +21,7 @@ class TransferController extends AdminController
             switch ($request->getParam('action')) {
                 case 'export':
                     $course = $this->ci->get('db')->find(
-                        'Kuusamo\Vle\Entity\Course',
+                        Course::class,
                         $request->getParam('id')
                     );
 
@@ -38,7 +38,7 @@ class TransferController extends AdminController
             }
         }
 
-        $courses = $this->ci->get('db')->getRepository('Kuusamo\Vle\Entity\Course')->findBy([], ['name' => 'ASC']);
+        $courses = $this->ci->get('db')->getRepository(Course::class)->findBy([], ['name' => 'ASC']);
 
         return $this->renderPage($request, $response, 'admin/transfers.html', [
             'courses' => $courses,

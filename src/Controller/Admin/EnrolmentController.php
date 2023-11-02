@@ -23,7 +23,7 @@ class EnrolmentController extends AdminController
 
     public function students(Request $request, Response $response, array $args = [])
     {
-        $course = $this->ci->get('db')->find('Kuusamo\Vle\Entity\Course', $args['id']);
+        $course = $this->ci->get('db')->find(Course::class, $args['id']);
 
         if ($course === null) {
             throw new HttpNotFoundException($request, $response);
@@ -39,7 +39,7 @@ class EnrolmentController extends AdminController
 
         if ($request->isPost()) {
             $user = $this->ci->get('db')->find(
-                'Kuusamo\Vle\Entity\User',
+                User::class,
                 $request->getParam('userId')
             );
 
@@ -65,19 +65,19 @@ class EnrolmentController extends AdminController
 
     public function viewStudent(Request $request, Response $response, array $args = [])
     {
-        $course = $this->ci->get('db')->find('Kuusamo\Vle\Entity\Course', $args['id']);
+        $course = $this->ci->get('db')->find(Course::class, $args['id']);
 
         if ($course === null) {
             throw new HttpNotFoundException($request, $response);
         }
 
-        $student = $this->ci->get('db')->find('Kuusamo\Vle\Entity\User', $args['student']);
+        $student = $this->ci->get('db')->find(User::class, $args['student']);
 
         if ($student === null) {
             throw new HttpNotFoundException($request, $response);
         }
 
-        $enrolment = $this->ci->get('db')->find('Kuusamo\Vle\Entity\UserCourse', ['course' => $course, 'user' => $student]);
+        $enrolment = $this->ci->get('db')->find(UserCourse::class, ['course' => $course, 'user' => $student]);
 
         if ($enrolment === null) {
             throw new HttpNotFoundException($request, $response);
@@ -186,13 +186,13 @@ class EnrolmentController extends AdminController
      */
     private function toggleLesson(User $user, int $lessonId)
     {
-        $lesson = $this->ci->get('db')->find('Kuusamo\Vle\Entity\Lesson', $lessonId);
+        $lesson = $this->ci->get('db')->find(Lesson::class, $lessonId);
 
         if ($lesson === null) {
             throw new InvalidArgumentException('Invalid ID');
         }
 
-        $userLesson = $this->ci->get('db')->getRepository('Kuusamo\Vle\Entity\UserLesson')->findOneBy(['lesson' => $lesson, 'user' => $user]);
+        $userLesson = $this->ci->get('db')->getRepository(UserLesson::class)->findOneBy(['lesson' => $lesson, 'user' => $user]);
 
         if ($userLesson) {
             $userLesson->setCompleted(!$userLesson->hasCompleted());

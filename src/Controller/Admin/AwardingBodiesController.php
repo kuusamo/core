@@ -4,6 +4,7 @@ namespace Kuusamo\Vle\Controller\Admin;
 
 use Kuusamo\Vle\Controller\Controller;
 use Kuusamo\Vle\Entity\AwardingBody;
+use Kuusamo\Vle\Entity\Image;
 use Kuusamo\Vle\Helper\Form\Select;
 use Kuusamo\Vle\Validation\AwardingBodyValidator;
 use Kuusamo\Vle\Validation\ValidationException;
@@ -17,7 +18,7 @@ class AwardingBodiesController extends Controller
 {
     public function index(Request $request, Response $response)
     {
-        $bodies = $this->ci->get('db')->getRepository('Kuusamo\Vle\Entity\AwardingBody')->findBy([], ['name' => 'ASC']);
+        $bodies = $this->ci->get('db')->getRepository(AwardingBody::class)->findBy([], ['name' => 'ASC']);
 
         $this->ci->get('meta')->setTitle('Awarding Bodies - Admin');
 
@@ -31,7 +32,7 @@ class AwardingBodiesController extends Controller
         $body = new AwardingBody;
 
         if ($request->isPost()) {
-            $logo = $request->getParam('logo') ? $this->ci->get('db')->find('Kuusamo\Vle\Entity\Image', $request->getParam('logo')) : null;
+            $logo = $request->getParam('logo') ? $this->ci->get('db')->find(Image::class, $request->getParam('logo')) : null;
 
             $body->setName($request->getParam('name'));
             $body->setLogo($logo);
@@ -62,7 +63,7 @@ class AwardingBodiesController extends Controller
 
     public function view(Request $request, Response $response, array $args = [])
     {
-        $body = $this->ci->get('db')->find('Kuusamo\Vle\Entity\AwardingBody', $args['id']);
+        $body = $this->ci->get('db')->find(AwardingBody::class, $args['id']);
 
         if ($body === null) {
             throw new HttpNotFoundException($request, $response);
@@ -77,7 +78,7 @@ class AwardingBodiesController extends Controller
 
     public function accreditations(Request $request, Response $response, array $args = [])
     {
-        $body = $this->ci->get('db')->find('Kuusamo\Vle\Entity\AwardingBody', $args['id']);
+        $body = $this->ci->get('db')->find(AwardingBody::class, $args['id']);
 
         if ($body === null) {
             throw new HttpNotFoundException($request, $response);
@@ -86,7 +87,7 @@ class AwardingBodiesController extends Controller
         if ($request->isPost()) {
             switch ($request->getParam('action')) {
                 case 'add':
-                    $accreditation = $this->ci->get('db')->find('Kuusamo\Vle\Entity\AwardingBody', $request->getParam('id'));
+                    $accreditation = $this->ci->get('db')->find(AwardingBody::class, $request->getParam('id'));
                     $body->getAccreditations()->add($accreditation);
                     $this->ci->get('db')->persist($body);
                     $this->ci->get('db')->flush();
@@ -119,7 +120,7 @@ class AwardingBodiesController extends Controller
     {
         $awardingBody = new Select;
 
-        $bodies = $this->ci->get('db')->getRepository('Kuusamo\Vle\Entity\AwardingBody')->findBy([], ['name' => 'ASC']);
+        $bodies = $this->ci->get('db')->getRepository(AwardingBody::class)->findBy([], ['name' => 'ASC']);
         foreach ($bodies as $body) {
             $awardingBody->addOption($body->getId(), $body->getName());
         }
@@ -129,7 +130,7 @@ class AwardingBodiesController extends Controller
 
     public function edit(Request $request, Response $response, array $args = [])
     {
-        $body = $this->ci->get('db')->find('Kuusamo\Vle\Entity\AwardingBody', $args['id']);
+        $body = $this->ci->get('db')->find(AwardingBody::class, $args['id']);
 
         if ($body === null) {
             throw new HttpNotFoundException($request, $response);
@@ -166,7 +167,7 @@ class AwardingBodiesController extends Controller
 
     public function delete(Request $request, Response $response, array $args = [])
     {
-        $body = $this->ci->get('db')->find('Kuusamo\Vle\Entity\AwardingBody', $args['id']);
+        $body = $this->ci->get('db')->find(AwardingBody::class, $args['id']);
 
         if ($body === null) {
             throw new HttpNotFoundException($request, $response);

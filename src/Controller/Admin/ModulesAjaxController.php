@@ -2,6 +2,8 @@
 
 namespace Kuusamo\Vle\Controller\Admin;
 
+use Kuusamo\Vle\Entity\Course;
+use Kuusamo\Vle\Entity\Lesson;
 use Kuusamo\Vle\Entity\Module;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -11,7 +13,7 @@ class ModulesAjaxController extends AdminController
     public function create(Request $request, Response $response, $args)
     {
         $json = $request->getParsedBody();
-        $course = $this->ci->get('db')->find('Kuusamo\Vle\Entity\Course', $args['id']);
+        $course = $this->ci->get('db')->find(Course::class, $args['id']);
 
         if (!$course) {
             return $this->badRequest($response, 'Course not found');
@@ -26,7 +28,7 @@ class ModulesAjaxController extends AdminController
             return $this->badRequest($response, 'Module name not provided');
         }
 
-        $lastModule = $this->ci->get('db')->getRepository('Kuusamo\Vle\Entity\Module')->findOneBy(['course' => $course], ['priority' => 'DESC']);
+        $lastModule = $this->ci->get('db')->getRepository(Module::class)->findOneBy(['course' => $course], ['priority' => 'DESC']);
         $priority = ($lastModule) ? ($lastModule->getPriority() + 1) : 1;
         $module->setPriority($priority);
 
@@ -38,7 +40,7 @@ class ModulesAjaxController extends AdminController
 
     public function retrieve(Request $request, Response $response, $args)
     {
-        $course = $this->ci->get('db')->find('Kuusamo\Vle\Entity\Course', $args['id']);
+        $course = $this->ci->get('db')->find(Course::class, $args['id']);
 
         if (!$course) {
             return $this->badRequest($response, 'Course not found');
@@ -50,7 +52,7 @@ class ModulesAjaxController extends AdminController
     public function update(Request $request, Response $response, $args)
     {
         $json = $request->getParsedBody();
-        $course = $this->ci->get('db')->find('Kuusamo\Vle\Entity\Course', $args['id']);
+        $course = $this->ci->get('db')->find(Course::class, $args['id']);
 
         if (!$course) {
             return $this->badRequest($response, 'Course not found');
@@ -59,7 +61,7 @@ class ModulesAjaxController extends AdminController
         $priority = 1;
 
         foreach ($json['order'] as $id) {
-            $module = $this->ci->get('db')->find('Kuusamo\Vle\Entity\Module', $id);
+            $module = $this->ci->get('db')->find(Module::class, $id);
             $module->setPriority($priority);
             $this->ci->get('db')->persist($module);
             $priority++;
@@ -73,7 +75,7 @@ class ModulesAjaxController extends AdminController
     public function updateModule(Request $request, Response $response, $args)
     {
         $json = $request->getParsedBody();
-        $module = $this->ci->get('db')->find('Kuusamo\Vle\Entity\Module', $args['id']);
+        $module = $this->ci->get('db')->find(Module::class, $args['id']);
 
         if (!$module) {
             return $this->badRequest($response, 'Module not found');
@@ -97,7 +99,7 @@ class ModulesAjaxController extends AdminController
     public function deleteModule(Request $request, Response $response, $args)
     {
         $json = $request->getParsedBody();
-        $module = $this->ci->get('db')->find('Kuusamo\Vle\Entity\Module', $args['id']);
+        $module = $this->ci->get('db')->find(Module::class, $args['id']);
 
         if (!$module) {
             return $this->badRequest($response, 'Module not found');
@@ -112,7 +114,7 @@ class ModulesAjaxController extends AdminController
     public function updateModuleLessons(Request $request, Response $response, $args)
     {
         $json = $request->getParsedBody();
-        $module = $this->ci->get('db')->find('Kuusamo\Vle\Entity\Module', $args['id']);
+        $module = $this->ci->get('db')->find(Module::class, $args['id']);
 
         if (!$module) {
             return $this->badRequest($response, 'Module not found');
@@ -121,7 +123,7 @@ class ModulesAjaxController extends AdminController
         $priority = 1;
 
         foreach ($json['order'] as $id) {
-            $lesson = $this->ci->get('db')->find('Kuusamo\Vle\Entity\Lesson', $id);
+            $lesson = $this->ci->get('db')->find(Lesson::class, $id);
             $lesson->setPriority($priority);
             $this->ci->get('db')->persist($lesson);
             $priority++;
