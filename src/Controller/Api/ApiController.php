@@ -5,6 +5,7 @@ namespace Kuusamo\Vle\Controller\Api;
 use Kuusamo\Api\Hmac;
 use Kuusamo\Api\Token;
 use Kuusamo\Api\Exception\VerificationException;
+use Kuusamo\Vle\Entity\ApiKey;
 use Kuusamo\Vle\Helper\Collection;
 use Kuusamo\Vle\Controller\Controller;
 
@@ -24,7 +25,7 @@ abstract class ApiController extends Controller
     {
         try {
             $key = $request->getHeaderLine('Kuusamo-Key');
-            $apiKey = $this->ci->get('db')->find('Kuusamo\Vle\Entity\ApiKey', $key);
+            $apiKey = $this->ci->get('db')->find(ApiKey::class, $key);
 
             if ($apiKey === null) {
                 throw new VerificationException('Invalid key');
