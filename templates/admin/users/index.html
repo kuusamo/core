@@ -7,6 +7,11 @@
 
 <h1>Users</h1>
 
+<form action="/admin/users" method="get" class="mb-3">
+    <input type="text" name="q" aria-label="Search query" value="{{query}}" class="form-control mr-1">
+    <button class="btn" type="submit">Search</button>
+</form>
+
 {{#users}}
 <table class="table table-striped">
     <thead>
@@ -23,6 +28,13 @@
             <td>{{getLastLogin | date.iso}}{{^getLastLogin}}Never{{/getLastLogin}}</td>
         </tr>
     {{/results}}
+    {{^hasResults}}
+        <tr>
+            <td colspan="3">
+                No results found. <a href="/admin/users">Reset search</a>.
+            </td>
+        </tr>
+    {{/hasResults}}
     </tbody>
 </table>
 

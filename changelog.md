@@ -4,6 +4,7 @@ Changelog
 2.4
 ---
 
+* Search added to user management screen
 * Default status now only affects lessons, not modules
 * Fix file usage report only reporting audio blocks
 

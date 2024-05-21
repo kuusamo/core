@@ -20,14 +20,29 @@ class UsersController extends Controller
 {
     public function index(Request $request, Response $response)
     {
-        $dql = "SELECT u FROM Kuusamo\Vle\Entity\User u ORDER BY u.surname ASC";
-        $query = $this->ci->get('db')->createQuery($dql);
+        $q = $request->getQueryParam('q');
+
+        if ($q) {
+            $dql = "SELECT u FROM Kuusamo\Vle\Entity\User u
+                    WHERE u.firstName LIKE :query
+                    OR u.surname LIKE :query
+                    OR u.email LIKE :query
+                    ORDER BY u.surname ASC";
+            $query = $this->ci->get('db')->createQuery($dql);
+            $query->setParameter('query', '%' . $q . '%');
+        } else {
+            $dql = "SELECT u FROM Kuusamo\Vle\Entity\User u
+                    ORDER BY u.surname ASC";
+            $query = $this->ci->get('db')->createQuery($dql);
+        }
+
         $users = new Pagination($query, $request->getQueryParam('page', 1));
 
         $this->ci->get('meta')->setTitle('Users - Admin');
 
         return $this->renderPage($request, $response, 'admin/users/index.html', [
-            'users' => $users
+            'users' => $users,
+            'query' => $q,
         ]);
     }
 
