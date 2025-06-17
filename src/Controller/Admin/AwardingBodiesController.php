@@ -112,11 +112,11 @@ class AwardingBodiesController extends Controller
 
         return $this->renderPage($request, $response, 'admin/awarding-bodies/accreditations.html', [
             'body' => $body,
-            'bodyList' => $this->awardingBodyDropdown($body)
+            'bodyList' => $this->awardingBodyDropdown()
         ]);
     }
 
-    private function awardingBodyDropdown(AwardingBody $bodyx)
+    private function awardingBodyDropdown()
     {
         $awardingBody = new Select;
 
