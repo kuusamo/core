@@ -1,6 +1,11 @@
 Changelog
 =========
 
+Edge
+----
+
+* Add warning when database is not initialised
+
 2.4
 ---
 

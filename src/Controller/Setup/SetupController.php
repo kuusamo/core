@@ -11,18 +11,23 @@ use Kuusamo\Vle\Validation\ValidationException;
 
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
+use Doctrine\DBAL\Exception\TableNotFoundException;
 use Slim\Exception\HttpForbiddenException;
 
 class SetupController extends Controller
 {
     public function setup(Request $request, Response $response)
     {
-        $dql = "SELECT COUNT(u.id) FROM Kuusamo\Vle\Entity\User u";
-        $query = $this->ci->get('db')->createQuery($dql);
-        $count = $query->getSingleScalarResult();
+        try {
+            $dql = "SELECT COUNT(u.id) FROM Kuusamo\Vle\Entity\User u";
+            $query = $this->ci->get('db')->createQuery($dql);
+            $count = $query->getSingleScalarResult();
 
-        if ($count > 0) {
-            throw new HttpForbiddenException($request, $response);
+            if ($count > 0) {
+                throw new HttpForbiddenException($request, $response);
+            }
+        } catch (TableNotFoundException $e) {
+            die('Database is not initialised');
         }
 
         $user = new User;
