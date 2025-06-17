@@ -48,4 +48,11 @@
     </tbody>
 </table>
 {{/hasCourses}}
+
+<form method="post" class="mt-3">
+    <select name="course" class="form-control mr-1" aria-label="Add to a course">
+    {{#courseList}}<option value="{{value}}" {{#selected}}selected{{/selected}}>{{label}}</option>{{/courseList}}
+    </select>
+    <button type="submit" class="btn">Enrol</button>
+</form>
 {{/user}}

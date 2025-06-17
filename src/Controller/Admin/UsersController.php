@@ -3,8 +3,10 @@
 namespace Kuusamo\Vle\Controller\Admin;
 
 use Kuusamo\Vle\Controller\Controller;
+use Kuusamo\Vle\Entity\Course;
 use Kuusamo\Vle\Entity\Role;
 use Kuusamo\Vle\Entity\User;
+use Kuusamo\Vle\Entity\UserCourse;
 use Kuusamo\Vle\Helper\Form\Select;
 use Kuusamo\Vle\Helper\Password;
 use Kuusamo\Vle\Helper\TokenGenerator;
@@ -86,11 +88,29 @@ class UsersController extends Controller
             throw new HttpNotFoundException($request, $response);
         }
 
+        if ($request->isPost()) {
+            $course = $this->ci->get('db')->find(Course::class, $request->getParam('course'));
+
+            $link = new UserCourse;
+            $link->setCourse($course);
+            $link->setUser($user);
+
+            try {
+                $this->ci->get('db')->persist($link);
+                $this->ci->get('db')->flush();
+
+                $this->alertSuccess('Student enrolled successfully');
+            }  catch (UniqueConstraintViolationException $e) {
+                $this->alertDanger('Student is already enrolled on this course');
+            }
+        }
+
         $this->ci->get('meta')->setTitle(sprintf('%s - Users - Admin', $user->getFullName()));
 
         return $this->renderPage($request, $response, 'admin/users/view.html', [
             'user' => $user,
-            'gravatar' => md5(strtolower(trim($user->getEmail())))
+            'gravatar' => md5(strtolower(trim($user->getEmail()))),
+            'courseList' => $this->addToCourseDropdown(),
         ]);
     }
 
@@ -235,5 +255,18 @@ class UsersController extends Controller
         return $this->renderPage($request, $response, 'admin/users/delete.html', [
             'user' => $user
         ]);
+    }
+
+    private function addToCourseDropdown()
+    {
+        $select = new Select;
+
+        $courses = $this->ci->get('db')->getRepository(Course::class)->findBy([], ['name' => 'ASC']);
+
+        foreach ($courses as $course) {
+            $select->addOption($course->getId(), $course->getName());
+        }
+
+        return $select();
     }
 }
