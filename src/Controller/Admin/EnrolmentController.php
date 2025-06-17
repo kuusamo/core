@@ -12,6 +12,7 @@ use Kuusamo\Vle\Entity\UserLesson;
 use Kuusamo\Vle\Service\Database\Pagination;
 
 use DateTime;
+use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use Slim\Exception\HttpNotFoundException;
@@ -48,10 +49,14 @@ class EnrolmentController extends AdminController
                 $link->setCourse($course);
                 $link->setUser($user);
 
-                $this->ci->get('db')->persist($link);
-                $this->ci->get('db')->flush();
+                try {
+                    $this->ci->get('db')->persist($link);
+                    $this->ci->get('db')->flush();
 
-                $this->alertSuccess('Student enrolled successfully');
+                    $this->alertSuccess('Student enrolled successfully');
+                }  catch (UniqueConstraintViolationException $e) {
+                    $this->alertDanger('Student is already enrolled on this course');
+                }
             }
         }
 
