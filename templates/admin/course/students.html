@@ -16,6 +16,11 @@
     <li><a href="/course/{{getSlug}}" target="_blank">Preview</a></li>
 </ul>
 
+<form action="" method="get" class="form-inline-wide mb-3">
+    <input type="text" name="q" aria-label="Search query" value="{{query}}" class="form-control mr-1">
+    <button class="btn" type="submit">Search</button>
+</form>
+
 {{#students}}
 <table class="table table-striped">
     <thead>

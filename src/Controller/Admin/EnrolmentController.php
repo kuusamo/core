@@ -30,12 +30,30 @@ class EnrolmentController extends AdminController
             throw new HttpNotFoundException($request, $response);
         }
 
-        $dql = "SELECT uc FROM Kuusamo\Vle\Entity\UserCourse uc
-                JOIN uc.user u
-                WHERE uc.course = :course
-                ORDER BY u.surname ASC";
-        $query = $this->ci->get('db')->createQuery($dql);
-        $query->setParameter('course', $course);
+        $q = $request->getQueryParam('q');
+
+        if ($q) {
+            $dql = "SELECT uc FROM Kuusamo\Vle\Entity\UserCourse uc
+                    JOIN uc.user u
+                    WHERE uc.course = :course
+                    AND (
+                        u.firstName LIKE :query
+                        OR u.surname LIKE :query
+                        OR u.email LIKE :query
+                    )
+                    ORDER BY u.surname ASC";
+            $query = $this->ci->get('db')->createQuery($dql);
+            $query->setParameter('course', $course);
+            $query->setParameter('query', '%' . $q . '%');
+        } else {
+            $dql = "SELECT uc FROM Kuusamo\Vle\Entity\UserCourse uc
+                    JOIN uc.user u
+                    WHERE uc.course = :course
+                    ORDER BY u.surname ASC";
+            $query = $this->ci->get('db')->createQuery($dql);
+            $query->setParameter('course', $course);
+        }
+
         $students = new Pagination($query, $request->getQueryParam('page', 1));
 
         if ($request->isPost()) {
@@ -64,7 +82,8 @@ class EnrolmentController extends AdminController
 
         return $this->renderPage($request, $response, 'admin/course/students.html', [
             'course' => $course,
-            'students' => $students
+            'students' => $students,
+            'query' => $q,
         ]);
     }
 

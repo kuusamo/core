@@ -7,6 +7,7 @@ Edge
 * Add warning when database is not initialised
 * Widen search box on admin.users page
 * Add users to courses from the view user screen
+* Add ability to search course students
 
 2.4
 ---
