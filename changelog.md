@@ -5,6 +5,7 @@ Edge
 ----
 
 * Add warning when database is not initialised
+* Widen search box on admin.users page
 
 2.4
 ---
