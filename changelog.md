@@ -1,8 +1,8 @@
 Changelog
 =========
 
-Edge
-----
+2.5
+---
 
 * Add warning when database is not initialised
 * Widen search box on admin.users page and course enrolment page
