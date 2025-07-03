@@ -1,6 +1,11 @@
 Changelog
 =========
 
+2.6
+---
+
+* Replace user security tokens with login tokens
+
 2.5
 ---
 
