@@ -4,6 +4,7 @@ namespace Kuusamo\Vle\Controller\Admin;
 
 use Kuusamo\Vle\Entity\Course;
 use Kuusamo\Vle\Entity\User;
+use Kuusamo\Vle\Helper\Environment;
 use Kuusamo\Vle\Validation\CourseValidator;
 use Kuusamo\Vle\Validation\ValidationException;
 
@@ -22,6 +23,7 @@ class AdminDashboardController extends AdminController
         return $this->renderPage($request, $response, 'admin/dashboard.html', [
             'courses' => $courses,
             'kuusamoVersion' => KUUSAMO_VERSION,
+            'environment' => Environment::get('ENVIRONMENT'),
             'phpVersion' => phpversion(),
             'totalUsers' => $this->countUsers(),
             'totalEnrolments' => $this->countEnrolments(),

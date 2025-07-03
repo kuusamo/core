@@ -1,6 +1,11 @@
 Changelog
 =========
 
+2.7
+---
+
+* Add environment information to admin dashboard
+
 2.6.1
 -----
 
