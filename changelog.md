@@ -1,6 +1,11 @@
 Changelog
 =========
 
+2.6.1
+-----
+
+* Update Doctrine proxies
+
 2.6
 ---
 

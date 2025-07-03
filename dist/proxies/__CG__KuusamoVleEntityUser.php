@@ -67,10 +67,10 @@ class User extends \Kuusamo\Vle\Entity\User implements \Doctrine\ORM\Proxy\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'Kuusamo\\Vle\\Entity\\User' . "\0" . 'id', '' . "\0" . 'Kuusamo\\Vle\\Entity\\User' . "\0" . 'email', '' . "\0" . 'Kuusamo\\Vle\\Entity\\User' . "\0" . 'password', '' . "\0" . 'Kuusamo\\Vle\\Entity\\User' . "\0" . 'firstName', '' . "\0" . 'Kuusamo\\Vle\\Entity\\User' . "\0" . 'surname', '' . "\0" . 'Kuusamo\\Vle\\Entity\\User' . "\0" . 'status', '' . "\0" . 'Kuusamo\\Vle\\Entity\\User' . "\0" . 'securityToken', '' . "\0" . 'Kuusamo\\Vle\\Entity\\User' . "\0" . 'lastLogin', '' . "\0" . 'Kuusamo\\Vle\\Entity\\User' . "\0" . 'notes', '' . "\0" . 'Kuusamo\\Vle\\Entity\\User' . "\0" . 'roles', '' . "\0" . 'Kuusamo\\Vle\\Entity\\User' . "\0" . 'courses'];
+            return ['__isInitialized__', '' . "\0" . 'Kuusamo\\Vle\\Entity\\User' . "\0" . 'id', '' . "\0" . 'Kuusamo\\Vle\\Entity\\User' . "\0" . 'email', '' . "\0" . 'Kuusamo\\Vle\\Entity\\User' . "\0" . 'password', '' . "\0" . 'Kuusamo\\Vle\\Entity\\User' . "\0" . 'firstName', '' . "\0" . 'Kuusamo\\Vle\\Entity\\User' . "\0" . 'surname', '' . "\0" . 'Kuusamo\\Vle\\Entity\\User' . "\0" . 'status', '' . "\0" . 'Kuusamo\\Vle\\Entity\\User' . "\0" . 'lastLogin', '' . "\0" . 'Kuusamo\\Vle\\Entity\\User' . "\0" . 'notes', '' . "\0" . 'Kuusamo\\Vle\\Entity\\User' . "\0" . 'roles', '' . "\0" . 'Kuusamo\\Vle\\Entity\\User' . "\0" . 'courses'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'Kuusamo\\Vle\\Entity\\User' . "\0" . 'id', '' . "\0" . 'Kuusamo\\Vle\\Entity\\User' . "\0" . 'email', '' . "\0" . 'Kuusamo\\Vle\\Entity\\User' . "\0" . 'password', '' . "\0" . 'Kuusamo\\Vle\\Entity\\User' . "\0" . 'firstName', '' . "\0" . 'Kuusamo\\Vle\\Entity\\User' . "\0" . 'surname', '' . "\0" . 'Kuusamo\\Vle\\Entity\\User' . "\0" . 'status', '' . "\0" . 'Kuusamo\\Vle\\Entity\\User' . "\0" . 'securityToken', '' . "\0" . 'Kuusamo\\Vle\\Entity\\User' . "\0" . 'lastLogin', '' . "\0" . 'Kuusamo\\Vle\\Entity\\User' . "\0" . 'notes', '' . "\0" . 'Kuusamo\\Vle\\Entity\\User' . "\0" . 'roles', '' . "\0" . 'Kuusamo\\Vle\\Entity\\User' . "\0" . 'courses'];
+        return ['__isInitialized__', '' . "\0" . 'Kuusamo\\Vle\\Entity\\User' . "\0" . 'id', '' . "\0" . 'Kuusamo\\Vle\\Entity\\User' . "\0" . 'email', '' . "\0" . 'Kuusamo\\Vle\\Entity\\User' . "\0" . 'password', '' . "\0" . 'Kuusamo\\Vle\\Entity\\User' . "\0" . 'firstName', '' . "\0" . 'Kuusamo\\Vle\\Entity\\User' . "\0" . 'surname', '' . "\0" . 'Kuusamo\\Vle\\Entity\\User' . "\0" . 'status', '' . "\0" . 'Kuusamo\\Vle\\Entity\\User' . "\0" . 'lastLogin', '' . "\0" . 'Kuusamo\\Vle\\Entity\\User' . "\0" . 'notes', '' . "\0" . 'Kuusamo\\Vle\\Entity\\User' . "\0" . 'roles', '' . "\0" . 'Kuusamo\\Vle\\Entity\\User' . "\0" . 'courses'];
     }
 
     /**
@@ -133,7 +133,7 @@ class User extends \Kuusamo\Vle\Entity\User implements \Doctrine\ORM\Proxy\Proxy
      * {@inheritDoc}
      * @internal generated method: use only when explicitly handling proxy specific loading logic
      */
-    public function __setInitializer(\Closure $initializer = null): void
+    public function __setInitializer(?\Closure $initializer = null): void
     {
         $this->__initializer__ = $initializer;
     }
@@ -151,7 +151,7 @@ class User extends \Kuusamo\Vle\Entity\User implements \Doctrine\ORM\Proxy\Proxy
      * {@inheritDoc}
      * @internal generated method: use only when explicitly handling proxy specific loading logic
      */
-    public function __setCloner(\Closure $cloner = null): void
+    public function __setCloner(?\Closure $cloner = null): void
     {
         $this->__cloner__ = $cloner;
     }
@@ -322,28 +322,6 @@ class User extends \Kuusamo\Vle\Entity\User implements \Doctrine\ORM\Proxy\Proxy
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStatus', [$value]);
 
         return parent::setStatus($value);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getSecurityToken(): string
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSecurityToken', []);
-
-        return parent::getSecurityToken();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function setSecurityToken(string $value)
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSecurityToken', [$value]);
-
-        return parent::setSecurityToken($value);
     }
 
     /**
