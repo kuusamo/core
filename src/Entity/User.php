@@ -2,7 +2,6 @@
 
 namespace Kuusamo\Vle\Entity;
 
-use Kuusamo\Vle\Helper\TokenGenerator;
 use Doctrine\Common\Collections\ArrayCollection;
 use InvalidArgumentException;
 use JsonSerializable;
@@ -50,11 +49,6 @@ class User implements JsonSerializable
     private $status;
 
     /**
-     * @Column(type="string", name="security_token", length=64)
-     */
-    private $securityToken;
-
-    /**
      * @Column(type="datetime", name="last_login", nullable=true)
      */
     private $lastLogin;
@@ -77,7 +71,6 @@ class User implements JsonSerializable
     public function __construct()
     {
         $this->status = self::STATUS_ACTIVE;
-        $this->securityToken = TokenGenerator::generate();
         $this->roles = new ArrayCollection;
         $this->courses = new ArrayCollection;
     }
@@ -150,16 +143,6 @@ class User implements JsonSerializable
         }
 
         $this->status = $value;
-    }
-
-    public function getSecurityToken(): string
-    {
-        return $this->securityToken;
-    }
-
-    public function setSecurityToken(string $value)
-    {
-        $this->securityToken = $value;
     }
 
     public function getLastLogin(): ?DateTime

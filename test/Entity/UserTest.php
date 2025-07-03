@@ -16,7 +16,6 @@ class UserTest extends TestCase
         $user = new User;
 
         $this->assertSame(User::STATUS_ACTIVE, $user->getStatus());
-        $this->assertSame(64, strlen($user->getSecurityToken()));
 
         $user->setId(10);
         $user->setEmail('test@example.com');
@@ -24,7 +23,6 @@ class UserTest extends TestCase
         $user->setFirstName('Test');
         $user->setSurname('McTest');
         $user->setStatus(User::STATUS_DISABLED);
-        $user->setSecurityToken('QWERTY');
         $user->setLastLogin($lastLogin);
         $user->setNotes('Notes');
 
@@ -34,7 +32,6 @@ class UserTest extends TestCase
         $this->assertSame('Test', $user->getFirstName());
         $this->assertSame('McTest', $user->getSurname());
         $this->assertSame(User::STATUS_DISABLED, $user->getStatus());
-        $this->assertSame('QWERTY', $user->getSecurityToken());
         $this->assertSame($lastLogin, $user->getLastLogin());
         $this->assertSame('Notes', $user->getNotes());
 

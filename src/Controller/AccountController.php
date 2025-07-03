@@ -51,7 +51,6 @@ class AccountController extends Controller
         }
 
         $user->setPassword(Password::hash($request->getParam('new')));
-        $user->setSecurityToken(TokenGenerator::generate());
 
         $this->ci->get('db')->persist($user);
         $this->ci->get('db')->flush();

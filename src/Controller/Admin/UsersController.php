@@ -172,17 +172,10 @@ class UsersController extends Controller
                         $this->alertDanger('Password is too short');
                     } else {
                         $user->setPassword(Password::hash($request->getParam('password')));
-                        $user->setSecurityToken(TokenGenerator::generate());
                         $this->ci->get('db')->persist($user);
                         $this->ci->get('db')->flush();
                         $this->alertSuccess('Password changed successfully');
                     }
-                    break;
-                case 'token':
-                    $user->setSecurityToken(TokenGenerator::generate());
-                    $this->ci->get('db')->persist($user);
-                    $this->ci->get('db')->flush();
-                    $this->alertSuccess('Token refreshed successfully');
                     break;
             }
         }

@@ -3,11 +3,13 @@
 namespace Kuusamo\Vle\Controller\Auth;
 
 use Kuusamo\Vle\Controller\Controller;
+use Kuusamo\Vle\Entity\LoginToken;
 use Kuusamo\Vle\Entity\SsoToken;
 use Kuusamo\Vle\Entity\User;
 use Kuusamo\Vle\Exception\ProcessException;
 use Kuusamo\Vle\Helper\Environment;
 use Kuusamo\Vle\Helper\Password;
+use Kuusamo\Vle\Helper\ServerUtils;
 use Kuusamo\Vle\Helper\TokenGenerator;
 use Kuusamo\Vle\Helper\UrlUtils;
 
@@ -42,7 +44,11 @@ class LoginController extends Controller
                         throw new ProcessException('This email address is not registered to any account');
                     }
 
-                    $this->ci->get('email')->sendMagicLinkEmail($user, $request->getParam('from'));
+                    $token = new LoginToken($user, ServerUtils::getIpAddress());
+                    $this->ci->get('db')->persist($token);
+                    $this->ci->get('db')->flush();
+
+                    $this->ci->get('email')->sendMagicLinkEmail($token, $request->getParam('from'));
                     return $this->renderPage($request, $response, 'auth/magic-link-sent.html');
                 } catch (ProcessException $e) {
                     $this->alertDanger($e->getMessage());
@@ -131,25 +137,30 @@ class LoginController extends Controller
      */
     private function loginWithToken(string $token): bool
     {
-        $user = $this->ci->get('db')->getRepository(User::class)->findOneBy(['securityToken' => $token]);
+        $token = $this->ci->get('db')->getRepository(LoginToken::class)->findOneBy(['token' => $token]);
 
-        if (!$user) {
+        if (!$token || $token->isExpired()) {
             $this->alertDanger('This magic link has expired. You can generate a new one below.');
             return false;
         }
 
-        if ($user->getStatus() !== User::STATUS_ACTIVE) {
+        if ($token->getIpAddress() != ServerUtils::getIpAddress()) {
+            $this->alertDanger('Failed security verification.');
+            return false;
+        }
+
+        if ($token->getUser()->getStatus() !== User::STATUS_ACTIVE) {
             $this->alertDanger('This user account has been disabled. Please contact us for assistance.');
             return false;
         }
 
-        $user->setSecurityToken(TokenGenerator::generate());
-        $user->setLastLogin(new DateTime);
+        $token->getUser()->setLastLogin(new DateTime);
 
-        $this->ci->get('db')->persist($user);
+        $this->ci->get('db')->persist($token->getUser());
+        $this->ci->get('db')->remove($token);
         $this->ci->get('db')->flush();
 
-        $this->ci->get('auth')->authoriseUser($user);
+        $this->ci->get('auth')->authoriseUser($token->getUser());
 
         return true;
     }
