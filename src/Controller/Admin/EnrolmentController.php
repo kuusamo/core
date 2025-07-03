@@ -72,7 +72,7 @@ class EnrolmentController extends AdminController
                     $this->ci->get('db')->flush();
 
                     $this->alertSuccess('Student enrolled successfully');
-                }  catch (UniqueConstraintViolationException $e) {
+                } catch (UniqueConstraintViolationException $e) {
                     $this->alertDanger('Student is already enrolled on this course');
                 }
             }
