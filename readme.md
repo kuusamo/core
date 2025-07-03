@@ -55,6 +55,7 @@ Update the database schema:
 
     vendor/bin/doctrine-migrations diff
     vendor/bin/doctrine-migrations migrate
+    vendor/bin/doctrine orm:generate-proxies
 
 Symlink assets from a project
 
