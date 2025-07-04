@@ -4,6 +4,7 @@ Changelog
 2.7.1
 -----
 * Fix multiple different error pages
+* Fix inline image uploading
 
 2.7
 ---
