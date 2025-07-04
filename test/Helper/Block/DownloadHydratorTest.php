@@ -4,20 +4,23 @@ declare(strict_types=1);
 
 namespace Kuusamo\Vle\Test\Helper\Block;
 
+use Kuusamo\Vle\Entity\Block\DownloadBlock;
+use Kuusamo\Vle\Entity\File;
 use Kuusamo\Vle\Helper\Block\DownloadHydrator;
 use Kuusamo\Vle\Helper\Block\ValidationException;
+use Doctrine\ORM\EntityManager;
 use PHPUnit\Framework\TestCase;
 
 class DownloadHydratorTest extends TestCase
 {
     public function testHydrate()
     {
-        $fileMock = $this->createMock('Kuusamo\Vle\Entity\File');
+        $fileMock = $this->createMock(File::class);
 
-        $blockMock = $this->createMock('Kuusamo\Vle\Entity\Block\DownloadBlock');
+        $blockMock = $this->createMock(DownloadBlock::class);
         $blockMock->expects($this->once())->method('setFile');
 
-        $dbMock = $this->createMock('Doctrine\ORM\EntityManager');
+        $dbMock = $this->createMock(EntityManager::class);
         $dbMock->method('find')->willReturn($fileMock);
 
         $hydrator = new DownloadHydrator($dbMock);
@@ -26,11 +29,11 @@ class DownloadHydratorTest extends TestCase
 
     public function testValidateValid()
     {
-        $dbMock = $this->createMock('Doctrine\ORM\EntityManager');
+        $dbMock = $this->createMock(EntityManager::class);
 
-        $fileMock = $this->createMock('Kuusamo\Vle\Entity\File');
+        $fileMock = $this->createMock(File::class);
 
-        $blockMock = $this->createMock('Kuusamo\Vle\Entity\Block\DownloadBlock');
+        $blockMock = $this->createMock(DownloadBlock::class);
         $blockMock->method('getFile')->willReturn($fileMock);
 
         $hydrator = new DownloadHydrator($dbMock);
@@ -42,9 +45,9 @@ class DownloadHydratorTest extends TestCase
     {
         $this->expectException(ValidationException::class);
 
-        $dbMock = $this->createMock('Doctrine\ORM\EntityManager');
+        $dbMock = $this->createMock(EntityManager::class);
 
-        $blockMock = $this->createMock('Kuusamo\Vle\Entity\Block\DownloadBlock');
+        $blockMock = $this->createMock(DownloadBlock::class);
         $blockMock->method('getFile')->willReturn(null);
 
         $hydrator = new DownloadHydrator($dbMock);

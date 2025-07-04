@@ -23,8 +23,8 @@ class ColourTest extends TestCase
     {
         $colour = new Colour('#000');
 
-        $this->assertSame('#1a1a1a', $colour->highlight());
-        $this->assertSame('#808080', $colour->fade());
+        $this->assertSame('#1a1a1a', (string) $colour->highlight());
+        $this->assertSame('#808080', (string) $colour->fade());
     }
 
     public function testInvalidLength()

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Kuusamo\Vle\Test\Helper\Block;
 
+use Kuusamo\Vle\Entity\Block\VideoBlock;
 use Kuusamo\Vle\Helper\Block\VideoHydrator;
 use Kuusamo\Vle\Helper\Block\ValidationException;
 use PHPUnit\Framework\TestCase;
@@ -12,7 +13,7 @@ class VideoHydratorTest extends TestCase
 {
     public function testHydrate()
     {
-        $blockMock = $this->createMock('Kuusamo\Vle\Entity\Block\VideoBlock');
+        $blockMock = $this->createMock(VideoBlock::class);
         $blockMock->expects($this->once())->method('setProvider');
         $blockMock->expects($this->once())->method('setProviderId');
 
@@ -22,7 +23,7 @@ class VideoHydratorTest extends TestCase
 
     public function testValidateValid()
     {
-        $blockMock = $this->createMock('Kuusamo\Vle\Entity\Block\VideoBlock');
+        $blockMock = $this->createMock(VideoBlock::class);
         $blockMock->method('getProvider')->willReturn('youtube');
         $blockMock->method('getProviderId')->willReturn('abc');
 
@@ -35,7 +36,7 @@ class VideoHydratorTest extends TestCase
     {
         $this->expectException(ValidationException::class);
 
-        $blockMock = $this->createMock('Kuusamo\Vle\Entity\Block\VideoBlock');
+        $blockMock = $this->createMock(VideoBlock::class);
         $blockMock->method('getProvider')->willReturn('');
         $blockMock->method('getProviderId')->willReturn('abc');
 
@@ -48,7 +49,7 @@ class VideoHydratorTest extends TestCase
     {
         $this->expectException(ValidationException::class);
 
-        $blockMock = $this->createMock('Kuusamo\Vle\Entity\Block\VideoBlock');
+        $blockMock = $this->createMock(VideoBlock::class);
         $blockMock->method('getProvider')->willReturn('youtube');
         $blockMock->method('getProviderId')->willReturn('');
 

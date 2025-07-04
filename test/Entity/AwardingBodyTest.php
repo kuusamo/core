@@ -5,13 +5,15 @@ declare(strict_types=1);
 namespace Kuusamo\Vle\Test\Entity;
 
 use Kuusamo\Vle\Entity\AwardingBody;
+use Kuusamo\Vle\Entity\Image;
+use Doctrine\Common\Collections\ArrayCollection;
 use PHPUnit\Framework\TestCase;
 
 class AwardingBodyTest extends TestCase
 {
     public function testAccessors()
     {
-        $imageMock = $this->createMock('Kuusamo\Vle\Entity\Image');
+        $imageMock = $this->createMock(Image::class);
 
         $body = new AwardingBody;
 
@@ -43,7 +45,7 @@ class AwardingBodyTest extends TestCase
         $this->assertSame(false, $body->hasCourses());
 
         $this->assertInstanceOf(
-            'Doctrine\Common\Collections\ArrayCollection',
+            ArrayCollection::class,
             $body->getCourses()
         );
 
@@ -59,7 +61,7 @@ class AwardingBodyTest extends TestCase
         $this->assertSame(false, $body->hasAccreditees());
 
         $this->assertInstanceOf(
-            'Doctrine\Common\Collections\ArrayCollection',
+            ArrayCollection::class,
             $body->getAccreditees()
         );
 
@@ -73,7 +75,7 @@ class AwardingBodyTest extends TestCase
         $body = new AwardingBody;
 
         $this->assertInstanceOf(
-            'Doctrine\Common\Collections\ArrayCollection',
+            ArrayCollection::class,
             $body->getAccreditations()
         );
     }

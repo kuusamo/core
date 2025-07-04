@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Kuusamo\Vle\Test\Entity;
 
+use Kuusamo\Vle\Entity\Course;
+use Kuusamo\Vle\Entity\User;
 use Kuusamo\Vle\Entity\UserCourse;
 use PHPUnit\Framework\TestCase;
 use DateTime;
@@ -12,8 +14,8 @@ class UserCourseTest extends TestCase
 {
     public function testAccessors()
     {
-        $userMock = $this->createMock('Kuusamo\Vle\Entity\User');
-        $courseMock = $this->createMock('Kuusamo\Vle\Entity\Course');
+        $userMock = $this->createMock(User::class);
+        $courseMock = $this->createMock(Course::class);
         $start = new DateTime('2019-01-01');
         $completed = new DateTime('2020-12-31');
 

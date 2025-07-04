@@ -6,22 +6,24 @@ namespace Kuusamo\Vle\Test\Helper\Block;
 
 use Kuusamo\Vle\Helper\Block\BlockException;
 use Kuusamo\Vle\Helper\Block\HydratorFactory;
+use Kuusamo\Vle\Helper\Block\MarkdownHydrator;
+use Doctrine\ORM\EntityManager;
 use PHPUnit\Framework\TestCase;
 
 class HydratorFactoryTest extends TestCase
 {
     public function testValid()
     {
-        $dbMock = $this->createMock('Doctrine\ORM\EntityManager');
+        $dbMock = $this->createMock(EntityManager::class);
         $block = HydratorFactory::create('markdown', $dbMock);
-        $this->assertInstanceOf('Kuusamo\Vle\Helper\Block\MarkdownHydrator', $block);
+        $this->assertInstanceOf(MarkdownHydrator::class, $block);
     }
 
     public function testInvalid()
     {
         $this->expectException(BlockException::class);
 
-        $dbMock = $this->createMock('Doctrine\ORM\EntityManager');
+        $dbMock = $this->createMock(EntityManager::class);
         $block = HydratorFactory::create('fictional', $dbMock);
     }
 }

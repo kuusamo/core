@@ -5,13 +5,14 @@ declare(strict_types=1);
 namespace Kuusamo\Vle\Test\Entity;
 
 use Kuusamo\Vle\Entity\File;
+use Kuusamo\Vle\Entity\Folder;
 use PHPUnit\Framework\TestCase;
 
 class FileTest extends TestCase
 {
     public function testAccessors()
     {
-        $folderMock = $this->createMock('Kuusamo\Vle\Entity\Folder');
+        $folderMock = $this->createMock(Folder::class);
 
         $file = new File;
 
@@ -49,7 +50,7 @@ class FileTest extends TestCase
 
     public function testFullPath()
     {
-        $folderMock = $this->createMock('Kuusamo\Vle\Entity\Folder');
+        $folderMock = $this->createMock(Folder::class);
         $folderMock->method('getPath')->willReturn('PDFs');
 
         $file = new File;

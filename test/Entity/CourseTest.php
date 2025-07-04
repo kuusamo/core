@@ -4,7 +4,11 @@ declare(strict_types=1);
 
 namespace Kuusamo\Vle\Test\Entity;
 
+use Kuusamo\Vle\Entity\AwardingBody;
 use Kuusamo\Vle\Entity\Course;
+use Kuusamo\Vle\Entity\Image;
+use Kuusamo\Vle\Entity\User;
+use Doctrine\Common\Collections\ArrayCollection;
 use PHPUnit\Framework\TestCase;
 use InvalidArgumentException;
 
@@ -12,8 +16,8 @@ class CourseTest extends TestCase
 {
     public function testAccessors()
     {
-        $awardingBodyMock = $this->createMock('Kuusamo\Vle\Entity\AwardingBody');
-        $imageMock = $this->createMock('Kuusamo\Vle\Entity\Image');
+        $awardingBodyMock = $this->createMock(AwardingBody::class);
+        $imageMock = $this->createMock(Image::class);
 
         $course = new Course;
 
@@ -58,14 +62,14 @@ class CourseTest extends TestCase
         $course = new Course;
 
         $this->assertInstanceOf(
-            'Doctrine\Common\Collections\ArrayCollection',
+            ArrayCollection::class,
             $course->getModules()
         );
     }
 
     public function testUsers()
     {
-        $userMock = $this->createMock('Kuusamo\Vle\Entity\User');
+        $userMock = $this->createMock(User::class);
 
         $course = new Course;
 

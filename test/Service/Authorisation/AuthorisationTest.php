@@ -4,19 +4,22 @@ declare(strict_types=1);
 
 namespace Kuusamo\Vle\Test\Service\Authorisation;
 
+use Kuusamo\Vle\Entity\User;
 use Kuusamo\Vle\Service\Authorisation\Authorisation;
+use Kuusamo\Vle\Service\Session\Session;
+use Doctrine\ORM\EntityManager;
 use PHPUnit\Framework\TestCase;
 
 class AuthorisationTest extends TestCase
 {
     public function testAuthorise()
     {
-        $sessionMock = $this->createMock('Kuusamo\Vle\Service\Session\Session');
+        $sessionMock = $this->createMock(Session::class);
         $sessionMock->expects($this->exactly(1))->method('set');
         $sessionMock->expects($this->once())->method('regenerateId');
 
-        $entityMock = $this->createMock('Doctrine\ORM\EntityManager');
-        $userMock = $this->createMock('Kuusamo\Vle\Entity\User');
+        $entityMock = $this->createMock(EntityManager::class);
+        $userMock = $this->createMock(User::class);
 
         $authorisation = new Authorisation($sessionMock, $entityMock);
         $authorisation->authoriseUser($userMock);
@@ -24,11 +27,11 @@ class AuthorisationTest extends TestCase
 
     public function testDeauthorise()
     {
-        $sessionMock = $this->createMock('Kuusamo\Vle\Service\Session\Session');
+        $sessionMock = $this->createMock(Session::class);
         $sessionMock->expects($this->exactly(1))->method('remove');
         $sessionMock->expects($this->once())->method('regenerateId');
 
-        $entityMock = $this->createMock('Doctrine\ORM\EntityManager');
+        $entityMock = $this->createMock(EntityManager::class);
 
         $authorisation = new Authorisation($sessionMock, $entityMock);
         $authorisation->deauthoriseUser();
@@ -36,11 +39,11 @@ class AuthorisationTest extends TestCase
 
     public function testIsLoggedInUser()
     {
-        $sessionMock = $this->createMock('Kuusamo\Vle\Service\Session\Session');
+        $sessionMock = $this->createMock(Session::class);
         $sessionMock->method('get')->willReturn(5);
 
-        $userMock = $this->createMock('Kuusamo\Vle\Entity\User');
-        $entityMock = $this->createMock('Doctrine\ORM\EntityManager');
+        $userMock = $this->createMock(User::class);
+        $entityMock = $this->createMock(EntityManager::class);
         $entityMock->method('find')->willReturn($userMock);
 
         $authorisation = new Authorisation($sessionMock, $entityMock);
@@ -52,10 +55,10 @@ class AuthorisationTest extends TestCase
 
     public function testNotLoggedIn()
     {
-        $sessionMock = $this->createMock('Kuusamo\Vle\Service\Session\Session');
+        $sessionMock = $this->createMock(Session::class);
         $sessionMock->method('get')->willReturn(null);
 
-        $entityMock = $this->createMock('Doctrine\ORM\EntityManager');
+        $entityMock = $this->createMock(EntityManager::class);
 
         $authorisation = new Authorisation($sessionMock, $entityMock);
         

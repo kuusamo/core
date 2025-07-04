@@ -4,15 +4,17 @@ declare(strict_types=1);
 
 namespace Kuusamo\Vle\Test\Entity;
 
+use Kuusamo\Vle\Entity\Lesson;
 use Kuusamo\Vle\Entity\UserLesson;
+use Kuusamo\Vle\Entity\User;
 use PHPUnit\Framework\TestCase;
 
 class UserLessonTest extends TestCase
 {
     public function testAccessors()
     {
-        $mockUser = $this->createMock('Kuusamo\Vle\Entity\User');
-        $mockLesson = $this->createMock('Kuusamo\Vle\Entity\Lesson');
+        $mockUser = $this->createMock(User::class);
+        $mockLesson = $this->createMock(Lesson::class);
 
         $link = new UserLesson;
 

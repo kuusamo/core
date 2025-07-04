@@ -4,7 +4,10 @@ declare(strict_types=1);
 
 namespace Kuusamo\Vle\Test\Entity;
 
+use Kuusamo\Vle\Entity\Course;
 use Kuusamo\Vle\Entity\Lesson;
+use Kuusamo\Vle\Entity\Module;
+use Doctrine\Common\Collections\ArrayCollection;
 use PHPUnit\Framework\TestCase;
 use InvalidArgumentException;
 
@@ -12,10 +15,10 @@ class LessonTest extends TestCase
 {
     public function testAccessors()
     {
-        $mockCourse = $this->createMock('Kuusamo\Vle\Entity\Course');
+        $mockCourse = $this->createMock(Course::class);
         $mockCourse->method('getSlug')->willReturn('mock-course');
 
-        $mockModule = $this->createMock('Kuusamo\Vle\Entity\Module');
+        $mockModule = $this->createMock(Module::class);
         $mockModule->method('getCourse')->willReturn($mockCourse);
 
         $lesson = new Lesson;
@@ -55,7 +58,7 @@ class LessonTest extends TestCase
         $lesson = new Lesson;
 
         $this->assertInstanceOf(
-            'Doctrine\Common\Collections\ArrayCollection',
+            ArrayCollection::class,
             $lesson->getBlocks()
         );
     }

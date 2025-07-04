@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Kuusamo\Vle\Test\Helper\Block;
 
+use Kuusamo\Vle\Entity\Block\QuestionBlock;
 use Kuusamo\Vle\Helper\Block\QuestionHydrator;
 use Kuusamo\Vle\Helper\Block\ValidationException;
 use PHPUnit\Framework\TestCase;
@@ -12,7 +13,7 @@ class QuestionHydratorTest extends TestCase
 {
     public function testHydrate()
     {
-        $blockMock = $this->createMock('Kuusamo\Vle\Entity\Block\QuestionBlock');
+        $blockMock = $this->createMock(QuestionBlock::class);
         $blockMock->expects($this->once())->method('setText');
         $blockMock->expects($this->once())->method('setAnswers');
 
@@ -25,7 +26,7 @@ class QuestionHydratorTest extends TestCase
 
     public function testValidateValid()
     {
-        $blockMock = $this->createMock('Kuusamo\Vle\Entity\Block\QuestionBlock');
+        $blockMock = $this->createMock(QuestionBlock::class);
         $blockMock->method('getText')->willReturn('Favourite food?');
         $blockMock->method('getAnswers')->willReturn([
             ['text' => 'Chocolate', 'correct' => true]
@@ -40,7 +41,7 @@ class QuestionHydratorTest extends TestCase
     {
         $this->expectException(ValidationException::class);
 
-        $blockMock = $this->createMock('Kuusamo\Vle\Entity\Block\QuestionBlock');
+        $blockMock = $this->createMock(QuestionBlock::class);
         $blockMock->method('getText')->willReturn('');
 
         $hydrator = new QuestionHydrator;
@@ -52,7 +53,7 @@ class QuestionHydratorTest extends TestCase
     {
         $this->expectException(ValidationException::class);
 
-        $blockMock = $this->createMock('Kuusamo\Vle\Entity\Block\QuestionBlock');
+        $blockMock = $this->createMock(QuestionBlock::class);
         $blockMock->method('getText')->willReturn('Favourite food?');
         $blockMock->method('getAnswers')->willReturn([]);
 
@@ -65,7 +66,7 @@ class QuestionHydratorTest extends TestCase
     {
         $this->expectException(ValidationException::class);
 
-        $blockMock = $this->createMock('Kuusamo\Vle\Entity\Block\QuestionBlock');
+        $blockMock = $this->createMock(QuestionBlock::class);
         $blockMock->method('getText')->willReturn('Favourite food?');
         $blockMock->method('getAnswers')->willReturn([
             ['text' => '', 'correct' => true]
@@ -80,7 +81,7 @@ class QuestionHydratorTest extends TestCase
     {
         $this->expectException(ValidationException::class);
 
-        $blockMock = $this->createMock('Kuusamo\Vle\Entity\Block\QuestionBlock');
+        $blockMock = $this->createMock(QuestionBlock::class);
         $blockMock->method('getText')->willReturn('Favourite food?');
         $blockMock->method('getAnswers')->willReturn([
             ['text' => '', 'correct' => false]

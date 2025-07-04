@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace Kuusamo\Vle\Test\Entity;
 
+use Kuusamo\Vle\Entity\Role;
 use Kuusamo\Vle\Entity\User;
+use Doctrine\Common\Collections\ArrayCollection;
 use PHPUnit\Framework\TestCase;
 use DateTime;
 use InvalidArgumentException;
@@ -73,14 +75,14 @@ class UserTest extends TestCase
 
     public function testRoles()
     {
-        $roleMock = $this->createMock('Kuusamo\Vle\Entity\Role');
+        $roleMock = $this->createMock(Role::class);
         $roleMock->method('getId')->willReturn('ADMIN');
 
         $user = new User;
         $user->getRoles()->add($roleMock);
 
         $this->assertInstanceOf(
-            'Doctrine\Common\Collections\ArrayCollection',
+            ArrayCollection::class,
             $user->getRoles()
         );
 
@@ -93,7 +95,7 @@ class UserTest extends TestCase
         $user = new User;
 
         $this->assertInstanceOf(
-            'Doctrine\Common\Collections\ArrayCollection',
+            ArrayCollection::class,
             $user->getCourses()
         );
     }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Kuusamo\Vle\Test\Validation;
 
+use Kuusamo\Vle\Entity\Course;
 use Kuusamo\Vle\Validation\CourseValidator;
 use Kuusamo\Vle\Validation\ValidationException;
 use PHPUnit\Framework\TestCase;
@@ -12,7 +13,7 @@ class CourseValidatorTest extends TestCase
 {
     public function testValid()
     {
-        $course = $this->createMock('Kuusamo\Vle\Entity\Course');
+        $course = $this->createMock(Course::class);
         $course->method('getName')->willReturn('Chemistry 101');
         $course->method('getSlug')->willReturn('chemistry-101');
 
@@ -25,7 +26,7 @@ class CourseValidatorTest extends TestCase
     {
         $this->expectException(ValidationException::class);
 
-        $course = $this->createMock('Kuusamo\Vle\Entity\Course');
+        $course = $this->createMock(Course::class);
         $course->method('getName')->willReturn('');
         $course->method('getSlug')->willReturn('chemistry');
 
@@ -37,7 +38,7 @@ class CourseValidatorTest extends TestCase
     {
         $this->expectException(ValidationException::class);
 
-        $course = $this->createMock('Kuusamo\Vle\Entity\Course');
+        $course = $this->createMock(Course::class);
         $course->method('getName')->willReturn('Chemistry');
         $course->method('getSlug')->willReturn('');
 
@@ -49,7 +50,7 @@ class CourseValidatorTest extends TestCase
     {
         $this->expectException(ValidationException::class);
 
-        $course = $this->createMock('Kuusamo\Vle\Entity\Course');
+        $course = $this->createMock(Course::class);
         $course->method('getName')->willReturn('Chemistry 101');
         $course->method('getSlug')->willReturn('chemistry_101');
 

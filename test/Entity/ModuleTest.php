@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace Kuusamo\Vle\Test\Entity;
 
+use Kuusamo\Vle\Entity\Course;
 use Kuusamo\Vle\Entity\Module;
+use Doctrine\Common\Collections\ArrayCollection;
 use PHPUnit\Framework\TestCase;
 use InvalidArgumentException;
 
@@ -12,7 +14,7 @@ class ModuleTest extends TestCase
 {
     public function testAccessors()
     {
-        $mockCourse = $this->createMock('Kuusamo\Vle\Entity\Course');
+        $mockCourse = $this->createMock(Course::class);
         $mockCourse->method('getSlug')->willReturn('mock-course');
 
         $module = new Module;
@@ -47,7 +49,7 @@ class ModuleTest extends TestCase
         $module = new Module;
 
         $this->assertInstanceOf(
-            'Doctrine\Common\Collections\ArrayCollection',
+            ArrayCollection::class,
             $module->getLessons()
         );
     }

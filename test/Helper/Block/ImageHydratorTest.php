@@ -4,20 +4,23 @@ declare(strict_types=1);
 
 namespace Kuusamo\Vle\Test\Helper\Block;
 
+use Kuusamo\Vle\Entity\Block\ImageBlock;
+use Kuusamo\Vle\Entity\Image;
 use Kuusamo\Vle\Helper\Block\ImageHydrator;
 use Kuusamo\Vle\Helper\Block\ValidationException;
+use Doctrine\ORM\EntityManager;
 use PHPUnit\Framework\TestCase;
 
 class ImageHydratorTest extends TestCase
 {
     public function testHydrate()
     {
-        $imageMock = $this->createMock('Kuusamo\Vle\Entity\Image');
+        $imageMock = $this->createMock(Image::class);
 
-        $blockMock = $this->createMock('Kuusamo\Vle\Entity\Block\ImageBlock');
+        $blockMock = $this->createMock(ImageBlock::class);
         $blockMock->expects($this->once())->method('setImage');
 
-        $dbMock = $this->createMock('Doctrine\ORM\EntityManager');
+        $dbMock = $this->createMock(EntityManager::class);
         $dbMock->method('find')->willReturn($imageMock);
 
         $hydrator = new ImageHydrator($dbMock);
@@ -26,11 +29,11 @@ class ImageHydratorTest extends TestCase
 
     public function testValidateValid()
     {
-        $dbMock = $this->createMock('Doctrine\ORM\EntityManager');
+        $dbMock = $this->createMock(EntityManager::class);
 
-        $imageMock = $this->createMock('Kuusamo\Vle\Entity\Image');
+        $imageMock = $this->createMock(Image::class);
 
-        $blockMock = $this->createMock('Kuusamo\Vle\Entity\Block\ImageBlock');
+        $blockMock = $this->createMock(ImageBlock::class);
         $blockMock->method('getImage')->willReturn($imageMock);
 
         $hydrator = new ImageHydrator($dbMock);
@@ -42,9 +45,9 @@ class ImageHydratorTest extends TestCase
     {
         $this->expectException(ValidationException::class);
 
-        $dbMock = $this->createMock('Doctrine\ORM\EntityManager');
+        $dbMock = $this->createMock(EntityManager::class);
 
-        $blockMock = $this->createMock('Kuusamo\Vle\Entity\Block\ImageBlock');
+        $blockMock = $this->createMock(ImageBlock::class);
         $blockMock->method('getImage')->willReturn(null);
 
         $hydrator = new ImageHydrator($dbMock);
