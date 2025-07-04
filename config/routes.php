@@ -11,6 +11,7 @@ use Kuusamo\Vle\Controller\Admin\CourseController as AdminCourseController;
 use Kuusamo\Vle\Controller\Admin\EnrolmentController as AdminEnrolmentController;
 use Kuusamo\Vle\Controller\Admin\FilesController as AdminFilesController;
 use Kuusamo\Vle\Controller\Admin\ImagesController as AdminImagesController;
+use Kuusamo\Vle\Controller\Admin\ImagesAjaxController as AdminImagesAjaxController;
 use Kuusamo\Vle\Controller\Admin\LessonsAjaxController as AdminLessonsAjaxController;
 use Kuusamo\Vle\Controller\Admin\ModulesAjaxController as AdminModulesAjaxController;
 use Kuusamo\Vle\Controller\Admin\SettingsController as AdminSettingsController;
@@ -111,7 +112,7 @@ $app->group('', function($app) use ($container) {
         $app->get('/images/{id:[0-9]+}', [AdminImagesController::class, 'view']);
         $app->any('/images/{id:[0-9]+}/edit', [AdminImagesController::class, 'edit']);
         $app->any('/images/upload', [AdminImagesController::class, 'upload']);
-        $app->post('/images/inline-upload', [AdminImagesController::class, 'upload']);
+        $app->post('/images/inline-upload', [AdminImagesAjaxController::class, 'upload']);
 
         $app->any('/settings', [AdminSettingsController::class, 'index']);
 

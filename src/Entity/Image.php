@@ -42,7 +42,7 @@ class Image implements JsonSerializable
     private $description;
 
     /**
-     * @Column(type="string")
+     * @Column(type="string", nullable=true)
      */
     private $keywords;
 

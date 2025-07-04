@@ -41,7 +41,7 @@ class ImageController extends Controller
         }
 
         $cropTool = new Crop($this->ci->get('storage'), $request, $response);
-        $image = $cropTool->resize($args['filename'], $args['size']);
+        $image = $cropTool->resize($args['filename'], intval($args['size']));
         $cache->set($args['filename'], $cachePath, $image);
         return $this->prepareResponse($response, $image);
     }
@@ -58,7 +58,7 @@ class ImageController extends Controller
         }
 
         $cropTool = new Crop($this->ci->get('storage'), $request, $response);
-        $image = $cropTool->ratio($args['filename'], $args['width']);
+        $image = $cropTool->ratio($args['filename'], intval($args['width']));
         $cache->set($args['filename'], $cachePath, $image);
         return $this->prepareResponse($response, $image);
     }

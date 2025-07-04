@@ -19,7 +19,7 @@ class ImagesAjaxController extends AdminController
         $filename = $file->getClientFilename();
 
         $imagick = new Imagick;
-        $imagick->readImageBlob($file->getStream());
+        $imagick->readImageBlob((string) $file->getStream());
 
         $image = new Image;
         $image->setFilename($filename);

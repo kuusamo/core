@@ -89,7 +89,7 @@ class Crop
             throw new HttpNotFoundException($this->request);
         }
 
-        $height = round(($width / intval($ratio[0])) * intval($ratio[1]));
+        $height = intval(round(($width / intval($ratio[0])) * intval($ratio[1])));
 
         $image = $this->getImage($filename);
         $image->cropThumbnailImage($width, $height);
