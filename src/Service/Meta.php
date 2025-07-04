@@ -8,35 +8,17 @@ use Kuusamo\Vle\Helper\Environment;
 
 class Meta
 {
-    /**
-     * @var string
-     */
-    private $title = 'Kuusamo';
+    private string $title = 'Kuusamo';
 
-    /**
-     * @var string
-     */
-    private $description = 'Virtual learning environment.';
+    private string $description = 'Virtual learning environment.';
 
-    /**
-     * @var array
-     */
-    private $keywords = ['VLE'];
+    private array $keywords = ['VLE'];
 
-    /**
-     * @var string
-     */
-    protected $canonical;
+    protected ?string $canonical = null;
 
-    /**
-     * @var string
-     */
-    protected $ogTitle;
+    protected ?string $ogTitle = null;
 
-    /**
-     * @var string
-     */
-    protected $ogImage;
+    protected ?string $ogImage = null;
 
     /**
      * Load in default config.
@@ -188,7 +170,7 @@ class Meta
      * @param string $value Image.
      * @return void
      */
-    public function setOgImage(string $value)
+public function setOgImage(string $value)
     {
         $this->ogImage = $value;
     }

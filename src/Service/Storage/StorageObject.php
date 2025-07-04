@@ -23,8 +23,6 @@ class StorageObject
 
     /**
      * Get file pointer.
-     *
-     * @return resource|blob
      */
     public function getStream()
     {
@@ -33,8 +31,6 @@ class StorageObject
 
     /**
      * Get content type.
-     *
-     * @return string
      */
     public function getContentType(): string
     {

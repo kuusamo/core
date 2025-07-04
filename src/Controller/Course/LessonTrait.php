@@ -44,7 +44,7 @@ trait LessonTrait
      *
      * @param Course $course Course object.
      * @param User   $user   User object.
-     * @return integer Percentage
+     * @return integer|float Percentage
      */
     private function calculateProgress(Course $course, User $user)
     {

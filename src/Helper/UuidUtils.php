@@ -28,9 +28,6 @@ class UuidUtils
 
     /**
      * Set a preset UUID for testing purposes.
-     *
-     * @param string $uuid UUID to return.
-     * @return string
      */
     public static function preset(string $uuid): void
     {
