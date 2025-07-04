@@ -1,6 +1,8 @@
 #!/usr/bin/env php
 <?php
 
+declare(strict_types=1);
+
 use Kuusamo\Vle\Cli\FileTools;
 use Kuusamo\Vle\Cli\ScriptHandler;
 

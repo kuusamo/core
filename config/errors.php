@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Kuusamo\Vle\Controller\ExceptionController;
 use Kuusamo\Vle\Exception\ErrorHandler;
 use Kuusamo\Vle\Helper\Environment;

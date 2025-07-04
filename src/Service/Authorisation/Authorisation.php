@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Kuusamo\Vle\Service\Authorisation;
 
 use Kuusamo\Vle\Entity\User;

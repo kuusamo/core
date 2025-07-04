@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Kuusamo\Vle\Entity\Theme;
 
 use OzdemirBurak\Iris\Color\Hex;
@@ -34,9 +36,9 @@ class Colour
     /**
      * Return a lighter version of the colour.
      *
-     * @return string
+     * @return Hex
      */
-    public function highlight(): string
+    public function highlight(): Hex
     {
         $highlight = new Hex($this->hex);
         $highlight = $highlight->lighten(10);
@@ -46,9 +48,9 @@ class Colour
     /**
      * Return a faded  version suitable for backgrounds.
      *
-     * @return string
+     * @return Hex
      */
-    public function fade(): string
+    public function fade(): Hex
     {
         $highlight = new Hex($this->hex);
         $highlight = $highlight->lighten(50);

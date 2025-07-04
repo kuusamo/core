@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Kuusamo\Vle\Helper\Content;
 
 use Kuusamo\Vle\Service\Storage\StorageInterface;

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Kuusamo\Vle\Service\Authorisation\AuthorisationFactory;
 use Kuusamo\Vle\Service\Database\DatabaseFactory;
 use Kuusamo\Vle\Service\Email\EmailFactory;

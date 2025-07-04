@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Kuusamo\Vle\Controller\Content;
 
 use Kuusamo\Vle\Controller\Controller;

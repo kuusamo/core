@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Kuusamo\Vle\Test\Helper;
 
 use Kuusamo\Vle\Helper\Collection;

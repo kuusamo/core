@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Kuusamo\Vle\Test\Helper\Block;
 
 use Kuusamo\Vle\Helper\Block\QuestionHydrator;

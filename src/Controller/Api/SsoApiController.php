@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Kuusamo\Vle\Controller\Api;
 
 use Kuusamo\Vle\Entity\SsoToken;

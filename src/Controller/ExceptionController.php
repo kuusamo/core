@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Kuusamo\Vle\Controller;
 
 use Psr\Http\Message\ServerRequestInterface as Request;

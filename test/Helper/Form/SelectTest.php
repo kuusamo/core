@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Kuusamo\Vle\Test\Helper\Form;
 
 use Kuusamo\Vle\Helper\Form\Select;

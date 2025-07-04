@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Kuusamo\Vle\Exception;
 
 use Kuusamo\Vle\Controller\ExceptionController;

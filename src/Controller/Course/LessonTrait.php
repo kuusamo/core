@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Kuusamo\Vle\Controller\Course;
 
 use Kuusamo\Vle\Entity\Course;

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Kuusamo\Vle\Entity\Block;
 
 use Kuusamo\Vle\Entity\Lesson;

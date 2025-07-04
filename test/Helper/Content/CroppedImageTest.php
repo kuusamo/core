@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Kuusamo\Vle\Test\Helper\Content;
 
 use Kuusamo\Vle\Helper\Content\CroppedImage;

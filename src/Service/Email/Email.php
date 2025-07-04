@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Kuusamo\Vle\Service\Email;
 
 use Kuusamo\Vle\Entity\LoginToken;

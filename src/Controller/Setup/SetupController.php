@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Kuusamo\Vle\Controller\Setup;
 
 use Kuusamo\Vle\Controller\Controller;
@@ -24,7 +26,7 @@ class SetupController extends Controller
             $count = $query->getSingleScalarResult();
 
             if ($count > 0) {
-                throw new HttpForbiddenException($request, $response);
+                throw new HttpForbiddenException($request);
             }
         } catch (TableNotFoundException $e) {
             die('Database is not initialised');

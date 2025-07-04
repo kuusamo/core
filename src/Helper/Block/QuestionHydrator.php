@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Kuusamo\Vle\Helper\Block;
 
 use Kuusamo\Vle\Entity\Block\QuestionBlock;

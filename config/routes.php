@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Kuusamo\Vle\Controller\AccountController;
 use Kuusamo\Vle\Controller\Admin\AdminDashboardController;
 use Kuusamo\Vle\Controller\Admin\ApiKeysController as AdminApiKeysController;

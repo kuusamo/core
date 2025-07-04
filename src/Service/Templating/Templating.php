@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Kuusamo\Vle\Service\Templating;
 
 use Kuusamo\Vle\Entity\Theme\Theme;

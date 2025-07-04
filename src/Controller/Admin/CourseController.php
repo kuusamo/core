@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Kuusamo\Vle\Controller\Admin;
 
 use Kuusamo\Vle\Entity\AwardingBody;

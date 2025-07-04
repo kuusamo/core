@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Kuusamo\Vle\Test\Service\Email;
 
 use Kuusamo\Vle\Service\Email\EmailFactory;
