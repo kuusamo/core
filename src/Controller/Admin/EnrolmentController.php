@@ -27,7 +27,7 @@ class EnrolmentController extends AdminController
         $course = $this->ci->get('db')->find(Course::class, $args['id']);
 
         if ($course === null) {
-            throw new HttpNotFoundException($request, $response);
+            throw new HttpNotFoundException($request);
         }
 
         $q = $request->getQueryParam('q');
@@ -92,19 +92,19 @@ class EnrolmentController extends AdminController
         $course = $this->ci->get('db')->find(Course::class, $args['id']);
 
         if ($course === null) {
-            throw new HttpNotFoundException($request, $response);
+            throw new HttpNotFoundException($request);
         }
 
         $student = $this->ci->get('db')->find(User::class, $args['student']);
 
         if ($student === null) {
-            throw new HttpNotFoundException($request, $response);
+            throw new HttpNotFoundException($request);
         }
 
         $enrolment = $this->ci->get('db')->find(UserCourse::class, ['course' => $course, 'user' => $student]);
 
         if ($enrolment === null) {
-            throw new HttpNotFoundException($request, $response);
+            throw new HttpNotFoundException($request);
         }
 
         if ($request->isPost()) {

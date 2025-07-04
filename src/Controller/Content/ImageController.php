@@ -20,7 +20,7 @@ class ImageController extends Controller
         try {
             $image = $this->ci->get('storage')->get(sprintf('images/%s', $args['filename']));
         } catch (StorageException $e) {
-            throw new HttpNotFoundException($request, $response);
+            throw new HttpNotFoundException($request);
         }
 
         $response = $response->withFile($image->getStream(), $image->getContentType());

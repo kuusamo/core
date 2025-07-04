@@ -95,7 +95,7 @@ class UsersApiController extends ApiController
         $course = $this->ci->get('db')->find(Course::class, $json['id']);
 
         if ($course === null) {
-            return $this->badRequest('Course not found');
+            return $this->badRequest($response, 'Course not found');
         }
 
         $userCourse = new UserCourse;

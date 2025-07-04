@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="Kuusamo" default="build">
 
-    <target name="build" depends="phpunit,phpcs"/>
+    <target name="build" depends="phpunit,phpcs,phpstan"/>
     
     <target name="phpunit">
         <exec executable="vendor/bin/phpunit" failonerror="true"/>
@@ -12,6 +12,16 @@
             <arg value="-p"/>
             <arg value="--standard=ruleset.xml"/>
             <arg value="src/"/>
+        </exec>
+    </target>
+
+    <target name="phpstan">
+        <exec executable="php" failonerror="true">
+            <arg value="-d" />
+            <arg value="memory_limit=512M" />
+            <arg value="vendor/bin/phpstan" />
+            <arg value="analyse"/>
+            <arg value="src"/>
         </exec>
     </target>
 

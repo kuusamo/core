@@ -18,13 +18,13 @@ class LessonViewController extends CourseController
         $course = $this->ci->get('db')->getRepository(Course::class)->findOneBy(['slug' => $args['course']]);
 
         if ($course === null) {
-            throw new HttpNotFoundException($request, $response);
+            throw new HttpNotFoundException($request);
         }
 
         $lesson = $this->ci->get('db')->getRepository(Lesson::class)->findOneBy(['course' => $course, 'id' => $args['lesson']]);
 
         if ($lesson === null) {
-            throw new HttpNotFoundException($request, $response);
+            throw new HttpNotFoundException($request);
         }
 
         if ($lesson->getMarking() !== Lesson::MARKING_GRADED) {
@@ -37,7 +37,7 @@ class LessonViewController extends CourseController
         $user = $this->isEnrolled($course);
 
         if ($user === false) {
-            throw new HttpNotFoundException($request, $response);
+            throw new HttpNotFoundException($request);
         }
 
         $link = $this->getLessonLink($lesson, $user);

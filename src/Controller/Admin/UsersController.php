@@ -17,6 +17,7 @@ use Kuusamo\Vle\Validation\ValidationException;
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
+use Slim\Exception\HttpNotFoundException;
 
 class UsersController extends Controller
 {
@@ -85,7 +86,7 @@ class UsersController extends Controller
         $user = $this->ci->get('db')->find(User::class, $args['id']);
 
         if ($user === null) {
-            throw new HttpNotFoundException($request, $response);
+            throw new HttpNotFoundException($request);
         }
 
         if ($request->isPost()) {
@@ -119,7 +120,7 @@ class UsersController extends Controller
         $user = $this->ci->get('db')->find(User::class, $args['id']);
 
         if (!$user) {
-            throw new HttpNotFoundException;
+            throw new HttpNotFoundException($request);
         }
 
         if ($request->isPost()) {
@@ -162,7 +163,7 @@ class UsersController extends Controller
         $user = $this->ci->get('db')->find(User::class, $args['id']);
 
         if (!$user) {
-            throw new HttpNotFoundException;
+            throw new HttpNotFoundException($request);
         }
 
         if ($request->isPost()) {
@@ -192,7 +193,7 @@ class UsersController extends Controller
         $user = $this->ci->get('db')->find(User::class, $args['id']);
 
         if ($user === null) {
-            throw new HttpNotFoundException($request, $response);
+            throw new HttpNotFoundException($request);
         }
 
         if ($request->isPost()) {
@@ -232,7 +233,7 @@ class UsersController extends Controller
         $user = $this->ci->get('db')->find(User::class, $args['id']);
 
         if ($user === null) {
-            throw new HttpNotFoundException($request, $response);
+            throw new HttpNotFoundException($request);
         }
 
         if ($request->isPost()) {

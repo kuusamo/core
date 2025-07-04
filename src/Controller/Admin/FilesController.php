@@ -13,8 +13,10 @@ use Kuusamo\Vle\Validation\FolderValidator;
 use Kuusamo\Vle\Validation\ValidationException;
 
 use Doctrine\DBAL\Exception\ForeignKeyConstraintViolationException;
+use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
+use Slim\Exception\HttpNotFoundException;
 use Exception;
 
 class FilesController extends Controller
@@ -44,7 +46,7 @@ class FilesController extends Controller
                     $fileObj->setFolder($parentFolder);
 
                     if (strlen($fileObj->getFilename()) > 128) {
-                        $this->alertWarning('Filename cannot be longer than 128 characters');
+                        $this->alertDanger('Filename cannot be longer than 128 characters');
                     } else {
                         $this->ci->get('storage')->put(
                             sprintf('files/%s', $fileObj->getFullPath()),
@@ -101,7 +103,7 @@ class FilesController extends Controller
         $fileObj = $this->ci->get('db')->find(File::class, $args['id']);
 
         if ($fileObj === null) {
-            throw new HttpNotFoundException($request, $response);
+            throw new HttpNotFoundException($request);
         }
 
         if ($request->isPost()) {
@@ -110,7 +112,7 @@ class FilesController extends Controller
                     $fileData = $request->getUploadedFiles()['file'];
 
                     if ($fileObj->getMediaType() != $fileData->getClientMediaType()) {
-                        $this->alertWarning('The media types of replacement files must be identical');
+                        $this->alertDanger('The media types of replacement files must be identical');
                     } else {
                         $fileObj->setSize($fileData->getSize());
 
@@ -142,7 +144,7 @@ class FilesController extends Controller
         $fileObj = $this->ci->get('db')->find(File::class, $args['id']);
 
         if ($fileObj === null) {
-            throw new HttpNotFoundException($request, $response);
+            throw new HttpNotFoundException($request);
         }
 
         if ($request->isPost()) {
@@ -184,7 +186,7 @@ class FilesController extends Controller
         $fileObj = $this->ci->get('db')->find(File::class, $args['id']);
 
         if ($fileObj === null) {
-            throw new HttpNotFoundException($request, $response);
+            throw new HttpNotFoundException($request);
         }
 
         $audioBlocks = $this->ci->get('db')->getRepository(AudioBlock::class)->findBy(['file' => $fileObj]);

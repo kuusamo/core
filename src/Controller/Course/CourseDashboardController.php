@@ -18,7 +18,7 @@ class CourseDashboardController extends CourseController
         $course = $this->ci->get('db')->getRepository(Course::class)->findOneBy(['slug' => $args['course']]);
 
         if ($course === null) {
-            throw new HttpNotFoundException($request, $response);
+            throw new HttpNotFoundException($request);
         }
 
         $user = $this->isEnrolled($course);

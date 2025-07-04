@@ -37,7 +37,7 @@ class ApiKeysController extends Controller
         $apiKey = $this->ci->get('db')->find(ApiKey::class, $args['key']);
 
         if ($apiKey === null) {
-            throw new HttpNotFoundException($request, $response);
+            throw new HttpNotFoundException($request);
         }
 
         if ($request->isPost()) {

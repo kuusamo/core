@@ -21,7 +21,7 @@ class CourseController extends AdminController
         $course = $this->ci->get('db')->find(Course::class, $args['id']);
 
         if ($course === null) {
-            throw new HttpNotFoundException($request, $response);
+            throw new HttpNotFoundException($request);
         }
 
         $this->ci->get('meta')->setTitle(sprintf('%s - Admin', $course->getName()));
@@ -36,7 +36,7 @@ class CourseController extends AdminController
         $course = $this->ci->get('db')->find(Course::class, $args['id']);
 
         if ($course === null) {
-            throw new HttpNotFoundException($request, $response);
+            throw new HttpNotFoundException($request);
         }
 
         $this->ci->get('meta')->setTitle(sprintf('%s - Admin', $course->getName()));
@@ -51,7 +51,7 @@ class CourseController extends AdminController
         $course = $this->ci->get('db')->find(Course::class, $args['id']);
 
         if ($course === null) {
-            throw new HttpNotFoundException($request, $response);
+            throw new HttpNotFoundException($request);
         }
 
         if ($request->isPost()) {
@@ -119,7 +119,7 @@ class CourseController extends AdminController
         $course = $this->ci->get('db')->find(Course::class, $args['id']);
 
         if ($course === null) {
-            throw new HttpNotFoundException($request, $response);
+            throw new HttpNotFoundException($request);
         }
 
         if ($request->isPost()) {

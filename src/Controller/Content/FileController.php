@@ -7,9 +7,9 @@ use Kuusamo\Vle\Entity\File;
 use Kuusamo\Vle\Helper\Content\Crop;
 use Kuusamo\Vle\Service\Storage\StorageObject;
 
-use Slim\Exception\HttpNotFoundException;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
+use Slim\Exception\HttpNotFoundException;
 
 class FileController extends Controller
 {
@@ -20,7 +20,7 @@ class FileController extends Controller
         ]);
 
         if (!$fileObj) {
-            throw new HttpNotFoundException($request, $response);
+            throw new HttpNotFoundException($request);
         }
 
         $fileData = $this->ci->get('storage')->get(sprintf(
@@ -29,7 +29,7 @@ class FileController extends Controller
         ));
 
         if (!$fileData) {
-            throw new HttpNotFoundException($request, $response);
+            throw new HttpNotFoundException($request);
         }
 
         $response = $response->withFile($fileData->getStream(), $fileData->getContentType());

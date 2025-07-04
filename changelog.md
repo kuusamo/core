@@ -1,6 +1,10 @@
 Changelog
 =========
 
+2.7.1
+-----
+* Fix multiple different error pages
+
 2.7
 ---
 

@@ -20,7 +20,7 @@ class CertificateController extends CourseController
         $course = $this->ci->get('db')->getRepository('Kuusamo\Vle\Entity\Course')->findOneBy(['slug' => $args['course']]);
 
         if ($course === null || $course->isCertificateAvailable() === false) {
-            throw new HttpNotFoundException($request, $response);
+            throw new HttpNotFoundException($request);
         }
 
         $user = $this->isEnrolled($course);
@@ -31,9 +31,9 @@ class CertificateController extends CourseController
         // $link->setCompleted(new \Datetime('1900-01-01'));
 
         if ($user === false) {
-            throw new HttpNotFoundException($request, $response);
+            throw new HttpNotFoundException($request);
         } elseif ($link->getCompleted() === null) {
-            throw new HttpNotFoundException($request, $response);
+            throw new HttpNotFoundException($request);
         }
 
         $body = $response->getBody();
@@ -50,7 +50,7 @@ class CertificateController extends CourseController
         $course = $this->ci->get('db')->find('Kuusamo\Vle\Entity\Course', $args['id']);
 
         if ($course === null) {
-            throw new HttpNotFoundException($request, $response);
+            throw new HttpNotFoundException($request);
         }
 
         $user = new User;
@@ -75,13 +75,13 @@ class CertificateController extends CourseController
         $user = $this->ci->get('db')->find('Kuusamo\Vle\Entity\User', $args['student']);
 
         if ($course === null || $user === null) {
-            throw new HttpNotFoundException($request, $response);
+            throw new HttpNotFoundException($request);
         }
 
         $link = $this->getCourseLink($course, $user);
 
         if ($link->getCompleted() === null) {
-            throw new HttpNotFoundException($request, $response);
+            throw new HttpNotFoundException($request);
         }
 
         $body = $response->getBody();

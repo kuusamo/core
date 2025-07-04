@@ -66,7 +66,7 @@ class AwardingBodiesController extends Controller
         $body = $this->ci->get('db')->find(AwardingBody::class, $args['id']);
 
         if ($body === null) {
-            throw new HttpNotFoundException($request, $response);
+            throw new HttpNotFoundException($request);
         }
 
         $this->ci->get('meta')->setTitle('Awarding Bodies - Admin');
@@ -81,7 +81,7 @@ class AwardingBodiesController extends Controller
         $body = $this->ci->get('db')->find(AwardingBody::class, $args['id']);
 
         if ($body === null) {
-            throw new HttpNotFoundException($request, $response);
+            throw new HttpNotFoundException($request);
         }
 
         if ($request->isPost()) {
@@ -133,7 +133,7 @@ class AwardingBodiesController extends Controller
         $body = $this->ci->get('db')->find(AwardingBody::class, $args['id']);
 
         if ($body === null) {
-            throw new HttpNotFoundException($request, $response);
+            throw new HttpNotFoundException($request);
         }
 
         if ($request->isPost()) {
@@ -170,7 +170,7 @@ class AwardingBodiesController extends Controller
         $body = $this->ci->get('db')->find(AwardingBody::class, $args['id']);
 
         if ($body === null) {
-            throw new HttpNotFoundException($request, $response);
+            throw new HttpNotFoundException($request);
         }
 
         if ($request->isPost()) {

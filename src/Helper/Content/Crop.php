@@ -59,7 +59,7 @@ class Crop
         $size = intval($size);
 
         if ($size < 1 || $size > 2000) {
-            throw new HttpNotFoundException($this->request, $this->response);
+            throw new HttpNotFoundException($this->request);
         }
 
         $image = $this->getImage($filename);
@@ -84,7 +84,7 @@ class Crop
         $ratio = explode('x', $ratio);
 
         if ($width < 1 || $width > 2000) {
-            throw new HttpNotFoundException($this->request, $this->response);
+            throw new HttpNotFoundException($this->request);
         }
 
         $height = round(($width / intval($ratio[0])) * intval($ratio[1]));
@@ -119,7 +119,7 @@ class Crop
             // return the object
             return $image;
         } catch (StorageException $e) {
-            throw new HttpNotFoundException($this->request, $this->response);
+            throw new HttpNotFoundException($this->request);
         }
     }
 }

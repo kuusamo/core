@@ -19,13 +19,13 @@ class LessonController extends CourseController
         $course = $this->ci->get('db')->getRepository(Course::class)->findOneBy(['slug' => $args['course']]);
 
         if ($course === null) {
-            throw new HttpNotFoundException($request, $response);
+            throw new HttpNotFoundException($request);
         }
 
         $lesson = $this->ci->get('db')->getRepository(Lesson::class)->findOneBy(['course' => $course, 'id' => $args['lesson']]);
 
         if ($lesson === null) {
-            throw new HttpNotFoundException($request, $response);
+            throw new HttpNotFoundException($request);
         }
 
         $user = $this->isEnrolled($course);
@@ -118,7 +118,7 @@ class LessonController extends CourseController
     private function changeStatus(UserLesson $link): bool
     {
         if ($link->getLesson()->getMarking() !== Lesson::MARKING_AUTOMATIC) {
-            $this->alertError('Automatic marking disabled');
+            $this->alertDanger('Automatic marking disabled');
             return false;
         }
 

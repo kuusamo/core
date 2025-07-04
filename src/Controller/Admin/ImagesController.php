@@ -8,6 +8,7 @@ use Kuusamo\Vle\Service\Database\Pagination;
 
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
+use Slim\Exception\HttpNotFoundException;
 use Imagick;
 use Exception;
 
@@ -73,7 +74,7 @@ class ImagesController extends AdminController
             $image->setHeight($imagick->getImageHeight());
 
             if (strlen($image->getFilename()) > 100) {
-                $this->alertWarning('Filename cannot be longer than 100 characters.');
+                $this->alertDanger('Filename cannot be longer than 100 characters.');
             } else {
                 $this->ci->get('db')->persist($image);
                 $this->ci->get('db')->flush();
@@ -103,7 +104,7 @@ class ImagesController extends AdminController
         $image = $this->ci->get('db')->find(Image::class, $args['id']);
 
         if ($image === null) {
-            throw new HttpNotFoundException($request, $response);
+            throw new HttpNotFoundException($request);
         }
 
         $this->ci->get('meta')->setTitle('Images - Admin');
@@ -118,7 +119,7 @@ class ImagesController extends AdminController
         $image = $this->ci->get('db')->find(Image::class, $args['id']);
 
         if ($image === null) {
-            throw new HttpNotFoundException($request, $response);
+            throw new HttpNotFoundException($request);
         }
 
         if ($request->isPost()) {
