@@ -15,7 +15,7 @@ class Collection implements ArrayAccess
      *
      * @param array $data Data.
      */
-    public function __construct(array $data = [])
+    public function __construct(?array $data = [])
     {
         $this->data = $data;
     }

@@ -5,6 +5,7 @@ Changelog
 -----
 * Fix multiple different error pages
 * Fix inline image uploading
+* Collections should support null data
 
 2.7
 ---
