@@ -1,6 +1,10 @@
 Changelog
 =========
 
+2.7.3
+-----
+* Fix lesson completed toggle in student admin
+
 2.7.2
 -----
 * Fix complete and continue button

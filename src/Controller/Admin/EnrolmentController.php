@@ -112,7 +112,7 @@ class EnrolmentController extends AdminController
         if ($request->isPost()) {
             switch ($request->getParam('action')) {
                 case 'toggle':
-                    $this->toggleLesson($student, $request->getParam('lesson'));
+                    $this->toggleLesson($student, intval($request->getParam('lesson')));
                     $this->updateProgress($enrolment);
                     $this->alertSuccess('Lesson toggled successfully');
                     break;
