@@ -170,7 +170,7 @@ class Meta
      * @param string $value Image.
      * @return void
      */
-public function setOgImage(string $value)
+    public function setOgImage(string $value)
     {
         $this->ogImage = $value;
     }

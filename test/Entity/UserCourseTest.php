@@ -26,7 +26,7 @@ class UserCourseTest extends TestCase
         $uc->setUser($userMock);
         $uc->setCourse($courseMock);
         $uc->setStart($start);
-        $uc->setProgress(50);
+        $uc->setProgress(50.1);
         $uc->setCompleted($completed);
 
         $this->assertSame($userMock, $uc->getUser());

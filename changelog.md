@@ -1,6 +1,10 @@
 Changelog
 =========
 
+2.7.2
+-----
+* Fix complete and continue button
+
 2.7.1
 -----
 * Fix multiple different error pages

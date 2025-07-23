@@ -82,9 +82,9 @@ class UserCourse implements JsonSerializable
         return $this->progress;
     }
 
-    public function setProgress(int $value)
+    public function setProgress(float $value)
     {
-        $this->progress = $value;
+        $this->progress = intval(round($value));
     }
 
     public function getCompleted(): ?DateTime
